@@ -1,5 +1,3 @@
 # Personal-File-Archive
 
-# Здесь краткое описание продукта
-
-КРАТКОЕ ОПИСАНИЕ ПРОДУКТА
+#Short description
