@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html ng-app="SimplePageModuleApp">
+
+<head>
+    <script src="angular.min.js"></script>
+    <script src="SimplePage.html.js"></script>
+</head>
+
+<body>
+    <div ng-controller="ListOfProductsController as lopCtrl">
+        <div>
+            <label for="mode1">{{lopCtrl.ListTitle}}</label>
+            <input ng-model="lopCtrl.Mode" type="radio" value="{{lopCtrl.ListTitle}}" id="mode1" />
+            <br/>
+            <label for="mode2">SomeText</label>
+            <input ng-model="lopCtrl.Mode" type="radio" value="SomeText" id="mode2" />
+        </div>
+        </br>
+        <div ng-switch on="lopCtrl.Mode">
+            <div ng-switch-when="SomeText">SomeText</div>
+            <div ng-switch-when="Список продуктов">
+                <h2>{{lopCtrl.ListTitle}}</h2>
+                <ul>
+                    <li ng-repeat="product in lopCtrl.ProductList">
+                        <b>Продукт: {{product.ProductName}}</b>
+                    </li>
+                </ul>
+                <input ng-model="lopCtrl.NewProductTitle" type="text"></input>
+                <input ng-click="lopCtrl.AddNewProduct()" type="button" value="Добавить новый товар"></input>
+            </div>
+            <div ng-switch-default> Choose something</div>
+        </div>
+
+        <div>
+            <h1>ngIf</h1>
+            <input type="checkbox" ng-model="lopCtrl.TryIf.visible">Открыть/скрыть
+            <p ng-if="lopCtrl.TryIf.visible">Первый блок</p>
+            <p ng-if="!lopCtrl.TryIf.visible">Второй блок</p>
+        </div>
+
+        <div>
+            <h1>ng-show и ng-hide</h1>
+            <p ng-hide="lopCtrl.TryShowHide.visible">Первый блок</p>
+            <p ng-show="lopCtrl.TryShowHide.visible">Второй блок</p>
+            <input type="checkbox" ng-model="lopCtrl.TryShowHide.visible">Открыть/скрыть
+        </div>
+        <br/>
+        <div>
+            <b>Test Simple Service</b>
+            <br/>
+            <input type="button" value="Send data to server" ng-click="lopCtrl.SendDataToServer()">
+            <br/>
+            <!--Answer from server:
+            <label ng-bind="lopCtrl.SimpleObjectForRequest.message"/>
+            <br/>
+            Answer count:
+            <label ng-bind="lopCtrl.SimpleObjectForRequest.count"/>-->
+            <ul>
+                <li>Answer from server:{{lopCtrl.SimpleObjectForRequest.message}}</li>
+                <li>Answer count:{{lopCtrl.SimpleObjectForRequest.count}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
