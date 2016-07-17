@@ -2,12 +2,6 @@
    "compilerOptions": {
        "module": "commonjs",
        "sourceMap": true,
-       "target": "es3"
-   },
-   "files": [
-       "ITreeEntity.ts",
-       "TreeEntity.ts",
-       "TreeModel.ts",
-       "Dictionaries.ts"
-   ]
+       "target": "es5"
+   }
 }

@@ -1,0 +1,21 @@
+"use strict";
+var TreeEntity_1 = require('./Classes/TreeEntity');
+var TreeModel_1 = require('./Classes/TreeModel');
+var folder1 = new TreeEntity_1.TreeEntity('Folder 1');
+var folder1_1 = new TreeEntity_1.TreeEntity('Folder 1.1');
+var folder1_1_1 = new TreeEntity_1.TreeEntity('Folder 1.1.1');
+var folder1_2 = new TreeEntity_1.TreeEntity('Folder 1.2');
+var folder2 = new TreeEntity_1.TreeEntity('Folder 2');
+var folder2_1 = new TreeEntity_1.TreeEntity('Folder 2.1');
+var treeModel = new TreeModel_1.TreeModel();
+treeModel.addToRoot(folder1);
+treeModel.addAsChild(folder1_1, folder1);
+treeModel.addAsChild(folder1_1_1, folder1_1);
+treeModel.replace(folder1_2, folder1_1);
+treeModel.addToRoot(folder2);
+treeModel.addAsChild(folder2_1, folder2);
+//treeModel.removeChildren(folder1);
+//treeModel.remove(folder1);
+//treeModel.remove(folder2);
+console.log(treeModel.getById(0));
+//# sourceMappingURL=test.js.map
