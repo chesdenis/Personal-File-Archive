@@ -1,0 +1,7 @@
+PFS.Server.MvcApp/node_modules
+PFS.Server.MvcApp/obj
+PFS.Server.MvcApp/bin
+PFS.Server.MvcApp/typings
+PFS.Server.MvcApp/wwwroot/app
+PFS.Server.MvcApp/wwwroot/npmlibs
+.vs
