@@ -1,9 +1,8 @@
 ﻿var gulp = require('gulp');
-
 var ts = require('gulp-typescript');
+var embedTemplates = require('gulp-angular-embed-templates');
 var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
-
 var runSequence = require('run-sequence');
 
 

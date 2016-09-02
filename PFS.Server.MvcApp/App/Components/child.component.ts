@@ -5,5 +5,5 @@ import {Component} from '@angular/core';
     templateUrl:'./child.component.html'
 })
 export class ChildComponent {
-
+   
 }
