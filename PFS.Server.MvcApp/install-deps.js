@@ -13,12 +13,15 @@ gulp.task("install-system", install_system);
 
 gulp.task("install-angular", install_angular);
 
+gulp.task("install-bootstrap", install_bootstrap);
+
 gulp.task("install-deps",
 ["install-shim"
 , "install-zone"
 , "install-reflect"
 , "install-system"
 , "install-angular"
+, "install-bootstrap"
 ]);
 
 
@@ -58,6 +61,12 @@ function install_angular() {
     gulp
     .src(paths.npmSrc + '/rxjs/**')
     .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
+}
+
+function install_bootstrap(){
+     gulp
+    .src(paths.npmSrc + '/bootstrap/dist/**')
+    .pipe(gulp.dest(paths.npmLibs + '/bootstrap/'));
 }
 
 runSequence('install-deps', onFinish);
