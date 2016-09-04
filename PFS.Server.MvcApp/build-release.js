@@ -6,9 +6,19 @@ var runSequence = require('run-sequence');
 gulp.task('build-systemjs', buildSystemJs);
 gulp.task('build-release', buildRelease);
 
+var tsConfig = {
+            "target": "es5",
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "emitDecoratorMetadata": true,
+            "experimentalDecorators": true,
+            "noImplicitAny": false
+        };
+
 function buildSystemJs() {
     gulp
-       .src('./app/systemjs.config.js')
+       .src('./systemjs.config.ts')
+       .pipe(ts(tsConfig))
        .pipe(gulp.dest('./wwwroot/'));
 }
 
@@ -16,14 +26,7 @@ function buildRelease() {
     gulp
        .src('./App/**/*.ts')
        .pipe(embedTemplates({ sourceType: 'ts' }))
-       .pipe(ts({
-           "target": "es5",
-           "module": "commonjs",
-           "moduleResolution": "node",
-           "emitDecoratorMetadata": true,
-           "experimentalDecorators": true,
-           "noImplicitAny": false
-       }))
+       .pipe(ts(tsConfig))
        .pipe(gulp.dest('./wwwroot/app'));
 }
 

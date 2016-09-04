@@ -9,9 +9,26 @@ var runSequence = require('run-sequence');
 gulp.task('build-systemjs', buildSystemJs);
 gulp.task('build-debug', buildDebug);
 
+var tsConfig = {
+            "target": "es5",
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "emitDecoratorMetadata": true,
+            "experimentalDecorators": true,
+            "noImplicitAny": false
+        };
+
 function buildSystemJs() {
     gulp
-       .src('./app/systemjs.config.js')
+       .src('./systemjs.config.ts')
+       .pipe(sourcemaps.init())
+       .pipe(ts(tsConfig))
+       .pipe(sourcemaps.write({
+            sourceRoot: function (file) {
+                var sourceFile = path.join(file.cwd, file.sourceMap.file);
+                return path.relative(path.dirname(sourceFile), file.cwd);
+            }
+        }))
        .pipe(gulp.dest('./wwwroot/'));
 }
 
@@ -21,14 +38,7 @@ function buildDebug() {
         .src('./App/**/*.ts')
 		.pipe(embedTemplates({ sourceType: 'ts' }))
         .pipe(sourcemaps.init())
-        .pipe(ts({
-            "target": "es5",
-            "module": "commonjs",
-            "moduleResolution": "node",
-            "emitDecoratorMetadata": true,
-            "experimentalDecorators": true,
-            "noImplicitAny": false
-        }))
+        .pipe(ts(tsConfig))
         .pipe(sourcemaps.write({
             sourceRoot: function (file) {
                 var sourceFile = path.join(file.cwd, file.sourceMap.file);
