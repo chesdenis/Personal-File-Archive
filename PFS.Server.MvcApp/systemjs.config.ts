@@ -26,10 +26,6 @@ const angularPkgs: string[] = [
     'upgrade'
 ];
 
-const materialPkgs: string[] = [
-    'core',
-    'button'
-];
 
 //Individual files (~300 requests):
 function ngPackIndex(pkgName) {
@@ -43,10 +39,5 @@ function ngPackUmd(pkgName) {
 var ngPackageConfig = System.packageWithIndex ? ngPackIndex : ngPackUmd;
 // Add package entries for angular packages
 angularPkgs.forEach(ngPackageConfig);
-
-materialPkgs.forEach((pkgName: string) => {
-    packages[`@angular2-material/${pkgName}`] = { main: `${pkgName}.js`, defaultExtension: 'js' };
-});
-
 
 System.config({ map, packages });
