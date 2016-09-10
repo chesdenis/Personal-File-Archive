@@ -1,6 +1,6 @@
 <div class="btn-group" [ngClass]="getClasses()">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-   aria-expanded="isExpanded" (click)="expandOptions()">
+   [attr.aria-expanded]="isExpanded" (click)="expandOptions()">
     {{title}} <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
