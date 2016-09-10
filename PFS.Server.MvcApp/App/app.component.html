@@ -1,35 +1,20 @@
-<h1>My First Angular 2 Apphfffhh</h1>
-<child-component></child-component>
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">Left</button>
-  <button type="button" class="btn btn-default">Middle</button>
-  <button type="button" class="btn btn-default">Right</button>
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
-</div>
-
-<div class="input-group">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
-</div>
-
-<label for="basic-url">Your vanity URL</label>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-
-<ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
-</ul>
+<nav-top-bar id="nav-top-bar">
+    <nav-bar-header brandText="PFS"></nav-bar-header>
+    <nav-bar-body>
+        <nav-bar-zone align="left">
+            <li routerLinkActive="active"><a routerLink="/All">All <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Photos">Photos <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Videos">Videos <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Musics">Musics <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Books">Books <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Documents">Documents <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Others">Others <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Upload">Upload <span class="sr-only">(current)</span></a></li>
+            <li routerLinkActive="active"><a routerLink="/Untagged">Untagged <span class="sr-only">(current)</span></a></li>
+        </nav-bar-zone>
+        <nav-bar-zone align="right">
+            <li routerLinkActive="active"><a routerLink="/Settings">Settings <span class="sr-only">(current)</span></a></li>
+        </nav-bar-zone>
+    </nav-bar-body>
+</nav-top-bar>
+<router-outlet></router-outlet>
