@@ -1,19 +1,9 @@
 <nav-top-bar id="nav-top-bar">
     <nav-bar-header brandText="PFS"></nav-bar-header>
     <nav-bar-body>
-        <nav-bar-zone align="left">
-            <li routerLinkActive="active"><a routerLink="/All">All <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Photos">Photos <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Videos">Videos <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Musics">Musics <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Books">Books <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Documents">Documents <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Others">Others <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Upload">Upload <span class="sr-only">(current)</span></a></li>
-            <li routerLinkActive="active"><a routerLink="/Untagged">Untagged <span class="sr-only">(current)</span></a></li>
+        <nav-bar-zone align="left" [menuEntities]="leftMenuEntities">
         </nav-bar-zone>
-        <nav-bar-zone align="right">
-            <li routerLinkActive="active"><a routerLink="/Settings">Settings <span class="sr-only">(current)</span></a></li>
+        <nav-bar-zone align="right" [menuEntities]="rightMenuEntities">
         </nav-bar-zone>
     </nav-bar-body>
 </nav-top-bar>
