@@ -7,8 +7,8 @@ import {NavBarMenuEntity} from './Controls/nav-bar/nav-bar-menu.entity';
 })
 export class AppComponent 
 {
-    leftMenuEntities: NavBarMenuEntity[] = [
-        new NavBarMenuEntity("active", "/All", "All", "(current)" ),
+    rightMenuEntities: NavBarMenuEntity[] = [
+        new NavBarMenuEntity("active", "/All", "All", "(current)"),
         new NavBarMenuEntity("active", "/Photos", "Photos", "(current)"),
         new NavBarMenuEntity("active", "/Videos", "Videos", "(current)"),
         new NavBarMenuEntity("active", "/Musics", "Musics", "(current)"),
@@ -17,9 +17,6 @@ export class AppComponent
         new NavBarMenuEntity("active", "/Others", "Others", "(current)"),
         new NavBarMenuEntity("active", "/Upload", "Upload", "(current)"),
         new NavBarMenuEntity("active", "/Untagged", "Untagged", "(current)"),
-    ];
-
-    rightMenuEntities: NavBarMenuEntity[] = [
         new NavBarMenuEntity("active", "/Settings", "Settings", "(current)")
     ];
 }  

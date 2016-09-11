@@ -7,7 +7,8 @@ import {NavTopBarControl} from './nav-top-bar.control';
 })
 export class NavBarHeaderControl {
     @Input() brandText: string = "";
-
+    brandExtraText: string = "";
+   
     constructor(private navBar: NavTopBarControl) {
         this.navBar.header = this;
     }
@@ -15,4 +16,9 @@ export class NavBarHeaderControl {
     toggleBody() {
         this.navBar.toggleBody();
     }
+
+    setBrandAdditionalText(text: string) {
+        this.brandExtraText = text;
+    }
+
 }

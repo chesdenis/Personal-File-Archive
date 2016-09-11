@@ -23,4 +23,10 @@ export class NavTopBarControl
             this.body.hide();
         }
     }
+
+    setBrandAdditionalText(text:string) {
+        if (this.header != null) {
+            this.header.setBrandAdditionalText(text);
+        }
+    }
 }

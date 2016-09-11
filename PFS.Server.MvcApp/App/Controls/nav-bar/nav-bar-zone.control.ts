@@ -21,7 +21,11 @@ export class NavBarZoneControl
         }
     }
 
-    onSelectMenuEntity() {
+    onSelectMenuEntity(menuEntity: NavBarMenuEntity) {
         this.navBar.hideBody();
+
+        let brandExtraText = menuEntity.TextContent;
+
+        this.navBar.setBrandAdditionalText(`-${brandExtraText}`);
     }
 }
