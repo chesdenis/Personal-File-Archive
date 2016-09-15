@@ -1,7 +1,8 @@
-<h1>My First Angular 2 </h1>
-
-<content-filter>
-  <filters-option filterTitle="Альбом"></filters-option>
-  <filters-option filterTitle="Дата"></filters-option>
-  <filters-option filterTitle="Место"></filters-option>
-</content-filter>
+<nav-top-bar id="nav-top-bar">
+    <nav-bar-header brandText="Personal File Storage"></nav-bar-header>
+    <nav-bar-body>
+        <nav-bar-zone align="right" [menuEntities]="rightMenuEntities">
+        </nav-bar-zone>
+    </nav-bar-body>
+</nav-top-bar>
+<router-outlet></router-outlet>
