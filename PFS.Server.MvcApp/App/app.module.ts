@@ -21,6 +21,9 @@ import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 import {TabsControl} from './Controls/tabs.control';
 import {TabControl} from './Controls/tab.control';
 
+import {ContentFilterControl} from './Controls/Filters/content-filter.control'
+import {FiltersOptionControl} from './Controls/Filters/filters-option.control'
+
 import { routing } from './app.routing';
  
 
@@ -47,7 +50,10 @@ import { routing } from './app.routing';
       NavBarZoneControl,
 
       TabsControl,
-      TabControl
+      TabControl,
+
+      ContentFilterControl,
+      FiltersOptionControl
 
   ],
   bootstrap:    [ AppComponent ]
