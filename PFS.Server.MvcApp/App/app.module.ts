@@ -18,6 +18,9 @@ import {NavBarZoneControl} from './Controls/nav-bar/nav-bar-zone.control';
 import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
 import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
+import {TabsControl} from './Controls/tabs.control';
+import {TabControl} from './Controls/tab.control';
+
 import { routing } from './app.routing';
  
 
@@ -41,7 +44,11 @@ import { routing } from './app.routing';
       NavTopBarControl,
       NavBarHeaderControl,
       NavBarBodyControl,
-      NavBarZoneControl
+      NavBarZoneControl,
+
+      TabsControl,
+      TabControl
+
   ],
   bootstrap:    [ AppComponent ]
 })
