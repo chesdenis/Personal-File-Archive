@@ -24,6 +24,9 @@ import {TabControl} from './Controls/tab.control';
 import {ContentFilterControl} from './Controls/Filters/content-filter.control'
 import {FiltersOptionControl} from './Controls/Filters/filters-option.control'
 
+import {DatetimePickerControl} from './Controls/Datetimepicker/datetime-picker.control';
+import {CalendarControl} from './Controls/Datetimepicker/calendar.control';
+
 import { routing } from './app.routing';
  
 
@@ -53,7 +56,10 @@ import { routing } from './app.routing';
       TabControl,
 
       ContentFilterControl,
-      FiltersOptionControl
+      FiltersOptionControl,
+
+      DatetimePickerControl,
+      CalendarControl 
 
   ],
   bootstrap:    [ AppComponent ]
