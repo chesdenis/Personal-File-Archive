@@ -3,7 +3,8 @@ import {CalendarControl} from "./calendar.control";
 
 @Component({
     selector: "datetimepicker",
-    templateUrl: "./datetime-picker.control.html"
+    templateUrl: "./datetime-picker.control.html",
+    styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
 })
 export class DatetimePickerControl
 {
