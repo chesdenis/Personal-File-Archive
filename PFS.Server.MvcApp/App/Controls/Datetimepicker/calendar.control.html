@@ -3,6 +3,9 @@
         <table class="table-condensed">
             <thead>
                 <tr>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
+                </tr>
+                <tr>
                     <th class="prev" (click)="toPrevMonth()">«</th>
                     <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Months)">
                         {{months[selectedMonth]}} {{selectedYear}}
@@ -21,8 +24,10 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <th colspan="7" class="clear">Clear</th>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
                 </tr>
             </tfoot>
         </table>
@@ -30,6 +35,9 @@
     <div class="datepicker-months" *ngIf="mode == modes.Months">
         <table class="table-condensed">
             <thead>
+                <tr>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
+                </tr>
                 <tr>
                     <th class="prev" (click)="toPrevYear()">«</th>
                     <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Years)">
@@ -48,8 +56,10 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <th colspan="7" class="clear">Clear</th>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
                 </tr>
             </tfoot>
         </table>
@@ -58,9 +68,12 @@
         <table class="table-condensed">
             <thead>
                 <tr>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
+                </tr>
+                <tr>
                     <th class="prev" (click)="toPrevDecade()">«</th>
                     <th colspan="5" class="datepicker-switch">
-                        {{selectedDecade[0] - selectedDecade[selectedDecade.length - 1]}}
+                        {{selectedDecade[0]}} - {{selectedDecade[selectedDecade.length - 1]}}
                     </th>
                     <th class="next" (click)="toNextDecade()">»</th>
                 </tr>
@@ -75,8 +88,10 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <th colspan="7" class="clear">Clear</th>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
                 </tr>
             </tfoot>
         </table>

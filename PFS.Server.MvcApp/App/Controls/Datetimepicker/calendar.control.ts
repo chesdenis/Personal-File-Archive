@@ -1,11 +1,17 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, Output, OnInit, EventEmitter, ElementRef} from "@angular/core";
+import {DatetimePickerControl} from "./datetime-picker.control";
 
 @Component({
     selector: "calendar",
-    templateUrl: "./calendar.control.html",
-    styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
+    templateUrl: "./calendar.control.html"//,
+    //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
 })
 export class CalendarControl implements OnInit {
+    @Input() title: string = "";
+    @Input() hasclearbutton: boolean = false; 
+
+    @Output() dateChange: EventEmitter<string> = new EventEmitter<string>();   
+
     private days: Array<string>;
     private shortDays: Array<String>;
     private months: Array<String>;
@@ -22,10 +28,16 @@ export class CalendarControl implements OnInit {
     private modes = CalendarMode;
     private mode: CalendarMode;
 
+    private dateFormat: string = "MM/dd/yyyy";
+
+    constructor(datetimepicker: DatetimePickerControl, private _elRef: ElementRef){
+        datetimepicker.addCalendar(this);
+    }
+
     ngOnInit() {
         this.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
         this.shortDays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-        this.months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         this.shortMonths = ["Jun", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
         this.mode = CalendarMode.Days;
@@ -37,6 +49,10 @@ export class CalendarControl implements OnInit {
         this.selectedDecade = this.getDecade(this.selectedYear);
 
         this.dates = this.setDatesArray(this.selectedMonth, this.selectedYear);
+    }
+
+    public isClickedOnMe(event):boolean{
+        return this._elRef.nativeElement.contains(event.target);
     }
 
     private setDatesArray(month: number, year: number): Array<Array<Date>> {
@@ -90,25 +106,23 @@ export class CalendarControl implements OnInit {
         return new Date(year, month + 1, 0);
     }
 
-    private getDecadeStartYear(year:number): number{
+    private getDecadeStartYear(year: number): number {
         let yearAsString: string = year.toString();
         let last: number = +yearAsString.charAt(yearAsString.length - 1);
         return year - last - 1;
     }
 
-    private getDecadeEndYear(year:number): number{
-        let yearAsString: string = year.toString();
-        let last: number = +yearAsString.charAt(yearAsString.length - 1);
-        return year - last + 10;
+    private getDecadeEndYear(year: number): number {
+        return this.getDecadeStartYear(year) + 11;
     }
 
-    private getDecade(year: number): Array<number>{
-        let startDecare = this.getDecadeStartYear(year);
-        let endDecade = this.getDecadeEndYear(year);
+    private getDecade(year: number): Array<number> {
+        let startDecare: number = this.getDecadeStartYear(year);
+        let endDecade: number = this.getDecadeEndYear(year);
 
         let decade: Array<number> = [];
 
-        for(let i = startDecare; i < endDecade; i ++){
+        for (let i = startDecare; i <= endDecade; i++) {
             decade.push(i);
         }
 
@@ -130,24 +144,26 @@ export class CalendarControl implements OnInit {
         return retArr;
     }
 
-    private selectDate(date: Date):void{
-        this.selectedDate = date;
+    private selectDate(date: Date): void {
+        this.selectedDate = this.copyDate(date);
 
-        if(this.selectedDate.getMonth() !== this.selectedMonth){
-            if(this.selectedDate.getFullYear() !== this.selectedYear){
+        if (this.selectedDate.getMonth() !== this.selectedMonth) {
+            if (this.selectedDate.getFullYear() !== this.selectedYear) {
                 this.selectYear(this.selectedDate.getFullYear());
             }
 
             this.selectMonth(this.selectedDate.getMonth());
         }
+
+        this.dateChange.emit(this.dateToString(this.selectedDate));
     }
 
-    private selectMonth(month:number):void{
+    private selectMonth(month: number): void {
         this.selectedMonth = month;
         this.dates = this.setDatesArray(this.selectedMonth, this.selectedYear);
     }
 
-    private selectYear(year:number):void{
+    private selectYear(year: number): void {
         this.selectedYear = year;
     }
 
@@ -191,11 +207,11 @@ export class CalendarControl implements OnInit {
     private getDisplayMonthStyle(month: number): any {
         return {
             focused: month == this.selectedMonth,
-            active: month == this.selectedDate.getMonth()
+            active: month == this.selectedDate.getMonth() && this.selectedYear == this.selectedDate.getFullYear()
         }
     }
 
-    private switchMode(mode:CalendarMode):void{
+    private switchMode(mode: CalendarMode): void {
         this.mode = mode;
     }
 
@@ -206,12 +222,30 @@ export class CalendarControl implements OnInit {
         }
     }
 
-    private toPrevDecade(): void{
+    private toPrevDecade(): void {
         this.selectedDecade = this.getDecade(this.selectedDecade[0] - 1);
     }
 
-    private toNextDecade(): void{
-        this.selectedDecade = this.getDecade(this.selectedDecade[0] + 1);
+    private toNextDecade(): void {
+        this.selectedDecade = this.getDecade(this.selectedDecade[this.selectedDecade.length - 1] + 1);
+    }
+
+    private clearDate(){
+        this.selectDate(this.today);
+        this.switchMode(CalendarMode.Days);
+        this.dateChange.emit('');
+    }
+
+    private dateToString(date:Date):string{
+        let dd:number = date.getDate();
+        let MM:number = date.getMonth() + 1;
+        let yyyy:number = date.getFullYear();
+
+        let retVal:string = this.dateFormat.replace('dd', dd.toString());
+        retVal = retVal.replace('MM', MM.toString());
+        retVal = retVal.replace('yyyy', yyyy.toString());
+
+        return retVal;
     }
 }
 

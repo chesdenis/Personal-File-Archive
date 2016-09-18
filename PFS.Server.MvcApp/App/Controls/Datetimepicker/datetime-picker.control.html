@@ -2,16 +2,10 @@
         <div class="input-group date">
             <input type="text" class="form-control"
                    [attr.placeholder]="'Choose date'"
-                   (click)="displayDatepicker()"/>
-            <div class="input-group-addon" (click)="displayDatepicker()">
-                <span [ngClass]="'glyphicon glyphicon-th'"></span>
+                   (click)="showDatepicker()"/>
+            <div class="input-group-addon" (click)="toggleDatepickerVisibility()">
+                <span class="glyphicon glyphicon-th"></span>
             </div>
-        <calendar [ngClass]="getDatepickerClasses()"></calendar>
+        <calendar title="From" hasclearbutton="true" [ngClass]="getDatepickerClasses()" (dateChange)="dateChanged($event)"></calendar>
         </div>
-        <!--<div class="input-group bootstrap-timepicker timepicker">
-            <input type="text" class="form-control input-small" 
-                   [attr.readonly]="readonly"
-                   [attr.placeholder]="'Set time'">
-            <span class="input-group-addon"><i [ngClass]="'glyphicon glyphicon-time'"></i></span>
-        </div>-->
     </div>
