@@ -398,6 +398,12 @@
 .datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
     background: #eee;
 }
+.datepicker .datepicker-switch.datepicker-switch-off{
+    cursor: default;
+}
+.datepicker .datepicker-switch.datepicker-switch-off:hover{
+    background: #fff;
+}
 .datepicker .cw {
     font-size: 10px;
     width: 12px;

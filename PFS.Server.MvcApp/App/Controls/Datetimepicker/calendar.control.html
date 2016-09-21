@@ -1,5 +1,5 @@
 <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom">
-    <div class="datepicker-days" *ngIf="mode == modes.Days">
+    <div class="datepicker-days" [hidden]="mode != modes.Days">
         <table class="table-condensed">
             <thead>
                 <tr>
@@ -32,7 +32,7 @@
             </tfoot>
         </table>
     </div>
-    <div class="datepicker-months" *ngIf="mode == modes.Months">
+    <div class="datepicker-months" [hidden]="mode != modes.Months">
         <table class="table-condensed">
             <thead>
                 <tr>
@@ -64,7 +64,7 @@
             </tfoot>
         </table>
     </div>
-    <div class="datepicker-years" *ngIf="mode == modes.Years">
+    <div class="datepicker-years" [hidden]="mode != modes.Years">
         <table class="table-condensed">
             <thead>
                 <tr>
@@ -72,7 +72,7 @@
                 </tr>
                 <tr>
                     <th class="prev" (click)="toPrevDecade()">«</th>
-                    <th colspan="5" class="datepicker-switch">
+                    <th colspan="5" class="datepicker-switch datepicker-switch-off">
                         {{selectedDecade[0]}} - {{selectedDecade[selectedDecade.length - 1]}}
                     </th>
                     <th class="next" (click)="toNextDecade()">»</th>

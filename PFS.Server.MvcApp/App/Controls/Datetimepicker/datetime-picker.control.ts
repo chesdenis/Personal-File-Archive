@@ -1,17 +1,15 @@
-import {Component, OnInit, ElementRef} from "@angular/core";
+import {Component, OnInit, ElementRef, Input} from "@angular/core";
 import {CalendarControl} from "./calendar.control";
 
 @Component({
     selector: "datetimepicker",
-    templateUrl: "./datetime-picker.control.html",
+    templateUrl: "./datetime-picker.control.html"//,
     //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
-    host: {
-    '(document:click)': 'documentOnClick($event)',
-  }
 })
 export class DatetimePickerControl implements OnInit
 {
-    private _calendar: CalendarControl;
+    @Input() title: string = "From: ";
+
     private selectedDate: string;
 
     isDatepickerOpened: boolean;
@@ -48,19 +46,13 @@ export class DatetimePickerControl implements OnInit
 
     private dateChanged(event):void{
         this.selectedDate = event;
+        this.hideDatepicker();
     }
 
-    private documentOnClick(event){
-        if (!(this.isClickedOnMe(event) || this._calendar.isClickedOnMe(event))){
+    private clickedOutsideCalendar(event):void{
+        let clickedInside: boolean = this._elRef.nativeElement.contains(event.target);
+        if (!clickedInside) {
             this.hideDatepicker();
         }
-    }
-
-    public isClickedOnMe(event):boolean{
-        return this._elRef.nativeElement.contains(event.target);
-    }
-
-    public addCalendar(calendar:CalendarControl){
-        this._calendar = calendar;
     }
 }

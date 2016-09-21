@@ -3,14 +3,18 @@ import {DatetimePickerControl} from "./datetime-picker.control";
 
 @Component({
     selector: "calendar",
-    templateUrl: "./calendar.control.html"//,
+    templateUrl: "./calendar.control.html",
     //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
+    host: {
+    '(document:click)': 'documentOnClick($event)',
+  }
 })
 export class CalendarControl implements OnInit {
     @Input() title: string = "";
     @Input() hasclearbutton: boolean = false; 
 
-    @Output() dateChange: EventEmitter<string> = new EventEmitter<string>();   
+    @Output() dateChange: EventEmitter<string> = new EventEmitter<string>();
+    @Output() clickOutside = new EventEmitter(); 
 
     private days: Array<string>;
     private shortDays: Array<String>;
@@ -30,9 +34,7 @@ export class CalendarControl implements OnInit {
 
     private dateFormat: string = "MM/dd/yyyy";
 
-    constructor(datetimepicker: DatetimePickerControl, private _elRef: ElementRef){
-        datetimepicker.addCalendar(this);
-    }
+    constructor(private _elRef: ElementRef){}
 
     ngOnInit() {
         this.days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -49,10 +51,6 @@ export class CalendarControl implements OnInit {
         this.selectedDecade = this.getDecade(this.selectedYear);
 
         this.dates = this.setDatesArray(this.selectedMonth, this.selectedYear);
-    }
-
-    public isClickedOnMe(event):boolean{
-        return this._elRef.nativeElement.contains(event.target);
     }
 
     private setDatesArray(month: number, year: number): Array<Array<Date>> {
@@ -233,19 +231,29 @@ export class CalendarControl implements OnInit {
     private clearDate(){
         this.selectDate(this.today);
         this.switchMode(CalendarMode.Days);
+
         this.dateChange.emit('');
     }
 
     private dateToString(date:Date):string{
-        let dd:number = date.getDate();
-        let MM:number = date.getMonth() + 1;
-        let yyyy:number = date.getFullYear();
+        let dd:string = "0" + date.getDate().toString();
+        let MM:string = "0" + (date.getMonth() + 1).toString();
+        let yyyy:string = date.getFullYear().toString();
 
-        let retVal:string = this.dateFormat.replace('dd', dd.toString());
-        retVal = retVal.replace('MM', MM.toString());
-        retVal = retVal.replace('yyyy', yyyy.toString());
+        dd = dd.substr(dd.length - 2);
+        MM = MM.substr(MM.length - 2);
+
+        let retVal:string = this.dateFormat.replace('dd', dd);
+        retVal = retVal.replace('MM', MM);
+        retVal = retVal.replace('yyyy', yyyy);
 
         return retVal;
+    }
+
+    private documentOnClick(event):void{
+        if (!this._elRef.nativeElement.contains(event.target)) {
+            this.clickOutside.emit(event);
+        }
     }
 }
 
