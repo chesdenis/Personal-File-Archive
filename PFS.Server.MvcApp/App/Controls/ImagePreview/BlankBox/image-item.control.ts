@@ -9,6 +9,9 @@ export class ImageItemControl {
 
     @Input() src : string;
     @Input() alt : string;
+    
+    @Input() height : number;
+    @Input() width : number;
 
 
     constructor(imagePreview: BlankBoxImagePreviewControl) {
