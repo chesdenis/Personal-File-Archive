@@ -27,6 +27,8 @@ import {FiltersOptionControl} from './Controls/Filters/filters-option.control'
 import {DatetimePickerControl} from './Controls/Datetimepicker/datetime-picker.control';
 import {CalendarControl} from './Controls/Datetimepicker/calendar.control';
 
+import {ImagesGroupPreviewBlankBoxControl} from './Controls/ImagesGroupPreview/BlankBox/images-group-preview.blank-box.control';
+
 import { routing } from './app.routing';
  
 
@@ -59,7 +61,9 @@ import { routing } from './app.routing';
       FiltersOptionControl,
 
       DatetimePickerControl,
-      CalendarControl 
+      CalendarControl,
+
+      ImagesGroupPreviewBlankBoxControl
 
   ],
   bootstrap:    [ AppComponent ]
