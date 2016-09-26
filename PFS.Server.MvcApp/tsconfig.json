@@ -5,9 +5,12 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noImplicitAny": false
+    "removeComments": false,
+    "noImplicitAny": false,
+    "outDir": "wwwroot/"
   },
   "exclude": [
-    "node_modules"
+      "node_modules",
+      "wwwroot/npmLibs"
   ]
 }
