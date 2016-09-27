@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-6 col-md-3" *ngFor="let image of imageItems">
+        <div class="thumbnail">
+            <img [alt]="image.alt" [src]="image.src" [height]="image.height" [width]="image.width" />
+            <div class="caption">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
