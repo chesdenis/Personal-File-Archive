@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {TabControl} from "./tab.control";
 @Component({
+    moduleId: module.id,
     selector:"tabs",
     templateUrl:'./tabs.control.html'
 })

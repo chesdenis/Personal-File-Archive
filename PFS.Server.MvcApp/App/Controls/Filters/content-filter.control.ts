@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FiltersOptionControl} from './filters-option.control';
 
 @Component({
+    moduleId: module.id,
   selector: 'content-filter',
   templateUrl:"./content-filter.control.html",
 })

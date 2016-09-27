@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {BlankBoxImagePreviewControl} from './blank-box-image-preview.control'
 
 @Component({
+    moduleId: module.id,
     selector: 'image-item',
     templateUrl: './image-item.control.html'
 })

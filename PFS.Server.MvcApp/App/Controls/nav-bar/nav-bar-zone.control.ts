@@ -3,6 +3,7 @@ import {NavBarMenuEntity} from './nav-bar-menu.entity';
 import {NavTopBarControl} from './nav-top-bar.control';
 
 @Component({
+    moduleId: module.id,
     selector: 'nav-bar-zone',
     templateUrl: './nav-bar-zone.control.html'
 })

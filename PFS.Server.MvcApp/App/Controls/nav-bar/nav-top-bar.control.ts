@@ -4,6 +4,7 @@ import {NavBarBodyControl} from './nav-bar-body.control';
 
 
 @Component({
+    moduleId: module.id,
     selector: "nav-top-bar",
     templateUrl:"./nav-top-bar.control.html"
 })

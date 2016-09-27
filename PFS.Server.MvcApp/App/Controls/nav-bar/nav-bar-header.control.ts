@@ -2,6 +2,7 @@
 import {NavTopBarControl} from './nav-top-bar.control';
 
 @Component({
+    moduleId: module.id,
     selector: "nav-bar-header",
     templateUrl: "./nav-bar-header.control.html"
 })
