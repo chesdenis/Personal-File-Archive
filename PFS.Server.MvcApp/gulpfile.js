@@ -33,15 +33,15 @@ gulp.task("build-systemjs", function () {
 
 gulp.task("build-angular", function () {
     gulp
-        .src("./node_modules/" + '/@angular/**')
+        .src("./node_modules/" + '/@angular/**/*.js')
         .pipe(gulp.dest("wwwroot/npmlibs" + '/@angular/'));
 
     gulp
-        .src("./node_modules/" + '/angular2-in-memory-web-api/**')
+        .src("./node_modules/" + '/angular2-in-memory-web-api/**/*.js')
         .pipe(gulp.dest("wwwroot/npmlibs" + '/angular2-in-memory-web-api/'));
 
     gulp
-        .src("./node_modules/" + '/rxjs/**')
+        .src("./node_modules/" + '/rxjs/**/*.js')
         .pipe(gulp.dest("wwwroot/npmlibs" + '/rxjs/'));
 });
 

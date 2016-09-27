@@ -2,6 +2,7 @@ import {Component, OnInit, ElementRef, Input} from "@angular/core";
 import {CalendarControl} from "./calendar.control";
 
 @Component({
+    moduleId: module.id,
     selector: "datetimepicker",
     templateUrl: "./datetime-picker.control.html"//,
     //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
