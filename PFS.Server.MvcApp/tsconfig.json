@@ -8,9 +8,11 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "wwwroot/"
-  },
-  "exclude": [
-      "node_modules",
-      "wwwroot/npmLibs"
-  ]
+  }//,
+  // "include":[
+  //   "App/**/*.ts"
+  // ],
+  // "exclude": [
+  //   "node_modules"
+  // ]  
 }

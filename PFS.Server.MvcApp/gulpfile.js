@@ -65,12 +65,13 @@ var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
 
-var tsProject = ts.createProject('tsconfig.json');
+var tsProject = ts.createProject("tsconfig.json");
+
 
 gulp.task('build-systemjs-config-debug', function () {
     return tsProject.src('./systemjs.config.ts')
         .pipe(sourcemaps.init())
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .pipe(sourcemaps.write({
             sourceRoot: function (file) {
                 var sourceFile = path.join(file.cwd, file.sourceMap.file);
@@ -82,37 +83,37 @@ gulp.task('build-systemjs-config-debug', function () {
 
 gulp.task('build-systemjs-config-release', function () {
     return tsProject.src('./systemjs.config.ts')
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .pipe(gulp.dest('./wwwroot/'));
 });
 
 gulp.task('build-html', function () {
     return gulp.src('./App/**/*.html')
-       .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(gulp.dest('./wwwroot/App'));
 });
 
 gulp.task('build-css', function () {
     return gulp.src('./App/**/*.css')
-       .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(gulp.dest('./wwwroot/App'));
 });
 
 gulp.task('build-ts-debug', function () {
     return tsProject.src('./App/')
-       .pipe(sourcemaps.init())
-       .pipe(ts(tsProject))
-       .pipe(sourcemaps.write({
-           sourceRoot: function (file) {
-               var sourceFile = path.join(file.cwd, file.sourceMap.file);
-               return path.relative(path.dirname(sourceFile), file.cwd);
-           }
-       }))
-       .pipe(gulp.dest('./wwwroot'));
+        .pipe(sourcemaps.init())
+        .pipe(tsProject())
+        .pipe(sourcemaps.write({
+            sourceRoot: function (file) {
+                var sourceFile = path.join(file.cwd, file.sourceMap.file);
+                return path.relative(path.dirname(sourceFile), file.cwd);
+            }
+        }))
+        .pipe(gulp.dest('./wwwroot/'));
 });
 
 gulp.task('build-ts-release', function () {
     return tsProject.src('./App/')
-   .pipe(ts(tsProject))
-   .pipe(gulp.dest('./wwwroot'));
+        .pipe(tsProject())
+        .pipe(gulp.dest('./wwwroot/'));
 });
 
 gulp.task('build-app-debug', [
@@ -128,31 +129,44 @@ gulp.task('build-app-release', [
 ]);
 
 var watch = require('gulp-watch');
+var debug = require('gulp-debug');
 
 gulp.task('watch-html', function () {
-   return watch('./App/**/*.html', { ignoreInitial: false })
-    .pipe(gulp.dest('./wwwroot/App'));
+    return watch('./App/**/*.html', { ignoreInitial: false })
+        .pipe(gulp.dest('./wwwroot/App'));
 });
 
 gulp.task('watch-css', function () {
     return watch('./App/**/*.css', { ignoreInitial: false })
-    .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(gulp.dest('./wwwroot/App'));
 });
 
-//gulp.task('watch-ts', function () {
-//    return watch(tsProject.config.files)
-//   .pipe(sourcemaps.init())
-//   .pipe(ts(tsProject))
-//   .pipe(sourcemaps.write({
-//       sourceRoot: function (file) {
-//           var sourceFile = path.join(file.cwd, file.sourceMap.file);
-//           return path.relative(path.dirname(sourceFile), file.cwd);
-//       }
-//   }))
-//   .pipe(gulp.dest('./wwwroot/App'));
-//});
+gulp.task('watch-ts', function () {
+    return watch('./App/**/*.ts', function (vinyl) {
+        var filePath = "./App/" + vinyl.relative.split('\\').join('/');
+        gulp.src([
+            filePath,
+            './typings/globals/core-js/index.d.ts',
+            './typings/globals/jasmine/index.d.ts',
+            './typings/globals/node/index.d.ts',
+            './typings/index.d.ts'
+        ])
+            .pipe(debug())
+            .pipe(sourcemaps.init())
+            .pipe(tsProject())
+            .pipe(debug())
+            .pipe(sourcemaps.write({
+                sourceRoot: function (file) {
+                    var sourceFile = path.join(file.cwd, file.sourceMap.file);
+                    return path.relative(path.dirname(sourceFile), file.cwd);
+                }
+            }))
+            .pipe(gulp.dest('./wwwroot/App'));
+    });
+});
 
 gulp.task('watch-all', [
     'watch-html',
     'watch-css',
+    'watch-ts'
 ]);
