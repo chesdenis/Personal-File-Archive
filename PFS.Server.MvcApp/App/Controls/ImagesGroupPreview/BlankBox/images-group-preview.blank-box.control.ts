@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 
 @Component({
     selector: "images-group-preview-box",
@@ -6,7 +6,7 @@ import {Component, OnInit} from "@angular/core";
     styleUrls: ["/app/controls/imagesgrouppreview/blankbox/images-group-preview.blank-box.control.css"]
 })
 export class ImagesGroupPreviewBlankBoxControl implements OnInit{
-    images: Array<any> = [];
+    @Input() images: Array<any> = [];
 
     ngOnInit(){
         this.GetListOfImages();
