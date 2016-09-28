@@ -2,7 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
 
-import {AllComponent} from './Components/all.component';
+import {AllComponent} from './Components/AllComponent/all.component';
 import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';

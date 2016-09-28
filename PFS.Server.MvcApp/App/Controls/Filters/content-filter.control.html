@@ -1,5 +1,8 @@
 <div class="btn-group btn-group-sm ">
-  <button *ngFor="let option of filterOptions" [ngClass]="HightLightSelectedFilterOption(option)" (click)="FilterClickEventHandler($event, option)" type="button" class="btn btn-default" >
-    {{option.filterTitle}}
-  </button>
+    <button type="button" class="btn btn-default" 
+            *ngFor="let option of filterOptions" 
+            routerLinkActive="{{option.routerLinkActive}}"
+            (click)="onSelectFilterOption(option)">
+        {{option.TextContent}}
+    </button>
 </div>

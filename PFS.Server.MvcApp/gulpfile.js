@@ -142,7 +142,12 @@ gulp.task('watch-css', function () {
 });
 
 gulp.task('watch-ts-multi-compile', function () {
-    return gulp.src("./App/**/*.ts")
+    return gulp.src(["./App/**/*.ts",
+                    './typings/globals/core-js/index.d.ts',
+                    './typings/globals/jasmine/index.d.ts',
+                    './typings/globals/node/index.d.ts',
+                    './typings/index.d.ts'
+    ])
         .pipe(sourcemaps.init())
         .pipe(tsProject())
         .pipe(debug())
@@ -188,5 +193,5 @@ gulp.task('watch-ts-single', function () {
 gulp.task('watch-all', [
     'watch-html',
     'watch-css',
-    'watch-ts'
+    'watch-ts-multi'
 ]);

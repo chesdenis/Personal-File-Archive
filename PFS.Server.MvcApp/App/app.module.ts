@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 
-import {AllComponent} from './Components/all.component';
+import {AllComponent} from './Components/AllComponent/all.component';
 import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';
@@ -21,8 +21,7 @@ import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 import {TabsControl} from './Controls/tabs.control';
 import {TabControl} from './Controls/tab.control';
 
-import {ContentFilterControl} from './Controls/Filters/content-filter.control'
-import {FiltersOptionControl} from './Controls/Filters/filters-option.control'
+import {ContentFilterControl} from './Controls/Filters/content-filter.control';
 
 import {DatetimePickerControl} from './Controls/Datetimepicker/datetime-picker.control';
 import {CalendarControl} from './Controls/Datetimepicker/calendar.control';
@@ -59,7 +58,6 @@ import { routing } from './app.routing';
       TabControl,
 
       ContentFilterControl,
-      FiltersOptionControl,
 
       DatetimePickerControl,
       CalendarControl ,
