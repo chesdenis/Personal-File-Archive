@@ -141,7 +141,27 @@ gulp.task('watch-css', function () {
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
-gulp.task('watch-ts', function () {
+gulp.task('watch-ts-multi-compile', function () {
+    return gulp.src("./App/**/*.ts")
+        .pipe(sourcemaps.init())
+        .pipe(tsProject())
+        .pipe(debug())
+        .pipe(sourcemaps.write({
+            sourceRoot: function (file) {
+                var sourceFile = path.join(file.cwd, file.sourceMap.file);
+                return path.relative(path.dirname(sourceFile), file.cwd);
+            }
+        }))
+        .pipe(gulp.dest('./wwwroot/App'));
+});
+
+gulp.task('watch-ts-multi',
+    ['watch-ts-multi-compile'],
+    function () {
+        gulp.watch("./App/**/*.ts", ['watch-ts-multi-compile'])
+});
+
+gulp.task('watch-ts-single', function () {
     return watch('./App/**/*.ts', function (vinyl) {
         var filePath = "./App/" + vinyl.relative.split('\\').join('/');
         gulp.src([
