@@ -1,8 +1,8 @@
 <div class="btn-group btn-group-sm ">
     <button type="button" class="btn btn-default" 
-            *ngFor="let option of filterOptions" 
-            routerLinkActive="{{option.routerLinkActive}}"
-            (click)="onSelectFilterOption(option)">
+            *ngFor="let option of filterOptions"
+            routerLink="{{option.routerLink}}" 
+            routerLinkActive="{{option.routerLinkActive}}">
         {{option.TextContent}}
     </button>
 </div>

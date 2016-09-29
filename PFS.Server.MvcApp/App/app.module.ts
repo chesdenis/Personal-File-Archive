@@ -1,8 +1,10 @@
 import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
+
 import { AppComponent }  from './app.component';
 
-import {AllComponent} from './Components/AllComponent/all.component';
+import {AllContentsComponent} from './Components/AllContents/all-contents.component';
 import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';
@@ -18,27 +20,19 @@ import {NavBarZoneControl} from './Controls/nav-bar/nav-bar-zone.control';
 import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
 import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
-import {TabsControl} from './Controls/tabs.control';
-import {TabControl} from './Controls/tab.control';
-
-import {ContentFilterControl} from './Controls/Filters/content-filter.control';
-
-import {DatetimePickerControl} from './Controls/Datetimepicker/datetime-picker.control';
-import {CalendarControl} from './Controls/Datetimepicker/calendar.control';
-
-import {BlankBoxImagePreviewControl} from './Controls/ImagePreview/BlankBox/blank-box-image-preview.control';
-import {ImageItemControl} from './Controls/ImagePreview/BlankBox/image-item.control';
-
-import { routing } from './app.routing';
- 
+import { appRouting } from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule, routing ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        appRouting
+    ],
   declarations:
   [
       AppComponent,
 
-      AllComponent,
+      AllContentsComponent,
       BooksComponent,
       DocumentsComponent,
       MusicsComponent,
@@ -52,21 +46,7 @@ import { routing } from './app.routing';
       NavTopBarControl,
       NavBarHeaderControl,
       NavBarBodyControl,
-      NavBarZoneControl,
-
-      TabsControl,
-      TabControl,
-
-      ContentFilterControl,
-
-      DatetimePickerControl,
-      CalendarControl ,
-
-      BlankBoxImagePreviewControl,
-      ImageItemControl
-      
-
-
+      NavBarZoneControl
   ],
   bootstrap:    [ AppComponent ]
 })

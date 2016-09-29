@@ -7,7 +7,5 @@ import {FilterOptionEntity} from './filter-option-entity'
     templateUrl: "./content-filter.control.html",
 })
 export class ContentFilterControl { 
-
     @Input() filterOptions: FilterOptionEntity [] = [];
-
 }  
