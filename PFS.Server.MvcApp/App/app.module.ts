@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {CommonModule} from '@angular/common';
 
 import { AppComponent }  from './app.component';
 
-import {AllContentsComponent} from './Components/AllContents/all-contents.component';
+import {AllContentsModule} from './Components/AllContents/all-contents.module';
+
 import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';
@@ -25,14 +25,13 @@ import { appRouting } from './app.routing';
 @NgModule({
     imports: [
         BrowserModule,
-        CommonModule,
+        AllContentsModule,
         appRouting
     ],
   declarations:
   [
       AppComponent,
-
-      AllContentsComponent,
+      
       BooksComponent,
       DocumentsComponent,
       MusicsComponent,
