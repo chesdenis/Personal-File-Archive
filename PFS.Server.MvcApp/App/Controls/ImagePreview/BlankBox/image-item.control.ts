@@ -1,22 +1,23 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, trigger, state, style, transition, animate} from '@angular/core';
 import {BlankBoxImagePreviewControl} from './blank-box-image-preview.control'
 
 @Component({
     selector: 'image-item',
-    templateUrl: './image-item.control.html'
+    templateUrl: './image-item.control.html',
 })
 export class ImageItemControl {
 
-    @Input() src : string;
-    @Input() alt : string;
-    
-    @Input() height : number;
-    @Input() width : number;
+    @Input() src: string;
+    @Input() alt: string;
 
+    @Input() height: number;
+    @Input() width: number;
+
+    @Input() imageState: string;
 
     constructor(imagePreview: BlankBoxImagePreviewControl) {
         imagePreview.AddImageItems(this);
+        this.imageState = 'inactive';
     }
-
 
 }
