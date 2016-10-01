@@ -3,7 +3,7 @@
 @Component({
     moduleId: module.id,
     selector: 'by-dates-component',
-    template: './by-dates.component.html'
+    templateUrl: './by-dates.component.html'
 })
 export class ByDatesComponent {
 

@@ -3,7 +3,7 @@
 @Component({
     moduleId: module.id,
     selector: 'by-albums-component',
-    template: './by-albums.component.html'
+    templateUrl: './by-albums.component.html'
 })
 export class ByAlbumsComponent {
 

@@ -22,17 +22,17 @@ import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
 import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
 const rootRoutes: Routes = [
-    { path: '', redirectTo: '/All', pathMatch: 'full' },
-    { path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
-    { path: 'Books', component: BooksComponent },
-    { path: 'Documents', component: DocumentsComponent },
-    { path: 'Musics', component: MusicsComponent },
-    { path: 'Others', component: OthersComponent },
-    { path: 'Photos', component: PhotosComponent },
-    { path: 'Untagged', component: UntaggedComponent },
-    { path: 'Upload', component: UploadComponent },
-    { path: 'Videos', component: VideosComponent },
-    { path: 'Settings', component: SettingsComponent },
+    //{ path: '', redirectTo: '/All', pathMatch: 'full' },
+    //{ path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
+    // { path: 'Books', component: BooksComponent },
+    // { path: 'Documents', component: DocumentsComponent },
+    // { path: 'Musics', component: MusicsComponent },
+    // { path: 'Others', component: OthersComponent },
+    // { path: 'Photos', component: PhotosComponent },
+    // { path: 'Untagged', component: UntaggedComponent },
+    // { path: 'Upload', component: UploadComponent },
+    // { path: 'Videos', component: VideosComponent },
+    // { path: 'Settings', component: SettingsComponent },
 ];
 
 @NgModule({
