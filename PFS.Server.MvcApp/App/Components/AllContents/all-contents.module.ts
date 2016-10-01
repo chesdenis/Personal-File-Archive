@@ -9,11 +9,12 @@ import { ByDatesComponent } from './by-dates.component';
 import { ByAlbumsComponent } from './by-albums.component';
 
 const moduleRoutes: Routes = [
-    { path: '', redirectTo: '/All', pathMatch: 'full' },
+    
     {
-        path: 'All', component: AllContentsComponent,
+        path: '', component: AllContentsComponent,
         children: [
-            {path: '', component: ByDefaultComponent},
+            //{path:'', component:ByDefaultComponent},
+            {path: '', redirectTo:"/All/Tags",pathMatch:'full'},
             {path:'Tags', component:ByTagsComponent},
             {path:'Albums', component:ByAlbumsComponent},
             {path:'Dates', component:ByDatesComponent}

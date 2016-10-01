@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
 
-import {AllContentsModule} from './Components/AllContents/all-contents.module';
+//import {AllContentsModule} from './Components/AllContents/all-contents.module';
 
 import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
@@ -22,13 +22,13 @@ import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
 import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
 const rootRoutes: Routes = [
-    //{ path: '', redirectTo: '/All', pathMatch: 'full' },
-    //{ path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
+    { path: '', redirectTo: '/All', pathMatch: 'full' },
+    { path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
     // { path: 'Books', component: BooksComponent },
     // { path: 'Documents', component: DocumentsComponent },
     // { path: 'Musics', component: MusicsComponent },
     // { path: 'Others', component: OthersComponent },
-    // { path: 'Photos', component: PhotosComponent },
+    { path: 'Photos', component: PhotosComponent },
     // { path: 'Untagged', component: UntaggedComponent },
     // { path: 'Upload', component: UploadComponent },
     // { path: 'Videos', component: VideosComponent },
@@ -38,7 +38,7 @@ const rootRoutes: Routes = [
 @NgModule({
     imports: [
         BrowserModule,
-        AllContentsModule,
+       // AllContentsModule,
         RouterModule.forRoot(rootRoutes)
     ],
   declarations:
