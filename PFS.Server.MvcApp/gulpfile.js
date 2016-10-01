@@ -6,6 +6,11 @@ gulp.task('clean-wwwroot', function () {
         .pipe(clean());
 });
 
+gulp.task('clean-app', function () {
+    return gulp.src('wwwroot/App/*', { read: false })
+        .pipe(clean());
+});
+
 gulp.task("build-shim", function () {
     gulp
         .src("./node_modules/" + '/core-js/client/*.js')
@@ -150,7 +155,7 @@ gulp.task('watch-ts-multi-compile', function () {
     ])
         .pipe(sourcemaps.init())
         .pipe(tsProject())
-        .pipe(debug())
+        //.pipe(debug())
         .pipe(sourcemaps.write({
             sourceRoot: function (file) {
                 var sourceFile = path.join(file.cwd, file.sourceMap.file);
@@ -176,10 +181,10 @@ gulp.task('watch-ts-single', function () {
             './typings/globals/node/index.d.ts',
             './typings/index.d.ts'
         ])
-            .pipe(debug())
+            //.pipe(debug())
             .pipe(sourcemaps.init())
             .pipe(tsProject())
-            .pipe(debug())
+            //.pipe(debug())
             .pipe(sourcemaps.write({
                 sourceRoot: function (file) {
                     var sourceFile = path.join(file.cwd, file.sourceMap.file);

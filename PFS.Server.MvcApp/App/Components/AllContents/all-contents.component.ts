@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FilterOptionEntity} from '../../Controls/Filters/filter-option-entity'
+// import {FilterOptionEntity} from '../../Controls/Filters/filter-option-entity'
 
 @Component({
     moduleId: module.id,
@@ -7,9 +7,9 @@ import {FilterOptionEntity} from '../../Controls/Filters/filter-option-entity'
     templateUrl:'./all-contents.component.html'
 })
 export class AllContentsComponent {
-    contentFilterOptions: FilterOptionEntity[] = [
-        new FilterOptionEntity("btn-info", "/Tags", "Tags"),
-        new FilterOptionEntity("btn-info", "/Albums", "Albums"),
-        new FilterOptionEntity("btn-info", "/Dates", "Dates"),
-    ];
+    // contentFilterOptions: FilterOptionEntity[] = [
+    //     new FilterOptionEntity("btn-info", "All/Tags", "Tags"),
+    //     new FilterOptionEntity("btn-info", "All/Albums", "Albums"),
+    //     new FilterOptionEntity("btn-info", "All/Dates", "Dates"),
+    // ];
 }

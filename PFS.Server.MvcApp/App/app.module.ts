@@ -1,4 +1,5 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
@@ -20,13 +21,25 @@ import {NavBarZoneControl} from './Controls/nav-bar/nav-bar-zone.control';
 import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
 import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
-import { appRouting } from './app.routing';
+const rootRoutes: Routes = [
+    { path: '', redirectTo: '/All', pathMatch: 'full' },
+    { path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
+    { path: 'Books', component: BooksComponent },
+    { path: 'Documents', component: DocumentsComponent },
+    { path: 'Musics', component: MusicsComponent },
+    { path: 'Others', component: OthersComponent },
+    { path: 'Photos', component: PhotosComponent },
+    { path: 'Untagged', component: UntaggedComponent },
+    { path: 'Upload', component: UploadComponent },
+    { path: 'Videos', component: VideosComponent },
+    { path: 'Settings', component: SettingsComponent },
+];
 
 @NgModule({
     imports: [
         BrowserModule,
         AllContentsModule,
-        appRouting
+        RouterModule.forRoot(rootRoutes)
     ],
   declarations:
   [
