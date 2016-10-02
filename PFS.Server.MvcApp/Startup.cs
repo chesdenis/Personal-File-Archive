@@ -29,6 +29,11 @@ namespace PFS.Server.MvcApp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                //routes.MapRoute(
+                //    name: "AllContentsRouting",
+                //    template: "App/Components/AllContents/all-contents.module",
+                //    defaults:new { controller = "Home", action = "Index" });
             });
         }
     }

@@ -1,17 +1,19 @@
 <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom">
-    <div class="datepicker-days" *ngIf="mode == modes.Days">
+    <div class="datepicker-days" [hidden]="mode != modes.Days">
         <table class="table-condensed">
             <thead>
                 <tr>
-                    <th class="prev" (click)="toPrevMonth()">
-                        <<</th>
-                            <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Months)">
-                                {{months[selectedMonth]}} {{selectedYear}}
-                            </th>
-                            <th class="next" (click)="toNextMonth()">>></th>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
                 </tr>
                 <tr>
-                    <th *ngFor="let day of daysOfWeek" class="dow">{{day}}</th>
+                    <th class="prev" (click)="toPrevMonth()">«</th>
+                    <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Months)">
+                        {{months[selectedMonth]}} {{selectedYear}}
+                    </th>
+                    <th class="next" (click)="toNextMonth()">»</th>
+                </tr>
+                <tr>
+                    <th *ngFor="let day of shortDays" class="dow">{{day}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,37 +24,74 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <th colspan="7" class="clear">Clear</th>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <div class="datepicker-months" *ngIf="mode == modes.Months">
+    <div class="datepicker-months" [hidden]="mode != modes.Months">
         <table class="table-condensed">
             <thead>
                 <tr>
-                    <th class="prev" (click)="toPrevYear()">
-                        <<</th>
-                            <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Years)">
-                                {{selectedYear}}
-                            </th>
-                            <th class="next" (click)="toNextYear()">>></th>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
+                </tr>
+                <tr>
+                    <th class="prev" (click)="toPrevYear()">«</th>
+                    <th colspan="5" class="datepicker-switch" (click)="switchMode(modes.Years)">
+                        {{selectedYear}}
+                    </th>
+                    <th class="next" (click)="toNextYear()">»</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td colspan="7">
-                        <span *ngFor="let month of shortMonths; let i = index" class="month" [ngClass]="getDisplayMonthStyle(i)"
-                        (click)="selectMonth(i); switchMode(modes.Days)">
+                        <span *ngFor="let month of shortMonths; let i = index" class="month" [ngClass]="getDisplayMonthStyle(i)" (click)="selectMonth(i); switchMode(modes.Days)">
                             {{month}}
                         </span>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datepicker-years" [hidden]="mode != modes.Years">
+        <table class="table-condensed">
+            <thead>
                 <tr>
-                    <th colspan="7" class="clear">Clear</th>
+                    <th colspan="7" class="datepicker-title" *ngIf="title != ''">{{title}}</th>
+                </tr>
+                <tr>
+                    <th class="prev" (click)="toPrevDecade()">«</th>
+                    <th colspan="5" class="datepicker-switch datepicker-switch-off">
+                        {{selectedDecade[0]}} - {{selectedDecade[selectedDecade.length - 1]}}
+                    </th>
+                    <th class="next" (click)="toNextDecade()">»</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7">
+                        <span *ngFor="let year of selectedDecade" class="year" [ngClass]="getDisplayYearStyle(year)" (click)="selectYear(year); switchMode(modes.Months)">
+                            {{year}}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="hasclearbutton">
+                    <th colspan="7" class="clear">
+                        <span class="glyphicon glyphicon-erase" (click)="clearDate()"></span>
+                    </th>
                 </tr>
             </tfoot>
         </table>

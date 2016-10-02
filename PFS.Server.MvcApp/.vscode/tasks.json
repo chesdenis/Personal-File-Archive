@@ -6,22 +6,35 @@
     "showOutput": "always",
     "tasks": [
         {
-            "taskName": "install-deps",
-            "args": ["install-deps.js"],
-            "suppressTaskName": true,
-            "isBuildCommand": false
-        },
-        {
-            "taskName": "build-debug",
-            "args": ["build-debug.js"],
+            "taskName": "build-app-debug",
+            "args": ["gulp build-app-debug"],
             "suppressTaskName": true,
             "isBuildCommand": true
         },
         {
-            "taskName": "build-release",
-            "args": ["build-release.js"],
+            "taskName": "watch-all",
+            "args": ["gulp watch-all"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "clean-wwwroot",
+            "args": ["gulp clean-wwwroot"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "clean-app",
+            "args": ["gulp clean-app"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "install-deps",
+            "args": ["gulp install-deps"],
             "suppressTaskName": true,
             "isBuildCommand": false
         }
+        
     ]
 }
