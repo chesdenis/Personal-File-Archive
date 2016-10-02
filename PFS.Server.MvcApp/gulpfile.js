@@ -6,6 +6,11 @@ gulp.task('clean-wwwroot', function () {
         .pipe(clean());
 });
 
+gulp.task('clean-app', function () {
+    return gulp.src('wwwroot/App/*', { read: false })
+        .pipe(clean());
+});
+
 gulp.task("build-shim", function () {
     gulp
         .src("./node_modules/" + '/core-js/client/*.js')
@@ -142,10 +147,15 @@ gulp.task('watch-css', function () {
 });
 
 gulp.task('watch-ts-multi-compile', function () {
-    return gulp.src("./App/**/*.ts")
+    return gulp.src(["./App/**/*.ts",
+                    './typings/globals/core-js/index.d.ts',
+                    './typings/globals/jasmine/index.d.ts',
+                    './typings/globals/node/index.d.ts',
+                    './typings/index.d.ts'
+    ])
         .pipe(sourcemaps.init())
         .pipe(tsProject())
-        .pipe(debug())
+        //.pipe(debug())
         .pipe(sourcemaps.write({
             sourceRoot: function (file) {
                 var sourceFile = path.join(file.cwd, file.sourceMap.file);
@@ -171,10 +181,10 @@ gulp.task('watch-ts-single', function () {
             './typings/globals/node/index.d.ts',
             './typings/index.d.ts'
         ])
-            .pipe(debug())
+            //.pipe(debug())
             .pipe(sourcemaps.init())
             .pipe(tsProject())
-            .pipe(debug())
+            //.pipe(debug())
             .pipe(sourcemaps.write({
                 sourceRoot: function (file) {
                     var sourceFile = path.join(file.cwd, file.sourceMap.file);
@@ -188,5 +198,5 @@ gulp.task('watch-ts-single', function () {
 gulp.task('watch-all', [
     'watch-html',
     'watch-css',
-    'watch-ts'
+    'watch-ts-multi'
 ]);
