@@ -8,19 +8,20 @@ import { ByTagsComponent } from './by-tags.component';
 import { ByDatesComponent } from './by-dates.component';
 import { ByAlbumsComponent } from './by-albums.component';
 
+import {ContentFilterControl} from '../../Controls/Filters/content-filter.control';
+
 const moduleRoutes: Routes = [
     
     {
         path: '', component: AllContentsComponent,
         children: [
-            //{path:'', component:ByDefaultComponent},
             {path: '', redirectTo:"/All/Tags",pathMatch:'full'},
             {path:'Tags', component:ByTagsComponent},
             {path:'Albums', component:ByAlbumsComponent},
             {path:'Dates', component:ByDatesComponent}
         ]
     }
-
+ 
 ];
 
 @NgModule({
@@ -33,7 +34,8 @@ const moduleRoutes: Routes = [
         ByDefaultComponent,
         ByTagsComponent,
         ByDatesComponent,
-        ByAlbumsComponent
+        ByAlbumsComponent,
+        ContentFilterControl
     ]
 })
 export class AllContentsModule { }
