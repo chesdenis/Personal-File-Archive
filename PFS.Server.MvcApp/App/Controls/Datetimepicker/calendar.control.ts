@@ -5,7 +5,7 @@ import {DatetimePickerControl} from "./datetime-picker.control";
     moduleId: module.id,
     selector: "calendar",
     templateUrl: "./calendar.control.html",
-    //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
+    styleUrls: ["./calendar.control.css"],
     host: {
     '(document:click)': 'documentOnClick($event)',
   }

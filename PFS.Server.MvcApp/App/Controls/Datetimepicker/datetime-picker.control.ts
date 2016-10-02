@@ -4,8 +4,8 @@ import {CalendarControl} from "./calendar.control";
 @Component({
     moduleId: module.id,
     selector: "datetimepicker",
-    templateUrl: "./datetime-picker.control.html"//,
-    //styleUrls: ["app/controls/datetimepicker/calendar.control.css"]
+    templateUrl: "./datetime-picker.control.html",
+    styleUrls: ["./calendar.control.css"]
 })
 export class DatetimePickerControl implements OnInit
 {
