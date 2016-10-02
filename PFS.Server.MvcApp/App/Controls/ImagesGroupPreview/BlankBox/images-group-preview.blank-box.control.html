@@ -1,0 +1,5 @@
+<div class="images-group-preview-container">
+    <div *ngFor="let image of images" class="image-blank-box">
+        <img src="{{image.AbsoluteUrl}}" (click)="ShowImageName(image)"/>
+    </div>
+</div>
