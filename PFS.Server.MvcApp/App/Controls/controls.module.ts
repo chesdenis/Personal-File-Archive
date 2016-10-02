@@ -11,6 +11,9 @@ import {NavBarBodyControl} from './NavBar/nav-bar-body.control';
 import {ContentFilterControl} from './Filters/content-filter.control';
 import {FilterOptionEntity} from './Filters/filter-option-entity';
 
+import {BlankBoxImagePreviewControl} from './ImagePreview/BlankBox/blank-box-image-preview.control';
+import {ImageItemControl} from './ImagePreview/BlankBox/image-item.control';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -23,7 +26,9 @@ import {FilterOptionEntity} from './Filters/filter-option-entity';
         NavBarHeaderControl,
         NavBarBodyControl,
 
-        ContentFilterControl
+        ContentFilterControl,
+        BlankBoxImagePreviewControl,
+        ImageItemControl
        
     ],
     exports: [
@@ -32,7 +37,9 @@ import {FilterOptionEntity} from './Filters/filter-option-entity';
         NavBarHeaderControl,
         NavBarBodyControl,
 
-        ContentFilterControl
+        ContentFilterControl,
+        BlankBoxImagePreviewControl,
+        ImageItemControl
     ]
 })
 export class ControlsModule { }
