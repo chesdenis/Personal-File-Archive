@@ -3,10 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { AllContentsComponent } from './all-contents.component';
-import { ByDefaultComponent } from './by-default.component';
 import { ByTagsComponent } from './by-tags.component';
 import { ByDatesComponent } from './by-dates.component';
-import { ByAlbumsComponent } from './by-albums.component';
+import { NoFilterComponent } from './no-filter.component';
 
 import {ContentFilterControl} from '../../Controls/Filters/content-filter.control';
 
@@ -15,10 +14,10 @@ const moduleRoutes: Routes = [
     {
         path: '', component: AllContentsComponent,
         children: [
-            {path: '', redirectTo:"/All/Tags",pathMatch:'full'},
+            { path: '', redirectTo: "/All/Default", pathMatch: 'full' },
+            {path: 'Default', component:NoFilterComponent},
             {path:'Tags', component:ByTagsComponent},
-            {path:'Albums', component:ByAlbumsComponent},
-            {path:'Dates', component:ByDatesComponent}
+            { path: 'Dates', component: ByDatesComponent }
         ]
     }
  
@@ -31,10 +30,9 @@ const moduleRoutes: Routes = [
     ],
     declarations: [
         AllContentsComponent,
-        ByDefaultComponent,
+        NoFilterComponent,
         ByTagsComponent,
         ByDatesComponent,
-        ByAlbumsComponent,
         ContentFilterControl
     ]
 })

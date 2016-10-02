@@ -8,8 +8,8 @@ import {Component} from '@angular/core';
 })
 export class AllContentsComponent {
     contentFilterOptions: FilterOptionEntity[] = [
+        new FilterOptionEntity("btn-info", "./Default", "No filter"),
         new FilterOptionEntity("btn-info", "./Tags", "Tags"),
-        new FilterOptionEntity("btn-info", "./Albums", "Albums"),
         new FilterOptionEntity("btn-info", "./Dates", "Dates"),
     ];
 }
