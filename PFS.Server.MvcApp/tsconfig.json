@@ -5,9 +5,14 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noImplicitAny": false
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "removeComments": false,
+    "noImplicitAny": false,
+    "outDir": "wwwroot/"
+  }//,
+  // "include":[
+  //   "App/**/*.ts"
+  // ],
+  // "exclude": [
+  //   "node_modules"
+  // ]  
 }
