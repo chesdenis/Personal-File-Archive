@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { ControlsModule } from './Controls/controls.module';
 
 import { AppComponent }  from './app.component';
 
@@ -8,16 +9,11 @@ import {BooksComponent} from './Components/books.component';
 import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';
 import {OthersComponent} from './Components/others.component';
-import {PhotosComponent} from './Components/photos.component';
 import {UntaggedComponent} from './Components/untagged.component';
 import {UploadComponent} from './Components/upload.component';
 import {VideosComponent} from './Components/videos.component';
 import {SettingsComponent} from './Components/settings.component';
 
-import {NavTopBarControl} from './Controls/nav-bar/nav-top-bar.control';
-import {NavBarZoneControl} from './Controls/nav-bar/nav-bar-zone.control';
-import {NavBarHeaderControl} from './Controls/nav-bar/nav-bar-header.control';
-import {NavBarBodyControl} from './Controls/nav-bar/nav-bar-body.control';
 
 const rootRoutes: Routes = [
     //TODO: redirectTo not working here - check in future releases
@@ -27,7 +23,7 @@ const rootRoutes: Routes = [
     // { path: 'Documents', component: DocumentsComponent },
     // { path: 'Musics', component: MusicsComponent },
     // { path: 'Others', component: OthersComponent },
-    { path: 'Photos', component: PhotosComponent },
+    { path: 'Photos', loadChildren: "app/components/Photos/photos.module#PhotosModule" },
     // { path: 'Untagged', component: UntaggedComponent },
     // { path: 'Upload', component: UploadComponent },
     // { path: 'Videos', component: VideosComponent },
@@ -37,7 +33,8 @@ const rootRoutes: Routes = [
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot(rootRoutes)
+        RouterModule.forRoot(rootRoutes),
+        ControlsModule
     ],
   declarations:
   [
@@ -47,16 +44,10 @@ const rootRoutes: Routes = [
       DocumentsComponent,
       MusicsComponent,
       OthersComponent,
-      PhotosComponent,
       UntaggedComponent,
       UploadComponent,
       VideosComponent,
-      SettingsComponent,
-
-      NavTopBarControl,
-      NavBarHeaderControl,
-      NavBarBodyControl,
-      NavBarZoneControl
+      SettingsComponent
   ],
   bootstrap:    [ AppComponent ]
 })

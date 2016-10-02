@@ -1,13 +1,12 @@
 ﻿import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ControlsModule } from '../../Controls/controls.module';
 
 import { AllContentsComponent } from './all-contents.component';
 import { ByTagsComponent } from './by-tags.component';
 import { ByDatesComponent } from './by-dates.component';
 import { NoFilterComponent } from './no-filter.component';
-
-import {ContentFilterControl} from '../../Controls/Filters/content-filter.control';
 
 const moduleRoutes: Routes = [
     
@@ -26,14 +25,14 @@ const moduleRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(moduleRoutes)
+        RouterModule.forChild(moduleRoutes),
+        ControlsModule
     ],
     declarations: [
         AllContentsComponent,
         NoFilterComponent,
         ByTagsComponent,
-        ByDatesComponent,
-        ContentFilterControl
+        ByDatesComponent
     ]
 })
 export class AllContentsModule { }
