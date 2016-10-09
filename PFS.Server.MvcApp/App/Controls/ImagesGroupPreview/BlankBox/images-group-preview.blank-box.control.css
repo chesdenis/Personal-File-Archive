@@ -4,14 +4,7 @@
     margin: 2px;
     float: left;
 }
-.images-group-preview-container .image-blank-box{
+.images-group-preview-container .blank-box-image-container{
     float: left;
     display: block;
-}
-.images-group-preview-container .image-blank-box img{
-    width: 75px;
-    height: 75px;
-}
-.images-group-preview-container .image-blank-box img:hover{
-    cursor: pointer;
 }

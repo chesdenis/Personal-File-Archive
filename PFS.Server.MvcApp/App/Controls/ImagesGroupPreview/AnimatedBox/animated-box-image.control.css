@@ -1,0 +1,7 @@
+.animated-box-image{
+    width: 75px;
+    height: 75px;
+}
+.animated-box-image:hover{
+    cursor: pointer;
+}

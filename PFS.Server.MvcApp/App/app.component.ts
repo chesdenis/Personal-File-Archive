@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {NavBarMenuEntity} from './Controls/nav-bar/nav-bar-menu.entity';
+import {NavBarMenuEntity} from './Controls/NavBar/nav-bar-menu.entity';
 
 @Component({
+    moduleId: module.id,
   selector: 'my-app',
   templateUrl:"./app.component.html",
 })

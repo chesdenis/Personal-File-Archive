@@ -1,6 +1,0 @@
-<div class="images-group-preview-container" [@activityChanged]="isActive" 
-(mouseenter)="isActive=true" (mouseleave)="isActive=false">
-    <div *ngFor="let image of images" class="image-blank-box">
-        <img src="{{image.AbsoluteUrl}}" (click)="ShowImageName(image)"/>
-    </div>
-</div>
