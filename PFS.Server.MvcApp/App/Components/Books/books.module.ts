@@ -36,5 +36,5 @@ const moduleRoutes: Routes = [
     ]
 })
 export class BooksModule {
-
+    
 }
