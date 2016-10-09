@@ -6,7 +6,6 @@ import { ControlsModule } from './Controls/controls.module';
 import { AppComponent }  from './app.component';
 
 import {BooksComponent} from './Components/books.component';
-import {DocumentsComponent} from './Components/documents.component';
 import {MusicsComponent} from './Components/musics.component';
 import {OthersComponent} from './Components/others.component';
 import {UntaggedComponent} from './Components/untagged.component';
@@ -20,7 +19,7 @@ const rootRoutes: Routes = [
     { path: '',loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
     { path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
     // { path: 'Books', component: BooksComponent },
-    // { path: 'Documents', component: DocumentsComponent },
+    { path: 'Documents', loadChildren:"app/components/Documents/documents.module#DocumentsModule" },
     // { path: 'Musics', component: MusicsComponent },
     // { path: 'Others', component: OthersComponent },
     { path: 'Photos', loadChildren: "app/components/Photos/photos.module#PhotosModule" },
@@ -39,9 +38,7 @@ const rootRoutes: Routes = [
   declarations:
   [
       AppComponent,
-      
       BooksComponent,
-      DocumentsComponent,
       MusicsComponent,
       OthersComponent,
       UntaggedComponent,
