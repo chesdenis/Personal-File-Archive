@@ -16,6 +16,9 @@ import {BlankBoxImageControl} from "../BlankBox/blank-box-image.control";
         ])
     ]
 })
-export class AnimatedBoxImageControl extends BlankBoxImageControl {    
-    activityState:string = "inactive";
+export class AnimatedBoxImageControl extends BlankBoxImageControl {  
+    @Input() src: string;
+    @Input() alt: string;
+    @Input() title: string;  
+    @Input() activityState:string = "inactive";
 }
