@@ -1,0 +1,7 @@
+.blank-box-image{
+    width: 75px;
+    height: 75px;
+}
+.blank-box-image:hover{
+    cursor: pointer;
+}

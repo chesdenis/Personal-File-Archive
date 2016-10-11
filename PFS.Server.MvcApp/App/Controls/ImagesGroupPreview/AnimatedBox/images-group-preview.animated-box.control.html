@@ -1,0 +1,5 @@
+<div class="animated-images-group-preview-container">
+    <div *ngFor="let image of images" class="animated-box-image-container">
+        <animated-box-image [src]="image.src" [title]="image.title" [activityState]="image.activityState"></animated-box-image>
+    </div>
+</div>
