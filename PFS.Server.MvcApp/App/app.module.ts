@@ -6,7 +6,6 @@ import { ControlsModule } from './Controls/controls.module';
 import { AppComponent }  from './app.component';
 
 import {BooksComponent} from './Components/books.component';
-import {MusicsComponent} from './Components/musics.component';
 import {OthersComponent} from './Components/others.component';
 import {UntaggedComponent} from './Components/untagged.component';
 import {UploadComponent} from './Components/upload.component';
@@ -20,7 +19,7 @@ const rootRoutes: Routes = [
     { path: 'All', loadChildren:"app/components/AllContents/all-contents.module#AllContentsModule" },
     // { path: 'Books', component: BooksComponent },
     { path: 'Documents', loadChildren:"app/components/Documents/documents.module#DocumentsModule" },
-    // { path: 'Musics', component: MusicsComponent },
+     { path: 'Musics', loadChildren: "app/components/Musics/musics.module#MusicsModule" },
     // { path: 'Others', component: OthersComponent },
     { path: 'Photos', loadChildren: "app/components/Photos/photos.module#PhotosModule" },
     // { path: 'Untagged', component: UntaggedComponent },
@@ -39,7 +38,6 @@ const rootRoutes: Routes = [
   [
       AppComponent,
       BooksComponent,
-      MusicsComponent,
       OthersComponent,
       UntaggedComponent,
       UploadComponent,
