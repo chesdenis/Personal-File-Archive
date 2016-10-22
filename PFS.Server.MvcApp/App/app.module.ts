@@ -5,13 +5,10 @@ import { ControlsModule } from './Controls/controls.module';
 
 import { AppComponent }  from './app.component';
 
-import {DocumentsComponent} from './Components/documents.component';
-import {MusicsComponent} from './Components/musics.component';
-import {BooksComponent} from './Components/books.component';
 import {OthersComponent} from './Components/others.component';
 import {UntaggedComponent} from './Components/untagged.component';
 import {UploadComponent} from './Components/upload.component';
-import {VideosComponent} from './Components/videos.component';
+
 import {SettingsComponent} from './Components/settings.component';
 
 
@@ -26,7 +23,7 @@ const rootRoutes: Routes = [
     { path: 'Photos', loadChildren: "app/components/Photos/photos.module#PhotosModule" },
     // { path: 'Untagged', component: UntaggedComponent },
     // { path: 'Upload', component: UploadComponent },
-    // { path: 'Videos', component: VideosComponent },
+    { path: 'Videos', loadChildren: "app/components/Videos/videos.module#VideosModule" },
     // { path: 'Settings', component: SettingsComponent },
 ];
 
@@ -39,14 +36,9 @@ const rootRoutes: Routes = [
   declarations:
   [
       AppComponent,
-      
-      DocumentsComponent,
-      MusicsComponent,
-      BooksComponent,
       OthersComponent,
       UntaggedComponent,
       UploadComponent,
-      VideosComponent,
       SettingsComponent
   ],
   bootstrap:    [ AppComponent ]
