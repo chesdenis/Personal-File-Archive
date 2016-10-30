@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -8,11 +9,5 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "wwwroot/"
-  }//,
-  // "include":[
-  //   "App/**/*.ts"
-  // ],
-  // "exclude": [
-  //   "node_modules"
-  // ]  
+  } 
 }

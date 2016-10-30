@@ -9,6 +9,8 @@ import { ByTagsComponent } from './by-tags.component';
 import { ByDatesComponent } from './by-dates.component';
 import { NoFilterComponent } from './no-filter.component';
 
+import { BooksService } from './books.service';
+
 const moduleRoutes: Routes = [
 
     {
@@ -33,6 +35,9 @@ const moduleRoutes: Routes = [
         NoFilterComponent,
         ByTagsComponent,
         ByDatesComponent
+    ],
+    providers: [
+        BooksService
     ]
 })
 export class BooksModule {
