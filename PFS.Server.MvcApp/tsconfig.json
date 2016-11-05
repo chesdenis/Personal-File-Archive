@@ -8,6 +8,8 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
     "outDir": "wwwroot/"
   } 
 }

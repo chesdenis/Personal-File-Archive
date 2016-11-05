@@ -1,28 +1,10 @@
 ﻿import {Injectable} from '@angular/core';
-import {Book} from 'App/Model/book';
-
-export const BOOKS: Book[] = [
-    { Id: 11, Name: 'Mr. Nice', Guid:"", Path: "", Tags:[] },
-    { Id: 12, Name: 'Narco', Guid: "", Path: "", Tags: [] },
-    { Id: 13, Name: 'Bombasto', Guid: "", Path: "", Tags: [] },
-    { Id: 14, Name: 'Celeritas', Guid: "", Path: "", Tags: [] },
-    { Id: 15, Name: 'Magneta', Guid: "", Path: "", Tags: [] },
-    { Id: 16, Name: 'RubberMan', Guid: "", Path: "", Tags: [] },
-    { Id: 17, Name: 'Dynama', Guid: "", Path: "", Tags: [] },
-    { Id: 18, Name: 'Dr IQ', Guid: "", Path: "", Tags: [] },
-    { Id: 19, Name: 'Magma', Guid: "", Path: "", Tags: [] },
-    { Id: 20, Name: 'Tornado', Guid: "", Path: "", Tags: [] }
-];
+import { GenericService } from '../Generic/generic-service';
+import { Book, mockBooks } from 'App/Model/book';
 
 @Injectable()
-export class BooksService {
-    getEntitiesSync(): Book[] {
-        return BOOKS;
-    }
-
-    getEntitiesAsync(): Promise<Book[]> {
-        return new Promise<Book[]>(resolve => {
-            resolve(BOOKS);
-        });
+export class BooksService extends GenericService<Book>  {
+    constructor() {
+        super(mockBooks);
     }
 }

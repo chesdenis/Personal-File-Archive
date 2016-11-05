@@ -1,28 +1,10 @@
-﻿import {Injectable} from '@angular/core';
-import {Document} from 'App/Model/document';
-
-export const DOCUMENTS: Document[] = [
-    { Id: 11, Name: 'Mr. Nice', Guid:"", Path: "", Tags:[] },
-    { Id: 12, Name: 'Narco', Guid: "", Path: "", Tags: [] },
-    { Id: 13, Name: 'Bombasto', Guid: "", Path: "", Tags: [] },
-    { Id: 14, Name: 'Celeritas', Guid: "", Path: "", Tags: [] },
-    { Id: 15, Name: 'Magneta', Guid: "", Path: "", Tags: [] },
-    { Id: 16, Name: 'RubberMan', Guid: "", Path: "", Tags: [] },
-    { Id: 17, Name: 'Dynama', Guid: "", Path: "", Tags: [] },
-    { Id: 18, Name: 'Dr IQ', Guid: "", Path: "", Tags: [] },
-    { Id: 19, Name: 'Magma', Guid: "", Path: "", Tags: [] },
-    { Id: 20, Name: 'Tornado', Guid: "", Path: "", Tags: [] }
-];
+﻿import { Injectable } from '@angular/core';
+import { GenericService } from '../Generic/generic-service';
+import { Document, mockDocuments } from 'App/Model/document';
 
 @Injectable()
-export class DocumentsService {
-    getEntitiesSync(): Document[] {
-        return DOCUMENTS;
-    }
-
-    getEntitiesAsync(): Promise<Document[]> {
-        return new Promise<Document[]>(resolve => {
-            resolve(DOCUMENTS);
-        });
+export class DocumentsService extends GenericService<Document> {
+    constructor() {
+        super(mockDocuments);
     }
 }
