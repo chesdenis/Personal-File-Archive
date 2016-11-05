@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FilterOptionEntity} from '../../Controls/Filters/filter-option-entity';
+import { FilterOptionEntity } from '../../Controls/Filters/filter-option-entity';
 
 @Component({
     moduleId: module.id,

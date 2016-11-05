@@ -16,7 +16,13 @@ export const BOOKS: Book[] = [
 
 @Injectable()
 export class BooksService {
-    getAll(): Book[] {
+    getEntitiesSync(): Book[] {
         return BOOKS;
+    }
+
+    getEntitiesAsync(): Promise<Book[]> {
+        return new Promise<Book[]>(resolve => {
+            resolve(BOOKS);
+        });
     }
 }

@@ -12,5 +12,20 @@ namespace PFS.Server.MvcApp.Controllers
         {
             return View("~/Views/Home/Index.cshtml");
         }
+        
+        public IActionResult Dates()
+        {
+            return View("~/Views/Home/Index.cshtml");
+        }
+
+        public IActionResult Tags()
+        {
+            return View("~/Views/Home/Index.cshtml");
+        }
+
+        public IActionResult Default()
+        {
+            return View("~/Views/Home/Index.cshtml");
+        }
     }
 }
