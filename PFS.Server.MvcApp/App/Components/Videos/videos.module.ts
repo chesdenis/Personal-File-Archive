@@ -11,6 +11,7 @@ import { ByDatesComponent } from './by-dates.component';
 import { ByPlacesComponent } from './by-places.component';
 import { NoFilterComponent } from './no-filter.component';
 
+import {VideosService } from './videos.service';
 
 const moduleRoutes: Routes = [
     {
@@ -41,6 +42,9 @@ const moduleRoutes: Routes = [
         ByDatesComponent,
         ByPlacesComponent,
 
+    ],
+    providers: [
+        VideosService
     ]
 })
 export class VideosModule{
