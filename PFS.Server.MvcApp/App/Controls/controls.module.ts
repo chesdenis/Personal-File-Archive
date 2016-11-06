@@ -1,5 +1,6 @@
 ﻿import { NgModule }            from '@angular/core';
 import { CommonModule }        from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
@@ -14,10 +15,14 @@ import {FilterOptionEntity} from './Filters/filter-option-entity';
 import {BlankBoxImagePreviewControl} from './ImagePreview/BlankBox/blank-box-image-preview.control';
 import {ImageItemControl} from './ImagePreview/BlankBox/image-item.control';
 
+import {TypeaheadControl} from "./Typeahead/typeahead.control";
+import {SearchInputControl} from "./Typeahead/search-input.control";
+
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
     declarations: [
 
@@ -28,7 +33,9 @@ import {ImageItemControl} from './ImagePreview/BlankBox/image-item.control';
 
         ContentFilterControl,
         BlankBoxImagePreviewControl,
-        ImageItemControl
+        ImageItemControl,
+        TypeaheadControl,
+        SearchInputControl
        
     ],
     exports: [
@@ -39,7 +46,9 @@ import {ImageItemControl} from './ImagePreview/BlankBox/image-item.control';
 
         ContentFilterControl,
         BlankBoxImagePreviewControl,
-        ImageItemControl
+        ImageItemControl,
+        TypeaheadControl,
+        SearchInputControl
     ]
 })
 export class ControlsModule { }
