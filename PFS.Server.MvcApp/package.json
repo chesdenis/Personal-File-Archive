@@ -12,26 +12,24 @@
     "@angular/platform-browser-dynamic": "2.0.1",
     "@angular/router": "3.0.1",
     "@angular/upgrade": "2.0.1",
-
     "core-js": "2.4.1",
     "reflect-metadata": "0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
     "zone.js": "0.6.25",
-
     "angular-in-memory-web-api": "0.1.1",
     "bootstrap": "3.3.6"
   },
   "devDependencies": {
-    "gulp-cli":"1.2.2",
-    "gulp": "3.9.1",
-    "gulp-clean":"0.3.2",
-    "gulp-typescript": "3.0.1",
-    "gulp-sourcemaps": "1.6.0",
-    "gulp-watch": "4.3.10",
+    "gulp": "^3.9.1",
+    "gulp-clean": "0.3.2",
+    "gulp-cli": "1.2.2",
     "gulp-debug": "2.1.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-typescript": "3.0.1",
+    "gulp-watch": "4.3.10",
+    "tsconfig": "5.0.3",
     "typescript": "2.0.3",
-    "tsconfig":"5.0.3",
     "typings": "1.4.0"
   },
   "scripts": {

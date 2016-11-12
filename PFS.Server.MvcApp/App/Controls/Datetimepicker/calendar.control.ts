@@ -1,5 +1,4 @@
 import {Component, Input, Output, OnInit, EventEmitter, ElementRef} from "@angular/core";
-import {DatetimePickerControl} from "./datetime-picker.control";
 
 @Component({
     moduleId: module.id,

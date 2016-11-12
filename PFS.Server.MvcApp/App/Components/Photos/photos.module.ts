@@ -11,6 +11,7 @@ import { ByDatesComponent } from './by-dates.component';
 import { ByPlacesComponent } from './by-places.component';
 import { NoFilterComponent } from './no-filter.component';
 
+import { PhotosService } from './photos.service';
 
 const moduleRoutes: Routes = [
 
@@ -42,6 +43,9 @@ const moduleRoutes: Routes = [
         ByAlbumsComponent,
         ByDatesComponent,
         ByPlacesComponent
+    ],
+    providers: [
+        PhotosService
     ]
 })
 export class PhotosModule { }
