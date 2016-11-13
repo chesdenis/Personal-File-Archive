@@ -4,3 +4,6 @@ PFS.Server.MvcApp/bin
 PFS.Server.MvcApp/typings
 PFS.Server.MvcApp/wwwroot
 .vs
+/packages
+/packages
+/PFS.Server.EntityFramework.OData/bin
