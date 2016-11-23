@@ -1,0 +1,13 @@
+<div class="form-inline">
+        <div class="input-group date">
+            <input type="text" class="form-control"
+                   [attr.placeholder]="'Choose date'"
+                   (click)="showDatepicker()"
+                   [value]="selectedDate"/>
+            <div class="input-group-addon" (click)="toggleDatepickerVisibility()">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        <calendar [ngClass]="getDatepickerClasses()"
+        (dateChange)="dateChanged($event)" (clickOutside)="clickedOutsideCalendar($event)"></calendar>
+        </div>
+    </div>

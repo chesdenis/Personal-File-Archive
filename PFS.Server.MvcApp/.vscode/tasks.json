@@ -1,10 +1,40 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "0.1.0",
-    "command": "tsc",
+    "command": "node",
     "isShellCommand": true,
-    "args": ["-p", "."],
-    "showOutput": "silent",
-    "problemMatcher": "$tsc"
+    "args": [],
+    "showOutput": "always",
+    "tasks": [
+        {
+            "taskName": "build-app-debug",
+            "args": ["gulp build-app-debug"],
+            "suppressTaskName": true,
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "watch-all",
+            "args": ["gulp watch-all"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "clean-wwwroot",
+            "args": ["gulp clean-wwwroot"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "clean-app",
+            "args": ["gulp clean-app"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "install-deps",
+            "args": ["gulp install-deps"],
+            "suppressTaskName": true,
+            "isBuildCommand": false
+        }
+        
+    ]
 }

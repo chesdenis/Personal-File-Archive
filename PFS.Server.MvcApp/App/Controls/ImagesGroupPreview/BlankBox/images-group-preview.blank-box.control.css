@@ -1,0 +1,10 @@
+.images-group-preview-container{
+    width: 225px;
+    height: 225px;
+    margin: 2px;
+    float: left;
+}
+.images-group-preview-container .blank-box-image-container{
+    float: left;
+    display: block;
+}
