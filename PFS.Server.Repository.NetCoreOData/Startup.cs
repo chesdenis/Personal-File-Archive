@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.OData.Extensions;
 using PFS.Server.Repository.NetCoreOData.Mock;
+using PFS.Server.Repository.NetCoreOData.Db;
 
 namespace PFS.Server.Repository.NetCoreOData
 {
@@ -20,8 +21,8 @@ namespace PFS.Server.Repository.NetCoreOData
         {
             services.AddMvc();
 
-            services.AddOData<IMockContext>();
-            services.AddSingleton<MockContext>();
+            services.AddOData<IPfsODataCollections>();
+            services.AddSingleton<PfsServerDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

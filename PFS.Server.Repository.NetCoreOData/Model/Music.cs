@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace PFS.Server.Repository.NetCoreOData.Model
 {
-    public class Music : Entity
-    {
-        public IEnumerable<Tag> Tags { get; set; }
-    }
+    //public class Music : Entity
+    //{
+    //    public IEnumerable<Tag> Tags { get; set; }
+    //}
 }
