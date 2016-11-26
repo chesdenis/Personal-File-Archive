@@ -51,7 +51,7 @@ import {SearchInputControl} from "./Typeahead/search-input.control";
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
         ImageItemControl,
         TypeaheadControl,
         SearchInputControl
@@ -74,7 +74,7 @@ import {SearchInputControl} from "./Typeahead/search-input.control";
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
         ImageItemControl,
         TypeaheadControl,
         SearchInputControl
