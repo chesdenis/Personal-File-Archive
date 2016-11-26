@@ -16,8 +16,8 @@ const moduleRoutes: Routes = [
         path: '', component: AllContentsComponent,
         children: [
             { path: '', redirectTo: "/All/Default", pathMatch: 'full' },
-            {path: 'Default', component:NoFilterComponent},
-            {path:'Tags', component:ByTagsComponent},
+            { path: 'Default', component:NoFilterComponent},
+            { path: 'Tags', component:ByTagsComponent},
             { path: 'Dates', component: ByDatesComponent }
         ]
     }

@@ -21,6 +21,7 @@ const rootRoutes: Routes = [
     { path: 'Musics', loadChildren: "app/components/Musics/musics.module#MusicsModule" },
     // { path: 'Others', component: OthersComponent },
     { path: 'Photos', loadChildren: "app/components/Photos/photos.module#PhotosModule" },
+    { path: 'Tags', loadChildren: "app/components/Tags/tags.module#TagsModule" },
     // { path: 'Untagged', component: UntaggedComponent },
     // { path: 'Upload', component: UploadComponent },
     { path: 'Videos', loadChildren: "app/components/Videos/videos.module#VideosModule" },
