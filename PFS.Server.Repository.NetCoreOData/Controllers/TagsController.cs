@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.OData;
 using PFS.Server.Repository.NetCoreOData.Db;
 using PFS.Server.Repository.NetCoreOData.Model;
+using PFS.Server.Repository.NetCoreOData.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,30 +14,56 @@ namespace PFS.Server.Repository.NetCoreOData.Controllers
     [Route("odata/Tags")]
     public class TagsController: Controller
     {
-        private readonly PfsServerDbContext _dbContext;
+        private readonly IPfsRepository<Tag> Rep;
 
-        public TagsController(PfsServerDbContext dbContext)
+        public TagsController(IPfsRepository<Tag> rep)
         {
-            _dbContext = dbContext;
+            Rep = rep;
         }
 
         [HttpGet]
         public IEnumerable<Tag> Get()
         {
-            return _dbContext.Tags;
+            return Rep.Get();
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var findResult = _dbContext.Tags.FirstOrDefault(f => f.Id == id);
+            var retVal =  Rep.Get(id);
 
-            if (findResult == null)
+            if (retVal == null)
             {
                 return NotFound();
             }
 
-            return new ObjectResult(findResult);
+            return new ObjectResult(retVal);
         }
+
+        [HttpPost]
+        public IActionResult Post(Tag entity)
+        {
+            Rep.Post(entity);
+
+            return new NoContentResult();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody]Tag entity)
+        {
+            Rep.Put(id, entity);
+
+            return new NoContentResult();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Rep.Delete(id);
+
+            return new NoContentResult();
+        }
+
+
     }
 }

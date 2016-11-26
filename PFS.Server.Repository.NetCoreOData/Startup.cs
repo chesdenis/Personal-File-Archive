@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.OData.Extensions;
 using PFS.Server.Repository.NetCoreOData.Mock;
 using PFS.Server.Repository.NetCoreOData.Db;
+using PFS.Server.Repository.NetCoreOData.Repositories;
+using PFS.Server.Repository.NetCoreOData.Model;
 
 namespace PFS.Server.Repository.NetCoreOData
 {
@@ -21,8 +23,11 @@ namespace PFS.Server.Repository.NetCoreOData
         {
             services.AddMvc();
 
+          
             services.AddOData<IPfsODataCollections>();
-            services.AddSingleton<PfsServerDbContext>();
+            services.AddDbContext<PfsServerDbContext>();
+            services.AddLogging();
+            services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
