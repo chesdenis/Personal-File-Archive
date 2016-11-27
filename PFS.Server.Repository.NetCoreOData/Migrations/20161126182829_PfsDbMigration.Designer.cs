@@ -8,7 +8,7 @@ using PFS.Server.Repository.NetCoreOData.Db;
 namespace PFS.Server.Repository.NetCoreOData.Migrations
 {
     [DbContext(typeof(PfsServerDbContext))]
-    [Migration("20161126121303_PfsDbMigration")]
+    [Migration("20161126182829_PfsDbMigration")]
     partial class PfsDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

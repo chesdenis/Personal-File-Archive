@@ -15,10 +15,6 @@ export class AppComponent
         new NavBarMenuEntity("active", "/Musics", "Musics", "(current)"),
         new NavBarMenuEntity("active", "/Books", "Books", "(current)"),
         new NavBarMenuEntity("active", "/Documents", "Documents", "(current)"),
-        new NavBarMenuEntity("active", "/Tags", "Tags", "(current)"),
-        new NavBarMenuEntity("active", "/Others", "Others", "(current)"),
-        new NavBarMenuEntity("active", "/Upload", "Upload", "(current)"),
-        new NavBarMenuEntity("active", "/Untagged", "Untagged", "(current)"),
-        new NavBarMenuEntity("active", "/Settings", "Settings", "(current)")
+        new NavBarMenuEntity("active", "/Tags", "Tags", "(current)")
     ];
 }   
