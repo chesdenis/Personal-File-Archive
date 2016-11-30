@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PFS.Server.Repository.NetCoreOData.Model;
+﻿using Microsoft.EntityFrameworkCore;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
 using PFS.Server.Repository.NetCoreOData.Db.Tables;
 
 namespace PFS.Server.Repository.NetCoreOData.Db
 {
-    
+
     public partial class PfsServerDbContext : DbContext, IPfsDbContext
     {
         public DbSet<Tag> Tags { get; set; }

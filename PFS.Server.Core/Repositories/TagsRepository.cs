@@ -19,7 +19,7 @@ namespace PFS.Server.Core.Repositories
         {
             get
             {
-                return DbCtx.Tags;
+                return DbCtx.TagsTable;
             }
         }
     }

@@ -2,13 +2,7 @@
 using Microsoft.AspNetCore.OData;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
-using PFS.Server.Repository.NetCoreOData.Db;
-using PFS.Server.Repository.NetCoreOData.Model;
-using PFS.Server.Repository.NetCoreOData.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PFS.Server.Repository.NetCoreOData.Controllers
 {
