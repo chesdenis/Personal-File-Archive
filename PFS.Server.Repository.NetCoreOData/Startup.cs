@@ -12,6 +12,9 @@ using PFS.Server.Repository.NetCoreOData.Mock;
 using PFS.Server.Repository.NetCoreOData.Db;
 using PFS.Server.Repository.NetCoreOData.Repositories;
 using PFS.Server.Repository.NetCoreOData.Model;
+using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Entities;
+using PFS.Server.Core.Repositories;
 
 namespace PFS.Server.Repository.NetCoreOData
 {
@@ -28,6 +31,7 @@ namespace PFS.Server.Repository.NetCoreOData
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
+            services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

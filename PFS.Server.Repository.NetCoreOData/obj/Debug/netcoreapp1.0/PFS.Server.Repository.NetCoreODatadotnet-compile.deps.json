@@ -27,7 +27,8 @@
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
-          "Microsoft.Extensions.Logging.Debug": "1.0.0"
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "PFS.Server.Core": "1.0.0"
         },
         "compile": {
           "PFS.Server.Repository.NetCoreOData.dll": {}
@@ -2744,6 +2745,15 @@
           "System.Xml.XDocument": "4.0.11",
           "System.Xml.XPath": "4.0.1"
         }
+      },
+      "PFS.Server.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0"
+        },
+        "compile": {
+          "PFS.Server.Core.dll": {}
+        }
       }
     },
     ".NETCoreApp,Version=v1.0/": {
@@ -2760,7 +2770,8 @@
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
-          "Microsoft.Extensions.Logging.Debug": "1.0.0"
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "PFS.Server.Core": "1.0.0"
         },
         "runtime": {
           "PFS.Server.Repository.NetCoreOData.dll": {}
@@ -5471,6 +5482,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "PFS.Server.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0"
+        },
+        "runtime": {
+          "PFS.Server.Core.dll": {}
+        }
       }
     }
   },
@@ -6499,6 +6519,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FLhdYJx4331oGovQypQ8JIw2kEmNzCsjVOVYY/16kZTUoquZG85oVn7yUhBE2OZt1yGPSXAL0HTEfzjlbNpM7Q=="
+    },
+    "PFS.Server.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

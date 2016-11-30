@@ -8,4 +8,6 @@ PFS.Server.Repository.NetCoreOData/obj
 PFS.Server.Repository.NetCoreOData/bin
 PFS.Server.Repository.NetCoreOData/typings
 PFS.Server.Repository.NetCoreOData/wwwroot
+PFS.Server.Core/obj
+PFS.Server.Core/bin
 .vs

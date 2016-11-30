@@ -15,7 +15,7 @@ namespace PFS.Server.Repository.NetCoreOData.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
-            modelBuilder.Entity("PFS.Server.Repository.NetCoreOData.Model.Tag", b =>
+            modelBuilder.Entity("PFS.Server.Core.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();

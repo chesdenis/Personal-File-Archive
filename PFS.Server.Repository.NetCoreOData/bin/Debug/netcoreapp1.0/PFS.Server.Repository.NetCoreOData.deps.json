@@ -27,7 +27,8 @@
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
-          "Microsoft.Extensions.Logging.Debug": "1.0.0"
+          "Microsoft.Extensions.Logging.Debug": "1.0.0",
+          "PFS.Server.Core": "1.0.0"
         },
         "runtime": {
           "PFS.Server.Repository.NetCoreOData.dll": {}
@@ -1665,6 +1666,18 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "PFS.Server.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0"
+        },
+        "runtime": {
+          "PFS.Server.Core.dll": {}
+        },
+        "compile": {
+          "PFS.Server.Core.dll": {}
         }
       },
       "Libuv/1.9.0": {
@@ -3793,6 +3806,11 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw=="
+    },
+    "PFS.Server.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Libuv/1.9.0": {
       "type": "package",

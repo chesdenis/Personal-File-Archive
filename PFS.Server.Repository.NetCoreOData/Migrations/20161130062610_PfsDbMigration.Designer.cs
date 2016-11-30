@@ -8,7 +8,7 @@ using PFS.Server.Repository.NetCoreOData.Db;
 namespace PFS.Server.Repository.NetCoreOData.Migrations
 {
     [DbContext(typeof(PfsServerDbContext))]
-    [Migration("20161126182829_PfsDbMigration")]
+    [Migration("20161130062610_PfsDbMigration")]
     partial class PfsDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,7 +16,7 @@ namespace PFS.Server.Repository.NetCoreOData.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
-            modelBuilder.Entity("PFS.Server.Repository.NetCoreOData.Model.Tag", b =>
+            modelBuilder.Entity("PFS.Server.Core.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();

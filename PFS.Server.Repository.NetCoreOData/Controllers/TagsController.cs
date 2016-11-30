@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData;
+using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Entities;
 using PFS.Server.Repository.NetCoreOData.Db;
 using PFS.Server.Repository.NetCoreOData.Model;
 using PFS.Server.Repository.NetCoreOData.Repositories;
