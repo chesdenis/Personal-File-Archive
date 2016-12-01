@@ -8,6 +8,8 @@ namespace PFS.Server.Core.Abstractions
 {
     public interface IPfsODataCollections
     {
-        IPfsODataTable<Tag> TagsTable { get; }
+        IEnumerable<Tag> Tags { get; }
+        IPfsDataProvider<Tag> TagsProvider { get; }
+         
     }
 }

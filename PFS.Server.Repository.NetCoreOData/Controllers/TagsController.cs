@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.OData;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
+using PFS.Server.Core.Repositories;
 using System.Collections.Generic;
 
 namespace PFS.Server.Repository.NetCoreOData.Controllers

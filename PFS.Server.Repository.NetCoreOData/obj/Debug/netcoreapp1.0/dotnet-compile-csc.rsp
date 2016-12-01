@@ -190,7 +190,7 @@
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Startup.cs"
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Controllers\TagsController.cs"
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Db\PfsServerDbContext.cs"
-"C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Db\Tables\TagsDataTable.cs"
+"C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Db\Providers\TagsProvider.cs"
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Migrations\20161130062610_PfsDbMigration.cs"
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Migrations\20161130062610_PfsDbMigration.Designer.cs"
 "C:\Users\DC\Source\Repos\Personal-File-Storage\PFS.Server.Repository.NetCoreOData\Migrations\PfsServerDbContextModelSnapshot.cs"

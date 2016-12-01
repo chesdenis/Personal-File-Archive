@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PFS.Server.Repository.NetCoreOData.Db.Tables
+namespace PFS.Server.Repository.NetCoreOData.Db.Providers
 {
-    public class TagsDataTable : IPfsODataTable<Tag>
+    public class TagsProvider: IPfsDataProvider<Tag>
     {
         protected DbSet<Tag> DbTable { get; private set; }
 
-        public TagsDataTable(DbSet<Tag> dbTable)
+        public TagsProvider(DbSet<Tag> dbTable)
         {
             DbTable = dbTable;
         }
@@ -25,17 +25,17 @@ namespace PFS.Server.Repository.NetCoreOData.Db.Tables
             }
         }
 
-        void IPfsODataTable<Tag>.Add(Tag entity)
+        public void Add(Tag entity)
         {
             DbTable.Add(entity);
         }
 
-        void IPfsODataTable<Tag>.Remove(Tag entity)
+        public void Remove(Tag entity)
         {
             DbTable.Remove(entity);
         }
 
-        void IPfsODataTable<Tag>.Update(Tag entity)
+        public void Update(Tag entity)
         {
             DbTable.Update(entity);
         }
