@@ -6,32 +6,37 @@ using PFS.Server.EntityFramework.OData.Models;
 using PFS.Server.EntityFramework.OData.Mock;
 using PFS.Server.EntityFramework.OData.Repository;
 using System.Web.OData;
+using System.Net.Http;
+using System.Net;
 
 namespace PFS.Server.EntityFramework.OData.Controllers
 {
-    public class PhotoController : ODataController
+    public class PhotosController : ODataController
     {
         IRepository<Photo> _context;
 
-        public PhotoController()
+        public PhotosController()
         {
             _context = new PhotoRepository();
         }
 
-        public List<Photo> Get()
+        // GET /service/Photos
+        public IQueryable<Photo> Get()
         {
-            return _context.GetAll();
+            return _context.GetAll().AsQueryable();
         }
 
+        // GET /service/Photos(1)
         public Photo Get(int id)
         {
-            
-            throw new NotImplementedException();
+            return _context.Get(id);
         }
 
-        public List<Photo> Post(Photo entity)
+        // POST /odata/Photos 
+        public HttpResponseMessage Post(Photo entity)
         {
-            throw new NotImplementedException();
+            _context.Save(entity);
+            return new HttpResponseMessage(HttpStatusCode.Created);
         }
 
         public string Put(int id, Photo entity)

@@ -44,3 +44,4 @@ PFS.Server.MvcApp/wwwroot
 *.xml
 *.dll
 *.pdb
+/PFS.Server.EntityFramework.OData/PFS.Server.EntityFramework.OData/bin

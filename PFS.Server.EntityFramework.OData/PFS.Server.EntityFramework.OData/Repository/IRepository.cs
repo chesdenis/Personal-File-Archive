@@ -11,7 +11,7 @@ namespace PFS.Server.EntityFramework.OData.Repository
         List<T> GetAll();
         T Get(int id);
 
-        List<T> Save(T entity);
+        bool Save(T entity);
         string Update(int id, T entity);
         string Delete(int id);
     }

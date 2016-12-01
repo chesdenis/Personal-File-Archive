@@ -16,8 +16,7 @@ namespace PFS.Server.EntityFramework.OData
         {
             var builder = new ODataConventionModelBuilder();
 
-            builder.EntitySet<Product>("Products");
-            builder.EntitySet<Photo>("Photo");
+            builder.EntitySet<Photo>("Photos");
 
             config.MapODataServiceRoute("ODataRoute", "service", builder.GetEdmModel());
         }

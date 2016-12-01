@@ -1,7 +1,9 @@
-﻿using PFS.Server.EntityFramework.OData.Mock;
+﻿using PFS.Server.EntityFramework.OData.Context;
+using PFS.Server.EntityFramework.OData.Mock;
 using PFS.Server.EntityFramework.OData.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +11,7 @@ namespace PFS.Server.EntityFramework.OData.Repository
 {
     public class PhotoRepository : IRepository<Photo>  
     {
-        IMockContext _context = new MockContext();
+        MsSqlContext _context = new MsSqlContext();
 
         public List<Photo> GetAll()
         {
@@ -18,12 +20,15 @@ namespace PFS.Server.EntityFramework.OData.Repository
 
         public Photo Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Photos.FirstOrDefault(p => p.Id == id);
         }
 
-        public List<Photo> Save(Photo entity)
+        public bool Save(Photo entity)
         {
-            throw new NotImplementedException();
+            _context.Photos.Add(entity);
+            _context.SaveChanges();
+
+            return true;
         }
 
         public string Update(int id, Photo entity)

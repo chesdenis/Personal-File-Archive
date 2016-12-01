@@ -15,7 +15,7 @@ namespace MvcApplication1
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "api/{controller}/{id}",
                 defaults: new { controller = "Photo", action = "Get", id = UrlParameter.Optional }
             );
         }
