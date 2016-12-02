@@ -3,6 +3,15 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
+      "JayData/1.5.10": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "1.8.0"
+        }
+      },
+      "jQuery/1.8.0": {
+        "type": "package"
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -3364,6 +3373,91 @@
     }
   },
   "libraries": {
+    "JayData/1.5.10": {
+      "sha512": "tG/cnVrvPmDj89hRDsif5gGY3K6Dzt/n2UR6fLLXOd1IuRQfHubEcqSQI3aaZcBA+kgN5B/u6Ez9sQuSRXnbUw==",
+      "type": "package",
+      "path": "JayData/1.5.10",
+      "files": [
+        "JayData.1.5.10.nupkg.sha512",
+        "JayData.nuspec",
+        "content/jaydata-compatibility.js",
+        "content/jaydata-compatibility.min.js",
+        "content/jaydata-compatibility.min.js.map",
+        "content/jaydata.js",
+        "content/jaydata.min.js",
+        "content/jaydata.min.js.map",
+        "content/jaydatamodules/angular.js",
+        "content/jaydatamodules/angular.min.js",
+        "content/jaydatamodules/angular.min.js.map",
+        "content/jaydatamodules/deferred.js",
+        "content/jaydatamodules/deferred.min.js",
+        "content/jaydatamodules/deferred.min.js.map",
+        "content/jaydatamodules/errorhandler.js",
+        "content/jaydatamodules/errorhandler.min.js",
+        "content/jaydatamodules/errorhandler.min.js.map",
+        "content/jaydatamodules/formBinder.js",
+        "content/jaydatamodules/formBinder.min.js",
+        "content/jaydatamodules/formBinder.min.js.map",
+        "content/jaydatamodules/handlebars.js",
+        "content/jaydatamodules/handlebars.min.js",
+        "content/jaydatamodules/handlebars.min.js.map",
+        "content/jaydatamodules/inMemory.js",
+        "content/jaydatamodules/inMemory.min.js",
+        "content/jaydatamodules/inMemory.min.js.map",
+        "content/jaydatamodules/jaydata.mscrm.js",
+        "content/jaydatamodules/jaydata.mscrm.min.js",
+        "content/jaydatamodules/jaydata.mscrm.min.js.map",
+        "content/jaydatamodules/kendo.js",
+        "content/jaydatamodules/kendo.min.js",
+        "content/jaydatamodules/kendo.min.js.map",
+        "content/jaydatamodules/knockout.js",
+        "content/jaydatamodules/knockout.min.js",
+        "content/jaydatamodules/knockout.min.js.map",
+        "content/jaydatamodules/qDeferred.js",
+        "content/jaydatamodules/qDeferred.min.js",
+        "content/jaydatamodules/qDeferred.min.js.map",
+        "content/jaydatamodules/sencha.js",
+        "content/jaydatamodules/sencha.min.js",
+        "content/jaydatamodules/sencha.min.js.map",
+        "content/jaydatamodules/template.js",
+        "content/jaydatamodules/template.min.js",
+        "content/jaydatamodules/template.min.js.map",
+        "content/jaydatamodules/validate.js",
+        "content/jaydatamodules/validate.min.js",
+        "content/jaydatamodules/validate.min.js.map",
+        "content/jaydataproviders/InMemoryProvider.js",
+        "content/jaydataproviders/InMemoryProvider.min.js",
+        "content/jaydataproviders/InMemoryProvider.min.js.map",
+        "content/jaydataproviders/IndexedDbProvider.js",
+        "content/jaydataproviders/IndexedDbProvider.min.js",
+        "content/jaydataproviders/IndexedDbProvider.min.js.map",
+        "content/jaydataproviders/SqLiteProvider.js",
+        "content/jaydataproviders/SqLiteProvider.min.js",
+        "content/jaydataproviders/SqLiteProvider.min.js.map",
+        "content/jaydataproviders/WebApiProvider.js",
+        "content/jaydataproviders/WebApiProvider.min.js",
+        "content/jaydataproviders/WebApiProvider.min.js.map",
+        "content/jaydataproviders/oDataProvider.js",
+        "content/jaydataproviders/oDataProvider.min.js",
+        "content/jaydataproviders/oDataProvider.min.js.map"
+      ]
+    },
+    "jQuery/1.8.0": {
+      "sha512": "laDFQRJrIRHT0Z0GVYklMt3bE0iu0MZFJwHwg21kt3SHb7Bj8TdNiM3K+ZdK1DzB8ZxKy8z7NkJvwMas+dmHBw==",
+      "type": "package",
+      "path": "jQuery/1.8.0",
+      "files": [
+        "Content/Scripts/jquery-1.8.0-vsdoc.js",
+        "Content/Scripts/jquery-1.8.0.js",
+        "Content/Scripts/jquery-1.8.0.min.js",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-1.8.0.intellisense.js",
+        "Tools/uninstall.ps1",
+        "jQuery.1.8.0.nupkg.sha512",
+        "jQuery.nuspec"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "9Q7AaqtQhS8JDSIvRBt6ODSLWDBI4c8YxNxyCQemWebBFUtBbc6M5Vi5Gz1ZyIUlTW3rZK9bIr5gnVyv0z7a2Q==",
       "type": "package",
@@ -9093,6 +9187,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "JayData >= 1.5.10",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.ViewFeatures >= 1.0.0",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0",
