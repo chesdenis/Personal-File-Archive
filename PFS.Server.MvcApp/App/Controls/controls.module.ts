@@ -1,5 +1,6 @@
 ﻿import { NgModule }            from '@angular/core';
 import { CommonModule }        from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
@@ -23,10 +24,14 @@ import {ImagesGroupPreviewBlankBoxControl} from './ImagesGroupPreview/BlankBox/i
 import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated-box-image.control';
 import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
+//import {TypeaheadControl} from "./Typeahead/typeahead.control";
+//import {SearchInputControl} from "./Typeahead/search-input.control";
+
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
     declarations: [
 
@@ -46,7 +51,11 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
+        ImageItemControl,
+       // TypeaheadControl,
+        //SearchInputControl
+       
     ],
     exports: [
         NavTopBarControl,
@@ -65,7 +74,10 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
+        ImageItemControl,
+       // TypeaheadControl,
+        //SearchInputControl
     ]
 })
 export class ControlsModule { }

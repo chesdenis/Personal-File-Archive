@@ -1,0 +1,8 @@
+<div id="the-basics">
+  <search-input delay="500" placeholder="Type the text..." [val]="selectedValue" (valueEvent)="SearchProcess($event)"></search-input>
+  <div id="search-result">
+    <ul>
+      <li *ngFor="let searchItem of searchDataArr" (click) = SelectItem($event)>{{searchItem}}</li>
+    </ul>
+  </div>
+</div>

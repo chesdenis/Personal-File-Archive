@@ -3,6 +3,13 @@ PFS.Server.MvcApp/obj
 PFS.Server.MvcApp/bin
 PFS.Server.MvcApp/typings
 PFS.Server.MvcApp/wwwroot
+PFS.Server.Repository.NetCoreOData/node_modules
+PFS.Server.Repository.NetCoreOData/obj
+PFS.Server.Repository.NetCoreOData/bin
+PFS.Server.Repository.NetCoreOData/typings
+PFS.Server.Repository.NetCoreOData/wwwroot
+PFS.Server.Core/obj
+PFS.Server.Core/bin
 .vs
 /packages
 /packages
