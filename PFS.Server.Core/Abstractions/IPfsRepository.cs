@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace PFS.Server.Repository.NetCoreOData.Repositories
+namespace PFS.Server.Core.Abstractions
 {
     public interface IPfsRepository<T>
     {

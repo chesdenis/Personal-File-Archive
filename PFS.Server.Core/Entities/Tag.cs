@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PFS.Server.Core.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PFS.Server.Repository.NetCoreOData.Model
+namespace PFS.Server.Core.Entities
 {
-    public class Tag
+    public class Tag : IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

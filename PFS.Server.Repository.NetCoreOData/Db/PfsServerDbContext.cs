@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PFS.Server.Repository.NetCoreOData.Model;
+using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Entities;
+using PFS.Server.Repository.NetCoreOData.Db.Providers;
 
 namespace PFS.Server.Repository.NetCoreOData.Db
 {
-
-    public partial class PfsServerDbContext: DbContext
+ 
+    public partial class PfsServerDbContext : DbContext, IPfsDbContext
     {
+        public DbSet<Tag> Tags { get; set; }
+        IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
+        
+        public IPfsDataProvider<Tag> TagsProvider { get; set; }
+
+        public PfsServerDbContext()
+        {
+           TagsProvider = new TagsProvider(Tags);
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
@@ -20,21 +30,11 @@ namespace PFS.Server.Repository.NetCoreOData.Db
         {
             optionsBuilder.UseSqlite("Filename=./PfsServer.db");
         }
-    }
 
-    public partial class PfsServerDbContext
-    {
-        public DbSet<Tag> Tags { get; set; }
+        void IPfsDbContext.SaveChanges()
+        {
+            SaveChanges();
+        }
     }
-
-
-    public partial class PfsServerDbContext: IPfsODataCollections
-    {
-        IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
-    }
-
-    public interface IPfsODataCollections
-    {
-        IEnumerable<Tag> Tags { get; }
-    }
+     
 }

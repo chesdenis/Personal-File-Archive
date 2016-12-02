@@ -24,8 +24,8 @@ import {ImagesGroupPreviewBlankBoxControl} from './ImagesGroupPreview/BlankBox/i
 import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated-box-image.control';
 import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
-import {TypeaheadControl} from "./Typeahead/typeahead.control";
-import {SearchInputControl} from "./Typeahead/search-input.control";
+//import {TypeaheadControl} from "./Typeahead/typeahead.control";
+//import {SearchInputControl} from "./Typeahead/search-input.control";
 
 @NgModule({
     imports: [
@@ -51,10 +51,10 @@ import {SearchInputControl} from "./Typeahead/search-input.control";
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
         ImageItemControl,
-        TypeaheadControl,
-        SearchInputControl
+       // TypeaheadControl,
+        //SearchInputControl
        
     ],
     exports: [
@@ -74,10 +74,10 @@ import {SearchInputControl} from "./Typeahead/search-input.control";
         ImagesGroupPreviewAnimatedBoxControl,
 
         CalendarControl,
-        DatetimePickerControl
+        DatetimePickerControl,
         ImageItemControl,
-        TypeaheadControl,
-        SearchInputControl
+       // TypeaheadControl,
+        //SearchInputControl
     ]
 })
 export class ControlsModule { }
