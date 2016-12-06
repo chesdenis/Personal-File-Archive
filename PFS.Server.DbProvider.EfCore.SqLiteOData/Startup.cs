@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Entities;
+using PFS.Server.Core.Repositories;
+using Microsoft.AspNetCore.OData.Extensions;
+using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
 
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 {
@@ -16,6 +21,13 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            
+            services.AddOData<IPfsODataCollections>();
+            services.AddDbContext<PfsServerDbContext>();
+            services.AddLogging();
+            services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
+            services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -23,15 +35,10 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            loggerFactory.AddDebug();
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseOData("odata");
+            app.UseMvc();
         }
     }
 }
