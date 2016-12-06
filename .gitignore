@@ -9,7 +9,9 @@ PFS.Server.Core/bin
 /packages
 /PFS.Server.DbProvider.Ef.MsSqlOData/bin
 /PFS.Server.DbProvider.Ef.MsSqlOData/obj
+/PFS.Server.DbProvider.Ef.MsSqlOData/App_Data
 /PFS.Server.DbProvider.EfCore.SqLiteOData/bin
 /PFS.Server.DbProvider.EfCore.SqLiteOData/obj
 node_modules
+
 

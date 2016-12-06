@@ -12,20 +12,23 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            //Web API configuration and services
             var builder = new ODataConventionModelBuilder();
             builder.EntitySet<Tag>("Tags");
 
-            config.MapODataServiceRoute("odata", null, builder.GetEdmModel());
+            config.MapODataServiceRoute("ODataWebApi", "odata", builder.GetEdmModel());
 
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            // enable all queries in odata by default
+            // also you can enable for specific entitites only:
+            // builder.EntitySet<DB.Project>("Projects"); //your line of code
+            // builder.EntityType<DB.Project>().Filter("ProjectID");
+            config
+                .Count()
+                .Filter()
+                .OrderBy()
+                .Expand()
+                .Select()
+                .MaxTop(null);
         }
     }
 }

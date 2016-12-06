@@ -11,6 +11,7 @@ using System.Web.OData;
 
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
 {
+    [EnableQuery]
     public class TagsController: ODataController
     {
         private readonly IPfsRepository<Tag> Rep;
@@ -20,26 +21,19 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             Rep = rep;
         }
 
-        private List<Tag> _tags = new List<Tag>()
-        {
-            new Tag() { Id = 1, Name= "Test1" },
-            new Tag() { Id = 2, Name= "Test2" },
-            new Tag() { Id = 3, Name= "Test3" },
-            new Tag() { Id = 4, Name= "Test4" },
-            new Tag() { Id = 5, Name= "Test5" },
-
-        };
-
+        [EnableQuery]
         public IQueryable<Tag> Get()
         {
             return Rep.Get().AsQueryable();
         }
 
+        [EnableQuery]
         public Tag Get(int id)
         {
             return Rep.Get(id);
         }
 
+        [HttpPost]
         public HttpResponseMessage Post(Tag entity)
         {
             Rep.Post(entity);
@@ -47,16 +41,18 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
 
-        public HttpResponseMessage Put(int id, [FromBody]Tag entity)
+        [HttpPut]
+        public HttpResponseMessage Put([FromODataUri]int key, [FromBody]Tag entity)
         {
-            Rep.Put(id, entity);
+            Rep.Put(key, entity);
 
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
 
-        public HttpResponseMessage Delete(int id)
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromODataUri]int key)
         {
-            Rep.Delete(id);
+            Rep.Delete(key);
 
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }

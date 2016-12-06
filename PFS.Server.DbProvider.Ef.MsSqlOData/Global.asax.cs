@@ -3,6 +3,7 @@ using Autofac.Integration.WebApi;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
 using PFS.Server.Core.Repositories;
+using PFS.Server.DbProvider.Ef.MsSqlOData.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,11 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
             var builder = new ContainerBuilder();
             var config = GlobalConfiguration.Configuration;
 
+            // Register DbContext
+            builder.RegisterType<PfsServerDbContext>().As<IPfsDbContext>().SingleInstance();
+
             // Register repositories
-            //builder.RegisterType<TagsRepository>().As<IPfsRepository<Tag>>().SingleInstance();
+            builder.RegisterType<TagsRepository>().As<IPfsRepository<Tag>>().SingleInstance();
 
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
