@@ -4,3 +4,5 @@ PFS.Server.MvcApp/bin
 PFS.Server.MvcApp/typings
 PFS.Server.MvcApp/wwwroot
 .vs
+PFS.Server.Repository.SQLiteOData/node_modules
+PFS.Server.Repository.SQLiteOData/db
