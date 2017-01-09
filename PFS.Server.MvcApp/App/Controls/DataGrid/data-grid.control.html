@@ -2,43 +2,12 @@
      <table class="table table-bordered table-hover table-striped">
          <thead>
              <tr>
-                 <th>A</th>
-                 <th>B</th>
-                 <th>C</th>
-                 <th>D</th>
+                 <th *ngFor="let column of Columns">{{column.headerText}}</th>
              </tr>
          </thead>
          <tbody>
-             <tr>
-                 <td>A</td>
-                 <td>B</td>
-                 <td>C</td>
-                 <td>D</td>
-             </tr>
-             <tr>
-                 <td>A</td>
-                 <td>B</td>
-                 <td>C</td>
-                 <td>D</td>
-             </tr>
-             <tr>
-                 <td>A</td>
-                 <td>B</td>
-                 <td>C</td>
-                 <td>D</td>
-             </tr>
-             <tr>
-                 <td>A</td>
-                 <td>B</td>
-                 <td>C</td>
-                 <td>D</td>
-             </tr>
-             <tr>
-                 <td>A</td>
-                 <td>B</td>
-                 <td>C</td>
-                 <td>D</td>
-             </tr>
+             
          </tbody>
      </table>
 </div>
+<ng-content></ng-content>

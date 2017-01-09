@@ -25,6 +25,7 @@ import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated
 import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
 import { DataGridControl } from './DataGrid/data-grid.control';
+import { TextColumn } from './DataGrid/Columns/text.column';
 
 //import {TypeaheadControl} from "./Typeahead/typeahead.control";
 //import {SearchInputControl} from "./Typeahead/search-input.control";
@@ -56,7 +57,8 @@ import { DataGridControl } from './DataGrid/data-grid.control';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl
+        DataGridControl,
+        TextColumn
         // TypeaheadControl,
         //SearchInputControl
        
@@ -81,7 +83,8 @@ import { DataGridControl } from './DataGrid/data-grid.control';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl
+        DataGridControl,
+        TextColumn
        // TypeaheadControl,
         //SearchInputControl
     ]
