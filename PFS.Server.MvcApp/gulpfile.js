@@ -56,6 +56,18 @@ gulp.task("build-bootstrap", function () {
         .pipe(gulp.dest("wwwroot/npmlibs" + '/bootstrap/'));
 });
 
+gulp.task("build-jaydata", function () {
+    gulp
+        .src("./JsLibs/" + '/jaydata/jaydata.js')
+        .pipe(gulp.dest("wwwroot/npmlibs" + '/jaydata/'));
+});
+
+gulp.task("build-datajs", function () {
+    gulp
+        .src("./JsLibs/" + '/datajs/datajs-1.0.3.js')
+        .pipe(gulp.dest("wwwroot/npmlibs" + '/datajs/'));
+});
+
 gulp.task('install-deps', [
     "build-shim"
     , "build-zone"
@@ -63,6 +75,8 @@ gulp.task('install-deps', [
     , "build-systemjs"
     , "build-angular"
     , "build-bootstrap"
+    , "build-jaydata"
+    , "build-datajs"
 ]);
 
 

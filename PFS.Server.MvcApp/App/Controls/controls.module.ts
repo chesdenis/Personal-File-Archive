@@ -22,7 +22,9 @@ import {BlankBoxImageControl} from './ImagesGroupPreview/BlankBox/blank-box-imag
 import {ImagesGroupPreviewBlankBoxControl} from './ImagesGroupPreview/BlankBox/images-group-preview.blank-box.control';
 
 import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated-box-image.control';
-import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
+import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
+
+import { DataGridControl } from './DataGrid/data-grid.control';
 
 //import {TypeaheadControl} from "./Typeahead/typeahead.control";
 //import {SearchInputControl} from "./Typeahead/search-input.control";
@@ -53,7 +55,9 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         CalendarControl,
         DatetimePickerControl,
         ImageItemControl,
-       // TypeaheadControl,
+
+        DataGridControl
+        // TypeaheadControl,
         //SearchInputControl
        
     ],
@@ -76,6 +80,8 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         CalendarControl,
         DatetimePickerControl,
         ImageItemControl,
+
+        DataGridControl
        // TypeaheadControl,
         //SearchInputControl
     ]

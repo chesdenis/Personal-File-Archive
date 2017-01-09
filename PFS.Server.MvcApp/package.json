@@ -31,9 +31,8 @@
     "typescript": "2.0.10",
     "jasmine-core": "~2.4.1",
     "typings": "2.0.0",
-
     "@types/node": "^6.0.46",
     "@types/jasmine": "^2.5.36",
-    "@types/core-js":"0.9.35"
+    "@types/core-js": "0.9.35"
   }
 }
