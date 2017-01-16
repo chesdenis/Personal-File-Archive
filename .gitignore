@@ -45,3 +45,7 @@ PFS.Server.MvcApp/wwwroot
 *.dll
 *.pdb
 /PFS.Server.EntityFramework.OData/PFS.Server.EntityFramework.OData/bin
+/PFS.Server.Repository.NetCoreOData/node_modules
+/PFS.Server.DbProvider.EfCore.SqLiteOData
+/PFS.Server.DbProvider.Ef.MsSqlOData/obj/Debug
+/PFS.Server.Core
