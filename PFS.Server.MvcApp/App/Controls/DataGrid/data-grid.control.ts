@@ -1,5 +1,9 @@
-﻿import { Component } from '@angular/core';
-import { IBaseColumn } from './columns/base.column';
+﻿import { Component, Input } from '@angular/core';
+import { BaseColumn } from './columns/base.column';
+
+import { GridHeader } from './parts/grid.header';
+import { GridBody } from './parts/grid.body';
+import { GridFooter } from './parts/grid.footer';
 
 @Component({
     moduleId: module.id,
@@ -7,9 +11,8 @@ import { IBaseColumn } from './columns/base.column';
     templateUrl: "./data-grid.control.html"
 })
 export class DataGridControl {
-    Columns: IBaseColumn[] = [];
 
-    includeColumn(column: IBaseColumn) {
-        this.Columns.push(column);
-    }
+    @Input() Header: GridHeader;
+    @Input() Body: GridBody;
+    @Input() Footer: GridFooter;
 }

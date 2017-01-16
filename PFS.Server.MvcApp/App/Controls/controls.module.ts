@@ -25,10 +25,6 @@ import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated
 import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
 import { DataGridControl } from './DataGrid/data-grid.control';
-import { TextColumn } from './DataGrid/Columns/text.column';
-
-//import {TypeaheadControl} from "./Typeahead/typeahead.control";
-//import {SearchInputControl} from "./Typeahead/search-input.control";
 
 @NgModule({
     imports: [
@@ -57,10 +53,7 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl,
-        TextColumn
-        // TypeaheadControl,
-        //SearchInputControl
+        DataGridControl
        
     ],
     exports: [
@@ -83,10 +76,7 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl,
-        TextColumn
-       // TypeaheadControl,
-        //SearchInputControl
+        DataGridControl
     ]
 })
 export class ControlsModule { }

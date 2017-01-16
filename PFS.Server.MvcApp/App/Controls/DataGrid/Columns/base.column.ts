@@ -1,3 +1,3 @@
-﻿export interface IBaseColumn {
+﻿export class BaseColumn {
     headerText: string;
 }
