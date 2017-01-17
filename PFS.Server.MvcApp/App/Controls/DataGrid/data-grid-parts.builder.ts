@@ -46,6 +46,7 @@ export class DataGridPartsBuilder
 
             let textColumn = new TextColumn();
             textColumn.headerText = value;
+            textColumn.isVisible = true;
 
             this.columns.push(textColumn);
         });
@@ -59,6 +60,8 @@ export class DataGridPartsBuilder
             
             retVal.includeColumn(value);
         });
+
+        retVal.prepareRender();
         
         return retVal;
 

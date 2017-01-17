@@ -15,4 +15,14 @@ export class DataGridControl {
     @Input() Header: GridHeader;
     @Input() Body: GridBody;
     @Input() Footer: GridFooter;
+
+    isConfigMode: boolean = false;
+    switchToConfigView() {
+        this.isConfigMode = true;
+    }
+    switchToDataView() {
+        this.Header.prepareRender();
+        this.isConfigMode = false;
+    }
 }
+
