@@ -2,7 +2,7 @@
 import { BaseColumn } from '../../Controls/DataGrid/Columns/base.column';
 import { TextColumn } from '../../Controls/DataGrid/Columns/text.column';
 import { DropdownColumn } from '../../Controls/DataGrid/Columns/dropdown.column';
-
+import { DataGridSettingsConfig } from '../../Controls/DataGrid/Configs/data-grid-settings.config';
 
 @Component({
     moduleId: module.id,
@@ -12,6 +12,9 @@ import { DropdownColumn } from '../../Controls/DataGrid/Columns/dropdown.column'
 export class NoFilterComponent {
     columns: BaseColumn[] = [];
     rows: any[] = [];
+    settings: DataGridSettingsConfig = {
+        isConfigMode: true
+    } 
 
     constructor() {
         let col1: TextColumn = new TextColumn();

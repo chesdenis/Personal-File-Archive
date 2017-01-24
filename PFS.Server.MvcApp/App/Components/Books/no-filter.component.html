@@ -1,9 +1,9 @@
 ﻿<div>books no filter</div>
 
-<div data-grid-settings>
+<div data-grid-settings >
     <div data-grid-toolbar>
-        <button switch-mode-to-config></button>
-        <button switch-mode-to-data></button>
+        <button  *ngIf="!settings.isConfigMode" [settings]="settings" switch-mode-to-config></button>
+        <button  *ngIf="settings.isConfigMode" [settings]="settings" switch-mode-to-data></button>
     </div>
     <div data-grid>
         <table data-grid-table>

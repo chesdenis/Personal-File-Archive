@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { BaseButton } from './base.button';
+import { DataGridSettingsConfig } from '../Configs/data-grid-settings.config';
 
 @Component({
     selector: "button[switch-mode-to-data]",
@@ -14,12 +15,15 @@ export class SwitchModeToDataButton extends BaseButton implements OnInit  {
     hostClass: string = "btn btn-default";
     hostType: string = "button";
 
+    @Input() settings: DataGridSettingsConfig;
+
     constructor() {
         super();
     }
 
     hostClick() {
         console.log(" SwitchModeToDataButton hostClick");
+        this.settings.isConfigMode = false;
     }
 
     onEvent() {
