@@ -1,1 +1,26 @@
 ﻿<div>books no filter</div>
+
+<div data-grid-settings>
+    <div data-grid-toolbar>
+        <button switch-mode-to-config></button>
+        <button switch-mode-to-data></button>
+    </div>
+    <div data-grid>
+        <table data-grid-table>
+            <thead data-grid-header [columns]="columns"></thead>
+            <tbody data-grid-body [rows]="rows"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div data-grid>
+    <table data-grid-table>
+        <thead data-grid-header [columns]="columns">
+        </thead>
+        <tbody data-grid-body [rows]="rows"></tbody>
+    </table>
+</div>
+
+
+

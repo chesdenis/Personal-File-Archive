@@ -24,8 +24,20 @@ import {ImagesGroupPreviewBlankBoxControl} from './ImagesGroupPreview/BlankBox/i
 import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated-box-image.control';
 import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
-import { DataGridControl } from './DataGrid/data-grid.control';
+import { DataGridComponent } from './DataGrid/Components/data-grid.component';
+import { DataGridTablePart } from './DataGrid/Parts/data-grid-table.part';
+import { DataGridHeaderPart } from './DataGrid/Parts/data-grid-header.part';
+import { DataGridBodyPart } from './DataGrid/Parts/data-grid-body.part';
+import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
 
+import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
+import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
+
+import { BaseColumn } from './DataGrid/Columns/base.column';
+import { DropdownColumn} from './DataGrid/Columns/dropdown.column';
+import { TextColumn } from './DataGrid/Columns/text.column';
+
+ 
 @NgModule({
     imports: [
         CommonModule,
@@ -53,8 +65,11 @@ import { DataGridControl } from './DataGrid/data-grid.control';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl
-       
+        DataGridComponent, DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+        DataGridToolbarPart,
+        SwitchModeToConfigButton, SwitchModeToDataButton,
+        BaseColumn, DropdownColumn, TextColumn
+
     ],
     exports: [
         NavTopBarControl,
@@ -76,7 +91,11 @@ import { DataGridControl } from './DataGrid/data-grid.control';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridControl
+        DataGridComponent, DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+        DataGridToolbarPart,
+        SwitchModeToConfigButton, SwitchModeToDataButton,
+        BaseColumn, DropdownColumn, TextColumn
+         
     ]
 })
 export class ControlsModule { }
