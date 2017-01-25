@@ -13,7 +13,8 @@ export class NoFilterComponent {
     columns: BaseColumn[] = [];
     rows: any[] = [];
     settings: DataGridSettingsConfig = {
-        isConfigMode: true
+        isConfigMode: false,
+        columns: this.columns
     } 
 
     constructor() {

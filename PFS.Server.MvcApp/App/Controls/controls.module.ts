@@ -25,6 +25,8 @@ import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated
 import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
 import { DataGridComponent } from './DataGrid/Components/data-grid.component';
+import { DataGridWithSettingsComponent } from './DataGrid/Components/data-grid-with-settings.component';
+
 import { DataGridTablePart } from './DataGrid/Parts/data-grid-table.part';
 import { DataGridHeaderPart } from './DataGrid/Parts/data-grid-header.part';
 import { DataGridBodyPart } from './DataGrid/Parts/data-grid-body.part';
@@ -32,6 +34,8 @@ import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
 
 import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
 import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
+
+import { VisibleColumnsOnlyPipe } from './DataGrid/Pipes/visible-columns-only.pipe';
 
 import { BaseColumn } from './DataGrid/Columns/base.column';
 import { DropdownColumn} from './DataGrid/Columns/dropdown.column';
@@ -65,7 +69,9 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridComponent, DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+        DataGridComponent, DataGridWithSettingsComponent,
+        VisibleColumnsOnlyPipe,
+        DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
         BaseColumn, DropdownColumn, TextColumn
@@ -91,7 +97,10 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         DatetimePickerControl,
         ImageItemControl,
 
-        DataGridComponent, DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+
+        DataGridComponent, DataGridWithSettingsComponent,
+        VisibleColumnsOnlyPipe,
+        DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
         BaseColumn, DropdownColumn, TextColumn

@@ -1,23 +1,16 @@
 ﻿<div>books no filter</div>
 
-<div data-grid-settings >
-    <div data-grid-toolbar>
-        <button  *ngIf="!settings.isConfigMode" [settings]="settings" switch-mode-to-config></button>
-        <button  *ngIf="settings.isConfigMode" [settings]="settings" switch-mode-to-data></button>
-    </div>
-    <div data-grid>
-        <table data-grid-table>
-            <thead data-grid-header [columns]="columns"></thead>
-            <tbody data-grid-body [rows]="rows"></tbody>
-        </table>
-    </div>
+<div data-grid-with-settings [settings]="settings">
+    <table data-grid-table>
+        <thead data-grid-header [columns]="columns"></thead>
+        <tbody data-grid-body [rows]="rows"></tbody>
+    </table>
 </div>
 
 
 <div data-grid>
     <table data-grid-table>
-        <thead data-grid-header [columns]="columns">
-        </thead>
+        <thead data-grid-header [columns]="columns"></thead>
         <tbody data-grid-body [rows]="rows"></tbody>
     </table>
 </div>

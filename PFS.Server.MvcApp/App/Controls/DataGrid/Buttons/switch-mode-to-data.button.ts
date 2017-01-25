@@ -24,6 +24,7 @@ export class SwitchModeToDataButton extends BaseButton implements OnInit  {
     hostClick() {
         console.log(" SwitchModeToDataButton hostClick");
         this.settings.isConfigMode = false;
+        this.settings.columns = this.settings.columns;
     }
 
     onEvent() {

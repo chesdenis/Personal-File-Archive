@@ -5,7 +5,7 @@ import { BaseColumn } from '../Columns/base.column';
     selector: "thead[data-grid-header]",
     template: `
 <tr>
-<th *ngFor="let column of columns">
+<th *ngFor="let column of columns | visibleColumnsOnly">
  <text-column *ngIf="column.type=='text'" [config]="column.config"></text-column>
  <dropdown-column *ngIf="column.type=='dropdown'" [config]="column.config"></dropdown-column>
 </th>
@@ -13,10 +13,7 @@ import { BaseColumn } from '../Columns/base.column';
 })
 export class DataGridHeaderPart implements OnInit {
     @Input() columns: BaseColumn[];
-    addColumn(column: BaseColumn) {
-        this.columns.push(column);
-    }
-
+    
     ngOnInit() {
         console.log("DataGridHeader initiated");
     }
