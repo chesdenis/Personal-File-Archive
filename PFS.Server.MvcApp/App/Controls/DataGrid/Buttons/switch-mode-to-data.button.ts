@@ -1,14 +1,14 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
-import { BaseButton } from './base.button';
-import { DataGridSettingsConfig } from '../Configs/data-grid-settings.config';
+﻿import { Component, OnInit, Input } from "@angular/core";
+import { BaseButton } from "./base.button";
+import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 
 @Component({
     selector: "button[switch-mode-to-data]",
     template: `<span class="glyphicon glyphicon-eye-open"></span>`,
     host: {
-        '[class]': 'hostClass',
-        '[attr.type]': 'hostType',
-        '(click)': 'hostClick()'
+        "[class]": "hostClass",
+        "[attr.type]": "hostType",
+        "(click)": "hostClick()"
     }
 })
 export class SwitchModeToDataButton extends BaseButton implements OnInit  {
@@ -21,17 +21,17 @@ export class SwitchModeToDataButton extends BaseButton implements OnInit  {
         super();
     }
 
-    hostClick() {
+    hostClick():void {
         console.log(" SwitchModeToDataButton hostClick");
         this.settings.isConfigMode = false;
-        this.settings.columns = this.settings.columns;
+        this.settings.buildRenderedColumns();
     }
 
-    onEvent() {
+    onEvent():void {
         console.log("SwitchModeToDataButton outside event");
     }
 
-    ngOnInit() {
+    ngOnInit():void {
         console.log("SwitchModeToDataButton initiated");
     }
 }

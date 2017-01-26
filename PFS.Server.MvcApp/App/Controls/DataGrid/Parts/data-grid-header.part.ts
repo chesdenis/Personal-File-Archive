@@ -1,20 +1,29 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
-import { BaseColumn } from '../Columns/base.column';
+﻿import { Component, OnInit, Input } from "@angular/core";
+import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 
 @Component({
     selector: "thead[data-grid-header]",
     template: `
 <tr>
-<th *ngFor="let column of columns | visibleColumnsOnly">
- <text-column *ngIf="column.type=='text'" [config]="column.config"></text-column>
- <dropdown-column *ngIf="column.type=='dropdown'" [config]="column.config"></dropdown-column>
+<th *ngFor="let column of settings.renderedColumns">
+
+ <text-column *ngIf="column.type=='text'" 
+[internalName]="column.internalName" 
+[headerText]="column.headerText" 
+[isVisible]="column.isVisible"></text-column>
+
+ <dropdown-column *ngIf="column.type=='dropdown'" 
+[internalName]="column.internalName" 
+[headerText]="column.headerText" 
+[isVisible]="column.isVisible"></dropdown-column>
+
 </th>
 </tr>`
 })
 export class DataGridHeaderPart implements OnInit {
-    @Input() columns: BaseColumn[];
-    
-    ngOnInit() {
+    @Input() settings: DataGridSettingsConfig;
+
+    ngOnInit():void {
         console.log("DataGridHeader initiated");
     }
 }

@@ -1,13 +1,14 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component, OnInit, Input } from "@angular/core";
+import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 
 @Component({
     selector: "tbody[data-grid-body]",
     template: `<ng-content></ng-content>`
 })
 export class DataGridBodyPart implements OnInit {
-    @Input() rows: any[];
+    @Input() settings: DataGridSettingsConfig;
 
-    ngOnInit() {
+    ngOnInit():void {
         console.log("DataGridBodyPart initiated");
     }
 }

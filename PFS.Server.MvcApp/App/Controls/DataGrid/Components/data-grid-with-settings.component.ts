@@ -1,7 +1,5 @@
-﻿import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { DataGridToolbarPart } from '../Parts/data-grid-toolbar.part';
-import { DataGridSettingsConfig } from '../Configs/data-grid-settings.config';
-import { DataGridComponent } from './data-grid.component';
+﻿import { Component, OnInit, Input } from "@angular/core";
+import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 
 @Component({
     selector: "div[data-grid-with-settings]",
@@ -14,7 +12,7 @@ import { DataGridComponent } from './data-grid.component';
         <p>Columns visibility:</p>
         <ul class="list-group">
             <li *ngFor="let column of settings.columns" class="list-group-item">
-                <label><input type="checkbox" [(ngModel)]="column.config.isVisible">{{column.config.headerText}}</label>
+                <label><input type="checkbox" [(ngModel)]="column.isVisible">{{column.headerText}}</label>
             </li>
         </ul>
 </div>
@@ -22,17 +20,15 @@ import { DataGridComponent } from './data-grid.component';
 <ng-content></ng-content>
 </div>`,
     host: {
-        '[class]':'hostCssClass'
+        "[class]":"hostCssClass"
     }
 })
 export class DataGridWithSettingsComponent implements OnInit {
-    hostCssClass: string = "panel panel-default";   
+    hostCssClass: string = "panel panel-default";
 
     @Input() settings: DataGridSettingsConfig;
-        
-    ngOnInit() {
-        console.log("DataGridSettingsComponent init...")
-        
+
+    ngOnInit():void {
+        console.log("DataGridSettingsComponent init...");
     }
-     
 }

@@ -35,8 +35,6 @@ import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
 import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
 import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
 
-import { VisibleColumnsOnlyPipe } from './DataGrid/Pipes/visible-columns-only.pipe';
-
 import { BaseColumn } from './DataGrid/Columns/base.column';
 import { DropdownColumn} from './DataGrid/Columns/dropdown.column';
 import { TextColumn } from './DataGrid/Columns/text.column';
@@ -70,7 +68,6 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         ImageItemControl,
 
         DataGridComponent, DataGridWithSettingsComponent,
-        VisibleColumnsOnlyPipe,
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
@@ -99,7 +96,6 @@ import { TextColumn } from './DataGrid/Columns/text.column';
 
 
         DataGridComponent, DataGridWithSettingsComponent,
-        VisibleColumnsOnlyPipe,
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
