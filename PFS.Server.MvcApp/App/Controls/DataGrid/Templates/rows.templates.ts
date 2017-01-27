@@ -1,17 +1,14 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 
-
 @Component({
-    selector: "base-column",
+    selector: "base-row",
     template: `<ng-content></ng-content>`
 })
-export class BaseColumn {
+export class BaseRowsTemplate {
     type: string;
 
-    @Input() internalName: string;
-    @Input() headerText: string;
-    @Input() isVisible: boolean;
-
+    @Input() row: any;
+    
     constructor() {
         this.type = "base";
     }

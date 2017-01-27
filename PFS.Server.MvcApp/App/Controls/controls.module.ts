@@ -35,10 +35,8 @@ import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
 import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
 import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
 
-import { BaseColumn } from './DataGrid/Columns/base.column';
-import { DropdownColumn} from './DataGrid/Columns/dropdown.column';
-import { TextColumn } from './DataGrid/Columns/text.column';
-
+import { BaseCellTemplate, TextCellTemplate, DropdownCellTemplate } from './DataGrid/Templates/cells.templates';
+import { BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate } from './DataGrid/Templates/columns.templates';
  
 @NgModule({
     imports: [
@@ -68,10 +66,14 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         ImageItemControl,
 
         DataGridComponent, DataGridWithSettingsComponent,
+
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
-        BaseColumn, DropdownColumn, TextColumn
+
+        BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
+        BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
 
     ],
     exports: [
@@ -95,11 +97,16 @@ import { TextColumn } from './DataGrid/Columns/text.column';
         ImageItemControl,
 
 
+
         DataGridComponent, DataGridWithSettingsComponent,
+
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+
         DataGridToolbarPart,
         SwitchModeToConfigButton, SwitchModeToDataButton,
-        BaseColumn, DropdownColumn, TextColumn
+
+        BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
+        BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
          
     ]
 })

@@ -12,7 +12,7 @@ import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 [headerText]="column.headerText" 
 [isVisible]="column.isVisible"></text-column>
 
- <dropdown-column *ngIf="column.type=='dropdown'" 
+ <dropdown-column *ngIf="column.type=='dropdown'"  
 [internalName]="column.internalName" 
 [headerText]="column.headerText" 
 [isVisible]="column.isVisible"></dropdown-column>
@@ -22,6 +22,7 @@ import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 })
 export class DataGridHeaderPart implements OnInit {
     @Input() settings: DataGridSettingsConfig;
+    renderZone: string = "Header";
 
     ngOnInit():void {
         console.log("DataGridHeader initiated");
