@@ -84,8 +84,7 @@
       <HintPath>..\packages\Microsoft.Spatial.7.0.0\lib\portable-net45+win8+wpa81\Microsoft.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PFS.Server.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PFS.Server.Core">
       <HintPath>..\PFS.Server.Core\bin\Debug\net451\PFS.Server.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />

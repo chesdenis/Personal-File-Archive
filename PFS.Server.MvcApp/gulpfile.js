@@ -56,6 +56,18 @@ gulp.task("build-bootstrap", function () {
         .pipe(gulp.dest("wwwroot/npmlibs" + '/bootstrap/'));
 });
 
+gulp.task("build-jaydata", function () {
+    gulp
+        .src("./JsLibs/" + '/jaydata/jaydata.js')
+        .pipe(gulp.dest("wwwroot/npmlibs" + '/jaydata/'));
+});
+
+gulp.task("build-datajs", function () {
+    gulp
+        .src("./JsLibs/" + '/datajs/datajs-1.0.3.js')
+        .pipe(gulp.dest("wwwroot/npmlibs" + '/datajs/'));
+});
+
 gulp.task('install-deps', [
     "build-shim"
     , "build-zone"
@@ -63,6 +75,8 @@ gulp.task('install-deps', [
     , "build-systemjs"
     , "build-angular"
     , "build-bootstrap"
+    , "build-jaydata"
+    , "build-datajs"
 ]);
 
 
@@ -138,12 +152,14 @@ var debug = require('gulp-debug');
 
 gulp.task('watch-html', function () {
     return watch('./App/**/*.html', { ignoreInitial: false })
-        .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(debug())
+        .pipe(gulp.dest('./wwwroot'));
 });
 
 gulp.task('watch-css', function () {
     return watch('./App/**/*.css', { ignoreInitial: false })
-        .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(debug())
+        .pipe(gulp.dest('./wwwroot'));
 });
 
 gulp.task('watch-ts-multi-compile', function () {
@@ -154,7 +170,7 @@ gulp.task('watch-ts-multi-compile', function () {
     ])
         .pipe(sourcemaps.init())
         .pipe(tsProject())
-        //.pipe(debug())
+        .pipe(debug())
         .pipe(sourcemaps.write({
             sourceRoot: function (file) {
                 var sourceFile = path.join(file.cwd, file.sourceMap.file);
@@ -163,6 +179,11 @@ gulp.task('watch-ts-multi-compile', function () {
         }))
         .pipe(gulp.dest('./wwwroot/App'));
 });
+
+gulp.task('watch-html-css', [
+    'watch-html',
+    'watch-css'
+]);
 
 gulp.task('watch-ts-multi',
     ['watch-ts-multi-compile'],

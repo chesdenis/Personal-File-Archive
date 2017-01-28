@@ -22,11 +22,22 @@ import {BlankBoxImageControl} from './ImagesGroupPreview/BlankBox/blank-box-imag
 import {ImagesGroupPreviewBlankBoxControl} from './ImagesGroupPreview/BlankBox/images-group-preview.blank-box.control';
 
 import {AnimatedBoxImageControl} from './ImagesGroupPreview/AnimatedBox/animated-box-image.control';
-import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
+import { ImagesGroupPreviewAnimatedBoxControl } from './ImagesGroupPreview/AnimatedBox/images-group-preview.animated-box.control';
 
-//import {TypeaheadControl} from "./Typeahead/typeahead.control";
-//import {SearchInputControl} from "./Typeahead/search-input.control";
+import { DataGridComponent } from './DataGrid/Components/data-grid.component';
+import { DataGridWithSettingsComponent } from './DataGrid/Components/data-grid-with-settings.component';
 
+import { DataGridTablePart } from './DataGrid/Parts/data-grid-table.part';
+import { DataGridHeaderPart } from './DataGrid/Parts/data-grid-header.part';
+import { DataGridBodyPart } from './DataGrid/Parts/data-grid-body.part';
+import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
+
+import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
+import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
+
+import { BaseCellTemplate, TextCellTemplate, DropdownCellTemplate } from './DataGrid/Templates/cells.templates';
+import { BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate } from './DataGrid/Templates/columns.templates';
+ 
 @NgModule({
     imports: [
         CommonModule,
@@ -53,9 +64,17 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         CalendarControl,
         DatetimePickerControl,
         ImageItemControl,
-       // TypeaheadControl,
-        //SearchInputControl
-       
+
+        DataGridComponent, DataGridWithSettingsComponent,
+
+        DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+
+        DataGridToolbarPart,
+        SwitchModeToConfigButton, SwitchModeToDataButton,
+
+        BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
+        BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
+
     ],
     exports: [
         NavTopBarControl,
@@ -76,8 +95,19 @@ import {ImagesGroupPreviewAnimatedBoxControl} from './ImagesGroupPreview/Animate
         CalendarControl,
         DatetimePickerControl,
         ImageItemControl,
-       // TypeaheadControl,
-        //SearchInputControl
+
+
+
+        DataGridComponent, DataGridWithSettingsComponent,
+
+        DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
+
+        DataGridToolbarPart,
+        SwitchModeToConfigButton, SwitchModeToDataButton,
+
+        BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
+        BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
+         
     ]
 })
 export class ControlsModule { }
