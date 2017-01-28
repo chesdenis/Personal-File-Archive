@@ -1,22 +1,17 @@
 ﻿using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace PFS.Server.Core.Repositories
 {
     public class TagsRepository : IPfsRepository<Tag>
     {
         protected readonly IPfsDbContext DbCtx;
-        protected readonly ILogger Logger;
 
-        public TagsRepository(IPfsDbContext dbCtx, ILoggerFactory loggerFactory) 
+        public TagsRepository(IPfsDbContext dbCtx) 
         {
             DbCtx = dbCtx;
-            Logger = loggerFactory.CreateLogger(typeof(TagsRepository));
         }
 
         public IEnumerable<Tag> Get()

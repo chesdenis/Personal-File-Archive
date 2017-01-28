@@ -148,10 +148,9 @@ gulp.task('watch-css', function () {
 
 gulp.task('watch-ts-multi-compile', function () {
     return gulp.src(["./App/**/*.ts",
-                    './typings/globals/core-js/index.d.ts',
-                    './typings/globals/jasmine/index.d.ts',
-                    './typings/globals/node/index.d.ts',
-                    './typings/index.d.ts'
+                    './node_modules/@types/core-js/index.d.ts',
+                    './node_modules/@types/jasmine/index.d.ts',
+                    './node_modules/@types/node/index.d.ts'
     ])
         .pipe(sourcemaps.init())
         .pipe(tsProject())
@@ -176,10 +175,9 @@ gulp.task('watch-ts-single', function () {
         var filePath = "./App/" + vinyl.relative.split('\\').join('/');
         gulp.src([
             filePath,
-            './typings/globals/core-js/index.d.ts',
-            './typings/globals/jasmine/index.d.ts',
-            './typings/globals/node/index.d.ts',
-            './typings/index.d.ts'
+                    './node_modules/@types/core-js/index.d.ts',
+                    './node_modules/@types/jasmine/index.d.ts',
+                    './node_modules/@types/node/index.d.ts'
         ])
             //.pipe(debug())
             .pipe(sourcemaps.init())
