@@ -13,7 +13,6 @@ namespace PFS.Server.MvcApp
         public static void Main(string[] args)
         {
             var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("hosting.json", optional:true)
                 .Build();
 
