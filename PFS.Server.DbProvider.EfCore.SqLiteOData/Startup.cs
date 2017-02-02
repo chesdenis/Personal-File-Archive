@@ -12,6 +12,7 @@ using PFS.Server.Core.Entities;
 using PFS.Server.Core.Repositories;
 using Microsoft.AspNetCore.OData.Extensions;
 using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
+using Microsoft.AspNetCore.OData.Builder;
 
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 {
@@ -22,8 +23,20 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddCors();
             
-            services.AddOData<IPfsODataCollections>();
+            services.AddOData<IPfsODataCollections>(builder=> {
+                var entitySets = builder.EntitySets;
+                var eSetsNames = builder.EntitySets.Select(s => s.Name).ToArray();
+
+                foreach (var eSetName in eSetsNames)
+                {
+                    if (eSetName.EndsWith("Provider")) {
+                        builder.RemoveEntitySet(eSetName);
+                    }
+                }
+            });
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
@@ -34,8 +47,13 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-
             loggerFactory.AddDebug();
+
+            app.UseCors(builder => 
+            builder
+            .WithOrigins("http://localhost:5000")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
             app.UseOData("odata");
             app.UseMvc();

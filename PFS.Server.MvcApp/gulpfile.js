@@ -58,7 +58,7 @@ gulp.task("build-bootstrap", function () {
 
 gulp.task("build-jaydata", function () {
     gulp
-        .src("./JsLibs/" + '/jaydata/jaydata.js')
+        .src("./JsLibs/" + '/jaydata/**/*.js')
         .pipe(gulp.dest("wwwroot/npmlibs" + '/jaydata/'));
 });
 
