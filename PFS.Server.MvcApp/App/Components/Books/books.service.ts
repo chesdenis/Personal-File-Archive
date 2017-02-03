@@ -3,102 +3,95 @@ import { GenericService } from '../Generic/generic-service';
 import { Book, mockBooks } from '../../Model/book';
 
 import "jaydata/odata";
-import { type, factory, PFS, $data } from '../../Contexts/db.odata.context';
+import { type, dbContextFactory, PFS, Default, $data } from '../../Contexts/db.odata.context';
 import { DataGridSettingsConfig } from '../../Controls/DataGrid/Configs/data-grid-settings.config';
 import { TextColumnTemplate, DropdownColumnTemplate } from '../../Controls/DataGrid/Templates/columns.templates';
 
 @Injectable()
 export class BooksService extends GenericService<Book>  {
+
+    private dbContext: Default.Container = null;
+    private isDbContextExist: boolean = false;
+
     constructor() {
         super(mockBooks);
+
+        dbContextFactory({}).onReady().then((ctx) => {
+            this.dbContext = ctx;
+        });
     }
 
-    getTagsUsingOData(): Promise<any[]> {
+    initDbContext(): Promise<Default.Container> {
+        const retVal = new Promise<Default.Container>((resolve) => {
+            if (this.isDbContextExist) {
+                resolve(this.dbContext);
+            }
 
-        let retVal = new Promise<any[]>(resolve => {
-
-            factory({}).onReady().then((ctx) => {
-                console.log("ready");
-                resolve(ctx.Tags.toArray());
-            });
-
-            //factory({
-            //    name: "oData",
-            //    oDataServiceHost: "http://localhost:5020/odata"
-            //}).onReady((ctx) => {
-            //    console.log("ready");
-            //});
-
-            //var dbContext: any = new Default.Container( {
-            //    name: "oData",
-            //    oDataServiceHost: "http://localhost:5020/odata"
-            //});
-
-            //dbContext.onReady(()=> {
-            //    console.log("on ready");
-            //});
-
-            //dbCtx.onReady(() => {
-
-            //    console.log("ready jd");
-            //    resolve(dbCtx.Tags.toArray());
-
-            //});
-
-
-
+            dbContextFactory({}).onReady()
+                .then((ctx) => {
+                    this.dbContext = ctx;
+                    resolve(this.dbContext);
+                });
         });
-
-     
 
         return retVal;
-         
     }
 
-    getBooksGridSettings(): Promise<DataGridSettingsConfig> {
-        return this.getEntitiesAsync().then((books) => {
-
-            return new Promise<DataGridSettingsConfig>(resolve => {
-                let retVal = new DataGridSettingsConfig();
-
-                let colId = new TextColumnTemplate();
-                colId.internalName = "Id";
-                colId.headerText = "ИД";
-                colId.isVisible = true;
-
-                let colName = new TextColumnTemplate();
-                colName.internalName = "Name";
-                colName.headerText = "Название";
-                colName.isVisible = true; 
-
-
-                let colGuid = new TextColumnTemplate();
-                colGuid.internalName = "Guid";
-                colGuid.headerText = "УИД";
-                colGuid.isVisible = true; 
-                
-                let colPath = new TextColumnTemplate();
-                colPath.internalName = "Path";
-                colPath.headerText = "Путь";
-                colPath.isVisible = true; 
-
-                let colTags = new DropdownColumnTemplate();
-                colTags.internalName = "Tags";
-                colTags.headerText = "Теги";
-                colTags.isVisible = true; 
-                colTags.choices = ["R", "T", "J", "H", "I"];
-                
-                retVal.columns.push(
-                    colId, colName, colGuid, colPath, colTags
-                );
-
-                retVal.rows = books.map(book => { return book });
-
-                retVal.buildRenderedColumns();
-                retVal.buildRenderedRows();
-
-                resolve(retVal);
-            });
+    initData(): Promise<PFS.Server.Core.Entities.Tag[]> {
+        const retVal = new Promise<PFS.Server.Core.Entities.Tag[]>((resolve) => {
+            resolve(this.dbContext.Tags.toArray());
         });
+
+        return retVal;
+    }
+
+    getTagsGridConfig(): Promise<DataGridSettingsConfig> {
+        const retVal = new Promise<DataGridSettingsConfig>((resolve, reject) => {
+
+            this.initDbContext()
+                .then(() => {
+                    this.initData().then(tags => {
+
+                        let gridConfig = new DataGridSettingsConfig();
+
+                        let colId = new TextColumnTemplate();
+                        colId.internalName = "Id";
+                        colId.headerText = "ИД";
+                        colId.isVisible = true;
+
+                        let colName = new TextColumnTemplate();
+                        colName.internalName = "Name";
+                        colName.headerText = "Название";
+                        colName.isVisible = true; 
+
+                        gridConfig.columns.push(
+                            colId, colName
+                        );
+
+                        gridConfig.rows = tags.map(tag => {
+
+                            let entity: any = {};
+
+                            gridConfig.columns.forEach((col) => {
+                                entity[col.internalName] = tag[col.internalName];
+                            });
+
+                            return entity;
+
+                        });
+
+                        console.log(gridConfig.rows);
+
+                        gridConfig.buildRenderedColumns();
+                        gridConfig.buildRenderedRows();
+
+                        resolve(gridConfig);
+                    });
+                });
+
+
+        });
+
+        return retVal;
     }
 }

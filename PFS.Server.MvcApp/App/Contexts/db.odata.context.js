@@ -6,18 +6,18 @@
     var types = {};
 
 
-    types['PFS.Server.Core.Entities.Tag'] = $data.Entity.extend('PFS.Server.Core.Entities.Tag', {
+    $data.Entity.extend('PFS.Server.Core.Entities.Tag', {
         'Id': { 'key': true, 'type': 'Edm.Int32', 'nullable': false, 'required': true },
         'Name': { 'type': 'Edm.String' }
     });
 
-    exports.type = types["Default.Container"] = $data.EntityContext.extend('Default.Container', {
-        'Tags': { type: $data.EntitySet, elementType: PFS.Server.Core.Entities.Tag }
+    exports.type = $data.EntityContext.extend('Default.Container', {
+        'Tags': { type: $data.EntitySet, elementType: 'PFS.Server.Core.Entities.Tag' }
     });
 
     var ctxType = exports.type;
 
-    exports.factory = function (config) {
+    exports.dbContextFactory = function (config) {
         if (ctxType) {
             var cfg = $data.typeSystem.extend({
                 name: "oData",

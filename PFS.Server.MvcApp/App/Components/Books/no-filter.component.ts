@@ -21,13 +21,9 @@ export class NoFilterComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.dataService.getTagsUsingOData().then(data => {
-            console.log(data);
+        this.dataService.getTagsGridConfig().then(settings => {
+            this.settings = settings;
         });
-
-        //this.dataService.getBooksGridSettings().then(settings => {
-        //    this.settings = settings;
-        //});
     }
 
 }

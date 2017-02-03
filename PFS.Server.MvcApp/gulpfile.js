@@ -76,7 +76,6 @@ gulp.task('install-deps', [
     , "build-angular"
     , "build-bootstrap"
     , "build-jaydata"
-    , "build-datajs"
 ]);
 
 
@@ -116,6 +115,11 @@ gulp.task('build-css', function () {
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
+gulp.task('copy-js', function () {
+    return gulp.src('./App/**/*.js')
+        .pipe(gulp.dest('./wwwroot/App'));
+});
+
 gulp.task('build-ts-debug', function () {
     return tsProject.src('./App/')
         .pipe(sourcemaps.init())
@@ -138,12 +142,15 @@ gulp.task('build-ts-release', function () {
 gulp.task('build-app-debug', [
     'build-html',
     'build-css',
-    'build-ts-debug'
+    'copy-js',
+    'build-ts-debug',
+
 ]);
 
 gulp.task('build-app-release', [
     'build-html',
     'build-css',
+    'copy-js',
     'build-ts-release'
 ]);
 
@@ -158,6 +165,12 @@ gulp.task('watch-html', function () {
 
 gulp.task('watch-css', function () {
     return watch('./App/**/*.css', { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(gulp.dest('./wwwroot'));
+});
+
+gulp.task('watch-js', function () {
+    return watch('./App/**/*.js', { ignoreInitial: false })
         .pipe(debug())
         .pipe(gulp.dest('./wwwroot'));
 });
@@ -180,9 +193,10 @@ gulp.task('watch-ts-multi-compile', function () {
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
-gulp.task('watch-html-css', [
+gulp.task('watch-html-css-js', [
     'watch-html',
-    'watch-css'
+    'watch-css',
+    'watch-js'
 ]);
 
 gulp.task('watch-ts-multi',
@@ -217,5 +231,6 @@ gulp.task('watch-ts-single', function () {
 gulp.task('watch-all', [
     'watch-html',
     'watch-css',
+    'watch-js',
     'watch-ts-multi'
 ]);
