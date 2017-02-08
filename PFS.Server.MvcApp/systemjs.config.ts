@@ -5,7 +5,10 @@ const map: any = {
     'app': 'app',
     '@angular': 'npmLibs/@angular',
     'angular2-in-memory-web-api': 'npmLibs/angular2-in-memory-web-api',
-    'rxjs': 'npmLibs/rxjs'
+    'rxjs': 'npmLibs/rxjs',
+    'jaydata/core': 'npmLibs/jaydata/jaydata.js',
+    'jaydata/odata': 'npmLibs/jaydata/jaydataproviders/oDataProvider.js',
+    './db.odata.context':'app/contexts/db.odata.context.js'
 }
 
 const packages: any = {
@@ -40,4 +43,21 @@ var ngPackageConfig = System.packageWithIndex ? ngPackIndex : ngPackUmd;
 // Add package entries for angular packages
 angularPkgs.forEach(ngPackageConfig);
 
-System.config({ map, packages });
+var config = {
+    map: map,
+    packages: packages,
+    meta: {
+        'jaydata/core': {
+            format: 'cjs'
+        },
+        'jaydata/odata': {
+            format: 'cjs',
+            deps: ['jaydata/core']
+        },
+        './db.odata.context': {
+            deps: ['jaydata/core', 'jaydata/odata']
+        }
+    }
+};
+
+System.config(config);
