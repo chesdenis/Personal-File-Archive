@@ -20,19 +20,21 @@
     "zone.js": "0.6.26"
   },
   "devDependencies": {
+    "@types/core-js": "0.9.35",
+    "@types/node": "^6.0.46",
     "gulp": "^3.9.1",
     "gulp-clean": "0.3.2",
     "gulp-cli": "1.2.2",
     "gulp-debug": "2.1.2",
+    "gulp-less": "3.3.0",
+    "gulp-livereload": "3.8.1",
     "gulp-sourcemaps": "1.6.0",
     "gulp-typescript": "3.0.1",
     "gulp-watch": "4.3.10",
+    "jasmine-core": "~2.4.1",
+    "run-sequence": "^1.2.2",
     "tsconfig": "5.0.3",
     "typescript": "2.0.10",
-    "jasmine-core": "~2.4.1",
-    "typings": "2.0.0",
-    "@types/node": "^6.0.46",
-    "@types/jasmine": "^2.5.36",
-    "@types/core-js": "0.9.35"
+    "typings": "2.0.0"
   }
 }
