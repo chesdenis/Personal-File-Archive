@@ -81,10 +81,14 @@ gulp.task('install-deps', [
 
 var ts = require('gulp-typescript');
 var less = require('gulp-less');
+var concat = require('gulp-concat');
+var concating = require('gulp-continuous-concat');
+ 
 var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
 
 var tsProject = ts.createProject("tsconfig.json");
+
 
 
 gulp.task('build-systemjs-config-debug', function () {
@@ -123,10 +127,9 @@ gulp.task('build-js', function () {
 
 gulp.task('build-less-debug', function () {
     return gulp.src('./App/**/*.less')
-        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(concat('index.css'))
+        .pipe(gulp.dest('./wwwroot/App/Styles/'));
 });
 
 
@@ -152,7 +155,8 @@ gulp.task('build-ts-release', function () {
 gulp.task('build-less-release', function () {
     return gulp.src('./App/**/*.less')
         .pipe(less())
-        .pipe(gulp.dest('./wwwroot/App'));
+        .pipe(concat('index.css'))
+        .pipe(gulp.dest('./wwwroot/App/Styles/'));
 });
 
 gulp.task('build-app-debug', [
@@ -189,10 +193,9 @@ gulp.task('watch-html', function () {
 gulp.task('watch-less', function () {
     return watch('./App/**/*.less', { ignoreInitial: false })
         .pipe(debug())
-        .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./wwwroot/App'))
+        .pipe(concating('index.css'))
+        .pipe(gulp.dest('./wwwroot/App/Styles/'))
         .pipe(livereload());;
 });
   
