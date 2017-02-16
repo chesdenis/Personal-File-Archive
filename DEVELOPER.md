@@ -87,7 +87,7 @@ dotnet run
 ```
 * If you go to use MsSql as DBEngine, then open new shell and run
 ```shell
-cd <path to .\Personal-File-Storage\PFS.Server.DbProvider.EfCore.SqLiteOData>
+cd <path to .\Personal-File-Storage\PFS.Server.DbProvider.Ef.MsSqlOData>
 dotnet restore
 dotnet run
 ```
