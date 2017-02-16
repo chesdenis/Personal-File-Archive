@@ -12,5 +12,9 @@ PFS is just a files server. Simple but useful.
 Want to file a bug, contribute some code, or improve documentation? Excellent! Read up on our
 guidelines for [contributing][contributing]
 
+## For contributors
+If you are contributor of this project, see [information for developer][developer].
+
+[developer]:/DEVELOPER.md
 [contributing]:/CONTRIBUTING.md
 [quickstart]:/QUICKSTART.md
