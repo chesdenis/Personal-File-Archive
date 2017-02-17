@@ -1,4 +1,4 @@
-﻿using PFS.Server.Core.Entities;
+﻿using PFS.Server.Core.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

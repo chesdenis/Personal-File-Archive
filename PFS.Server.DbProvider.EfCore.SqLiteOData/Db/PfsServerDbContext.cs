@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.Entities;
+using PFS.Server.Core.Shared.Abstractions;
+using PFS.Server.Core.Shared.Entities;
 using PFS.Server.DbProvider.EfCore.SqLiteOData.Db.Providers;
 using System;
 using System.Collections.Generic;

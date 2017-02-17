@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="..\PFS.Server.Core.Shared\PFS.Server.Core.Shared.projitems" Label="Shared" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>43efd201-b614-4c86-9a2b-e20be8faa3dd</ProjectGuid>
     <RootNamespace>PFS.Server.DbProvider.EfCore.SqLiteOData</RootNamespace>

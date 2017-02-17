@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.Entities;
+using PFS.Server.Core.Shared.Abstractions;
+using PFS.Server.Core.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

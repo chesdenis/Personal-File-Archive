@@ -8,7 +8,7 @@ using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
 {
     [DbContext(typeof(PfsServerDbContext))]
-    [Migration("20170130050158_PfsDbMigration")]
+    [Migration("20170217053353_PfsDbMigration")]
     partial class PfsDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

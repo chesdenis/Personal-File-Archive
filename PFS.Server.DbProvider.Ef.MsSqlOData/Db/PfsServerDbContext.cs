@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.Entities;
+using PFS.Server.Core.Shared.Abstractions;
+using PFS.Server.Core.Shared.Entities;
 using PFS.Server.DbProvider.Ef.MsSqlOData.Db.Providers;
 
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
