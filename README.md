@@ -23,6 +23,7 @@ guidelines for [contributing][contributing], but before you should know somethin
 * [Angular2][ang2]
 * [Asp .Net Core][aspnetcore]
 * [Entity Framework][ef]
+* [SqLite][sqlite]
 * [JayData][jaydata]
 * [Node.js][nodejs]
 * [Gulp][gulp]
@@ -30,6 +31,7 @@ guidelines for [contributing][contributing], but before you should know somethin
 
 ## For contributors
 If you are contributor of this project, see [information for developer][developer]. 
+
 
 [csharp]:https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx
 [ts]:https://www.typescriptlang.org/
@@ -42,6 +44,7 @@ If you are contributor of this project, see [information for developer][develope
 [jaydata]:http://jaydata.org/
 [nodejs]:https://nodejs.org/
 [gulp]:http://gulpjs.com/
+[sqlite]:https://www.sqlite.org/
 
 [developer]:/DEVELOPER.md
 [contributing]:/CONTRIBUTING.md

@@ -65,33 +65,32 @@ npm install -g gulp
 
 ## Building
 
-To build PFS run:
-
-* For frontend, open new shell and run:
+To build PFS you should:
+* Build frontend part. For this you can open new shell and run:
 ```shell
 cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-gulp default
+gulp
 ```
-* For backend, open new shell and run:
+This command will prepare/transpile necessary packets and files, copy these files to web root folder and start watching for *.less, *.html files change inside <.\Personal-File-Storage\PFS.Server.MvcApp\App> folder. 
+* In case of changing any *.ts file you should open another shell to rebuild all typescript files:
+```shell
+cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
+gulp build-all-debug
+```
+* Build backend, open new shell and run:
 ```shell
 cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
 dotnet restore
 dotnet run
 ```
-* If you go to use SqLite as DBEngine, then open new shell and run:
+* PFS uses database server to store some important information about user files, so you need to run database server also. This shell runs database server which is based on SqLite:
 ```shell
 cd <path to .\Personal-File-Storage\PFS.Server.DbProvider.EfCore.SqLiteOData>
 dotnet restore
-gulp default
+dotnet ef database drop -f
+dotnet ef migrations remove -f
+dotnet ef migrations add "PfsDbMigration"
+dotnet ef database update
 dotnet run
 ```
-* If you go to use MsSql as DBEngine, then open new shell and run
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.DbProvider.Ef.MsSqlOData>
-dotnet restore
-dotnet run
-```
-
-* Results are put in the dist folder.
-
 
