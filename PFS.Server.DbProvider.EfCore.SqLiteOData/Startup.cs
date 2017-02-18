@@ -29,7 +29,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
             services.AddOData<IPfsODataCollections>();
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
-            services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
+            services.AddScoped<TagsRepository>();
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
 

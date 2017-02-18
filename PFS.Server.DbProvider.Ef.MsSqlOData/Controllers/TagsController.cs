@@ -39,7 +39,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         {
             Rep.Post(entity);
 
-            return new HttpResponseMessage(HttpStatusCode.NoContent);
+            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            response.Headers.Location = Request.RequestUri;
+            return response;
         }
 
         [HttpPut]
@@ -47,7 +49,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         {
             Rep.Put(key, entity);
 
-            return new HttpResponseMessage(HttpStatusCode.NoContent);
+            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            response.Headers.Location = Request.RequestUri;
+            return response;
         }
 
         [HttpDelete]
@@ -55,14 +59,19 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         {
             Rep.Delete(key);
 
-            return new HttpResponseMessage(HttpStatusCode.NoContent);
+            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            response.Headers.Location = Request.RequestUri;
+            return response;
         }
 
         [HttpPost]
         public HttpResponseMessage RegisterFirst5Tags()
         {
             Rep.RegisterFirst5Tags();
-            return new HttpResponseMessage(HttpStatusCode.NoContent);
+
+            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            response.Headers.Location = Request.RequestUri;
+            return response;
         }
     }
 }

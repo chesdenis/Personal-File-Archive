@@ -26,6 +26,16 @@ namespace PFS.Server.Core.Shared.Repositories
 
         public void Post(Tag entity)
         {
+            if (entity.Id != 0)
+            {
+                var firstEntity = DbCtx.Tags.FirstOrDefault(any => any.Id == entity.Id);
+                if (firstEntity != null)
+                {
+                    Put(entity.Id, entity);
+                    return;
+                }
+            }
+           
             DbCtx.AddEntity(entity);
             DbCtx.SaveChanges();
         }

@@ -13,10 +13,22 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
     {
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
-        
+
+        public PfsServerDbContext():
+            base("name=PfsServerConnectionString")
+        {
+            Database.SetInitializer
+                (new CreateDatabaseIfNotExists<PfsServerDbContext>());
+        }
+
         void IPfsDbContext.SaveChanges()
         {
             SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 

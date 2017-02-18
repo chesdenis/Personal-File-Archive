@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFS.Server.DbProvider.Ef.Ms
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PFS.Server.Core.Shared", "PFS.Server.Core.Shared\PFS.Server.Core.Shared.shproj", "{AE8010FB-FB19-400F-95DE-5FCA628CB900}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFS.Server.UnitTests", "PFS.Server.UnitTests\PFS.Server.UnitTests.csproj", "{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PFS.Server.Core.Shared\PFS.Server.Core.Shared.projitems*{ae8010fb-fb19-400f-95de-5fca628cb900}*SharedItemsImports = 13
@@ -33,6 +35,10 @@ Global
 		{CAC2527D-B3E5-4B00-A900-CBBBEF2DA3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC2527D-B3E5-4B00-A900-CBBBEF2DA3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC2527D-B3E5-4B00-A900-CBBBEF2DA3A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
