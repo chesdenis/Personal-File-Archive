@@ -9,9 +9,6 @@
     <Import_RootNamespace>PFS.Server.Core.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsDbContext.cs" />

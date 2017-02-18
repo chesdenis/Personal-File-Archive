@@ -1,5 +1,6 @@
 ﻿using PFS.Server.Core.Shared.Abstractions;
 using PFS.Server.Core.Shared.Entities;
+using PFS.Server.Core.Shared.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ using System.Web.OData;
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
 {
     [EnableQuery]
-    public class TagsController: ODataController
+    public class TagsController : ODataController
     {
-        private readonly IPfsRepository<Tag> Rep;
+        private readonly TagsRepository Rep;
 
-        public TagsController(IPfsRepository<Tag> rep)
+        public TagsController(TagsRepository rep)
         {
             Rep = rep;
         }
@@ -54,6 +55,13 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         {
             Rep.Delete(key);
 
+            return new HttpResponseMessage(HttpStatusCode.NoContent);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage RegisterFirst5Tags()
+        {
+            Rep.RegisterFirst5Tags();
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
     }

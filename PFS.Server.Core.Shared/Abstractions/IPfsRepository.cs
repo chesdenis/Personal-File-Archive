@@ -13,4 +13,5 @@ namespace PFS.Server.Core.Shared.Abstractions
         void Post(T entity);
         void Put(int id, T entity);
     }
+
 }

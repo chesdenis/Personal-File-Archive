@@ -26,21 +26,34 @@ namespace PFS.Server.Core.Shared.Repositories
 
         public void Post(Tag entity)
         {
-            DbCtx.TagsProvider.Add(entity);
+            DbCtx.AddEntity(entity);
             DbCtx.SaveChanges();
         }
 
         public void Put(int id, Tag entity)
         {
-            DbCtx.TagsProvider.Update(entity);
+            DbCtx.UpdateEntity(entity);
             DbCtx.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var entity = DbCtx.TagsProvider.Rows.First(t => t.Id == id);
-            DbCtx.TagsProvider.Remove(entity);
+            var entity = DbCtx.Tags.First(t => t.Id == id);
+            DbCtx.RemoveEntity(entity);
+            DbCtx.SaveChanges();
+        }
+
+        public void RegisterFirst5Tags()
+        {
+            DbCtx.AddEntity(new Tag() { Id = 1, Name = "First" });
+            DbCtx.AddEntity(new Tag() { Id = 2, Name = "Second" });
+            DbCtx.AddEntity(new Tag() { Id = 3, Name = "Third" });
+            DbCtx.AddEntity(new Tag() { Id = 4, Name = "Fourth" });
+            DbCtx.AddEntity(new Tag() { Id = 5, Name = "Fives" });
+
             DbCtx.SaveChanges();
         }
     }
+
+
 }

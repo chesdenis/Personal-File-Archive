@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.OData;
 using PFS.Server.Core.Shared.Abstractions;
 using PFS.Server.Core.Shared.Entities;
+using PFS.Server.Core.Shared.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
     [Route("odata/Tags")]
     public class TagsController : Controller
     {
-        private readonly IPfsRepository<Tag> Rep;
+        private readonly TagsRepository Rep;
 
-        public TagsController(IPfsRepository<Tag> rep)
+        public TagsController(TagsRepository rep)
         {
             Rep = rep;
         }
@@ -62,7 +63,12 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
 
             return new NoContentResult();
         }
-
-
+        
+        [HttpPost]
+        public IActionResult RegisterFirst5Tags()
+        {
+            Rep.RegisterFirst5Tags();
+            return new NoContentResult();
+        }
     }
 }

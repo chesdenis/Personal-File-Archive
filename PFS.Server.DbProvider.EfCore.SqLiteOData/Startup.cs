@@ -26,17 +26,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 
             services.AddCors();
             
-            services.AddOData<IPfsODataCollections>(builder=> {
-                var entitySets = builder.EntitySets;
-                var eSetsNames = builder.EntitySets.Select(s => s.Name).ToArray();
-
-                foreach (var eSetName in eSetsNames)
-                {
-                    if (eSetName.EndsWith("Provider")) {
-                        builder.RemoveEntitySet(eSetName);
-                    }
-                }
-            });
+            services.AddOData<IPfsODataCollections>();
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<IPfsRepository<Tag>, TagsRepository>();
