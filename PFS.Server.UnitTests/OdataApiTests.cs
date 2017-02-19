@@ -12,21 +12,33 @@ namespace PFS.Server.UnitTests
     [TestClass]
     public class OdataApiTests
     {
-        public const string MsSqlApiUrl = "http://localhost:64245/odata";
+        public const string MsSqlApiUrl = "http://localhost:5020/odata";
+        public const string MsSqlApiDebugUrl = "http://localhost:64245/odata";
         public const string SqLiteODataUrl = "http://localhost:5020/odata";
+        public const string SqLiteODataDebugUrl = "http://localhost:64238/odata";
 
         public Uri ApiUrl
         {
-            get { return new Uri(MsSqlApiUrl); }
+            get { return new Uri(SqLiteODataDebugUrl); }
         }
 
-        [TestInitialize]
-        public void Initialize()
+        private Container _dbContext = null;
+        public Container DbContext
         {
-           
+            get {
+                if (_dbContext == null)
+                {
+                    _dbContext = new Container(ApiUrl);
+                    _dbContext.BuildingRequest += (object sender, BuildingRequestEventArgs e) => 
+                    {
+                       e.Headers.Remove("Accept");
+                    };
+                }
+
+                return _dbContext;
+            }
         }
-
-
+         
         // add tag "One" id '1' 
 
         //add tags "two" id '2' "three" id '3'... "six" id '6'
@@ -35,25 +47,23 @@ namespace PFS.Server.UnitTests
 
         [TestMethod]
         public void ReadFirst10Tags()
-        {
-            var dbContext = new Container(ApiUrl);
-            var tags = dbContext.Tags.Execute();
+        { 
+            var tags = DbContext.Tags.Execute();
 
             foreach (var tag in tags)
             {
                 Console.WriteLine(tag.Name);
             }
         }
+         
 
         [TestMethod]
         public void AddTagWithNameOne()
-        {
-            var dbContext = new Container(ApiUrl);
-
+        { 
             var testTagName = "One";
 
-            dbContext.AddToTags(new Tag() { Name = testTagName });
-            var responses = dbContext.SaveChanges();
+            DbContext.AddToTags(new Tag() { Name = testTagName });
+            var responses = DbContext.SaveChanges();
             var response = responses.First();
 
             var changeResponse = (ChangeOperationResponse)response;
@@ -61,13 +71,13 @@ namespace PFS.Server.UnitTests
             var tagCreated = (Tag)entityDescriptor.Entity;
             var tagCreatedId = tagCreated.Id;
             
-            var existedTag = dbContext.Tags.ByKey(tagCreatedId).GetValue();
+            var existedTag = DbContext.Tags.ByKey(tagCreatedId).GetValue();
             Assert.AreEqual(testTagName, existedTag.Name);
 
-            dbContext.DeleteObject(existedTag);
-            dbContext.SaveChanges();
+            DbContext.DeleteObject(existedTag);
+            DbContext.SaveChanges();
 
-            existedTag = dbContext.Tags.ByKey(tagCreatedId).GetValue();
+            existedTag = DbContext.Tags.ByKey(tagCreatedId).GetValue();
 
             Assert.IsNull(existedTag);
         }

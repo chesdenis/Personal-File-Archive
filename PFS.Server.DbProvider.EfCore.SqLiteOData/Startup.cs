@@ -45,6 +45,8 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
             .AllowAnyHeader()
             .AllowAnyMethod());
 
+            
+
             app.UseOData("odata");
             app.UseMvc();
         }
