@@ -10,8 +10,8 @@ namespace PFS.Server.Core.Shared.Abstractions
         void Delete(int id);
         IEnumerable<T> Get();
         T Get(int id);
-        void Post(T entity);
-        void Put(int id, T entity);
+        T Post(T entity);
+        T Put(int id, T entity);
     }
 
 }

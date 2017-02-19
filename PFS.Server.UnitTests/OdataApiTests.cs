@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities;
-using PFS.Server.UnitTests.Default;
 using System.Collections.Generic;
 using System.Linq;
+//using Simple.OData.Client;
+using PFS.Server.Core.Shared.Entities;
+using Default;
+using Microsoft.OData.Client;
 
 namespace PFS.Server.UnitTests
 {
@@ -18,6 +20,12 @@ namespace PFS.Server.UnitTests
             get { return new Uri(MsSqlApiUrl); }
         }
 
+        [TestInitialize]
+        public void Initialize()
+        {
+           
+        }
+
 
         // add tag "One" id '1' 
 
@@ -25,29 +33,44 @@ namespace PFS.Server.UnitTests
         //Delete tags '1', '5'
         //read all tags ('2', '3', '4', '6')
 
-        private void AddTagWithNameOne()
+        [TestMethod]
+        public void ReadFirst10Tags()
+        {
+            var dbContext = new Container(ApiUrl);
+            var tags = dbContext.Tags.Execute();
+
+            foreach (var tag in tags)
+            {
+                Console.WriteLine(tag.Name);
+            }
+        }
+
+        [TestMethod]
+        public void AddTagWithNameOne()
         {
             var dbContext = new Container(ApiUrl);
 
-            dbContext.AddToTags(new Tag() {
-                Id = 1,
-                Name = "One"
-            });
+            var testTagName = "One";
 
+            dbContext.AddToTags(new Tag() { Name = testTagName });
+            var responses = dbContext.SaveChanges();
+            var response = responses.First();
 
+            var changeResponse = (ChangeOperationResponse)response;
+            var entityDescriptor = (EntityDescriptor)changeResponse.Descriptor;
+            var tagCreated = (Tag)entityDescriptor.Entity;
+            var tagCreatedId = tagCreated.Id;
+            
+            var existedTag = dbContext.Tags.ByKey(tagCreatedId).GetValue();
+            Assert.AreEqual(testTagName, existedTag.Name);
+
+            dbContext.DeleteObject(existedTag);
             dbContext.SaveChanges();
 
-            var firstOne = dbContext.Tags.ByKey(1).GetValue();
-            var firstOneName = firstOne.Name;
+            existedTag = dbContext.Tags.ByKey(tagCreatedId).GetValue();
 
-            Assert.AreEqual("One", firstOneName);
+            Assert.IsNull(existedTag);
         }
-
-
-        [TestMethod]
-        public void TestTagsApi()
-        {
-            AddTagWithNameOne();
-        }
+        
     }
 }

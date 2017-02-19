@@ -29,17 +29,31 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         }
 
         [EnableQuery]
-        public Tag Get(int id)
+        public HttpResponseMessage Get([FromODataUri]int key)
         {
-            return Rep.Get(id);
+            HttpResponseMessage response = null;
+
+            var entity = Rep.Get(key);
+            if (entity != null)
+            {
+                response = Request.CreateResponse<Tag>(HttpStatusCode.OK, entity);
+                response.Headers.Location = Request.RequestUri;
+
+                return response;
+            }
+
+            response = Request.CreateResponse(HttpStatusCode.NoContent);
+            response.Headers.Location = Request.RequestUri;
+
+            return response;
         }
 
         [HttpPost]
         public HttpResponseMessage Post(Tag entity)
         {
-            Rep.Post(entity);
+            var createdEntity = Rep.Post(entity);
 
-            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            var response = Request.CreateResponse(HttpStatusCode.OK, createdEntity);
             response.Headers.Location = Request.RequestUri;
             return response;
         }
@@ -47,9 +61,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         [HttpPut]
         public HttpResponseMessage Put([FromODataUri]int key, [FromBody]Tag entity)
         {
-            Rep.Put(key, entity);
+            var updatedEntity = Rep.Put(key, entity);
 
-            var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            var response = Request.CreateResponse(HttpStatusCode.OK, updatedEntity);
             response.Headers.Location = Request.RequestUri;
             return response;
         }

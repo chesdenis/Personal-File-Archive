@@ -12,6 +12,6 @@ PFS.Server.Core/bin
 /PFS.Server.DbProvider.Ef.MsSqlOData/App_Data
 /PFS.Server.DbProvider.EfCore.SqLiteOData/bin
 /PFS.Server.DbProvider.EfCore.SqLiteOData/obj
+/PFS.Server.UnitTests/bin
+/PFS.Server.UnitTests/obj
 node_modules
-
-

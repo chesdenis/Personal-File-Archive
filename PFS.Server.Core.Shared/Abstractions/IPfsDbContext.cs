@@ -10,8 +10,8 @@ namespace PFS.Server.Core.Shared.Abstractions
     {
         void SaveChanges();
 
-        void AddEntity(Tag entity);
-        void UpdateEntity(Tag entity);
+        Tag AddEntity(Tag entity);
+        Tag UpdateEntity(Tag entity);
         void RemoveEntity(Tag entity);
     }
 }

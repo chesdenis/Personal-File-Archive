@@ -24,26 +24,20 @@ namespace PFS.Server.Core.Shared.Repositories
             return DbCtx.Tags.FirstOrDefault(f => f.Id == id);
         }
 
-        public void Post(Tag entity)
+        public Tag Post(Tag entity)
         {
-            if (entity.Id != 0)
-            {
-                var firstEntity = DbCtx.Tags.FirstOrDefault(any => any.Id == entity.Id);
-                if (firstEntity != null)
-                {
-                    Put(entity.Id, entity);
-                    return;
-                }
-            }
-           
-            DbCtx.AddEntity(entity);
+            var createdEntity = DbCtx.AddEntity(entity);
             DbCtx.SaveChanges();
+
+            return createdEntity;
         }
 
-        public void Put(int id, Tag entity)
+        public Tag Put(int id, Tag entity)
         {
-            DbCtx.UpdateEntity(entity);
+            var updatedEntity = DbCtx.UpdateEntity(entity);
             DbCtx.SaveChanges();
+
+            return updatedEntity;
         }
 
         public void Delete(int id)

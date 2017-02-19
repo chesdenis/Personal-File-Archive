@@ -28,25 +28,26 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
         {
             SaveChanges();
         }
-
-       
     }
 
     public partial class PfsServerDbContext
     {
-        public void AddEntity(Tag entity)
+        public Tag AddEntity(Tag entity)
         {
-            Tags.Add(entity);
+            var changes = Tags.Add(entity);
+            return changes.Entity;
         }
-
-        public void UpdateEntity(Tag entity)
-        {
-            Tags.Update(entity);
-        }
-
+                
         public void RemoveEntity(Tag entity)
         {
             Tags.Remove(entity);
         }
+
+        public Tag UpdateEntity(Tag entity)
+        {
+            var changes = Tags.Update(entity);
+            return changes.Entity;
+        }
+
     }
 }

@@ -30,30 +30,30 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var retVal = Rep.Get(id);
+            var entity = Rep.Get(id);
 
-            if (retVal == null)
+            if (entity != null)
             {
-                return NotFound();
+                return new OkObjectResult(entity);
             }
 
-            return new ObjectResult(retVal);
+            return new NoContentResult();
         }
 
         [HttpPost]
         public IActionResult Post(Tag entity)
         {
-            Rep.Post(entity);
+            var createdEntity = Rep.Post(entity);
 
-            return new NoContentResult();
+            return new OkObjectResult(createdEntity);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Tag entity)
         {
-            Rep.Put(id, entity);
+            var updatedEntity = Rep.Put(id, entity);
 
-            return new NoContentResult();
+            return new OkObjectResult(updatedEntity);
         }
 
         [HttpDelete("{id}")]
@@ -68,6 +68,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
         public IActionResult RegisterFirst5Tags()
         {
             Rep.RegisterFirst5Tags();
+
             return new NoContentResult();
         }
     }

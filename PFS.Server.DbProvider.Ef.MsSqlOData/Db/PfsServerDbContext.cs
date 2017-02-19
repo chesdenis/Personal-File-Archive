@@ -35,9 +35,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
     public partial class PfsServerDbContext 
     {
 
-        public void AddEntity(Tag entity)
+        public Tag AddEntity(Tag entity)
         {
-            Tags.Add(entity);
+            return Tags.Add(entity);
         }
 
         public void RemoveEntity(Tag entity)
@@ -45,12 +45,13 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
             Tags.Remove(entity);
         }
 
-        public void UpdateEntity(Tag entity)
+        public Tag UpdateEntity(Tag entity)
         {
-            var existedEntity = Tags.FirstOrDefault(f => f.Id == entity.Id);
-            if (existedEntity == null) return;
+            var existedEntity = Tags.First(f => f.Id == entity.Id);
 
             existedEntity.Name = entity.Name;
+
+            return existedEntity;
         }
     }
 }

@@ -8,13 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 2/18/2017 4:21:13 PM
-namespace PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities
+// Generation date: 2/19/2017 11:17:39 AM
+namespace PFS.Server.Core.Shared.Entities
 {
     /// <summary>
     /// There are no comments for TagSingle in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("TagSingle")]
     public partial class TagSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Tag>
     {
         /// <summary>
@@ -43,7 +42,6 @@ namespace PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Tag")]
     public partial class Tag : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -61,7 +59,6 @@ namespace PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities
         /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
         public int Id
         {
             get
@@ -84,7 +81,6 @@ namespace PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities
         /// There are no comments for Property Name in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
         public string Name
         {
             get
@@ -127,36 +123,35 @@ namespace PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag as global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle specified by key from an entity set
+        /// Get an entity of type global::PFS.Server.Core.Shared.Entities.Tag as global::PFS.Server.Core.Shared.Entities.TagSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        public static global::PFS.Server.Core.Shared.Entities.TagSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.Core.Shared.Entities.Tag> source, global::System.Collections.Generic.Dictionary<string, object> keys)
         {
-            return new global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::PFS.Server.Core.Shared.Entities.TagSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag as global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle specified by key from an entity set
+        /// Get an entity of type global::PFS.Server.Core.Shared.Entities.Tag as global::PFS.Server.Core.Shared.Entities.TagSingle specified by key from an entity set
         /// </summary>
         /// <param name="source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag> source,
+        public static global::PFS.Server.Core.Shared.Entities.TagSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.Core.Shared.Entities.Tag> source,
             int id)
         {
             global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.TagSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+            return new global::PFS.Server.Core.Shared.Entities.TagSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
-namespace PFS.Server.UnitTests.Default
+namespace Default
 {
     /// <summary>
     /// There are no comments for Container in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Container")]
     public partial class Container : global::Microsoft.OData.Client.DataServiceContext
     {
         /// <summary>
@@ -166,83 +161,33 @@ namespace PFS.Server.UnitTests.Default
         public Container(global::System.Uri serviceRoot) : 
                 base(serviceRoot, global::Microsoft.OData.Client.ODataProtocolVersion.V4)
         {
-            this.ResolveName = new global::System.Func<global::System.Type, string>(this.ResolveNameFromType);
-            this.ResolveType = new global::System.Func<string, global::System.Type>(this.ResolveTypeFromName);
             this.OnContextCreated();
             this.Format.LoadServiceModel = GeneratedEdmModel.GetInstance;
             this.Format.UseJson();
         }
         partial void OnContextCreated();
         /// <summary>
-        /// Since the namespace configured for this service reference
-        /// in Visual Studio is different from the one indicated in the
-        /// server schema, use type-mappers to map between the two.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected global::System.Type ResolveTypeFromName(string typeName)
-        {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "PFS.Server.Core.Shared.Entities", "PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities");
-            if ((resolvedType != null))
-            {
-                return resolvedType;
-            }
-            resolvedType = this.DefaultResolveType(typeName, "Default", "PFS.Server.UnitTests.Default");
-            if ((resolvedType != null))
-            {
-                return resolvedType;
-            }
-            return null;
-        }
-        /// <summary>
-        /// Since the namespace configured for this service reference
-        /// in Visual Studio is different from the one indicated in the
-        /// server schema, use type-mappers to map between the two.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        protected string ResolveNameFromType(global::System.Type clientType)
-        {
-            global::Microsoft.OData.Client.OriginalNameAttribute originalNameAttribute = (global::Microsoft.OData.Client.OriginalNameAttribute)global::System.Linq.Enumerable.SingleOrDefault(global::Microsoft.OData.Client.Utility.GetCustomAttributes(clientType, typeof(global::Microsoft.OData.Client.OriginalNameAttribute), true));
-            if (clientType.Namespace.Equals("PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities", global::System.StringComparison.Ordinal))
-            {
-                if (originalNameAttribute != null)
-                {
-                    return string.Concat("PFS.Server.Core.Shared.Entities.", originalNameAttribute.OriginalName);
-                }
-                return string.Concat("PFS.Server.Core.Shared.Entities.", clientType.Name);
-            }
-            if (clientType.Namespace.Equals("PFS.Server.UnitTests.Default", global::System.StringComparison.Ordinal))
-            {
-                if (originalNameAttribute != null)
-                {
-                    return string.Concat("Default.", originalNameAttribute.OriginalName);
-                }
-                return string.Concat("Default.", clientType.Name);
-            }
-            return null;
-        }
-        /// <summary>
         /// There are no comments for Tags in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Tags")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag> Tags
+        public global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.Core.Shared.Entities.Tag> Tags
         {
             get
             {
                 if ((this._Tags == null))
                 {
-                    this._Tags = base.CreateQuery<global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag>("Tags");
+                    this._Tags = base.CreateQuery<global::PFS.Server.Core.Shared.Entities.Tag>("Tags");
                 }
                 return this._Tags;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag> _Tags;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::PFS.Server.Core.Shared.Entities.Tag> _Tags;
         /// <summary>
         /// There are no comments for Tags in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToTags(global::PFS.Server.UnitTests.PFS.Server.Core.Shared.Entities.Tag tag)
+        public void AddToTags(global::PFS.Server.Core.Shared.Entities.Tag tag)
         {
             base.AddObject("Tags", tag);
         }
