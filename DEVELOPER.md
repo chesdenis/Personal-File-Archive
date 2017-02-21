@@ -7,6 +7,7 @@ It also explains the basic mechanics of using `git`, `node`, and `npm`.
 * [Getting the Sources](#getting-the-sources)
 * [Installing NPM Modules](#installing-npm-modules)
 * [Building](#building)
+* [Continious integration](#continious-integration)
 
 See the [contribution guidelines](/CONTRIBUTING.md)
 if you'd like to contribute to PFS.
@@ -93,4 +94,10 @@ dotnet ef migrations add "PfsDbMigration"
 dotnet ef database update
 dotnet run
 ```
+
+## Continious integration
+
+We use [TeamCity](https://www.jetbrains.com/teamcity/) for continuous integration, . For installation and configuration TeamCity you should follow this [official instruction](https://confluence.jetbrains.com/display/TCD8/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-InstallingTeamCityServer)
+
+
 
