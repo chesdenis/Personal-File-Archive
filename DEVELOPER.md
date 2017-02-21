@@ -97,7 +97,17 @@ dotnet run
 
 ## Continious integration
 
-We use [TeamCity](https://www.jetbrains.com/teamcity/) for continuous integration, . For installation and configuration TeamCity you should follow this [official instruction](https://confluence.jetbrains.com/display/TCD8/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-InstallingTeamCityServer)
+We use [TeamCity](https://www.jetbrains.com/teamcity/) for continuous integration, . 
+For using TeamCity you should:
+* Installation and configuration TeamCity follow this [official instruction](https://confluence.jetbrains.com/display/TCD8/Installing+and+Configuring+the+TeamCity+Server#InstallingandConfiguringtheTeamCityServer-InstallingTeamCityServer).
+
+* Create [teamcity project](https://confluence.jetbrains.com/display/TCD10/Creating+and+Editing+Projects#CreatingandEditingProjects-CreatingProject).
+
+* Install [TeamCity Node plugin](https://github.com/jonnyzzz/TeamCity.Node), because we use node.js and gulp for building front end part of our app.
+
+* Create trigger. Now we use standart simple trigger, which creates with project. It react for any commit to git. In the future, we will create our trigger with special behaviour...
+
+* Create build configuration. This is the most important part of all configuration...
 
 
 
