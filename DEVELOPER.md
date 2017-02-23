@@ -166,5 +166,5 @@ Name: env.EnableNuGetPackageRestore
 Kind: Environment variable (env.)
 Value: true
 ```
-or you can enable this function in Visual Studio/
+or you can enable this function in Visual Studio
 
