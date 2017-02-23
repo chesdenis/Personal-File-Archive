@@ -108,7 +108,8 @@ For using TeamCity you should:
 * Create trigger. Now we are using standart simple trigger, which was created with project. It reacts for any commit to git. In the future, we will create our trigger with special behaviour...
 
 * Create build configuration. This is the most important part of all configuration. Build consists of four steps.
-  Step 1: Gulp install:
+  
+Step 1: Gulp install:
 ```shell
 Runner type: Node.js NPM (Starts NPM)
 Execute: If all previous steps finished successfully
@@ -117,7 +118,7 @@ NPM: <default>
 Working directory: same as checkout directory
 Additional command line arguments: <empty>
 ```
- Step 2: Gulp task runner
+Step 2: Gulp task runner
 ```shell
 Runner type: Gulp (Executes Gulp tasks)
 Execute: If all previous steps finished successfully
@@ -144,7 +145,6 @@ Use safe packages update: OFF
 Include PreRelease packages: OFF
 Update command custom command line:
 ```
-
 Step 4: Application build
 ```shell
 Runner type: MSBuild (Runner for MSBuild files)
@@ -159,5 +159,12 @@ Command line parameters to MSBuild.exe: none specified
 Reduce test failure feedback time: OFF
 .NET Code Coverage: disabled
 ```
-
+* Add environment variable, for enable NuGet Package Restore function. Do this, you can in parameters section.
+Variable parameters:
+```shell
+Name: env.EnableNuGetPackageRestore
+Kind: Environment variable (env.)
+Value: true
+```
+or you can enable this function in Visual Studio/
 
