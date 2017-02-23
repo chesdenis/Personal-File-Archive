@@ -107,7 +107,57 @@ For using TeamCity you should:
 
 * Create trigger. Now we are using standart simple trigger, which was created with project. It reacts for any commit to git. In the future, we will create our trigger with special behaviour...
 
-* Create build configuration. This is the most important part of all configuration...
+* Create build configuration. This is the most important part of all configuration. Build consists of four steps.
+  Step 1: Gulp install:
+```shell
+Runner type: Node.js NPM (Starts NPM)
+Execute: If all previous steps finished successfully
+Run targets: view
+NPM: <default>
+Working directory: same as checkout directory
+Additional command line arguments: <empty>
+```
+ Step 2: Gulp task runner
+```shell
+Runner type: Gulp (Executes Gulp tasks)
+Execute: If all previous steps finished successfully
+Execution mode: npm
+File: view
+Run targets: view
+Working directory: same as checkout directory
+Additional command line arguments: <empty>
+```
+Step 3: Install nuget packages
+```shell
+Runner type: NuGet Installer (Installs and updates missing NuGet packages)
+Execute: If all previous steps finished successfully
+Path to NuGet.exe:
+Package Sources: Use nuget default package source
+Path to .sln: PFS.Solution.sln
+Exclude Version: OFF
+Restore Mode: Restore packages (requires NuGet 2.7+)
+Use local machine packages cache: OFF
+Restore / install command custom command line:
+Update packages: OFF
+Update mode: Update via solution file
+Use safe packages update: OFF
+Include PreRelease packages: OFF
+Update command custom command line:
+```
 
+Step 4: Application build
+```shell
+Runner type: MSBuild (Runner for MSBuild files)
+Execute: If all previous steps finished successfully
+Build file path: PFS.Solution.sln
+Working directory: same as checkout directory
+MSBuild version: Microsoft Build Tools 2015
+MSBuild ToolsVersion: 14.0
+Run platform: x86
+Targets: none specified
+Command line parameters to MSBuild.exe: none specified
+Reduce test failure feedback time: OFF
+.NET Code Coverage: disabled
+```
 
 
