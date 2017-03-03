@@ -3,6 +3,13 @@ PFS.Server.MvcApp/obj
 PFS.Server.MvcApp/bin
 PFS.Server.MvcApp/typings
 PFS.Server.MvcApp/wwwroot
+
+PFS.Server.Admin/node_modules
+PFS.Server.Admin/obj
+PFS.Server.Admin/bin
+PFS.Server.Admin/typings
+PFS.Server.Admin/wwwroot
+
 PFS.Server.Core/obj
 PFS.Server.Core/bin
 .vs
