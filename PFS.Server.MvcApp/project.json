@@ -33,7 +33,7 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
-    "copyToOutput": "hosting.json"
+    "copyToOutput": { "includeFiles": [ "hosting.json", "staticfolders.json" ] }
   },
 
   "runtimeOptions": {
