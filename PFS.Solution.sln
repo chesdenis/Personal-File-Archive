@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PFS.Server.MvcApp", "PFS.Server.MvcApp\PFS.Server.MvcApp.xproj", "{B3217C14-4540-46CA-A538-45DBE744E4E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PFS.Server.MvcApp", "PFS.Server.MvcApp\PFS.Server.MvcApp.csproj", "{B3217C14-4540-46CA-A538-45DBE744E4E2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PFS.Server.DbProvider.EfCore.SqLiteOData", "PFS.Server.DbProvider.EfCore.SqLiteOData\PFS.Server.DbProvider.EfCore.SqLiteOData.xproj", "{43EFD201-B614-4C86-9A2B-E20BE8FAA3DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PFS.Server.DbProvider.EfCore.SqLiteOData", "PFS.Server.DbProvider.EfCore.SqLiteOData\PFS.Server.DbProvider.EfCore.SqLiteOData.csproj", "{43EFD201-B614-4C86-9A2B-E20BE8FAA3DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFS.Server.DbProvider.Ef.MsSqlOData", "PFS.Server.DbProvider.Ef.MsSqlOData\PFS.Server.DbProvider.Ef.MsSqlOData.csproj", "{CAC2527D-B3E5-4B00-A900-CBBBEF2DA3A4}"
 EndProject
@@ -13,7 +13,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PFS.Server.Core.Shared", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFS.Server.UnitTests", "PFS.Server.UnitTests\PFS.Server.UnitTests.csproj", "{3B2C5A7F-72D5-461F-81C3-08D07E9C42CC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PFS.Server.Admin", "PFS.Server.Admin\PFS.Server.Admin.xproj", "{3BCC2063-0B96-40F8-82C3-71512704B8EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PFS.Server.Admin", "PFS.Server.Admin\PFS.Server.Admin.csproj", "{3BCC2063-0B96-40F8-82C3-71512704B8EE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
