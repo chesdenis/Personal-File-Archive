@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace PFS.Server.Core.Shared.Entities
 {
-    public class File : FSObject
+    public class Folder : FSObject
     {
-
     }
 }

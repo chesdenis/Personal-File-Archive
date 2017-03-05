@@ -26,6 +26,7 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
 
             // Register repositories
             builder.RegisterType<TagsRepository>().SingleInstance();
+            builder.RegisterType<FoldersRepository>().SingleInstance();
 
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());

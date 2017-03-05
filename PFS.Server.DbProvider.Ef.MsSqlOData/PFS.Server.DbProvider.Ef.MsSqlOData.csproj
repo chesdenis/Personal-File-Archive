@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\FSObjectsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Db\PfsServerDbContext.cs" />
     <Compile Include="Global.asax.cs">
