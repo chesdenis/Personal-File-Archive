@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.0</TargetFramework>
@@ -27,6 +27,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="App\Controls\NavBar\Configs\" />
+    <Folder Include="App\Controls\NavBar\Templates\" />
   </ItemGroup>
 
 </Project>
