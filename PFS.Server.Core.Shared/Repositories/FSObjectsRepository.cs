@@ -15,7 +15,7 @@ namespace PFS.Server.Core.Shared.Repositories
             DbCtx = dbCtx;
         }
         
-        public IEnumerable<Folder> GetFolders(string folderPath)
+        public IEnumerable<Folder> GetFolders(string folderPath = "")
         {
             return new Folder[] {
                 new Folder(){ Name ="Folder1", Path = "PathFolder1" },

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.OData;
@@ -22,43 +23,17 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             Rep = rep;
         }
 
-        [EnableQuery]
-        public HttpResponseMessage GetFolders([FromODataUri]string folderPath)
+        
+        [HttpGet]
+        public IQueryable<FSObject> GetFolders([FromODataUri] string folderPath)
         {
-            HttpResponseMessage response = null;
-
-            var entities = Rep.GetFolders(folderPath);
-            if (entities != null)
-            {
-                response = Request.CreateResponse(HttpStatusCode.OK, entities);
-                response.Headers.Location = Request.RequestUri;
-
-                return response;
-            }
-
-            response = Request.CreateResponse(HttpStatusCode.NoContent);
-            response.Headers.Location = Request.RequestUri;
-
-            return response;
+            return Rep.GetFolders(folderPath).AsQueryable();
         }
-
-        public HttpResponseMessage GetFiles([FromODataUri] string folderPath)
-        {
-            HttpResponseMessage response = null;
-
-            var entities = Rep.GetFiles(folderPath);
-            if (entities != null)
-            {
-                response = Request.CreateResponse(HttpStatusCode.OK, entities);
-                response.Headers.Location = Request.RequestUri;
-
-                return response;
-            }
-
-            response = Request.CreateResponse(HttpStatusCode.NoContent);
-            response.Headers.Location = Request.RequestUri;
-
-            return response;
+         
+        [HttpGet]
+        public IQueryable<FSObject> GetFiles([FromODataUri] string folderPath)
+        {          
+            return Rep.GetFiles(folderPath).AsQueryable();
         }
     }
 }

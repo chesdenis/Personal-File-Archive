@@ -6,6 +6,7 @@ namespace PFS.Server.Core.Shared.Entities
 {
     public class FSObject
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
     }

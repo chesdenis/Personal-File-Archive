@@ -13,6 +13,9 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
+        public DbSet<FSObject> FSObjects { get; set; }
+        IEnumerable<FSObject> IPfsODataCollections.FSObjects => FSObjects;
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>().HasKey(m => m.Id);

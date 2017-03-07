@@ -14,6 +14,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
+        public DbSet<FSObject> FSObjects { get; set; }
+        IEnumerable<FSObject> IPfsODataCollections.FSObjects => FSObjects;
+
         public PfsServerDbContext():
             base("name=PfsServerConnectionString")
         {
