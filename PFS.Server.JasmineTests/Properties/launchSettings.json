@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5030/",
+      "applicationUrl": "http://localhost:5040/",
       "sslPort": 0
     }
   },
@@ -15,10 +15,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PFS.Server.Admin": {
+    "PFS.Server.JasmineTests": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:5030",
+      "launchUrl": "http://localhost:5040",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

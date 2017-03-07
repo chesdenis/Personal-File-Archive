@@ -10,6 +10,12 @@ PFS.Server.Admin/bin
 PFS.Server.Admin/typings
 PFS.Server.Admin/wwwroot
 
+PFS.Server.JasmineTests/node_modules
+PFS.Server.JasmineTests/obj
+PFS.Server.JasmineTests/bin
+PFS.Server.JasmineTests/typings
+PFS.Server.JasmineTests/wwwroot
+
 PFS.Server.Core/obj
 PFS.Server.Core/bin
 .vs
