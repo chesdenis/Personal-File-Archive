@@ -22,22 +22,15 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Tag> Get()
+        public IQueryable<Tag> Get()
         {
-            return Rep.Get();
+            return Rep.Get().AsQueryable();
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public Tag Get(int id)
         {
-            var entity = Rep.Get(id);
-
-            if (entity != null)
-            {
-                return new OkObjectResult(entity);
-            }
-
-            return new NoContentResult();
+            return Rep.Get(id);
         }
 
         [HttpPost]
@@ -60,14 +53,6 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
         public IActionResult Delete(int id)
         {
             Rep.Delete(id);
-
-            return new NoContentResult();
-        }
-        
-        [HttpPost]
-        public IActionResult RegisterFirst5Tags()
-        {
-            Rep.RegisterFirst5Tags();
 
             return new NoContentResult();
         }

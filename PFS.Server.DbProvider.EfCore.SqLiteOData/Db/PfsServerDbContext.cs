@@ -19,6 +19,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
+            builder.Entity<FSObject>().HasKey(m => m.Id);
             base.OnModelCreating(builder);
         }
 

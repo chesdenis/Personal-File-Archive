@@ -26,11 +26,34 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 
             services.AddCors();
             
-            services.AddOData<IPfsODataCollections>();
+            services.AddOData<IPfsODataCollections>(modelBuilder=>
+            {
+                //ConfigureFsObjects(modelBuilder);              
+            });
+
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<TagsRepository>();
+            services.AddScoped<FSObjectsRepository>();
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
+        }
+
+        private ODataConventionModelBuilder ConfigureFsObjects(ODataConventionModelBuilder modelBuilder)
+        {
+            modelBuilder.EntityType<FSObject>()
+                  .Collection
+                  .Function("GetFolders")
+                  .Returns<IQueryable<FSObject>>()
+                  .Parameter<string>("folderPath");
+
+            modelBuilder.EntityType<FSObject>()
+               .Collection
+               .Function("GetFiles")
+               .Returns<IQueryable<FSObject>>()
+               .Parameter<string>("folderPath");
+
+            return modelBuilder;
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

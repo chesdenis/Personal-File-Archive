@@ -8,7 +8,7 @@ using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
 {
     [DbContext(typeof(PfsServerDbContext))]
-    [Migration("20170217053353_PfsDbMigration")]
+    [Migration("20170307065655_PfsDbMigration")]
     partial class PfsDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,7 +16,21 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
-            modelBuilder.Entity("PFS.Server.Core.Entities.Tag", b =>
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.FSObject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FSObjects");
+                });
+
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
