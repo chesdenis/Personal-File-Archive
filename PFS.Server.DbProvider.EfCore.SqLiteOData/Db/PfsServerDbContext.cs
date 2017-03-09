@@ -13,13 +13,18 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
-        public DbSet<FSObject> FSObjects { get; set; }
-        IEnumerable<FSObject> IPfsODataCollections.FSObjects => FSObjects;
+        public DbSet<File> Files { get; set; }
+        IEnumerable<File> IPfsODataCollections.Files => Files;
 
+        public DbSet<Folder> Folders { get; set; }
+        IEnumerable<Folder> IPfsODataCollections.Folders => Folders;
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
-            builder.Entity<FSObject>().HasKey(m => m.Id);
+            builder.Entity<File>().HasKey(m => m.Id);
+            builder.Entity<Folder>().HasKey(m => m.Id);
+
             base.OnModelCreating(builder);
         }
 

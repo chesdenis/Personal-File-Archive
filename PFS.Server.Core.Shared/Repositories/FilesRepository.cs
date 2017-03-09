@@ -6,25 +6,15 @@ using System;
 
 namespace PFS.Server.Core.Shared.Repositories
 {
-    public class FSObjectsRepository : IPfsRepository<FSObject>
+    public class FilesRepository : IPfsRepository<File>
     {
         protected readonly IPfsDbContext DbCtx;
 
-        public FSObjectsRepository(IPfsDbContext dbCtx) 
+        public FilesRepository(IPfsDbContext dbCtx) 
         {
             DbCtx = dbCtx;
         }
         
-        public IEnumerable<Folder> GetFolders(string folderPath = "")
-        {
-            return new Folder[] {
-                new Folder(){ Name ="Folder1", Path = "PathFolder1" },
-                new Folder(){ Name ="Folder2", Path = "PathFolder2" },
-                new Folder(){ Name ="Folder3", Path = "PathFolder3" },
-                new Folder(){ Name ="Folder4", Path = "PathFolder4" }
-            };
-        }
-
         public IEnumerable<File> GetFiles(string folderPath)
         {
             return new File[]
@@ -41,22 +31,22 @@ namespace PFS.Server.Core.Shared.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<FSObject> Get()
+        public IEnumerable<File> Get()
         {
             throw new NotImplementedException();
         }
 
-        public FSObject Get(int id)
+        public File Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public FSObject Post(FSObject entity)
+        public File Post(File entity)
         {
             throw new NotImplementedException();
         }
 
-        public FSObject Put(int id, FSObject entity)
+        public File Put(int id, File entity)
         {
             throw new NotImplementedException();
         }

@@ -15,7 +15,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
-            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.FSObject", b =>
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.File", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -26,7 +26,21 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FSObjects");
+                    b.ToTable("Files");
+                });
+
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Folders");
                 });
 
             modelBuilder.Entity("PFS.Server.Core.Shared.Entities.Tag", b =>

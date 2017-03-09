@@ -26,34 +26,37 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 
             services.AddCors();
             
-            services.AddOData<IPfsODataCollections>(modelBuilder=>
+            services.AddOData<IPfsODataCollections>(builder=>
             {
-                //ConfigureFsObjects(modelBuilder);              
+                BuildFiles(builder);
+                BuildFolders(builder);            
             });
 
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<TagsRepository>();
-            services.AddScoped<FSObjectsRepository>();
+            services.AddScoped<FilesRepository>();
+            services.AddScoped<FoldersRepository>();
+
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
 
-        private ODataConventionModelBuilder ConfigureFsObjects(ODataConventionModelBuilder modelBuilder)
+        private void BuildFiles(ODataConventionModelBuilder builder)
         {
-            modelBuilder.EntityType<FSObject>()
-                  .Collection
-                  .Function("GetFolders")
-                  .Returns<IQueryable<FSObject>>()
-                  .Parameter<string>("folderPath");
-
-            modelBuilder.EntityType<FSObject>()
+            builder.EntityType<File>()
                .Collection
                .Function("GetFiles")
-               .Returns<IQueryable<FSObject>>()
+               .Returns<IQueryable<File>>()
                .Parameter<string>("folderPath");
+        }
 
-            return modelBuilder;
-
+        private void BuildFolders(ODataConventionModelBuilder builder)
+        {
+            builder.EntityType<Folder>()
+                 .Collection
+                 .Function("GetFolders")
+                 .Returns<IQueryable<Folder>>()
+                 .Parameter<string>("folderPath");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,11 +65,12 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
-            app.UseCors(builder => 
-            builder
-            .WithOrigins("http://localhost:5000")
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.MvcApp
+                builder.WithOrigins("http://localhost:5030").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.Admin
+                builder.WithOrigins("http://localhost:5040").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.JasmineTests
+            });
 
             
 

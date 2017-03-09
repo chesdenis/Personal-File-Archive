@@ -8,7 +8,7 @@ using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
 {
     [DbContext(typeof(PfsServerDbContext))]
-    [Migration("20170307065655_PfsDbMigration")]
+    [Migration("20170309052612_PfsDbMigration")]
     partial class PfsDbMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,7 +16,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
-            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.FSObject", b =>
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.File", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -27,7 +27,21 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FSObjects");
+                    b.ToTable("Files");
+                });
+
+            modelBuilder.Entity("PFS.Server.Core.Shared.Entities.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Folders");
                 });
 
             modelBuilder.Entity("PFS.Server.Core.Shared.Entities.Tag", b =>

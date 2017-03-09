@@ -14,24 +14,17 @@ using System.Web.OData;
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
 {
     [EnableQuery]
-    public class FSObjectsController : ODataController
+    public class FilesController : ODataController
     {
-        private readonly FSObjectsRepository Rep;
+        private readonly FilesRepository Rep;
 
-        public FSObjectsController(FSObjectsRepository rep)
+        public FilesController(FilesRepository rep)
         {
             Rep = rep;
         }
-
-        
-        [HttpGet]
-        public IQueryable<FSObject> GetFolders([FromODataUri] string folderPath)
-        {
-            return Rep.GetFolders(folderPath).AsQueryable();
-        }
          
         [HttpGet]
-        public IQueryable<FSObject> GetFiles([FromODataUri] string folderPath)
+        public IQueryable<File> GetFiles([FromODataUri] string folderPath)
         {          
             return Rep.GetFiles(folderPath).AsQueryable();
         }

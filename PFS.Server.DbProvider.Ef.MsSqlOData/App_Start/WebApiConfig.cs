@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 
@@ -14,8 +15,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
         {
             //Web API configuration and services
             var builder = new ODataConventionModelBuilder()
-            .UseTags()
-            .UseFSObjects();
+            .BuildTagsModel()
+            .BuildFilesModel()
+            .BuildFoldersModel();
             
             config.MapODataServiceRoute("ODataWebApi", "odata", builder.GetEdmModel());
 
@@ -31,30 +33,43 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
                 .Select()
                 .MaxTop(null);
 
-             
+            var corsParamsMainApp = new EnableCorsAttribute("http://localhost:5000", "*", "*"); // PFS.Server.MvcApp
+            var corsParamsAdminApp = new EnableCorsAttribute("http://localhost:5030", "*", "*"); // PFS.Server.Admin
+            var corsParamsJasmineTestsApp = new EnableCorsAttribute("http://localhost:5040", "*", "*"); // PFS.Server.JasmineTests
+            config.EnableCors(corsParamsMainApp);
+            config.EnableCors(corsParamsAdminApp);
+            config.EnableCors(corsParamsJasmineTestsApp);
+
         }
 
-        public static ODataConventionModelBuilder UseTags(this ODataConventionModelBuilder builder)
+        public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
         {
             builder.EntitySet<Tag>("Tags");
 
             return builder;
         }
 
-        public static ODataConventionModelBuilder UseFSObjects(this ODataConventionModelBuilder builder)
+        public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<FSObject>("FSObjects");
+            builder.EntitySet<File>("Files");
 
-            builder.EntityType<FSObject>()
-                .Collection
-                .Function("GetFolders")                
-                .Returns<IQueryable<FSObject>>()
-                .Parameter<string>("folderPath");
-
-            builder.EntityType<FSObject>()
+            builder.EntityType<File>()
                 .Collection
                 .Function("GetFiles")
-                .Returns<IQueryable<FSObject>>()
+                .Returns<IQueryable<File>>()
+                .Parameter<string>("folderPath");
+
+            return builder;
+        }
+
+        public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Folder>("Folders");
+
+            builder.EntityType<Folder>()
+                .Collection
+                .Function("GetFolders")
+                .Returns<IQueryable<Folder>>()
                 .Parameter<string>("folderPath");
 
             return builder;

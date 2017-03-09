@@ -10,19 +10,13 @@ using System.Threading.Tasks;
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
 {
     [EnableQuery]
-    [Route("odata/Tags")]
-    public class FSObjectsController : Controller
+    [Route("odata/Files")]
+    public class FilesController : Controller
     {
-        private readonly FSObjectsRepository Rep;
+        private readonly FilesRepository Rep;
 
         [HttpGet]
-        public IQueryable<FSObject> GetFolders([FromQuery] string folderPath)
-        {
-            return Rep.GetFolders(folderPath).AsQueryable();
-        }
-
-        [HttpGet]
-        public IQueryable<FSObject> GetFiles([FromQuery] string folderPath)
+        public IQueryable<File> GetFiles([FromQuery] string folderPath)
         {
             return Rep.GetFiles(folderPath).AsQueryable();
         }

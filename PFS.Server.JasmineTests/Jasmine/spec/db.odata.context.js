@@ -6,22 +6,44 @@
     var types = {};
 
 
-    $data.Entity.extend('PFS.Server.Core.Entities.Tag', {
+    $data.Entity.extend('PFS.Server.Core.Shared.Entities.Tag', {
         'Id': { 'key': true, 'type': 'Edm.Int32', 'nullable': false, 'required': true },
         'Name': { 'type': 'Edm.String' }
     });
 
+    $data.Entity.extend('PFS.Server.Core.Shared.Entities.File', {
+        'Id': { 'key': true, 'type': 'Edm.Int32', 'nullable': false, 'required': true },
+        'Name': { 'type': 'Edm.String' },
+        'Path': { 'type': 'Edm.String' }
+    });
+
+    $data.Entity.extend('PFS.Server.Core.Shared.Entities.Folder', {
+        'Id': { 'key': true, 'type': 'Edm.Int32', 'nullable': false, 'required': true },
+        'Name': { 'type': 'Edm.String' },
+        'Path': { 'type': 'Edm.String' }
+    });
+
+    $data.Entity.extend('System.Linq.IQueryable_1OfFile', {
+
+    });
+
+    $data.Entity.extend('System.Linq.IQueryable_1OfFolder', {
+
+    });
+
     exports.type = $data.EntityContext.extend('Default.Container', {
-        'Tags': { type: $data.EntitySet, elementType: 'PFS.Server.Core.Entities.Tag' }
+        'Tags': { type: $data.EntitySet, elementType: 'PFS.Server.Core.Shared.Entities.Tag' },
+        'Files': { type: $data.EntitySet, elementType: 'PFS.Server.Core.Shared.Entities.File' },
+        'Folders': { type: $data.EntitySet, elementType: 'PFS.Server.Core.Shared.Entities.Folder' }
     });
 
     var ctxType = exports.type;
 
-    exports.dbContextFactory = function (config) {
+    exports.dbContextFactory = function (config, url) {
         if (ctxType) {
             var cfg = $data.typeSystem.extend({
                 name: "oData",
-                oDataServiceHost: "http://localhost:5020/odata",
+                oDataServiceHost: url,
                 withCredentials: false,
                 maxDataServiceVersion: "4.0"
             }, config);

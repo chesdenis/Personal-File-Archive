@@ -9,7 +9,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "FSObjects",
+                name: "Files",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,7 +19,21 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FSObjects", x => x.Id);
+                    table.PrimaryKey("PK_Files", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Folders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Path = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Folders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,7 +53,10 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FSObjects");
+                name: "Files");
+
+            migrationBuilder.DropTable(
+                name: "Folders");
 
             migrationBuilder.DropTable(
                 name: "Tags");
