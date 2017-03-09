@@ -1,49 +1,56 @@
-﻿describe("ApiTests", function () {
-    it("should be able to create new element in db", function () {
+﻿describe("MSSqlServer with Entity Framework api tests", function () {
+    var apiUrl = "http://localhost:64245/odata";
 
-        $data.service('http://localhost:64245/odata', function (contextFactory, contextType) {
+    describe("should be able to create new Tag", shouldCreateTag);
+    describe("should be able to read all tags", shouldReadAllTags);
+
+    function shouldCreateTag() {
+
+        var isDone = false;
         
-            var ctx = contextFactory();
-
-            ctx.Tags.add(new ctx.Tags.Tag({ Name: 'Tag from jasmine' }));
-            ctx.saveChanges();
-
-            //var tags = context.Tags.toArray().then(function (tags) {
-
-            //    console.log(tags);
-            //});
-
-
+        beforeEach(function(done){
+            createTag().then(function () {
+                isDone = true; done();
+            }).catch(function () {
+                isDone = false; done();
+            });
         });
 
-        //dbContextFactory({})
-        //    .onReady()
-        //    .then(function () {
-        //        expect(true).toEqual(true);
-        //    });
-    });
+        it("Ok?", () => { expect(isDone).toEqual(true); });
+    };
 
-    //it("should be able to add new item", function () {
-    //    var isNewRecord = false;
+    function shouldReadAllTags() {
+        var isDone = false;
 
-    //    //isNewRecord = true;
+        beforeEach(function (done) {
+            readAllTags().then(function () {
+                isDone = true; done();
+            }).catch(function () {
+                isDone = false; done();
+            });
+        });
 
-    //    expect(isNewRecord).toEqual(true);
-    //});
+        it("Ok?", () => { expect(isDone).toEqual(true); });
+    }
 
-    //it("should be able to add new item 2", function () {
-    //    var isNewRecord = false;
+    function readAllTags() {
+        return new Promise(function (resolve, reject) {
+            $data.service(apiUrl, function (contextFactory, contextType) {
+                var ctx = contextFactory();
+                resolve(ctx.Tags.toArray());
+            });
+        });
+    }
 
-    //    //isNewRecord = true;
+    function createTag() {
+        return new Promise(function (resolve, reject) {
+            $data.service(apiUrl, function (contextFactory, contextType) {
+                var ctx = contextFactory();
+                ctx.Tags.add(new ctx.Tags.Tag({ Name: 'Tag from jasmine' }));
 
-    //    expect(isNewRecord).toEqual(false);
-    //});
+                resolve(ctx.saveChanges());
+            });
+        });        
+    };
 
-    //it("should be able to add new item 3", function () {
-    //    var isNewRecord = false;
-
-    //    //isNewRecord = true;
-
-    //    expect(isNewRecord).toEqual(true);
-    //});
 });
