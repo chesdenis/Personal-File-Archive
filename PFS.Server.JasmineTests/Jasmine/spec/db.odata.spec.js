@@ -19,7 +19,9 @@
     var actionsToTest = new dbOdataActions();
     actionsToTest.init(apiUrl);
 
-    //describe("should be able to create new Tag", shouldCreateTag);
+    describe("should be able to create new Tag", function () {
+        should(actionsToTest, "createTag");
+    });
     describe("should be able to read all tags", function () {
         should(actionsToTest, "readAllTags");
     });

@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.OData.Extensions;
+using Microsoft.AspNetCore.OData;
+using Microsoft.AspNetCore.OData.Builder;
+using Microsoft.AspNetCore.OData.Routing.Conventions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PFS.Server.Core.Shared.Abstractions;
 using PFS.Server.Core.Shared.Entities;
 using PFS.Server.Core.Shared.Repositories;
-using Microsoft.AspNetCore.OData.Extensions;
 using PFS.Server.DbProvider.EfCore.SqLiteOData.Db;
-using Microsoft.AspNetCore.OData.Builder;
+using System.Linq;
+using System;
 
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 {
@@ -23,15 +22,9 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
             services.AddCors();
+            services.AddOData();
             
-            services.AddOData<IPfsODataCollections>(builder=>
-            {
-                BuildFiles(builder);
-                BuildFolders(builder);            
-            });
-
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<TagsRepository>();
@@ -40,6 +33,7 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
+         
 
         private void BuildFiles(ODataConventionModelBuilder builder)
         {
@@ -62,20 +56,62 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
+            var odataBuilder = new ODataConventionModelBuilder(provider)
+                .BuildTagsModel()
+                .BuildFilesModel()
+                .BuildFoldersModel();
+
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 
-            app.UseCors(builder =>
+            app.UseCors(_ =>
             {
-                builder.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.MvcApp
-                builder.WithOrigins("http://localhost:5030").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.Admin
-                builder.WithOrigins("http://localhost:5040").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.JasmineTests
+                _.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.MvcApp
+                _.WithOrigins("http://localhost:5030").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.Admin
+                _.WithOrigins("http://localhost:5040").AllowAnyHeader().AllowAnyMethod(); // PFS.Server.JasmineTests
             });
-
-            
-
-            app.UseOData("odata");
+             
             app.UseMvc();
+            app.UseMvc(_ => _.MapODataRoute("odata", odataBuilder.GetEdmModel()));
+        }
+
+        
+    }
+
+    public static class ODataModelExtensions
+    {
+        public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Tag>("Tags");
+
+            return builder;
+        }
+
+        public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<File>("Files");
+
+            builder.EntityType<File>()
+                .Collection
+                .Function("GetFiles")
+                .Returns<IQueryable<File>>()
+                .Parameter<string>("folderPath");
+
+            return builder;
+        }
+
+        public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Folder>("Folders");
+
+            builder.EntityType<Folder>()
+                .Collection
+                .Function("GetFolders")
+                .Returns<IQueryable<Folder>>()
+                .Parameter<string>("folderPath");
+
+            return builder;
         }
     }
 }

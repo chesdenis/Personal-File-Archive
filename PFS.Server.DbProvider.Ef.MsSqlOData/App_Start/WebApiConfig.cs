@@ -14,12 +14,12 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
         public static void Register(HttpConfiguration config)
         {
             //Web API configuration and services
-            var builder = new ODataConventionModelBuilder()
+            var odataBuilder = new ODataConventionModelBuilder()
             .BuildTagsModel()
             .BuildFilesModel()
             .BuildFoldersModel();
             
-            config.MapODataServiceRoute("ODataWebApi", "odata", builder.GetEdmModel());
+            config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel());
 
             // enable all queries in odata by default
             // also you can enable for specific entitites only:

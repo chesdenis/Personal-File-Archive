@@ -15,6 +15,11 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
     {
         private readonly FilesRepository Rep;
 
+        public FilesController(FilesRepository rep)
+        {
+            Rep = rep;
+        }
+
         [HttpGet]
         public IQueryable<File> GetFiles([FromQuery] string folderPath)
         {
