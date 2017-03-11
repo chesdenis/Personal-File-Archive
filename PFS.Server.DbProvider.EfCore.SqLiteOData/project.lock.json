@@ -3940,20 +3940,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
-      },
-      "PFS.Server.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v1.0",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
-          "Microsoft.NETCore.App": "1.0.0"
-        },
-        "compile": {
-          "netcoreapp1.0/PFS.Server.Core.dll": {}
-        },
-        "runtime": {
-          "netcoreapp1.0/PFS.Server.Core.dll": {}
-        }
       }
     }
   },
@@ -10812,11 +10798,6 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
-    },
-    "PFS.Server.Core/1.0.0": {
-      "type": "project",
-      "path": "../PFS.Server.Core/project.json",
-      "msbuildProject": "../PFS.Server.Core/PFS.Server.Core.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10835,8 +10816,7 @@
       "Microsoft.NETCore.App >= 1.0.0",
       "Microsoft.OData.Core >= 6.15.0",
       "Microsoft.OData.Edm >= 6.15.0",
-      "Microsoft.Spatial >= 6.15.0",
-      "PFS.Server.Core >= 1.0.0-*"
+      "Microsoft.Spatial >= 6.15.0"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

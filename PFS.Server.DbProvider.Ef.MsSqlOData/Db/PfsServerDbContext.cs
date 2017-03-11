@@ -3,27 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.Entities;
-using PFS.Server.DbProvider.Ef.MsSqlOData.Db.Providers;
+using PFS.Server.Core.Shared.Abstractions;
+using PFS.Server.Core.Shared.Entities;
+using PFS.Server.Core.Shared.Repositories;
 
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Db
 {
-    public class PfsServerDbContext : DbContext, IPfsDbContext
+    public partial class PfsServerDbContext : DbContext, IPfsDbContext
     {
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
-        public IPfsDataProvider<Tag> TagsProvider { get; set; }
-
-        public PfsServerDbContext()
+        public PfsServerDbContext():
+            base("name=PfsServerConnectionString")
         {
-            TagsProvider = new TagsProvider(Tags);
+            Database.SetInitializer
+                (new CreateDatabaseIfNotExists<PfsServerDbContext>());
         }
 
         void IPfsDbContext.SaveChanges()
         {
             SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+
+    public partial class PfsServerDbContext 
+    {
+
+        public Tag AddEntity(Tag entity)
+        {
+            return Tags.Add(entity);
+        }
+
+        public void RemoveEntity(Tag entity)
+        {
+            Tags.Remove(entity);
+        }
+
+        public Tag UpdateEntity(Tag entity)
+        {
+            var existedEntity = Tags.First(f => f.Id == entity.Id);
+
+            existedEntity.Name = entity.Name;
+
+            return existedEntity;
         }
     }
 }

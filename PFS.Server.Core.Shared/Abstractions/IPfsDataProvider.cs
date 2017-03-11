@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using PFS.Server.Core.Entities;
+using PFS.Server.Core.Shared.Entities;
 
-namespace PFS.Server.Core.Abstractions
+namespace PFS.Server.Core.Shared.Abstractions
 {
     public interface IPfsDataProvider<T>
     {

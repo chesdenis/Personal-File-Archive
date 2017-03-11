@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.Entities;
-using PFS.Server.DbProvider.EfCore.SqLiteOData.Db.Providers;
+using PFS.Server.Core.Shared.Abstractions;
+using PFS.Server.Core.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +12,6 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
     {
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
-
-        public IPfsDataProvider<Tag> TagsProvider { get; set; }
-
-        public PfsServerDbContext()
-        {
-            TagsProvider = new TagsProvider(Tags);
-        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,5 +28,26 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Db
         {
             SaveChanges();
         }
+    }
+
+    public partial class PfsServerDbContext
+    {
+        public Tag AddEntity(Tag entity)
+        {
+            var changes = Tags.Add(entity);
+            return changes.Entity;
+        }
+                
+        public void RemoveEntity(Tag entity)
+        {
+            Tags.Remove(entity);
+        }
+
+        public Tag UpdateEntity(Tag entity)
+        {
+            var changes = Tags.Update(entity);
+            return changes.Entity;
+        }
+
     }
 }
