@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PFS.Server.Core.Shared.Entities
 {
-    public class Book : File
+    public class Book 
     {
     }
 }

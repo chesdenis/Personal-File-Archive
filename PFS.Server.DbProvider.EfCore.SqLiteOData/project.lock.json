@@ -43,20 +43,7 @@
           }
         }
       },
-      "Microsoft.AspNet.WebApi.Client/5.2.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Net.Http": "2.2.22",
-          "Newtonsoft.Json": "6.0.4"
-        },
-        "compile": {
-          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
-        },
-        "runtime": {
-          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Antiforgery/1.0.0": {
+      "Microsoft.AspNetCore.Antiforgery/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection": "1.0.0",
@@ -386,17 +373,17 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Localization.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc/1.0.0": {
+      "Microsoft.AspNetCore.Mvc/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.ApiExplorer": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Cors": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Localization": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.ApiExplorer": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Cors": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Localization": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
           "Microsoft.Extensions.Caching.Memory": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "1.0.0"
         },
@@ -407,7 +394,7 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Abstractions/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Abstractions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Routing.Abstractions": "1.0.0",
@@ -424,10 +411,10 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Mvc.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1"
         },
         "compile": {
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ApiExplorer.dll": {}
@@ -436,13 +423,13 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ApiExplorer.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Core/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Core/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "1.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Http": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
           "Microsoft.AspNetCore.Routing": "1.0.0",
           "Microsoft.Extensions.DependencyModel": "1.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "1.0.0",
@@ -459,11 +446,11 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Cors/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Cors/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Cors": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1"
         },
         "compile": {
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Cors.dll": {}
@@ -472,10 +459,10 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Cors.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
           "Microsoft.Extensions.Localization": "1.0.0",
           "System.ComponentModel.Annotations": "4.1.0"
         },
@@ -486,11 +473,11 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.DataAnnotations.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.JsonPatch": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1"
         },
         "compile": {
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Formatters.Json.dll": {}
@@ -499,11 +486,11 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Localization/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Localization/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Localization": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.1",
           "Microsoft.Extensions.DependencyInjection": "1.0.0",
           "Microsoft.Extensions.Localization": "1.0.0"
         },
@@ -514,11 +501,11 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Localization.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Razor/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Razor.Host": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Razor.Host": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
           "Microsoft.CodeAnalysis.CSharp": "1.3.0",
           "Microsoft.Extensions.FileProviders.Composite": "1.0.0",
           "System.Runtime.Loader": "4.0.0",
@@ -531,7 +518,7 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Razor.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
@@ -549,10 +536,10 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Razor.Host.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.1",
           "Microsoft.Extensions.Caching.Memory": "1.0.0",
           "Microsoft.Extensions.FileSystemGlobbing": "1.0.0",
           "Microsoft.Extensions.Primitives": "1.0.0"
@@ -564,15 +551,15 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.TagHelpers.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.0": {
+      "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Antiforgery": "1.0.0",
+          "Microsoft.AspNetCore.Antiforgery": "1.0.1",
           "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Html.Abstractions": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.1",
           "Microsoft.Extensions.WebEncoders": "1.0.0",
           "Newtonsoft.Json": "9.0.1",
           "System.Buffers": "4.0.0",
@@ -585,39 +572,21 @@
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ViewFeatures.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.WebApiCompatShim/1.0.0": {
+      "Microsoft.AspNetCore.OData.vNext/6.0.1-alpha2-rtm": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.WebApi.Client": "5.2.2",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.0",
-          "Microsoft.AspNetCore.WebUtilities": "1.0.0",
-          "System.Net.Http": "4.1.0",
-          "System.Runtime.Serialization.Xml": "4.1.1",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.NETCore.App": "1.0.0",
+          "Microsoft.OData.Core": "7.0.0",
+          "Microsoft.OData.Edm": "7.0.0",
+          "Microsoft.Spatial": "7.0.0"
         },
         "compile": {
-          "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll": {}
+          "lib/netcoreapp1.0/Microsoft.AspNetCore.OData.vNext.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.OData/1.0.0-rtm-00015": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "1.0.0",
-          "Microsoft.OData.Core": "6.15.0",
-          "System.Reflection.Emit": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/Microsoft.AspNetCore.OData.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Microsoft.AspNetCore.OData.dll": {}
+          "lib/netcoreapp1.0/Microsoft.AspNetCore.OData.vNext.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor/1.0.0": {
@@ -757,21 +726,6 @@
         "runtime": {
           "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
-      },
-      "Microsoft.Bcl/1.1.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.Build": "1.0.14"
-        },
-        "compile": {
-          "lib/portable-net45+win8+wpa81/_._": {}
-        },
-        "runtime": {
-          "lib/portable-net45+win8+wpa81/_._": {}
-        }
-      },
-      "Microsoft.Bcl.Build/1.0.14": {
-        "type": "package"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
         "type": "package"
@@ -1435,21 +1389,6 @@
           "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.Net.Http/2.2.22": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl": "1.1.9",
-          "Microsoft.Bcl.Build": "1.0.14"
-        },
-        "compile": {
-          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
-          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
-          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
-        }
-      },
       "Microsoft.Net.Http.Headers/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -1567,120 +1506,120 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
-      "Microsoft.OData.Core/6.15.0": {
+      "Microsoft.OData.Core/7.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.OData.Edm": "[6.15.0]",
-          "Microsoft.Spatial": "[6.15.0]"
+          "Microsoft.OData.Edm": "[7.0.0]",
+          "Microsoft.Spatial": "[7.0.0]"
         },
         "compile": {
-          "lib/dnxcore50/Microsoft.OData.Core.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.OData.Core.dll": {}
         },
         "runtime": {
-          "lib/dnxcore50/Microsoft.OData.Core.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.OData.Core.dll": {}
         },
         "resource": {
-          "lib/dnxcore50/de/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/de/Microsoft.OData.Core.resources.dll": {
             "locale": "de"
           },
-          "lib/dnxcore50/es/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/es/Microsoft.OData.Core.resources.dll": {
             "locale": "es"
           },
-          "lib/dnxcore50/fr/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/fr/Microsoft.OData.Core.resources.dll": {
             "locale": "fr"
           },
-          "lib/dnxcore50/it/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/it/Microsoft.OData.Core.resources.dll": {
             "locale": "it"
           },
-          "lib/dnxcore50/ja/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ja/Microsoft.OData.Core.resources.dll": {
             "locale": "ja"
           },
-          "lib/dnxcore50/ko/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ko/Microsoft.OData.Core.resources.dll": {
             "locale": "ko"
           },
-          "lib/dnxcore50/ru/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ru/Microsoft.OData.Core.resources.dll": {
             "locale": "ru"
           },
-          "lib/dnxcore50/zh-Hans/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.OData.Core.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/dnxcore50/zh-Hant/Microsoft.OData.Core.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.OData.Core.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.OData.Edm/6.15.0": {
+      "Microsoft.OData.Edm/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/dnxcore50/Microsoft.OData.Edm.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.OData.Edm.dll": {}
         },
         "runtime": {
-          "lib/dnxcore50/Microsoft.OData.Edm.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.OData.Edm.dll": {}
         },
         "resource": {
-          "lib/dnxcore50/de/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/de/Microsoft.OData.Edm.resources.dll": {
             "locale": "de"
           },
-          "lib/dnxcore50/es/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/es/Microsoft.OData.Edm.resources.dll": {
             "locale": "es"
           },
-          "lib/dnxcore50/fr/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/fr/Microsoft.OData.Edm.resources.dll": {
             "locale": "fr"
           },
-          "lib/dnxcore50/it/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/it/Microsoft.OData.Edm.resources.dll": {
             "locale": "it"
           },
-          "lib/dnxcore50/ja/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ja/Microsoft.OData.Edm.resources.dll": {
             "locale": "ja"
           },
-          "lib/dnxcore50/ko/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ko/Microsoft.OData.Edm.resources.dll": {
             "locale": "ko"
           },
-          "lib/dnxcore50/ru/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ru/Microsoft.OData.Edm.resources.dll": {
             "locale": "ru"
           },
-          "lib/dnxcore50/zh-Hans/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.OData.Edm.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/dnxcore50/zh-Hant/Microsoft.OData.Edm.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.OData.Edm.resources.dll": {
             "locale": "zh-Hant"
           }
         }
       },
-      "Microsoft.Spatial/6.15.0": {
+      "Microsoft.Spatial/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/dnxcore50/Microsoft.Spatial.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.Spatial.dll": {}
         },
         "runtime": {
-          "lib/dnxcore50/Microsoft.Spatial.dll": {}
+          "lib/portable-net45+win8+wpa81/Microsoft.Spatial.dll": {}
         },
         "resource": {
-          "lib/dnxcore50/de/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/de/Microsoft.Spatial.resources.dll": {
             "locale": "de"
           },
-          "lib/dnxcore50/es/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/es/Microsoft.Spatial.resources.dll": {
             "locale": "es"
           },
-          "lib/dnxcore50/fr/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/fr/Microsoft.Spatial.resources.dll": {
             "locale": "fr"
           },
-          "lib/dnxcore50/it/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/it/Microsoft.Spatial.resources.dll": {
             "locale": "it"
           },
-          "lib/dnxcore50/ja/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ja/Microsoft.Spatial.resources.dll": {
             "locale": "ja"
           },
-          "lib/dnxcore50/ko/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ko/Microsoft.Spatial.resources.dll": {
             "locale": "ko"
           },
-          "lib/dnxcore50/ru/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/ru/Microsoft.Spatial.resources.dll": {
             "locale": "ru"
           },
-          "lib/dnxcore50/zh-Hans/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.Spatial.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/dnxcore50/zh-Hant/Microsoft.Spatial.resources.dll": {
+          "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.Spatial.resources.dll": {
             "locale": "zh-Hant"
           }
         }
@@ -2939,41 +2878,6 @@
           "lib/netstandard1.3/System.ObjectModel.dll": {}
         }
       },
-      "System.Private.DataContractSerialization/4.1.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Collections.Concurrent": "4.0.12",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Linq": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit.ILGeneration": "4.0.1",
-          "System.Reflection.Emit.Lightweight": "4.0.1",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Serialization.Primitives": "4.1.1",
-          "System.Text.Encoding": "4.0.11",
-          "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11",
-          "System.Xml.XmlDocument": "4.0.1",
-          "System.Xml.XmlSerializer": "4.0.11"
-        },
-        "compile": {
-          "ref/netstandard/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Private.DataContractSerialization.dll": {}
-        }
-      },
       "System.Reflection/4.1.0": {
         "type": "package",
         "dependencies": {
@@ -3021,7 +2925,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
+          "ref/netstandard1.1/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -3035,7 +2939,7 @@
           "System.Runtime": "4.1.0"
         },
         "compile": {
-          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
+          "ref/netstandard1.0/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -3276,23 +3180,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll": {}
-        }
-      },
-      "System.Runtime.Serialization.Xml/4.1.1": {
-        "type": "package",
-        "dependencies": {
-          "System.IO": "4.1.0",
-          "System.Private.DataContractSerialization": "4.1.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Serialization.Primitives": "4.1.1",
-          "System.Text.Encoding": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Runtime.Serialization.Xml.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Runtime.Serialization.Xml.dll": {}
         }
       },
       "System.Security.Claims/4.0.1": {
@@ -3873,34 +3760,6 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "System.Xml.XmlSerializer/4.0.11": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Linq": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Reflection.Emit.ILGeneration": "4.0.1",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11",
-          "System.Xml.XmlDocument": "4.0.1"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Xml.XmlSerializer.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
-        }
-      },
       "System.Xml.XPath/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -3962,25 +3821,12 @@
         "runtimes/win7-x86/native/libuv.dll"
       ]
     },
-    "Microsoft.AspNet.WebApi.Client/5.2.2": {
-      "sha512": "YVq+s0WeXrPxJk57CoElbtMYf95j76uJcW6nue3Cs4eIer9sgUp4rasSo0gALX3ls1Zf2jMceOLik9X/sJyrwA==",
+    "Microsoft.AspNetCore.Antiforgery/1.0.1": {
+      "sha512": "MMevi8HnI5GxtNOS9ZqZLuNafltbngXsOrNqyykFveMWFN5a3AfAB7I0qU77tBS9B/N3boRQuyT9AR0BsCQbaw==",
       "type": "package",
-      "path": "Microsoft.AspNet.WebApi.Client/5.2.2",
+      "path": "Microsoft.AspNetCore.Antiforgery/1.0.1",
       "files": [
-        "Microsoft.AspNet.WebApi.Client.5.2.2.nupkg.sha512",
-        "Microsoft.AspNet.WebApi.Client.nuspec",
-        "lib/net45/System.Net.Http.Formatting.dll",
-        "lib/net45/System.Net.Http.Formatting.xml",
-        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
-        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
-      ]
-    },
-    "Microsoft.AspNetCore.Antiforgery/1.0.0": {
-      "sha512": "oJnrSvL6S7jM2eD/TR/Kyp/7O6pKvN+8FcnYvUaxaHbKlISwl98o44uidzePBjGxTf4fh9NFEx/q3OuuxAvBzw==",
-      "type": "package",
-      "path": "Microsoft.AspNetCore.Antiforgery/1.0.0",
-      "files": [
-        "Microsoft.AspNetCore.Antiforgery.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Antiforgery.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Antiforgery.nuspec",
         "lib/net451/Microsoft.AspNetCore.Antiforgery.dll",
         "lib/net451/Microsoft.AspNetCore.Antiforgery.xml",
@@ -4216,12 +4062,12 @@
         "lib/netstandard1.3/Microsoft.AspNetCore.Localization.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc/1.0.0": {
-      "sha512": "nNiMnzdXHpMrsjnBRiYaVy5EMsCmTsqSIIOtJvMbqJldh1i3NCM9jgvp4Da+Ke1gkGd2/MK8rXp+8a5yF+QOOQ==",
+    "Microsoft.AspNetCore.Mvc/1.0.1": {
+      "sha512": "Perrv2s4hzMbYR/kanzUqcfzxXLo6CThoilhMg7UQXeXEvOtpbDKx0HGimN/pt6Dy2wt3WOQAjAiM1Z8KoRgaA==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.xml",
@@ -4229,12 +4075,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Abstractions/1.0.0": {
-      "sha512": "d7KEexDwxSwVeZv+SDbsMRPl2WuKMVckOCp/KTGuI1NJhd/7GvNGW101iRIC3tC/yym0PaajcWwTZNVfjhyoJw==",
+    "Microsoft.AspNetCore.Mvc.Abstractions/1.0.1": {
+      "sha512": "Xa9XOA/NEIGSUSyAtc0rQrTRJKcxN8rzvBy0QJn2tRAXVeXc0Lbx4/1ia9kxyn3ygbjhF6bO90ZnC3Z3a2cq5g==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Abstractions/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Abstractions/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Abstractions.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Abstractions.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Abstractions.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Abstractions.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Abstractions.xml",
@@ -4242,12 +4088,12 @@
         "lib/netstandard1.3/Microsoft.AspNetCore.Mvc.Abstractions.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.0": {
-      "sha512": "46aWHLmZ37c44bJzLdbSEmIxCwQo7BljHBoK8C9CPCEPOLPWmg0XyPhGyMSGY4woDmm9ukBOEpqT899BWSxhRw==",
+    "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.1": {
+      "sha512": "ntjDDV+g6eveL67fsvGIY7BqZmaR2XYlZpsrXxzjSWKSYBzDfWaUJna5dsPty0hOwz7DCMNbWYrpD+XEr+H0jA==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.ApiExplorer/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.ApiExplorer.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.ApiExplorer.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.ApiExplorer.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.ApiExplorer.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.ApiExplorer.xml",
@@ -4255,12 +4101,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ApiExplorer.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Core/1.0.0": {
-      "sha512": "tjCOZJheOAKStHs4LIcrLsbF/00wEwSinC+vCFpsmdqGVl3/tX9jnID20E1NlkKOW68DOLBavoC23BWFiHa0JA==",
+    "Microsoft.AspNetCore.Mvc.Core/1.0.1": {
+      "sha512": "TfUFH0HYbL3DCGkWE24gUDnHoa3pCr4b6xbUiQTnqIbIXdL79qW8mTtfD+RHmAN5bsf1J1fndJJ84/jKri+kiw==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Core/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Core/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Core.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Core.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Core.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Core.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Core.xml",
@@ -4268,12 +4114,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Core.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Cors/1.0.0": {
-      "sha512": "jz3au6mm/O0ahotfUqZTGtsftcd4UYKIzl2l0+WRG817UJdMGLmnmgmUPcAQR1nrI0Dg49MsfTkjWoMQM9CsUw==",
+    "Microsoft.AspNetCore.Mvc.Cors/1.0.1": {
+      "sha512": "s3Pabc4x5K1xtCpNv/oVAuFyj2Lq+z+qYkmrRqbnqVt+8V39FoW3znPjbVCNu5CjrYSQL2fm3irJ3pM7WLsI/g==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Cors/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Cors/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Cors.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Cors.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Cors.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Cors.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Cors.xml",
@@ -4281,12 +4127,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Cors.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.0": {
-      "sha512": "ZU02Y2tnKu/lVv2ywnNO+nSRzDWiTlq+ZhSuR9L3Q9NqlCyQJXOgX+iD/BGshnMQ7ZTstjyO4h8WeF7Ii9vBWQ==",
+    "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.1": {
+      "sha512": "y3QkHvOI+vopfhncU9NpUH2MvtZ2Z0EfnApb92jqbmfWL1wd5Np3SHrFSXgI4zVLlM38dMa/QU2SYM3e4T7fFQ==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.DataAnnotations/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.DataAnnotations.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.DataAnnotations.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.DataAnnotations.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.DataAnnotations.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.DataAnnotations.xml",
@@ -4294,12 +4140,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.DataAnnotations.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.0": {
-      "sha512": "XQQLbxYLmdRj2U685NxFIrxVxqsXHLO5zN4ZIhTQ23VxzI6Qk2WN9ska0tl4ZMDV/4pSyE8SlmNeKPCN3pW86w==",
+    "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.1": {
+      "sha512": "wM12hSUlF0Eqed44psOYT4fY/RRjMx049A4bBUfqiGr1UFU54zTR8djRLW0dIp1w7Xv5WQ/bgG9jyqiaRbv6jg==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Formatters.Json/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Formatters.Json.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Formatters.Json.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Formatters.Json.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Formatters.Json.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Formatters.Json.xml",
@@ -4307,12 +4153,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Formatters.Json.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Localization/1.0.0": {
-      "sha512": "+w4s6j88pzJmc++3IozCmo0AIOF8ks/LrOAuMTRm6ve/l+wTp/oqXu2tjLA3QAvP6n6hC3cm40qW69UhYUtSIQ==",
+    "Microsoft.AspNetCore.Mvc.Localization/1.0.1": {
+      "sha512": "s6Q7l9UtJ/sYxvsbjXuA+5RdKQ70OSLQSLs+UAWrwMtHm9XKTr51gmcG1t1gkWN5f39WSkzJs2brB9fJkFcgvw==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Localization/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Localization/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Localization.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Localization.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Localization.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Localization.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Localization.xml",
@@ -4320,12 +4166,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Localization.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Razor/1.0.0": {
-      "sha512": "G17pVnANhBj6AdpzTnJV36MRx4KNLQao0NqGUyKFvtKjy77KR55Fmt6/MVykbOB5xH33fbMIveTiSF3h4kWSQA==",
+    "Microsoft.AspNetCore.Mvc.Razor/1.0.1": {
+      "sha512": "Rc1dkP5LZcuxicrmUTFMfrRF8+id9iVSOA3/DjhO036b7g7BBvknLHKtbbsQ59COB9D8fr9MwKF2Eb99TSCJvg==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Razor/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Razor/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Razor.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Razor.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Razor.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Razor.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Razor.xml",
@@ -4333,12 +4179,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Razor.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.0": {
-      "sha512": "cMdbvKf56IRyviirKFAgwcUSxwzLVASRA8cgxQD6Bw/JO9uwpG33mWjMnsdmZveW0y/ek1FjHTx6Zd4UpZfQ6A==",
+    "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.1": {
+      "sha512": "7A9D7ufew8iYmhK/3w05ZdTGGOi9oNzAqy0BJNNF2rm2n9uImquzPmmoCWXFnar7QawVzhXE+ZMSXRUH9n6Glg==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.Razor.Host/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.Razor.Host.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.Razor.Host.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.Razor.Host.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.Razor.Host.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.Razor.Host.xml",
@@ -4346,12 +4192,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Razor.Host.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.0": {
-      "sha512": "5IT4kddg3Tz3Ki53HvP3fvjnpYzKjY5mFWhmpPQvE2vzfMr7zU6X1Cls2SnJPMcV6sAqzTB4j6AmUmcEpFNMqg==",
+    "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.1": {
+      "sha512": "QadZAsqoIc2D5zceTdLtNnyJALkdhoTIiqvlDlO0SgyPBisyUe4gDEiygwSnLzm8NZ+kKSFhNuX+t+b1O2uIVw==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.TagHelpers/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.TagHelpers.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.TagHelpers.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.TagHelpers.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.TagHelpers.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.TagHelpers.xml",
@@ -4359,12 +4205,12 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.TagHelpers.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.0": {
-      "sha512": "DNMCqY+TX5jgO3M1C7Lf5E61llWZ+QgtjLYfrIkq7yfZjhzI52nprFE3mh66HahKU1EvyOz9+ISdaSmTimfNbQ==",
+    "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.1": {
+      "sha512": "1zGeF76JEqvocxdM+H5n/vJunUUVNzKK4LmgnaFdrrCDTrI6MVdok+8TBBUbeI+uNk3ssrLnP3EcHIdvxl66gw==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.0",
+      "path": "Microsoft.AspNetCore.Mvc.ViewFeatures/1.0.1",
       "files": [
-        "Microsoft.AspNetCore.Mvc.ViewFeatures.1.0.0.nupkg.sha512",
+        "Microsoft.AspNetCore.Mvc.ViewFeatures.1.0.1.nupkg.sha512",
         "Microsoft.AspNetCore.Mvc.ViewFeatures.nuspec",
         "lib/net451/Microsoft.AspNetCore.Mvc.ViewFeatures.dll",
         "lib/net451/Microsoft.AspNetCore.Mvc.ViewFeatures.xml",
@@ -4372,365 +4218,16 @@
         "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.ViewFeatures.xml"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.WebApiCompatShim/1.0.0": {
-      "sha512": "Z2Og03qmBTR1G3yIfn1aEDdcZhgCm0QpAnEXkXqH5wFz0gxo60Kk8kOxalqEGb0Ef2CIRHUKJEzMDSoEmgnGAA==",
+    "Microsoft.AspNetCore.OData.vNext/6.0.1-alpha2-rtm": {
+      "sha512": "bNZV3pZSDSxR9Wk+MlwJpbUfOMa7NtamxY/5S8gjSOBFNr1u+Gox5xcrSvYXmSypwhU0q525rEMQYHNN8d51/w==",
       "type": "package",
-      "path": "Microsoft.AspNetCore.Mvc.WebApiCompatShim/1.0.0",
+      "path": "Microsoft.AspNetCore.OData.vNext/6.0.1-alpha2-rtm",
       "files": [
-        "Microsoft.AspNetCore.Mvc.WebApiCompatShim.1.0.0.nupkg.sha512",
-        "Microsoft.AspNetCore.Mvc.WebApiCompatShim.nuspec",
-        "lib/net451/Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll",
-        "lib/net451/Microsoft.AspNetCore.Mvc.WebApiCompatShim.xml",
-        "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll",
-        "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.WebApiCompatShim.xml"
-      ]
-    },
-    "Microsoft.AspNetCore.OData/1.0.0-rtm-00015": {
-      "sha512": "ITdVbQSuGI1iOGtfVBzZ/LIvMG0Wu83U3BalT4+4udGgwSIRLa9/qhYNGneSMIH6gGisdKY1HP+TMHtbZic/Sg==",
-      "type": "package",
-      "path": "Microsoft.AspNetCore.OData/1.0.0-rtm-00015",
-      "files": [
-        "Microsoft.AspNetCore.OData.1.0.0-rtm-00015.nupkg.sha512",
-        "Microsoft.AspNetCore.OData.nuspec",
-        "lib/net451/Microsoft.AspNetCore.OData.dll",
-        "lib/net451/Microsoft.AspNetCore.OData.pdb",
-        "lib/netstandard1.6/Microsoft.AspNetCore.OData.dll",
-        "lib/netstandard1.6/Microsoft.AspNetCore.OData.pdb",
-        "src/Microsoft.AspNetCore.OData/AssembliesResolver.cs",
-        "src/Microsoft.AspNetCore.OData/Batch/ODataHttpContentExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ActionConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ActionLinkBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ActionOnDeleteAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/BindableProcedureFinder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/BindingParameterConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/CollectionPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/CollectionTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ComplexPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ComplexTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ComplexTypeConfigurationOfTComplexType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ContainedAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ContainmentPathBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/AbstractEntityTypeDiscoveryConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/AbstractTypeDiscoveryConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/ActionLinkGenerationConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/AssociationSetDiscoveryConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/ActionOnDeleteAttributeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/AttributeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/AttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/AttributeEdmTypeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/ComplexTypeAttributeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/ConcurrencyCheckAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/DataContractAttributeEdmTypeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/DataMemberAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/ForeignKeyAttributeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/IgnoreDataMemberAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/KeyAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NonFilterableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotCountableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotExpandableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotFilterableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotMappedAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotNavigableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/NotSortableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/ODataIncludeAttributeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/RequiredAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/TimestampAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/Attributes/UnsortableAttributeEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/ConventionsHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/EntityKeyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/EntityTypeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/ForeignKeyDiscoveryConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/FunctionLinkGenerationConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/IConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/IEdmPropertyConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/IEdmPropertyConventionOfTPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/IEdmTypeConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/INavigationSourceConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/IProcedureConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/NavigationLinksGenerationConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/Conventions/SelfLinksGenerationConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/DynamicPropertyDictionaryAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EdmModelHelperMethods.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EdmTypeBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EdmTypeConfigurationExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EdmTypeMap.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EntityCollectionConfigurationOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EntitySetConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EntitySetConfigurationOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EntityTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EntityTypeConfigurationOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EnumMemberConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EnumPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EnumTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/EnumTypeConfigurationOfTEnumType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/FunctionConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/FunctionLinkBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/IEdmTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/INavigationSourceConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/LinkGenerationHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/LowerCamelCaser.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NameResolverOptions.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationLinkBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationPropertyBindingConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationSourceAndAnnotations.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationSourceConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationSourceConfigurationOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationSourceLinkBuilderAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NavigationSourceUrlAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NonBindingParameterConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/NullableEnumTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ODataConventionModelBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ODataConventionModelBuilderExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ODataModelBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/OperationTitleAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ParameterConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PrimitivePropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PrimitiveTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ProcedureConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ProcedureKind.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PropertyKind.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PropertyPairSelectorVisitor.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/PropertySelectorVisitor.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/ReturnedEntitySetAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/SelfLinkBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/SingletonAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/SingletonConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/SingletonConfigurationOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/StructuralPropertyConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/StructuralTypeConfiguration.cs",
-        "src/Microsoft.AspNetCore.OData/Builder/StructuralTypeConfigurationOfTStructuralType.cs",
-        "src/Microsoft.AspNetCore.OData/ClrPropertyInfoAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/ClrTypeAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Common/Error.cs",
-        "src/Microsoft.AspNetCore.OData/Common/PropertyHelper.cs",
-        "src/Microsoft.AspNetCore.OData/Common/TypeHelper.cs",
-        "src/Microsoft.AspNetCore.OData/CommonWebApiResources.Designer.cs",
-        "src/Microsoft.AspNetCore.OData/ContentIdHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/DefaultODataModelProvider.cs",
-        "src/Microsoft.AspNetCore.OData/Delta.cs",
-        "src/Microsoft.AspNetCore.OData/DisplayNameAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/EdmComplexObject.cs",
-        "src/Microsoft.AspNetCore.OData/EdmComplexObjectCollection.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaCollectionType.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaDeletedEntityObject.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaDeletedLink.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaEntityKind.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaLink.cs",
-        "src/Microsoft.AspNetCore.OData/EdmDeltaType.cs",
-        "src/Microsoft.AspNetCore.OData/EdmEntityObject.cs",
-        "src/Microsoft.AspNetCore.OData/EdmEntityObjectCollection.cs",
-        "src/Microsoft.AspNetCore.OData/EdmEnumObject.cs",
-        "src/Microsoft.AspNetCore.OData/EdmEnumObjectCollection.cs",
-        "src/Microsoft.AspNetCore.OData/EdmStructuredObject.cs",
-        "src/Microsoft.AspNetCore.OData/EnableQueryAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/EntityInstanceContext.cs",
-        "src/Microsoft.AspNetCore.OData/EntityInstanceContextOfTEntityType.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/ActionDescriptorExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/BuilderExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/ControllerExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/EdmModelExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/EdmTypeExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/HttpContextExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/HttpErrorExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/HttpRequestExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/HttpResponseExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/ModelStateDictionaryExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/ODataServiceCollectionExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/PropertyInfoExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/TypeExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Extensions/UrlHelperExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/FeedContext.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ClrTypeCache.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/DefaultODataETagHandler.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/CollectionDeserializationHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/DeserializationHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/ODataDeserializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/ODataDeserializerContext.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/ODataDeserializerProvider.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Deserialization/ODataEdmTypeDeserializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/EdmLibHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/EdmPrimitiveHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/IETagHandler.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/IValueProcessor.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ModernInputFormatter.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ModernOutputFormatter.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataCountMediaTypeMapping.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataJsonConverter.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataJsonSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataMediaTypes.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataMessageWrapper.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataMetadataLevel.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataOutputFormatter.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataOutputFormatters.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataRawValueMediaTypeMapping.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ODataValueExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/DefaultODataSerializerProvider.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/EntitySelfLinks.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataCollectionSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataComplexTypeSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataDeltaFeedSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataEdmTypeSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataEntityReferenceLinkSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataEntityReferenceLinksSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataEntityTypeSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataEnumSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataErrorSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataFeedSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataMetadataSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataPayloadKindHelper.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataPrimitiveSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataRawValueSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataSerializerContext.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataSerializerProvider.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataSerializerProviderExtensions.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/ODataServiceDocumentSerializer.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/SelectExpandNode.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/TypedEdmComplexObject.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/TypedEdmEntityObject.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/Serialization/TypedEdmStructuredObject.cs",
-        "src/Microsoft.AspNetCore.OData/Formatter/ValueProcessorValue.cs",
-        "src/Microsoft.AspNetCore.OData/FunctionImportComparer.cs",
-        "src/Microsoft.AspNetCore.OData/IDelta.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmChangedObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmComplexObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmDeltaDeletedEntityObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmDeltaDeletedLink.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmDeltaLink.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmDeltaLinkBase.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmEntityObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmEnumObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmObject.cs",
-        "src/Microsoft.AspNetCore.OData/IEdmStructuredObject.cs",
-        "src/Microsoft.AspNetCore.OData/MetadataController.cs",
-        "src/Microsoft.AspNetCore.OData/NonValidatingParameterBindingAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/NotNullAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/NullEdmComplexObject.cs",
-        "src/Microsoft.AspNetCore.OData/ODataContext.cs",
-        "src/Microsoft.AspNetCore.OData/ODataOptions.cs",
-        "src/Microsoft.AspNetCore.OData/ODataOptionsSetup.cs",
-        "src/Microsoft.AspNetCore.OData/ODataProperties.cs",
-        "src/Microsoft.AspNetCore.OData/ODataQueryContext.cs",
-        "src/Microsoft.AspNetCore.OData/ODataServiceBuilder.cs",
-        "src/Microsoft.AspNetCore.OData/ODataUriResolverSetttings.cs",
-        "src/Microsoft.AspNetCore.OData/Output/obj/Debug/net451/dotnet-compile.assemblyinfo.cs",
-        "src/Microsoft.AspNetCore.OData/PageResult.cs",
-        "src/Microsoft.AspNetCore.OData/PageResultOfT.cs",
-        "src/Microsoft.AspNetCore.OData/Properties/AssemblyInfo.cs",
-        "src/Microsoft.AspNetCore.OData/Properties/CommonWebApiResources.Designer.cs",
-        "src/Microsoft.AspNetCore.OData/Properties/SRResources.Designer.cs",
-        "src/Microsoft.AspNetCore.OData/Query/AllowedArithmeticOperators.cs",
-        "src/Microsoft.AspNetCore.OData/Query/AllowedFunctions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/AllowedLogicalOperators.cs",
-        "src/Microsoft.AspNetCore.OData/Query/AllowedQueryOptions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ApplyQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/CountQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/AggregationBinder.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/AggregationDynamicTypeProvider.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ClrCanonicalFunctions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ClrSafeFunctions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/DynamicTypeWrapper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ExpressionBinderBase.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ExpressionHelperMethods.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ExpressionHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/FilterBinder.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/IdentityPropertyMapper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/Linq2ObjectsComparisonMethods.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/LinqParameterContainer.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/ModelContainer.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/NamedPropertyExpression.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/PropertyContainer.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/SelectExpandBinder.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/SelectExpandWrapper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Expressions/SelectExpandWrapperConverter.cs",
-        "src/Microsoft.AspNetCore.OData/Query/FilterQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/HandleNullPropagationOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/HandleNullPropagationOptionHelper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ICountOptionCollection.cs",
-        "src/Microsoft.AspNetCore.OData/Query/IODataQueryInterceptor.cs",
-        "src/Microsoft.AspNetCore.OData/Query/IPropertyMapper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ISelectExpandWrapper.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ITruncatedCollection.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NonFilterableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NotCountableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NotExpandableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NotFilterableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NotNavigableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/NotSortableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ODataIncludeAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ODataQueryOptions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ODataQuerySettings.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ODataRawQueryOptions.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ODataValidationSettings.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByCountNode.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByItNode.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByNode.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByOpenPropertyNode.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByPropertyNode.cs",
-        "src/Microsoft.AspNetCore.OData/Query/OrderByQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/PageSizeAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/ParameterAliasNodeTranslator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/SelectExpandQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/SkipQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/TopQueryOption.cs",
-        "src/Microsoft.AspNetCore.OData/Query/TruncatedCollectionOfT.cs",
-        "src/Microsoft.AspNetCore.OData/Query/UnsortableAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/CountQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/FilterQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/ODataQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/OrderByQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/SelectExpandQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/SkipQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/Query/Validators/TopQueryValidator.cs",
-        "src/Microsoft.AspNetCore.OData/QueryableRestrictions.cs",
-        "src/Microsoft.AspNetCore.OData/QueryableRestrictionsAnnotation.cs",
-        "src/Microsoft.AspNetCore.OData/Reflection/BindingFlagsInternal.cs",
-        "src/Microsoft.AspNetCore.OData/Reflection/TypeCodeInternal.cs",
-        "src/Microsoft.AspNetCore.OData/RequestPreferenceHelpers.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/BatchPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/BoundActionPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/BoundFunctionPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/BoundFunctionPathSegmentTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/CastPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ComplexCastPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/Conventions/DefaultODataRoutingConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/Conventions/IODataRoutingConvention.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/CountPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/DefaultODataPathHandler.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/DynamicPropertyPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/DynamicPropertyPathSegmentTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/EntitySetPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/IODataPathHandler.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/IODataPathTemplateHandler.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/KeyValueParser.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/KeyValuePathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/KeyValuePathSegmentTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/MetadataPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/NavigationPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataActionSelector.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPath.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPathParameterBindingAttribute.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPathSegmentTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPathSegmentTranslator.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataPathTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataRoute.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataRouteContext.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ODataSegmentKinds.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/PropertyAccessPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/RefPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/SingletonPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/UnboundActionPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/UnboundFunctionPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/UnboundFunctionPathSegmentTemplate.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/UnresolvedPathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/Routing/ValuePathSegment.cs",
-        "src/Microsoft.AspNetCore.OData/SRResources.Designer.cs",
-        "src/Microsoft.AspNetCore.OData/SingleResult.cs",
-        "src/Microsoft.AspNetCore.OData/TimeZoneInfoHelper.cs",
-        "src/Microsoft.AspNetCore.OData/UnqualifiedCallAndEnumPrefixFreeResolver.cs"
+        "Microsoft.AspNetCore.OData.vNext.6.0.1-alpha2-rtm.nupkg.sha512",
+        "Microsoft.AspNetCore.OData.vNext.nuspec",
+        "lib/net461/Microsoft.AspNetCore.OData.vNext.dll",
+        "lib/netcoreapp1.0/Microsoft.AspNetCore.OData.vNext.dll",
+        "lib/netstandard1.6/Microsoft.AspNetCore.OData.vNext.dll"
       ]
     },
     "Microsoft.AspNetCore.Razor/1.0.0": {
@@ -4822,127 +4319,6 @@
         "lib/net451/Microsoft.AspNetCore.WebUtilities.xml",
         "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.dll",
         "lib/netstandard1.3/Microsoft.AspNetCore.WebUtilities.xml"
-      ]
-    },
-    "Microsoft.Bcl/1.1.9": {
-      "sha512": "USQ55innJy8K+tAXvVa1O8dUTp2s7pmJ5cJj6Tl02HtGc2xBDj0P2QH5620HbGXIWKWYhydoeQF8Rm/JRDBGhw==",
-      "type": "package",
-      "path": "Microsoft.Bcl/1.1.9",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Bcl.1.1.9.nupkg.sha512",
-        "Microsoft.Bcl.nuspec",
-        "content/monoandroid/_._",
-        "content/monotouch/_._",
-        "content/net45/_._",
-        "content/portable-net45+win8+wp8+wpa81/_._",
-        "content/portable-net45+win8+wpa81/_._",
-        "content/portable-net451+win81+wpa81/_._",
-        "content/portable-net451+win81/_._",
-        "content/portable-win81+wp81+wpa81/_._",
-        "content/sl4/_._",
-        "content/sl5/_._",
-        "content/win8/_._",
-        "content/wp8/_._",
-        "content/wpa81/_._",
-        "lib/monoandroid/_._",
-        "lib/monotouch/_._",
-        "lib/net40/System.IO.dll",
-        "lib/net40/System.IO.xml",
-        "lib/net40/System.Runtime.dll",
-        "lib/net40/System.Runtime.xml",
-        "lib/net40/System.Threading.Tasks.dll",
-        "lib/net40/System.Threading.Tasks.xml",
-        "lib/net40/ensureRedirect.xml",
-        "lib/net45/_._",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8/System.IO.dll",
-        "lib/portable-net40+sl4+win8/System.IO.xml",
-        "lib/portable-net40+sl4+win8/System.Runtime.dll",
-        "lib/portable-net40+sl4+win8/System.Runtime.xml",
-        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
-        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
-        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
-        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
-        "lib/portable-net40+win8/System.IO.dll",
-        "lib/portable-net40+win8/System.IO.xml",
-        "lib/portable-net40+win8/System.Runtime.dll",
-        "lib/portable-net40+win8/System.Runtime.xml",
-        "lib/portable-net40+win8/System.Threading.Tasks.dll",
-        "lib/portable-net40+win8/System.Threading.Tasks.xml",
-        "lib/portable-net40+win8/ensureRedirect.xml",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/portable-net45+win8+wpa81/_._",
-        "lib/portable-net451+win81+wpa81/_._",
-        "lib/portable-net451+win81/_._",
-        "lib/portable-win81+wp81+wpa81/_._",
-        "lib/sl4-windowsphone71/System.IO.dll",
-        "lib/sl4-windowsphone71/System.IO.xml",
-        "lib/sl4-windowsphone71/System.Runtime.dll",
-        "lib/sl4-windowsphone71/System.Runtime.xml",
-        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
-        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
-        "lib/sl4-windowsphone71/ensureRedirect.xml",
-        "lib/sl4/System.IO.dll",
-        "lib/sl4/System.IO.xml",
-        "lib/sl4/System.Runtime.dll",
-        "lib/sl4/System.Runtime.xml",
-        "lib/sl4/System.Threading.Tasks.dll",
-        "lib/sl4/System.Threading.Tasks.xml",
-        "lib/sl5/System.IO.dll",
-        "lib/sl5/System.IO.xml",
-        "lib/sl5/System.Runtime.dll",
-        "lib/sl5/System.Runtime.xml",
-        "lib/sl5/System.Threading.Tasks.dll",
-        "lib/sl5/System.Threading.Tasks.xml",
-        "lib/win8/_._",
-        "lib/wp8/_._",
-        "lib/wpa81/_._"
-      ]
-    },
-    "Microsoft.Bcl.Build/1.0.14": {
-      "sha512": "cDLKSvNvRa519hplsbSoYqO69TjdDIhfjtKUM0g20/nVROoWsGav9KCI9HtnGjLmdV1+TcUUDhbotcllibjPEA==",
-      "type": "package",
-      "path": "Microsoft.Bcl.Build/1.0.14",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Bcl.Build.1.0.14.nupkg.sha512",
-        "Microsoft.Bcl.Build.nuspec",
-        "content/net40/_._",
-        "content/netcore45/_._",
-        "content/portable-net40+win8+sl4+wp71+wpa81/_._",
-        "content/sl4-windowsphone71/_._",
-        "content/sl4/_._",
-        "tools/Install.ps1",
-        "tools/Microsoft.Bcl.Build.Tasks.dll",
-        "tools/Microsoft.Bcl.Build.targets",
-        "tools/Uninstall.ps1"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
@@ -5492,69 +4868,6 @@
         "lib/netstandard1.0/Microsoft.Extensions.WebEncoders.xml"
       ]
     },
-    "Microsoft.Net.Http/2.2.22": {
-      "sha512": "bqVLJ2UimlAEs2bn3y28lB1pmFRxuysv9pFyB0A86WEMYGYTfDyfjAGjm0fiaSRjlMNU1jVnp8Mxt8qe4OmpXQ==",
-      "type": "package",
-      "path": "Microsoft.Net.Http/2.2.22",
-      "files": [
-        "License-Stable.rtf",
-        "Microsoft.Net.Http.2.2.22.nupkg.sha512",
-        "Microsoft.Net.Http.nuspec",
-        "lib/monoandroid/System.Net.Http.Extensions.XML",
-        "lib/monoandroid/System.Net.Http.Extensions.dll",
-        "lib/monoandroid/System.Net.Http.Primitives.dll",
-        "lib/monoandroid/System.Net.Http.Primitives.xml",
-        "lib/monotouch/System.Net.Http.Extensions.XML",
-        "lib/monotouch/System.Net.Http.Extensions.dll",
-        "lib/monotouch/System.Net.Http.Primitives.dll",
-        "lib/monotouch/System.Net.Http.Primitives.xml",
-        "lib/net40/System.Net.Http.Extensions.XML",
-        "lib/net40/System.Net.Http.Extensions.dll",
-        "lib/net40/System.Net.Http.Primitives.dll",
-        "lib/net40/System.Net.Http.Primitives.xml",
-        "lib/net40/System.Net.Http.WebRequest.dll",
-        "lib/net40/System.Net.Http.WebRequest.xml",
-        "lib/net40/System.Net.Http.dll",
-        "lib/net40/System.Net.Http.xml",
-        "lib/net40/ensureRedirect.xml",
-        "lib/net45/System.Net.Http.Extensions.XML",
-        "lib/net45/System.Net.Http.Extensions.dll",
-        "lib/net45/System.Net.Http.Primitives.dll",
-        "lib/net45/System.Net.Http.Primitives.xml",
-        "lib/net45/ensureRedirect.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.XML",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.XML",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.dll",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.xml",
-        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.XML",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.dll",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.dll",
-        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.xml",
-        "lib/portable-net45+win8+wpa81/ensureRedirect.xml",
-        "lib/portable-net45+win8/System.Net.Http.Extensions.XML",
-        "lib/portable-net45+win8/System.Net.Http.Extensions.dll",
-        "lib/portable-net45+win8/System.Net.Http.Primitives.dll",
-        "lib/portable-net45+win8/System.Net.Http.Primitives.xml",
-        "lib/portable-net45+win8/ensureRedirect.xml",
-        "lib/sl4-windowsphone71/System.Net.Http.Extensions.XML",
-        "lib/sl4-windowsphone71/System.Net.Http.Extensions.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.Primitives.XML",
-        "lib/sl4-windowsphone71/System.Net.Http.Primitives.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.dll",
-        "lib/sl4-windowsphone71/System.Net.Http.xml",
-        "lib/win8/System.Net.Http.Extensions.XML",
-        "lib/win8/System.Net.Http.Extensions.dll",
-        "lib/win8/System.Net.Http.Primitives.dll",
-        "lib/win8/System.Net.Http.Primitives.xml",
-        "lib/wpa81/System.Net.Http.Extensions.XML",
-        "lib/wpa81/System.Net.Http.Extensions.dll",
-        "lib/wpa81/System.Net.Http.Primitives.dll",
-        "lib/wpa81/System.Net.Http.Primitives.xml"
-      ]
-    },
     "Microsoft.Net.Http.Headers/1.0.0": {
       "sha512": "1lr92itF1fKR2oEQ6gk1IUsuCgp7UMlf/b1sjlAyuDeUnttj39ra59GQHYpomglJX1UVNpi1/cSBbEsXoNeIhw==",
       "type": "package",
@@ -5676,163 +4989,64 @@
         "runtime.json"
       ]
     },
-    "Microsoft.OData.Core/6.15.0": {
-      "sha512": "TlRpYl129Q5IIgZmVByLkykocsC7t49XiM6yXzuzq7szy1ZFVLjs0BQv5qTtbmlyTWlyrO7sOg34ohXFPe2nPQ==",
+    "Microsoft.OData.Core/7.0.0": {
+      "sha512": "VejrnsV+0fvZC63SZzh7v6AYlzI/s6uEyn+Uz8JT1RTTtvURXwqbx6raQSXuiVDmRk6LtL9ZO9Q/8/6JFkFeFQ==",
       "type": "package",
-      "path": "Microsoft.OData.Core/6.15.0",
+      "path": "Microsoft.OData.Core/7.0.0",
       "files": [
-        "Microsoft.OData.Core.6.15.0.nupkg.sha512",
+        "Microsoft.OData.Core.7.0.0.nupkg.sha512",
         "Microsoft.OData.Core.nuspec",
-        "lib/dnx451/Microsoft.OData.Core.dll",
-        "lib/dnx451/Microsoft.OData.Core.xml",
-        "lib/dnx451/de/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/es/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/fr/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/it/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/ja/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/ko/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/ru/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/zh-Hans/Microsoft.OData.Core.resources.dll",
-        "lib/dnx451/zh-Hant/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/Microsoft.OData.Core.dll",
-        "lib/dnxcore50/Microsoft.OData.Core.xml",
-        "lib/dnxcore50/de/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/es/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/fr/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/it/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/ja/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/ko/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/ru/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/zh-Hans/Microsoft.OData.Core.resources.dll",
-        "lib/dnxcore50/zh-Hant/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Core.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Core.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.OData.Core.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.OData.Core.xml",
-        "lib/portable-net45+win+wpa81/de/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/es/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/fr/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/it/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/ja/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/ko/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/ru/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hans/Microsoft.OData.Core.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hant/Microsoft.OData.Core.resources.dll"
+        "lib/portable-net45+win8+wpa81/Microsoft.OData.Core.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.OData.Core.xml",
+        "lib/portable-net45+win8+wpa81/de/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/es/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/fr/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/it/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/ja/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/ko/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/ru/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.OData.Core.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.OData.Core.resources.dll"
       ]
     },
-    "Microsoft.OData.Edm/6.15.0": {
-      "sha512": "2BU7q29nOspEz9OxIrE1JooBypma1VhQw767gPi/PFy2lrJApn06NoG3uuSw4kraPorFfsxZJDtmbcxpVGUWNg==",
+    "Microsoft.OData.Edm/7.0.0": {
+      "sha512": "R2hCTBJQZA9u2PGKA53InYeubnB2agYcgVzFor/8QDbPuClmGtfrx1Z0fk+8QAjf8v4fEmd8B2EwJ9M1sMHskQ==",
       "type": "package",
-      "path": "Microsoft.OData.Edm/6.15.0",
+      "path": "Microsoft.OData.Edm/7.0.0",
       "files": [
-        "Microsoft.OData.Edm.6.15.0.nupkg.sha512",
+        "Microsoft.OData.Edm.7.0.0.nupkg.sha512",
         "Microsoft.OData.Edm.nuspec",
-        "lib/dnx451/Microsoft.OData.Edm.dll",
-        "lib/dnx451/Microsoft.OData.Edm.xml",
-        "lib/dnx451/de/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/es/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/fr/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/it/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/ja/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/ko/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/ru/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/zh-Hans/Microsoft.OData.Edm.resources.dll",
-        "lib/dnx451/zh-Hant/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/Microsoft.OData.Edm.dll",
-        "lib/dnxcore50/Microsoft.OData.Edm.xml",
-        "lib/dnxcore50/de/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/es/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/fr/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/it/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/ja/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/ko/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/ru/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/zh-Hans/Microsoft.OData.Edm.resources.dll",
-        "lib/dnxcore50/zh-Hant/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Edm.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.OData.Edm.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.OData.Edm.xml",
-        "lib/portable-net45+win+wpa81/de/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/es/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/fr/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/it/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/ja/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/ko/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/ru/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hans/Microsoft.OData.Edm.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hant/Microsoft.OData.Edm.resources.dll"
+        "lib/portable-net45+win8+wpa81/Microsoft.OData.Edm.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.OData.Edm.xml",
+        "lib/portable-net45+win8+wpa81/de/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/es/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/fr/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/it/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/ja/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/ko/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/ru/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.OData.Edm.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.OData.Edm.resources.dll"
       ]
     },
-    "Microsoft.Spatial/6.15.0": {
-      "sha512": "nEByaxKRGvT38Dd0XrjsKabZL6nE2n/dT5xLykahn3gkqWsoZTPB9u91+hwMmW3o7kgGISLoJVIVR7F0rDkjqg==",
+    "Microsoft.Spatial/7.0.0": {
+      "sha512": "0b7xo9E1Q0JnUduUN+b7CVyQWK46UbEMCKD5CGWfRLOnXV4SrhgXQrtvy4TvZ2GvzfFot7TCmScxLP+UinJL5g==",
       "type": "package",
-      "path": "Microsoft.Spatial/6.15.0",
+      "path": "Microsoft.Spatial/7.0.0",
       "files": [
-        "Microsoft.Spatial.6.15.0.nupkg.sha512",
+        "Microsoft.Spatial.7.0.0.nupkg.sha512",
         "Microsoft.Spatial.nuspec",
-        "lib/dnx451/Microsoft.Spatial.dll",
-        "lib/dnx451/Microsoft.Spatial.xml",
-        "lib/dnx451/de/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/es/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/fr/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/it/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/ja/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/ko/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/ru/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/zh-Hans/Microsoft.Spatial.resources.dll",
-        "lib/dnx451/zh-Hant/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/Microsoft.Spatial.dll",
-        "lib/dnxcore50/Microsoft.Spatial.xml",
-        "lib/dnxcore50/de/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/es/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/fr/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/it/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/ja/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/ko/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/ru/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/zh-Hans/Microsoft.Spatial.resources.dll",
-        "lib/dnxcore50/zh-Hant/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Spatial.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/Microsoft.Spatial.xml",
-        "lib/portable-net40+sl5+wp8+win8+wpa/de/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/es/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/fr/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/it/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ja/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ko/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/ru/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hans/Microsoft.Spatial.resources.dll",
-        "lib/portable-net40+sl5+wp8+win8+wpa/zh-Hant/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.Spatial.dll",
-        "lib/portable-net45+win+wpa81/Microsoft.Spatial.xml",
-        "lib/portable-net45+win+wpa81/de/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/es/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/fr/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/it/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/ja/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/ko/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/ru/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hans/Microsoft.Spatial.resources.dll",
-        "lib/portable-net45+win+wpa81/zh-Hant/Microsoft.Spatial.resources.dll"
+        "lib/portable-net45+win8+wpa81/Microsoft.Spatial.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Spatial.xml",
+        "lib/portable-net45+win8+wpa81/de/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/es/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/fr/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/it/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ja/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ko/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/ru/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.Spatial.resources.dll",
+        "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.Spatial.resources.dll"
       ]
     },
     "Microsoft.VisualBasic/10.0.1": {
@@ -8484,20 +7698,6 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Private.DataContractSerialization/4.1.1": {
-      "sha512": "lcqFBUaCZxPiUkA4dlSOoPZGtZsAuuElH2XHgLwGLxd7ZozWetV5yiz0qGAV2AUYOqw97MtZBjbLMN16Xz4vXA==",
-      "type": "package",
-      "path": "System.Private.DataContractSerialization/4.1.1",
-      "files": [
-        "System.Private.DataContractSerialization.4.1.1.nupkg.sha512",
-        "System.Private.DataContractSerialization.nuspec",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/netstandard1.3/System.Private.DataContractSerialization.dll",
-        "ref/netstandard/_._",
-        "runtimes/aot/lib/netcore50/System.Private.DataContractSerialization.dll"
-      ]
-    },
     "System.Reflection/4.1.0": {
       "sha512": "JCKANJ0TI7kzoQzuwB/OoJANy1Lg338B6+JVacPl4TpUwi3cReg3nMLplMq2uqYfHFQpKIlHAUVAJlImZz/4ng==",
       "type": "package",
@@ -9422,76 +8622,6 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Runtime.Serialization.Primitives.dll"
-      ]
-    },
-    "System.Runtime.Serialization.Xml/4.1.1": {
-      "sha512": "yqfKHkWUAdI0hdDIdD9KDzluKtZ8IIqLF3O7xIZlt6UTs1bOvFRpCvRTvGQva3Ak/ZM9/nq9IHBJ1tC4Ybcrjg==",
-      "type": "package",
-      "path": "System.Runtime.Serialization.Xml/4.1.1",
-      "files": [
-        "System.Runtime.Serialization.Xml.4.1.1.nupkg.sha512",
-        "System.Runtime.Serialization.Xml.nuspec",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/net46/System.Runtime.Serialization.Xml.dll",
-        "lib/netcore50/System.Runtime.Serialization.Xml.dll",
-        "lib/netstandard1.3/System.Runtime.Serialization.Xml.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/net46/System.Runtime.Serialization.Xml.dll",
-        "ref/netcore50/System.Runtime.Serialization.Xml.dll",
-        "ref/netcore50/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/de/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/es/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/fr/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/it/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/ja/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/ko/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/ru/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/zh-hans/System.Runtime.Serialization.Xml.xml",
-        "ref/netcore50/zh-hant/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/System.Runtime.Serialization.Xml.dll",
-        "ref/netstandard1.0/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/de/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/es/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/fr/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/it/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/ja/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/ko/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/ru/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/System.Runtime.Serialization.Xml.dll",
-        "ref/netstandard1.3/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/de/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/es/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/fr/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/it/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/ja/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/ko/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/ru/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/zh-hans/System.Runtime.Serialization.Xml.xml",
-        "ref/netstandard1.3/zh-hant/System.Runtime.Serialization.Xml.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Security.Claims/4.0.1": {
@@ -10656,75 +9786,6 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Xml.XmlSerializer/4.0.11": {
-      "sha512": "FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
-      "type": "package",
-      "path": "System.Xml.XmlSerializer/4.0.11",
-      "files": [
-        "System.Xml.XmlSerializer.4.0.11.nupkg.sha512",
-        "System.Xml.XmlSerializer.nuspec",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.Xml.XmlSerializer.dll",
-        "lib/netstandard1.3/System.Xml.XmlSerializer.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.Xml.XmlSerializer.dll",
-        "ref/netcore50/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/de/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/es/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/fr/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/it/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ja/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ko/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/ru/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netcore50/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/System.Xml.XmlSerializer.dll",
-        "ref/netstandard1.0/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/de/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/es/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/fr/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/it/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ja/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ko/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/ru/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.0/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/System.Xml.XmlSerializer.dll",
-        "ref/netstandard1.3/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/de/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/es/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/fr/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/it/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ja/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ko/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/ru/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/zh-hans/System.Xml.XmlSerializer.xml",
-        "ref/netstandard1.3/zh-hant/System.Xml.XmlSerializer.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll"
-      ]
-    },
     "System.Xml.XPath/4.0.1": {
       "sha512": "UWd1H+1IJ9Wlq5nognZ/XJdyj8qPE4XufBUkAW59ijsCPjZkZe0MUzKKJFBr+ZWBe5Wq1u1d5f2CYgE93uH7DA==",
       "type": "package",
@@ -10803,8 +9864,8 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
-      "Microsoft.AspNetCore.Mvc >= 1.0.0",
-      "Microsoft.AspNetCore.OData >= 1.0.0-rtm-00015",
+      "Microsoft.AspNetCore.Mvc >= 1.0.1",
+      "Microsoft.AspNetCore.OData.vNext >= 6.0.1-alpha2-rtm",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 1.0.0-preview2-final",
@@ -10813,12 +9874,13 @@
       "Microsoft.Extensions.Configuration.Json >= 1.0.0",
       "Microsoft.Extensions.Logging.Console >= 1.0.0",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
-      "Microsoft.NETCore.App >= 1.0.0",
-      "Microsoft.OData.Core >= 6.15.0",
-      "Microsoft.OData.Edm >= 6.15.0",
-      "Microsoft.Spatial >= 6.15.0"
+      "Microsoft.OData.Core >= 7.0.0",
+      "Microsoft.OData.Edm >= 7.0.0",
+      "Microsoft.Spatial >= 7.0.0"
     ],
-    ".NETCoreApp,Version=v1.0": []
+    ".NETCoreApp,Version=v1.0": [
+      "Microsoft.NETCore.App >= 1.0.0"
+    ]
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {

@@ -8,6 +8,8 @@ namespace PFS.Server.Core.Shared.Abstractions
 {
     public interface IPfsODataCollections
     {
-        IEnumerable<Tag> Tags { get; }         
+        IEnumerable<Tag> Tags { get; }     
+        IEnumerable<File> Files { get; }
+        IEnumerable<Folder> Folders { get; }    
     }
 }

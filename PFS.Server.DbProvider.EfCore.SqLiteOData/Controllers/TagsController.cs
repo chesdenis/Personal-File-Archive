@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData;
+using Microsoft.AspNetCore.OData.Query;
 using PFS.Server.Core.Shared.Abstractions;
 using PFS.Server.Core.Shared.Entities;
 using PFS.Server.Core.Shared.Repositories;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
 {
-    [EnableQuery]
+    [EnableQuery()]
     [Route("odata/Tags")]
     public class TagsController : Controller
     {
@@ -21,27 +22,19 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
             Rep = rep;
         }
 
-        [HttpGet]
-        public IEnumerable<Tag> Get()
+        public IQueryable<Tag> Get()
         {
-            return Rep.Get();
+            return Rep.Get().AsQueryable();
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public Tag Get(int id)
         {
-            var entity = Rep.Get(id);
-
-            if (entity != null)
-            {
-                return new OkObjectResult(entity);
-            }
-
-            return new NoContentResult();
+            return Rep.Get(id);
         }
 
         [HttpPost]
-        public IActionResult Post(Tag entity)
+        public IActionResult Post([FromBody]Tag entity)
         {
             var createdEntity = Rep.Post(entity);
 
@@ -60,14 +53,6 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
         public IActionResult Delete(int id)
         {
             Rep.Delete(id);
-
-            return new NoContentResult();
-        }
-        
-        [HttpPost]
-        public IActionResult RegisterFirst5Tags()
-        {
-            Rep.RegisterFirst5Tags();
 
             return new NoContentResult();
         }

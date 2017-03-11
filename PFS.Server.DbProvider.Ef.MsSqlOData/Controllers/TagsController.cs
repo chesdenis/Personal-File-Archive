@@ -22,30 +22,16 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             Rep = rep;
         }
 
-        [EnableQuery]
+        [HttpGet]
         public IQueryable<Tag> Get()
         {
             return Rep.Get().AsQueryable();
         }
 
-        [EnableQuery]
-        public HttpResponseMessage Get([FromODataUri]int key)
+        [HttpGet]
+        public Tag Get([FromODataUri]int key)
         {
-            HttpResponseMessage response = null;
-
-            var entity = Rep.Get(key);
-            if (entity != null)
-            {
-                response = Request.CreateResponse<Tag>(HttpStatusCode.OK, entity);
-                response.Headers.Location = Request.RequestUri;
-
-                return response;
-            }
-
-            response = Request.CreateResponse(HttpStatusCode.NoContent);
-            response.Headers.Location = Request.RequestUri;
-
-            return response;
+            return Rep.Get(key);
         }
 
         [HttpPost]
@@ -76,16 +62,6 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             var response = Request.CreateResponse(HttpStatusCode.NoContent);
             response.Headers.Location = Request.RequestUri;
             return response;
-        }
-
-        [HttpPost]
-        public HttpResponseMessage RegisterFirst5Tags()
-        {
-            Rep.RegisterFirst5Tags();
-
-            var response = Request.CreateResponse(HttpStatusCode.NoContent);
-            response.Headers.Location = Request.RequestUri;
-            return response;
-        }
+        } 
     }
 }
