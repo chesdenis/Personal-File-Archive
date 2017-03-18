@@ -1,4 +1,4 @@
-// JayData 1.5.6 
+// JayData 1.5.10 
 // Dual licensed under MIT and GPL v2
 // Copyright JayStack Technologies (http://jaydata.org/licensing)
 //
@@ -4072,7 +4072,7 @@ var MetadataHandler = (function () {
         return new Promise(function (resolve, reject) {
             var serviceUrl = self.options.url.replace('/$metadata', '');
             var metadataUrl = serviceUrl.replace(/\/+$/, '') + '/$metadata';
-            self.options.serviceUri = serviceUrl;
+            self.options.serivceUri = serviceUrl;
             var requestData = [
                 {
                     requestUri: metadataUrl,
@@ -4164,7 +4164,7 @@ var MetadataHandler = (function () {
 }());
 exports.MetadataHandler = MetadataHandler;
 
-},{"./metadata":5,"extend":2,"jaydata-odatajs":8,"odata-v4-metadata":21}],7:[function(_dereq_,module,exports){
+},{"./metadata":5,"extend":2,"jaydata-odatajs":9,"odata-v4-metadata":21}],7:[function(_dereq_,module,exports){
 "use strict";
 var extend = _dereq_('extend');
 var metadataHandler_1 = _dereq_('./metadataHandler');
@@ -4266,7 +4266,68 @@ var DynamicMetadata = (function () {
 }());
 exports.DynamicMetadata = DynamicMetadata;
 
-},{"./metadataHandler":6,"extend":2,"jaydata-error-handler":18,"jaydata-promise-handler":19}],8:[function(_dereq_,module,exports){
+},{"./metadataHandler":6,"extend":2,"jaydata-error-handler":8,"jaydata-promise-handler":19}],8:[function(_dereq_,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Exception = (function (_super) {
+    __extends(Exception, _super);
+    function Exception(message, name, data) {
+        _super.call(this);
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, this.constructor);
+        }
+        this.name = name || "Exception";
+        this.message = message;
+        this.data = data;
+    }
+    Exception.prototype._getStackTrace = function () { };
+    return Exception;
+}(Error));
+exports.Exception = Exception;
+var Guard = (function () {
+    function Guard() {
+    }
+    Guard.requireValue = function (name, value) {
+        if (typeof value === 'undefined' || value === null) {
+            Guard.raise(name + " requires a value other than undefined or null");
+        }
+    };
+    Guard.requireType = function (name, value, typeOrTypes) {
+        var types = typeOrTypes instanceof Array ? typeOrTypes : [typeOrTypes];
+        return types.some(function (item) {
+            switch (typeof item) {
+                case "string":
+                    return typeof value === item;
+                case "function":
+                    return value instanceof item;
+                default:
+                    Guard.raise("Unknown type format : " + typeof item + " for: " + name);
+            }
+        });
+    };
+    Guard.raise = function (exception) {
+        if (typeof exports.intellisense === 'undefined') {
+            if (exception instanceof Exception) {
+                console.error(exception.name + ':', exception.message + '\n', exception);
+            }
+            else {
+                console.error(exception);
+            }
+            throw exception;
+        }
+    };
+    Guard.isNullOrUndefined = function (value) {
+        return value === undefined || value === null;
+    };
+    return Guard;
+}());
+exports.Guard = Guard;
+
+},{}],9:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -4314,7 +4375,7 @@ if(typeof module !== 'undefined'){
     module.exports = odatajs;
 }
 
-},{"./lib/odata.js":9,"./lib/utils.js":16,"./lib/xml.js":17}],9:[function(_dereq_,module,exports){
+},{"./lib/odata.js":10,"./lib/utils.js":17,"./lib/xml.js":18}],10:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -4497,7 +4558,7 @@ exports.batch.batchHandler.partHandler = exports.defaultHandler;
 exports.metadataHandler =  odataMetadata.metadataHandler;
 exports.jsonHandler =  odataJson.jsonHandler;
 
-},{"./odata/batch.js":10,"./odata/handler.js":11,"./odata/json.js":12,"./odata/metadata.js":13,"./odata/net-browser.js":14,"./odata/odatautils.js":15,"./utils.js":16}],10:[function(_dereq_,module,exports){
+},{"./odata/batch.js":11,"./odata/handler.js":12,"./odata/json.js":13,"./odata/metadata.js":14,"./odata/net-browser.js":15,"./odata/odatautils.js":16,"./utils.js":17}],11:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -4875,7 +4936,7 @@ exports.batchSerializer = batchSerializer;
 
 /** writeRequest (see {@link module:odata/batch~writeRequest}) */
 exports.writeRequest = writeRequest;
-},{"./../utils.js":16,"./handler.js":11,"./odatautils.js":15}],11:[function(_dereq_,module,exports){
+},{"./../utils.js":17,"./handler.js":12,"./odatautils.js":16}],12:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -5160,7 +5221,7 @@ exports.getRequestOrResponseHeader = getRequestOrResponseHeader;
 exports.getContentType = getContentType;
 exports.getDataServiceVersion = getDataServiceVersion;
 exports.MAX_DATA_SERVICE_VERSION = MAX_DATA_SERVICE_VERSION;
-},{"./../utils.js":16,"./odatautils.js":15}],12:[function(_dereq_,module,exports){
+},{"./../utils.js":17,"./odatautils.js":16}],13:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -6169,7 +6230,7 @@ exports.jsonHandler = jsonHandler;
 exports.jsonParser = jsonParser;
 exports.jsonSerializer = jsonSerializer;
 exports.parseJsonDateString = parseJsonDateString;
-},{"./../utils.js":16,"./handler.js":11,"./odatautils.js":15}],13:[function(_dereq_,module,exports){
+},{"./../utils.js":17,"./handler.js":12,"./odatautils.js":16}],14:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -6693,7 +6754,7 @@ exports.scriptCase = scriptCase;
 exports.getChildSchema = getChildSchema;
 exports.parseConceptualModelElement = parseConceptualModelElement;
 exports.metadataParser = metadataParser;
-},{"./../utils.js":16,"./../xml.js":17,"./handler.js":11}],14:[function(_dereq_,module,exports){
+},{"./../utils.js":17,"./../xml.js":18,"./handler.js":12}],15:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -7042,7 +7103,7 @@ exports.defaultHttpClient = {
 exports.canUseJSONP = canUseJSONP;
 exports.isAbsoluteUrl = isAbsoluteUrl;
 exports.isLocalUrl = isLocalUrl;
-},{"./../utils.js":16}],15:[function(_dereq_,module,exports){
+},{"./../utils.js":17}],16:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -8317,7 +8378,7 @@ exports.traverse = traverse;
 
 
 
-},{"./../utils.js":16}],16:[function(_dereq_,module,exports){
+},{"./../utils.js":17}],17:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -8899,7 +8960,7 @@ exports.concatJsonValueArray = concatJsonValueArray;
 exports.startsWith = startsWith;
 exports.endsWith = endsWith;
 exports.getFormatKind = getFormatKind;
-},{}],17:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -9725,68 +9786,7 @@ exports.xmlSerialize = xmlSerialize;
 exports.xmlSerializeDescendants = xmlSerializeDescendants;
 exports.xmlSiblingElement = xmlSiblingElement;
 
-},{"./utils.js":16,"xmldom":24}],18:[function(_dereq_,module,exports){
-"use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Exception = (function (_super) {
-    __extends(Exception, _super);
-    function Exception(message, name, data) {
-        _super.call(this);
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, this.constructor);
-        }
-        this.name = name || "Exception";
-        this.message = message;
-        this.data = data;
-    }
-    Exception.prototype._getStackTrace = function () { };
-    return Exception;
-}(Error));
-exports.Exception = Exception;
-var Guard = (function () {
-    function Guard() {
-    }
-    Guard.requireValue = function (name, value) {
-        if (typeof value === 'undefined' || value === null) {
-            Guard.raise(name + " requires a value other than undefined or null");
-        }
-    };
-    Guard.requireType = function (name, value, typeOrTypes) {
-        var types = typeOrTypes instanceof Array ? typeOrTypes : [typeOrTypes];
-        return types.some(function (item) {
-            switch (typeof item) {
-                case "string":
-                    return typeof value === item;
-                case "function":
-                    return value instanceof item;
-                default:
-                    Guard.raise("Unknown type format : " + typeof item + " for: " + name);
-            }
-        });
-    };
-    Guard.raise = function (exception) {
-        if (typeof exports.intellisense === 'undefined') {
-            if (exception instanceof Exception) {
-                console.error(exception.name + ':', exception.message + '\n', exception);
-            }
-            else {
-                console.error(exception);
-            }
-            throw exception;
-        }
-    };
-    Guard.isNullOrUndefined = function (value) {
-        return value === undefined || value === null;
-    };
-    return Guard;
-}());
-exports.Guard = Guard;
-
-},{}],19:[function(_dereq_,module,exports){
+},{"./utils.js":17,"xmldom":24}],19:[function(_dereq_,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -9948,7 +9948,7 @@ var PromiseHandlerBase = (function () {
 }());
 exports.PromiseHandlerBase = PromiseHandlerBase;
 
-},{"extend":2,"jaydata-error-handler":18}],21:[function(_dereq_,module,exports){
+},{"extend":2,"jaydata-error-handler":8}],21:[function(_dereq_,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -11052,9 +11052,6 @@ var currentQueue;
 var queueIndex = -1;
 
 function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
     draining = false;
     if (currentQueue.length) {
         queue = currentQueue.concat(queue);
@@ -13129,7 +13126,7 @@ if(typeof _dereq_ == 'function'){
 },{}],27:[function(_dereq_,module,exports){
 module.exports={
   "name": "jaydata",
-  "version": "1.5.6",
+  "version": "1.5.10",
   "description": "Cross-platform HTML5 data-management, JavaScript Language Query (JSLQ) support for OData, SQLite, WebSQL, IndexedDB, YQL and Facebook (packaged for Node.JS)",
   "keywords": [
     "HTML5 data management",
@@ -13222,6 +13219,7 @@ module.exports={
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
     "gulp-browserify": "^0.5.1",
+    "gulp-change": "^1.0.0",
     "gulp-closure-compiler": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-derequire": "^2.1.0",
@@ -13777,7 +13775,7 @@ function ContainerCtor(parentContainer) {
   };
 }
 
-},{"./Extensions.js":30,"./initializeJayData.js":45,"jaydata-error-handler":18}],30:[function(_dereq_,module,exports){
+},{"./Extensions.js":30,"./initializeJayData.js":45,"jaydata-error-handler":8}],30:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15316,7 +15314,7 @@ exports.default = _initializeJayData2.default;
 
 }).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./Container.js":29,"./Extensions.js":30,"./PreHtml5Compatible.js":31,"./initializeJayData.js":45,"_process":23,"jaydata-error-handler":18}],35:[function(_dereq_,module,exports){
+},{"./Container.js":29,"./Extensions.js":30,"./PreHtml5Compatible.js":31,"./initializeJayData.js":45,"_process":23,"jaydata-error-handler":8}],35:[function(_dereq_,module,exports){
 (function (global){
 'use strict';
 
@@ -15453,7 +15451,7 @@ _TypeSystem2.default.Container.registerConverter('$data.Blob', {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../TypeSystem.js":34,"jaydata-error-handler":18}],36:[function(_dereq_,module,exports){
+},{"../TypeSystem.js":34,"jaydata-error-handler":8}],36:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16419,7 +16417,7 @@ _TypeSystem2.default.Container.registerConverter(_TypeSystem2.default.GeographyC
 exports.default = _TypeSystem2.default;
 module.exports = exports['default'];
 
-},{"../TypeSystem.js":34,"jaydata-error-handler":18}],39:[function(_dereq_,module,exports){
+},{"../TypeSystem.js":34,"jaydata-error-handler":8}],39:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16805,7 +16803,7 @@ _TypeSystem2.default.Container.registerConverter(_TypeSystem2.default.GeometryCo
 exports.default = _TypeSystem2.default;
 module.exports = exports['default'];
 
-},{"../TypeSystem.js":34,"jaydata-error-handler":18}],40:[function(_dereq_,module,exports){
+},{"../TypeSystem.js":34,"jaydata-error-handler":8}],40:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17148,7 +17146,7 @@ _TypeSystem2.default.$C = _TypeSystem.$C;
 var Container = exports.Container = _TypeSystem.Container;
 exports.default = _TypeSystem2.default;
 
-},{"./Trace/Logger.js":32,"./Trace/Trace.js":33,"./TypeSystem.js":34,"./Types/Blob.js":35,"./Types/Converter.js":36,"./Types/EdmTypes.js":37,"./Types/Geography.js":38,"./Types/Geometry.js":39,"./Types/Geospatial.js":40,"./Types/Guid.js":41,"./Types/SimpleBase.js":42,"./Types/Types.js":43,"jaydata-error-handler":18,"jaydata-promise-handler":19}],45:[function(_dereq_,module,exports){
+},{"./Trace/Logger.js":32,"./Trace/Trace.js":33,"./TypeSystem.js":34,"./Types/Blob.js":35,"./Types/Converter.js":36,"./Types/EdmTypes.js":37,"./Types/Geography.js":38,"./Types/Geometry.js":39,"./Types/Geospatial.js":40,"./Types/Guid.js":41,"./Types/SimpleBase.js":42,"./Types/Types.js":43,"jaydata-error-handler":8,"jaydata-promise-handler":19}],45:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -19040,7 +19038,7 @@ _index2.default.Class.define('$data.EntityContext', null, null, {
 
         this._addNavigationPropertyDefinition(dbEntityInstanceDefinition, memDef, memDef.name);
         var associationType = memDef.inverseProperty === '$$unbound' ? '$$unbound' : '0..1';
-        var association = this._addAssociationElement(storageModel.LogicalType, associationType, memDef.name, refereedStorageModel.LogicalType, "*", memDef.inverseProperty);
+        var association = this._addAssociationElement(memDef.definedBy, associationType, memDef.name, refereedStorageModel.LogicalType, "*", memDef.inverseProperty);
         storageModel.Associations[memDef.name] = association;
         storageModel.Associations.push(association);
     },
@@ -19091,7 +19089,7 @@ _index2.default.Class.define('$data.EntityContext', null, null, {
 
         this._addNavigationPropertyDefinition(dbEntityInstanceDefinition, memDef, memDef.name);
 
-        var association = this._addAssociationElement(storageModel.LogicalType, memDef.required ? "0..1" : "1", memDef.name, refereedStorageModel.LogicalType, memDef.required ? "1" : "0..1", memDef.inverseProperty);
+        var association = this._addAssociationElement(memDef.definedBy, memDef.required ? "0..1" : "1", memDef.name, refereedStorageModel.LogicalType, memDef.required ? "1" : "0..1", memDef.inverseProperty);
         storageModel.Associations[memDef.name] = association;
         storageModel.Associations.push(association);
     },
@@ -29200,7 +29198,7 @@ exports.default = _index2.default;
 module.exports = exports['default'];
 
 },{"../TypeSystem/index.js":44}],125:[function(_dereq_,module,exports){
-(function (process){
+(function (process,global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29433,7 +29431,7 @@ _index2.default.Class.define('$data.StorageProviderLoaderBase', null, null, {
     loadNpmModule: function loadNpmModule(currentProvider, providerList, callback) {
         var provider = null;
         try {
-            _dereq_(this.npmModules[currentProvider]);
+            global["require"](this.npmModules[currentProvider]);
             provider = _index2.default.RegisteredStorageProviders[currentProvider];
             _index2.default.Trace.log('NPM module loader successfully registered ' + currentProvider + ' provider');
         } catch (e) {
@@ -29469,7 +29467,7 @@ _index2.default.StorageProviderLoader = new _index2.default.StorageProviderLoade
 exports.default = _index2.default;
 module.exports = exports['default'];
 
-}).call(this,_dereq_('_process'))
+}).call(this,_dereq_('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
 },{"../TypeSystem/index.js":44,"_process":23}],126:[function(_dereq_,module,exports){
 'use strict';
@@ -30473,8 +30471,8 @@ module.exports = exports['default'];
 },{"./JaySvcUtil/index.js":28,"./TypeSystem/index.js":44,"./Types/Expressions/index.js":111,"./Types/index.js":130}]},{},[])
 
 	/*var $data = require('jaydata/core');
-	$data.version = 'JayData 1.5.6';
-	$data.versionNumber = '1.5.6';*/
+	$data.version = 'JayData 1.5.10';
+	$data.versionNumber = '1.5.10';*/
 
 	if (typeof exports === "object" && typeof module !== "undefined") {
 		module.exports = require('jaydata/core')

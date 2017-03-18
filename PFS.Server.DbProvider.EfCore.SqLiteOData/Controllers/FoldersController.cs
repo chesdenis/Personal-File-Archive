@@ -20,11 +20,11 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData.Controllers
             Rep = rep;
         }
 
-        [HttpGet]
-        public IQueryable<Folder> GetFolders([FromQuery] string folderPath)
-        {
-            return Rep.GetFolders(folderPath).AsQueryable();
-        }
+        //[HttpGet]
+        //public IQueryable<Folder> GetFolders([FromQuery] string folderPath)
+        //{
+        //    return Rep.GetFolders(folderPath).AsQueryable();
+        //}
          
     }
 }

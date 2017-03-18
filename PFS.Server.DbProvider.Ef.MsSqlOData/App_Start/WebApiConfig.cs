@@ -1,4 +1,5 @@
 ﻿using PFS.Server.Core.Shared.Entities;
+using PFS.Server.DbProvider.Ef.MsSqlOData.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using System.Web.OData.Routing.Conventions;
 
 namespace PFS.Server.DbProvider.Ef.MsSqlOData
 {
@@ -18,8 +20,12 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
             .BuildTagsModel()
             .BuildFilesModel()
             .BuildFoldersModel();
-            
-            config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel());
+
+            config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel(),
+                pathHandler: new ODataSlashHandler(), routingConventions: ODataRoutingConventions.CreateDefault());
+
+            //config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel());
+
 
             // enable all queries in odata by default
             // also you can enable for specific entitites only:
@@ -51,26 +57,19 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
 
         public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<File>("Files");
-
-            builder.EntityType<File>()
-                .Collection
-                .Function("GetFiles")
-                .Returns<IQueryable<File>>()
-                .Parameter<string>("folderPath");
+            builder.EntitySet<PfsFile>("Files").EntityType.HasKey(k=>k.Path);
 
             return builder;
         }
 
         public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<Folder>("Folders");
+            var entitySet = builder.EntitySet<PfsFolder>("Folders");
 
-            builder.EntityType<Folder>()
-                .Collection
-                .Function("GetFolders")
-                .Returns<IQueryable<Folder>>()
-                .Parameter<string>("folderPath");
+            var entityType = entitySet.EntityType;
+            entityType.HasKey(k=>k.Path);
+            entityType.Function("GetChildFolders").Returns<IQueryable<PfsFolder>>();
+            entityType.Function("GetChildFiles").Returns<IQueryable<PfsFile>>();
 
             return builder;
         }

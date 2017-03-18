@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace PFS.Server.Core.Shared.Entities
 {
-    public class File
-    {
-        public int Id { get; set; }
+    public class PfsFile
+    {       
         public string Name { get; set; }
         public string Path { get; set; }
     }

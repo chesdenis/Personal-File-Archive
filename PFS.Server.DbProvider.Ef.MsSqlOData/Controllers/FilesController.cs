@@ -22,11 +22,18 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
         {
             Rep = rep;
         }
-         
+
         [HttpGet]
-        public IQueryable<File> GetFiles([FromODataUri] string folderPath)
-        {          
-            return Rep.GetFiles(folderPath).AsQueryable();
+        public IQueryable<PfsFile> Get()
+        {
+            return Rep.Get().AsQueryable();
         }
+
+        [HttpGet]
+        public PfsFile Get([FromODataUri]string key)
+        {
+            return Rep.Get(key);
+        }
+         
     }
 }

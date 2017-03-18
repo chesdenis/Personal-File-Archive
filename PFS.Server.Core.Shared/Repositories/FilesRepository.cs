@@ -3,10 +3,11 @@ using PFS.Server.Core.Shared.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace PFS.Server.Core.Shared.Repositories
 {
-    public class FilesRepository : IPfsRepository<File>
+    public class FilesRepository : IPfsRepository<PfsFile>
     {
         protected readonly IPfsDbContext DbCtx;
 
@@ -14,39 +15,44 @@ namespace PFS.Server.Core.Shared.Repositories
         {
             DbCtx = dbCtx;
         }
-        
-        public IEnumerable<File> GetFiles(string folderPath)
-        {
-            return new File[]
-            {
-                new File(){ Name = "File1", Path = "PathToFile1" },
-                new File(){ Name = "File2", Path = "PathToFile2" },
-                new File(){ Name = "File3", Path = "PathToFile3" },
-                new File(){ Name = "File4", Path = "PathToFile4" }
-            };
-        }
 
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<File> Get()
+        public IEnumerable<PfsFile> Get()
+        {
+            var parentDir = new DirectoryInfo("/");
+            return parentDir
+                .GetFiles()
+                .Select(s =>
+                   new PfsFile()
+                   {
+                       Name = s.Name,
+                       Path = s.FullName
+                   })
+                .ToArray();
+        }
+
+        public PfsFile Get(string path)
+        {
+            var file = new FileInfo(path);
+            return new PfsFile() { Name = file.Name, Path = file.FullName };
+        }
+
+        public PfsFile Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public File Get(int id)
+
+        public PfsFile Post(PfsFile entity)
         {
             throw new NotImplementedException();
         }
 
-        public File Post(File entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public File Put(int id, File entity)
+        public PfsFile Put(int id, PfsFile entity)
         {
             throw new NotImplementedException();
         }
