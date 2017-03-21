@@ -39,7 +39,7 @@ export class BooksService extends GenericService<Book>  {
 
     initData(): Promise<PFS.Server.Core.Entities.Tag[]> {
         const retVal = new Promise<PFS.Server.Core.Entities.Tag[]>((resolve) => {
-            resolve(this.dbContext.Tags.toArray());
+            resolve([]/*this.dbContext.Tags.toArray()*/);
         });
 
         return retVal;

@@ -7,6 +7,7 @@ import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
 <div data-grid-toolbar>
 <button *ngIf="!settings.isConfigMode" [settings]="settings" switch-mode-to-config></button>
 <button *ngIf="settings.isConfigMode" [settings]="settings" switch-mode-to-data></button>
+<button [settings]="settings" add-blank-column></button>
 </div>
 <div *ngIf="settings.isConfigMode" class="panel-body">
         <p>Columns visibility:</p>
