@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.OData;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
 
 namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
 {
@@ -23,12 +25,22 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
             Rep = rep;
         }
 
-        
         [HttpGet]
-        public IQueryable<Folder> GetFolders([FromODataUri] string folderPath)
+        public IQueryable<PfsFolder> Get()
         {
-            return Rep.GetFolders(folderPath).AsQueryable();
+            return Rep.Get().AsQueryable();
         }
-      
+
+        [HttpGet]
+        public PfsFolder Get([FromODataUri]string key)
+        {
+            return Rep.Get(key);
+        }
+
+        [HttpGet]
+        public IQueryable<PfsFolder> GetChildFolders([FromODataUri]string key)
+        {
+            return Rep.GetChildFolders(key).AsQueryable();
+        }
     }
 }

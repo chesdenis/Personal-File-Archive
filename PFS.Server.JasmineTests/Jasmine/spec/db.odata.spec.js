@@ -25,4 +25,13 @@
     describe("should be able to read all tags", function () {
         should(actionsToTest, "readAllTags");
     });
+    describe("should read folder on server in drive C:\\", function(){
+        should(actionsToTest, "readFoldersOnServer");
+    });
+    // describe("should read folders with 'a' symbol on server in drive C:\\", function(){
+    //     should(actionsToTest, "readFoldersWithAOnServer");
+    // });
+    // describe("should read first folder with 'a' symbol on server in drive C:\\", function(){
+    //     should(actionsToTest, "readFirstFolderWithAOnServer");
+    // });
 });

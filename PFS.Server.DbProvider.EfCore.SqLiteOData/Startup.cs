@@ -35,24 +35,6 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
         }
          
 
-        private void BuildFiles(ODataConventionModelBuilder builder)
-        {
-            builder.EntityType<File>()
-               .Collection
-               .Function("GetFiles")
-               .Returns<IQueryable<File>>()
-               .Parameter<string>("folderPath");
-        }
-
-        private void BuildFolders(ODataConventionModelBuilder builder)
-        {
-            builder.EntityType<Folder>()
-                 .Collection
-                 .Function("GetFolders")
-                 .Returns<IQueryable<Folder>>()
-                 .Parameter<string>("folderPath");
-        }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -90,27 +72,15 @@ namespace PFS.Server.DbProvider.EfCore.SqLiteOData
 
         public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<File>("Files");
-
-            builder.EntityType<File>()
-                .Collection
-                .Function("GetFiles")
-                .Returns<IQueryable<File>>()
-                .Parameter<string>("folderPath");
+            builder.EntitySet<PfsFile>("Files");
 
             return builder;
         }
 
         public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<Folder>("Folders");
-
-            builder.EntityType<Folder>()
-                .Collection
-                .Function("GetFolders")
-                .Returns<IQueryable<Folder>>()
-                .Parameter<string>("folderPath");
-
+            builder.EntitySet<PfsFolder>("Folders");
+             
             return builder;
         }
     }

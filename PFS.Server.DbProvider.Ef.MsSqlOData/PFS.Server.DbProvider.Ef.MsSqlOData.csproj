@@ -139,6 +139,7 @@
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Db\PfsServerDbContext.cs" />
+    <Compile Include="Extensions\ODataHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
