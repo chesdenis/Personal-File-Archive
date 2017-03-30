@@ -39,6 +39,9 @@ namespace PFS.Server.DbProvider.Ef.MsSqlOData
                 .Select()
                 .MaxTop(null);
 
+            
+            config.EnableCors();
+
             var corsParamsMainApp = new EnableCorsAttribute("http://localhost:5000", "*", "*"); // PFS.Server.MvcApp
             var corsParamsAdminApp = new EnableCorsAttribute("http://localhost:5030", "*", "*"); // PFS.Server.Admin
             var corsParamsJasmineTestsApp = new EnableCorsAttribute("http://localhost:5040", "*", "*"); // PFS.Server.JasmineTests

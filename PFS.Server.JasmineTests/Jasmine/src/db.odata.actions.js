@@ -60,39 +60,33 @@
         var startFolderPath = "c://";
 
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
-                return ctx;
+            OData.defaultHttpClient.enableJsonpCallback = true;
+            OData.request(
+                {
+                    requestUri: "http://localhost:64245/odata/Folders('c:/')/Default.GetChildFolders",
+                    enableJsonpCallback: true
+                },
+                function (data, request) {
+                    console.log(data);
+                });
+            //$data.initService(apiUrl).then(function (ctx) {
+            //    return ctx;
+            //}).then(function (ctx) {
+            //    return ctx.Folders.find(startFolderPath);
+            //}).then(function (startFolder) {
+            //    console.log(startFolder);
+            //    startFolder.GetChildFolders(function(childFolders){
+            //        console.log(childFolders);
+            //    });
+            //});
+            //    return startFolder.GetChildFolders().then(function(startFolderChildren){
+            //         resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
+            //     }).catch(function(err){ reject(err); });
 
-                // ctx.Folders.GetFolders(encodeURIComponent(startFolderPath)).toArray(function(results){
-                //     console.log(results);
-                // });
-                // ctx.Folders.GetFolders(encodeURIComponent(startFolderPath),function(results){
-                //     console.log(results);
-                //     // results.toArray()
-                //     // .then(
-                //     // function (folders) {
-                //     //     if (folders.length) {
-                //     //         resolve();
-                //     //     }
-                //     //     else {
-                //     //         reject();
-                //     //     }
-                //     // })
-                //     // .catch(function (err) {
-                //     //     reject(err);
-                //     // });
-                // });                    
-            }).then(function(ctx){
-               return ctx.Folders.find(startFolderPath);
-            }).then(function(startFolder){
-               return startFolder.GetChildFolders().then(function(startFolderChildren){
-                    resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
-                }).catch(function(err){ reject(err); });
-               
-            }).then(function(startFolder, childrenFolders){
-                console.log(startFolder);
-                console.log(childrenFolders);
-            });
+            // }).then(function(startFolder, childrenFolders){
+            //     console.log(startFolder);
+            //     console.log(childrenFolders);
+            // });
             // .then(function(childFolders){
             //     console.log(childFolders);
             // });

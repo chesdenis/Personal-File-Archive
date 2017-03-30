@@ -46,17 +46,6 @@ namespace PFS.Server.Core.Shared.Repositories
             DbCtx.RemoveEntity(entity);
             DbCtx.SaveChanges();
         }
-
-        public void RegisterFirst5Tags()
-        {
-            DbCtx.AddEntity(new Tag() { Id = 1, Name = "First" });
-            DbCtx.AddEntity(new Tag() { Id = 2, Name = "Second" });
-            DbCtx.AddEntity(new Tag() { Id = 3, Name = "Third" });
-            DbCtx.AddEntity(new Tag() { Id = 4, Name = "Fourth" });
-            DbCtx.AddEntity(new Tag() { Id = 5, Name = "Fives" });
-
-            DbCtx.SaveChanges();
-        }
     }
 
 

@@ -10,5 +10,8 @@ namespace PFS.Server.Core.Shared.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public int MainParentId { get; set; }
+        public int SecondaryParentId { get; set; }
     }
 }
