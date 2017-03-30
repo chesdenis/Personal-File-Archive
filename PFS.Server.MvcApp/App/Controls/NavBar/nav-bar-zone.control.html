@@ -1,7 +1,0 @@
-﻿<ul [ngClass]="getClasses()" class="nav navbar-nav">
-    <li *ngFor="let menuEntity of menuEntities" routerLinkActive="{{menuEntity.routerLinkActive}}">
-        <a routerLink="{{menuEntity.routerLink}}" (click)="onSelectMenuEntity(menuEntity)">
-            {{menuEntity.TextContent}} <span class="sr-only">{{menuEntity.SrOnlyTextContent}}</span>
-        </a>
-    </li>
-</ul>
