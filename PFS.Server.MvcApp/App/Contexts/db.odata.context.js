@@ -21,7 +21,7 @@
         if (ctxType) {
             var cfg = $data.typeSystem.extend({
                 name: "oData",
-                oDataServiceHost: "http://localhost:5020/odata",
+                oDataServiceHost: "http://localhost:64245/odata",
                 withCredentials: false,
                 maxDataServiceVersion: "4.0"
             }, config);

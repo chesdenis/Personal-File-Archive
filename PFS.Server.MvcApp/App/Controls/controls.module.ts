@@ -34,6 +34,7 @@ import { DataGridToolbarPart } from './DataGrid/Parts/data-grid-toolbar.part';
 
 import { SwitchModeToConfigButton } from './DataGrid/Buttons/switch-mode-to-config.button';
 import { SwitchModeToDataButton } from './DataGrid/Buttons/switch-mode-to-data.button';
+import { AddBlankColumnButton } from './DataGrid/Buttons/add-blank-column.button';
 
 import { BaseCellTemplate, TextCellTemplate, DropdownCellTemplate } from './DataGrid/Templates/cells.templates';
 import { BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate } from './DataGrid/Templates/columns.templates';
@@ -70,7 +71,7 @@ import { BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate } from '
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
 
         DataGridToolbarPart,
-        SwitchModeToConfigButton, SwitchModeToDataButton,
+        SwitchModeToConfigButton, SwitchModeToDataButton, AddBlankColumnButton,
 
         BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
         BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
@@ -103,7 +104,7 @@ import { BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate } from '
         DataGridTablePart, DataGridHeaderPart, DataGridBodyPart,
 
         DataGridToolbarPart,
-        SwitchModeToConfigButton, SwitchModeToDataButton,
+        SwitchModeToConfigButton, SwitchModeToDataButton, AddBlankColumnButton,
 
         BaseCellTemplate, TextCellTemplate, DropdownCellTemplate,
         BaseColumnTemplate, TextColumnTemplate, DropdownColumnTemplate
