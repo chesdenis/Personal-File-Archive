@@ -2,12 +2,14 @@
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var gutil = require('gulp-util');
+var debug = require('gulp-debug');
 
 var wwwrootpaths = [
     '../PFS.AnyOS/PFS.Server/wwwroot',
     '../PFS.AnyOS/PFS.Server.Admin/wwwroot',
     '../PFS.WindowsOnly/PFS.Server/wwwroot',
-    '../PFS.WindowsOnly/PFS.Server.Admin/wwwroot'
+    '../PFS.WindowsOnly/PFS.Server.Admin/wwwroot',
+    'wwwroot'
 ];
 
 gulp.task('clean-wwwroot', function () {
@@ -138,13 +140,94 @@ function installDataJs(pathToInstall) {
     });
 }
 
+var ts = require('gulp-typescript');
+var less = require('gulp-less');
+var merge = require('merge2');
+var sourcemaps = require('gulp-sourcemaps');
+var path = require('path');
+
+var tsProject = ts.createProject("tsconfig.json");
 
 
 gulp.task('build-ui-debug', function () {
+   
+});
+
+gulp.task('compile-ui-debug', function () {
+    var tsResults = tsProject.src('./Apps/')
+             .pipe(sourcemaps.init())
+             .pipe(tsProject());
+             //.pipe(sourcemaps.write({
+             //    sourceRoot: function (file) {
+             //        var sourceFile = path.join(file.cwd, file.sourceMap.file);
+             //        return path.relative(path.dirname(sourceFile), file.cwd);
+             //    }
+             //}));
+
+    var lessResults = gulp.src(['./**/*.less', '!node_modules/**'])
+            .pipe(less());
+    var htmlResults = gulp.src(['./**/*.html', '!node_modules/**']);
+    var cssResults = gulp.src(['./**/*.css', '!node_modules/**']);
+    var jsResults = gulp.src(['./**/*.js', '!node_modules/**']);
+
+    return merge([
+        tsResults.js.pipe(gulp.dest("wwwroot/"))
+        , htmlResults.pipe(gulp.dest("wwwroot/"))
+    ]);
+    // .pipe(gulp.dest('wwwroot/'));
+});
+
+function buildTsDebug() {
+   
+
+    //new Promise(function (resolve, reject) {
+
+    //    tsProject.src()
+    //        .debug()
+    //        .pipe(sourcemaps.init())
+    //        .pipe(tsProject())
+    //        .pipe(sourcemaps.write({
+    //            sourceRoot: function (file) {
+    //                var sourceFile = path.join(file.cwd, file.sourceMap.file);
+    //                return path.relative(path.dirname(sourceFile), file.cwd);
+    //            }
+    //        }))
+    //        .pipe(gulp.dest(pathToOutput + '/'))
+    //        .on('end', resolve(pathToOutput));
+    //}).then(function (pathToOutput) {
+    //    gutil.log("systemjs.config.ts was built to " + pathToOutput);
+    //});
+}
+
+function buildHtml() {
+
+}
+
+function buildCss() {
+
+}
+
+function buildJs() {
+
+}
+
+function buildLessDebug() {
+
+}
+
+function buildTsDebug() {
+
+}
+
+gulp.task('build-ui-release', function () {
 
 });
 
-gulp.task('build-ui-release', function () {
+gulp.task('watch-ui-debug', function () {
+
+});
+
+gulp.task('watch-ui-release', function () {
 
 });
 

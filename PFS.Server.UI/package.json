@@ -36,6 +36,7 @@
     "gulp-sourcemaps": "1.6.0",
     "gulp-typescript": "3.0.1",
     "gulp-watch": "4.3.10",
+    "merge2": "1.0.3",
     "jasmine-core": "~2.4.1",
     "run-sequence": "^1.2.2",
     "tsconfig": "5.0.3",
