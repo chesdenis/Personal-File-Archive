@@ -25,120 +25,43 @@ gulp.task('clean-wwwroot', function () {
     }
 });
 
-gulp.task('install-packages', function () {
-    for (var i = 0; i < wwwrootpaths.length; i++) {
-        installShim(wwwrootpaths[i]);
-        installZone(wwwrootpaths[i]);
-        installReflect(wwwrootpaths[i]);
-        installSystemJs(wwwrootpaths[i]);
-        installAngular2(wwwrootpaths[i]);
-        installAngular2InMemoryWebApi(wwwrootpaths[i]);
-        installRxJs(wwwrootpaths[i]);
-        installBootstrap(wwwrootpaths[i]);
-        installJaydata(wwwrootpaths[i]);
-        installDataJs(wwwrootpaths[i]);
-    }
+gulp.task('packages-install', function () {
+    var shimSrc = gulp.src('./node_modules/core-js/client/*.js');
+    var zoneSrc = gulp.src('./node_modules/zone.js/dist/*.js');
+    var reflectSrc = gulp.src('./node_modules/reflect-metadata/*.js');
+    var systemJsSrc = gulp.src('./node_modules/systemjs/dist/*.js');
+    var angular2Src = gulp.src('./node_modules/@angular/**/*.js');
+    var angular2InMemoryWebApiSrc = gulp.src('./node_modules/angular2-in-memory-web-api/**/*.js');
+    var rxJsSrc = gulp.src('./node_modules/rxjs/**/*.js');
+    var bootstrapSrc = gulp.src('./node_modules/bootstrap/dist/**');
+    var jaydataSrc = gulp.src('./node_modules/jaydata/public/**');
+    var datajsSrc = gulp.src('./node_modules/datajs/lib/**');
+     
+
+    return merge([
+           shimSrc.pipe(gulp.dest("wwwroot/npmlibs/core-js/client/"))
+           , zoneSrc.pipe(gulp.dest("wwwroot/npmlibs/zone.js/dist/"))
+           , reflectSrc.pipe(gulp.dest("wwwroot/npmlibs/reflect-metadata/"))
+           , systemJsSrc.pipe(gulp.dest("wwwroot/npmlibs/systemjs/dist/"))
+           , angular2Src.pipe(gulp.dest("wwwroot/npmlibs/@angular/"))
+           , angular2InMemoryWebApiSrc.pipe(gulp.dest("wwwroot/npmlibs/angular2-in-memory-web-api/"))
+           , rxJsSrc.pipe(gulp.dest("wwwroot/npmlibs/rxjs/"))
+           , bootstrapSrc.pipe(gulp.dest("wwwroot/npmlibs/bootstrap/"))
+           , jaydataSrc.pipe(gulp.dest("wwwroot/npmlibs/jaydata/"))
+           , datajsSrc.pipe(gulp.dest("wwwroot/npmlibs/datajs/"))
+    ]);
 });
 
-function installShim(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/core-js/client/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/core-js/client/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function () {
-        gutil.log("Shim was installed to " + pathToInstall);
-    });
-}
+gulp.task('packages-apply', ['packages-install'], function () {
+    var npmLibs = gulp.src('./wwwroot/npmLibs/**');
+    return merge([
+        npmLibs.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/npmLibs")),
+        npmLibs.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/npmLibs")),
+        npmLibs.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/npmLibs")),
+        npmLibs.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/npmLibs"))
+    ]);
+});
 
-function installZone(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/zone.js/dist/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/zone.js/dist/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Zone was installed to " + pathToInstall);
-    });
-}
-
-function installReflect(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/reflect-metadata/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/reflect-metadata/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Reflect was installed to " + pathToInstall);
-    });
-}
-
-function installSystemJs(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/systemjs/dist/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/systemjs/dist/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("SystemJs was installed to " + pathToInstall);
-    });
-}
-
-function installAngular2(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/@angular/**/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/@angular/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Angular2 was installed to " + pathToInstall);
-    });
-}
-
-function installAngular2InMemoryWebApi(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/angular2-in-memory-web-api/**/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/angular2-in-memory-web-api/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Angular2InMemoryWebApi was installed to " + pathToInstall);
-    });
-}
-
-function installRxJs(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/rxjs/**/*.js')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/rxjs/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("RxJs was installed to " + pathToInstall);
-    });
-}
-
-function installBootstrap(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/bootstrap/dist/**')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/bootstrap/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Bootstrap was installed to " + pathToInstall);
-    });
-}
-
-function installJaydata(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/jaydata/public/**')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/jaydata/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("Jaydata was installed to " + pathToInstall);
-    });
-}
-
-function installDataJs(pathToInstall) {
-    new Promise(function (resolve, reject) {
-        gulp.src('./node_modules/datajs/lib/**')
-            .pipe(gulp.dest(pathToInstall + '/npmlibs/datajs/'))
-            .on('end', resolve(pathToInstall));
-    }).then(function (pathToInstall) {
-        gutil.log("DataJs was installed to " + pathToInstall);
-    });
-}
 
 var ts = require('gulp-typescript');
 var less = require('gulp-less');
@@ -148,86 +71,180 @@ var path = require('path');
 
 var tsProject = ts.createProject("tsconfig.json");
 
+gulp.task('ui-build-debug', function () {
+    var tsResults = tsProject.src()
+        .pipe(sourcemaps.init())
+        .pipe(tsProject())
+        .pipe(sourcemaps.write({
+                sourceRoot: function (file) {
+                var sourceFile = path.join(file.cwd, file.sourceMap.file);
+                return path.relative(path.dirname(sourceFile), file.cwd);
+        }
+    }));
 
-gulp.task('build-ui-debug', function () {
-   
-});
+    var lessResults = gulp.src(['./**/*.less', '!node_modules/**', '!wwwroot/**'])
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write());
 
-gulp.task('compile-ui-debug', function () {
-    var tsResults = tsProject.src('./Apps/')
-             .pipe(sourcemaps.init())
-             .pipe(tsProject());
-             //.pipe(sourcemaps.write({
-             //    sourceRoot: function (file) {
-             //        var sourceFile = path.join(file.cwd, file.sourceMap.file);
-             //        return path.relative(path.dirname(sourceFile), file.cwd);
-             //    }
-             //}));
-
-    var lessResults = gulp.src(['./**/*.less', '!node_modules/**'])
-            .pipe(less());
-    var htmlResults = gulp.src(['./**/*.html', '!node_modules/**']);
-    var cssResults = gulp.src(['./**/*.css', '!node_modules/**']);
-    var jsResults = gulp.src(['./**/*.js', '!node_modules/**']);
+    var htmlResults = gulp.src(['./**/*.html', '!node_modules/**', '!wwwroot/**']);
+    var cssResults = gulp.src(['./**/*.css', '!node_modules/**', '!wwwroot/**']);
+    var jsResults = gulp.src(['./**/*.js', '!node_modules/**', '!wwwroot/**', '!gulpfile.js']);
 
     return merge([
-        tsResults.js.pipe(gulp.dest("wwwroot/"))
+        tsResults.pipe(gulp.dest("wwwroot/"))
         , htmlResults.pipe(gulp.dest("wwwroot/"))
-    ]);
-    // .pipe(gulp.dest('wwwroot/'));
+        , cssResults.pipe(gulp.dest("wwwroot/"))
+        , jsResults.pipe(gulp.dest("wwwroot/"))
+        , lessResults.pipe(gulp.dest("wwwroot/"))
+]);
 });
 
-function buildTsDebug() {
+gulp.task('ui-build-release', function () {
+    var tsResults = tsProject.src()
+           .pipe(tsProject());
+
+    var lessResults = gulp.src(['./**/*.less', '!node_modules/**', '!wwwroot/**'])
+        .pipe(less());
+
+    var htmlResults = gulp.src(['./**/*.html', '!node_modules/**', '!wwwroot/**']);
+    var cssResults = gulp.src(['./**/*.css', '!node_modules/**', '!wwwroot/**']);
+    var jsResults = gulp.src(['./**/*.js', '!node_modules/**', '!wwwroot/**', '!gulpfile.js']);
+
+    return merge([
+        tsResults.pipe(gulp.dest("wwwroot/"))
+        , htmlResults.pipe(gulp.dest("wwwroot/"))
+        , cssResults.pipe(gulp.dest("wwwroot/"))
+        , jsResults.pipe(gulp.dest("wwwroot/"))
+        , lessResults.pipe(gulp.dest("wwwroot/"))
+]);
+});
+
+gulp.task('ui-apply',['ui-build-debug'], function () {
+    var pfsServerFiles = gulp.src('./wwwroot/Apps/PFS.Server/**');
+    var pfsServerAdminFiles = gulp.src('./wwwroot/Apps/PFS.Server.Admin/**');
+    var contextsFiles = gulp.src('./wwwroot/Contexts/**');
+    var controlsFiles = gulp.src('./wwwroot/Controls/**');
+    var systemJs = gulp.src('./wwwroot/systemjs.config.js');
    
 
-    //new Promise(function (resolve, reject) {
+    return merge([
+        pfsServerFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot")),
+        pfsServerAdminFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot")),
+        pfsServerFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot")),
+        pfsServerAdminFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot")),
 
-    //    tsProject.src()
-    //        .debug()
-    //        .pipe(sourcemaps.init())
-    //        .pipe(tsProject())
-    //        .pipe(sourcemaps.write({
-    //            sourceRoot: function (file) {
-    //                var sourceFile = path.join(file.cwd, file.sourceMap.file);
-    //                return path.relative(path.dirname(sourceFile), file.cwd);
-    //            }
-    //        }))
-    //        .pipe(gulp.dest(pathToOutput + '/'))
-    //        .on('end', resolve(pathToOutput));
-    //}).then(function (pathToOutput) {
-    //    gutil.log("systemjs.config.ts was built to " + pathToOutput);
-    //});
-}
+        contextsFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/Contexts")),
+        contextsFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/Contexts")),
+        contextsFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/Contexts")),
+        contextsFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/Contexts")),
 
-function buildHtml() {
+        controlsFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/Controls")),
+        controlsFiles.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/Controls")),
+        controlsFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/Controls")),
+        controlsFiles.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/Controls")),
 
-}
-
-function buildCss() {
-
-}
-
-function buildJs() {
-
-}
-
-function buildLessDebug() {
-
-}
-
-function buildTsDebug() {
-
-}
-
-gulp.task('build-ui-release', function () {
-
+        systemJs.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/")),
+        systemJs.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/")),
+        systemJs.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/")),
+        systemJs.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/")),
+]);
 });
 
-gulp.task('watch-ui-debug', function () {
 
+var watch = require('gulp-watch');
+var debug = require('gulp-debug');
+var livereload = require('gulp-livereload');
+
+gulp.task('run-livereload', function () {
+    livereload.listen();
 });
 
-gulp.task('watch-ui-release', function () {
+gulp.task('watch-controls-html', function () {
+    return watch(['./Controls/**/*.html'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server.Admin/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/Controls/'))
+        .pipe(livereload());
+});
 
+gulp.task('watch-pfs-server-html', function () {
+    return watch(['./Apps/PFS.Server/**/*.html'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server/wwwroot/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server/wwwroot/'))
+        .pipe(livereload());
+});
+
+gulp.task('watch-pfs-server-admin-html', function () {
+    return watch(['./Apps/PFS.Server.Admin/**/*.html'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server.Admin/wwwroot/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/'))
+        .pipe(livereload());
+});
+
+
+gulp.task('watch-controls-less', function () {
+    return watch(['./Controls/**/*.less'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server.Admin/wwwroot/Controls/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/Controls/'))
+        .pipe(livereload());
+});
+
+gulp.task('watch-pfs-server-less', function () {
+    return watch(['./Apps/PFS.Server/**/*.less'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server/wwwroot/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server/wwwroot/'))
+        .pipe(livereload());
+});
+
+gulp.task('watch-pfs-server-admin-less', function () {
+    return watch(['./Apps/PFS.Server.Admin/**/*.less'], { ignoreInitial: false })
+        .pipe(debug())
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('../PFS.AnyOS/PFS.Server.Admin/wwwroot/'))
+        .pipe(gulp.dest('../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/'))
+        .pipe(livereload());
+});
+
+gulp.task('watch-controls', [
+    'watch-controls-html',
+    'watch-controls-less'
+]);
+
+gulp.task('watch-pfs-server', [
+    'watch-pfs-server-html',
+    'watch-pfs-server-less'
+]);
+
+gulp.task('watch-pfs-server-admin', [
+    'watch-pfs-server-admin-html',
+    'watch-pfs-server-admin-less'
+]);
+
+var runSequence = require('run-sequence');
+
+gulp.task('default', function (callback) {
+    runSequence('packages-apply',
+                'ui-apply',
+                ['watch-controls',
+                'watch-pfs-server',
+                'watch-pfs-server-admin'],
+                callback);
 });
 
