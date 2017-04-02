@@ -63,8 +63,7 @@
             OData.defaultHttpClient.enableJsonpCallback = true;
             OData.request(
                 {
-                    requestUri: "http://localhost:64245/odata/Folders('c:/')/Default.GetChildFolders",
-                    enableJsonpCallback: true
+                    requestUri: "odata/Folders('$c//')/Default.GetChildFolders" 
                 },
                 function (data, request) {
                     console.log(data);

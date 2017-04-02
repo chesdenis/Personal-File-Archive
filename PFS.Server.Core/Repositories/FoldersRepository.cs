@@ -42,8 +42,17 @@ namespace PFS.Server.Core.Repositories
         }
 
         public IEnumerable<PfsFolder> GetChildFolders(string folderPath = "")
-        {
+        { 
             if (string.IsNullOrEmpty(folderPath)) folderPath = "/";
+
+#if WinOnly
+            if (folderPath.StartsWith("$"))
+            {
+                // read drive letter - next symbol after $
+                var driveLetter = folderPath.Substring(1, 1);
+                folderPath = $"{driveLetter}:{folderPath.Substring(2)}";
+            } 
+#endif
 
             var parentDir = new DirectoryInfo(folderPath);
 

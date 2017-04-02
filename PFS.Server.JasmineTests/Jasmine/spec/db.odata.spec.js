@@ -1,7 +1,5 @@
 ﻿describe("MSSqlServer with Entity Framework api tests", function () {
-    var apiUrl = "http://localhost:64245/odata";
-    //var apiUrl = "http://localhost:5020/odata";
-
+    var apiUrl = "/odata";
     function should(context, funcName) {
         var isDone = false;
 

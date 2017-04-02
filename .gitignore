@@ -32,3 +32,5 @@
 
 /PFS.Server.UI/node_modules
 /PFS.Server.UI/wwwroot
+
+/PFS.Server.JasmineTests/node_modules

@@ -1,0 +1,21 @@
+{
+  "name": "personal-file-storage",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  
+    "gulp": "^3.9.1",
+    "gulp-util": "3.0.8",
+    "gulp-clean": "0.3.2",
+    "gulp-cli": "1.2.2",
+    "gulp-debug": "2.1.2",
+    "gulp-less": "3.3.0",
+    "gulp-livereload": "3.8.1",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-typescript": "3.0.1",
+    "gulp-watch": "4.3.10",
+    "merge2": "1.0.3"
+  }
+}
