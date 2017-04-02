@@ -5,9 +5,10 @@ using Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using System.IO;
+using System.Configuration;
+using PFS.Server.Extensions;
 
 [assembly: OwinStartup(typeof(PFS.Server.Startup))]
-
 namespace PFS.Server
 {
     public class Startup
@@ -15,6 +16,8 @@ namespace PFS.Server
         public void Configuration(IAppBuilder app)
         {
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+            //var configuration = 
+
             string root = AppDomain.CurrentDomain.BaseDirectory;
             var physicalFileSystem = new PhysicalFileSystem(Path.Combine(root, "wwwroot"));
             var options = new FileServerOptions
@@ -26,6 +29,10 @@ namespace PFS.Server
             options.StaticFileOptions.FileSystem = physicalFileSystem;
             options.StaticFileOptions.ServeUnknownFileTypes = false;
             app.UseFileServer(options);
+
+            app.UsePfsStaticFolders();
+
+          //  app.UseConfiguration
         }
     }
 }
