@@ -18,6 +18,8 @@ namespace PFS.Server.Extensions
 
             foreach (var staticFolderCfg in staticFolderPaths)
             {
+                if (System.IO.File.Exists(staticFolderCfg.Value) == false) continue;
+
                 app.UseStaticFiles(new StaticFileOptions()
                 {
                     FileProvider = new PhysicalFileProvider(staticFolderCfg.Value),

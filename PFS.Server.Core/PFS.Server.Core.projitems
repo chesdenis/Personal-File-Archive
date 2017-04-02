@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Photo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Video.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\FilesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\FoldersRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TagsRepository.cs" />

@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
@@ -38,7 +38,8 @@
     },
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
-    "copyToOutput": { "includeFiles": [ "hosting.json" ] }
+    "copyToOutput": { "includeFiles": [ "hosting.json" ] },
+    "define": [ "AnyOS" ]
   },
 
   "runtimeOptions": {

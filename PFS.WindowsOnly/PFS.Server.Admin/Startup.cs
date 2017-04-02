@@ -6,8 +6,7 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using System.IO;
 using System.Configuration;
-using PFS.Server.Admin.Extensions;
-using PFS.Server.Admin.Middlewares;
+using PFS.Server.Core.Middlewares;
 
 [assembly: OwinStartup(typeof(PFS.Server.Admin.Startup))]
 namespace PFS.Server.Admin
@@ -33,8 +32,6 @@ namespace PFS.Server.Admin
             app.Use(typeof(DisablePfsCaching));
 
             app.UseFileServer(options);
-             
-          //  app.UseConfiguration
         }
     }
 }

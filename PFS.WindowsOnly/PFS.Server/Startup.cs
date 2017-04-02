@@ -7,7 +7,7 @@ using Microsoft.Owin.StaticFiles;
 using System.IO;
 using System.Configuration;
 using PFS.Server.Extensions;
-using PFS.Server.Middlewares;
+using PFS.Server.Core.Middlewares;
 
 [assembly: OwinStartup(typeof(PFS.Server.Startup))]
 namespace PFS.Server

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PFS.Server.Extensions;
+using PFS.Server.Core.Middlewares;
 
 namespace PFS.Server
 {
@@ -24,6 +25,8 @@ namespace PFS.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseMiddleware<DisablePfsCaching>();
+
             app.UseStaticFiles();
             app.UseStaticFolders();
 

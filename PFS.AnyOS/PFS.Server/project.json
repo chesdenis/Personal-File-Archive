@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
@@ -31,9 +31,15 @@
   },
 
   "buildOptions": {
+    "compile": {
+      "include": [
+        "../../PFS.Server.Core/**/*.cs"
+      ]
+    },
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
-    "copyToOutput": { "includeFiles": [ "hosting.json", "staticfolders.json" ] }
+    "copyToOutput": { "includeFiles": [ "hosting.json", "staticfolders.json" ] },
+    "define": [ "AnyOS" ]
   },
 
   "runtimeOptions": {
