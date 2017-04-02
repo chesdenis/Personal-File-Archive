@@ -2,13 +2,13 @@
 declare var System: any;
 
 const map: any = {
-    'app': 'app',
+    'app': '/',
     '@angular': 'npmLibs/@angular',
     'angular2-in-memory-web-api': 'npmLibs/angular2-in-memory-web-api',
     'rxjs': 'npmLibs/rxjs',
     'jaydata/core': 'npmLibs/jaydata/jaydata.js',
     'jaydata/odata': 'npmLibs/jaydata/jaydataproviders/oDataProvider.js',
-    './db.odata.context':'app/contexts/db.odata.context.js'
+    './db.odata.context':'contexts/db.odata.context.js'
 }
 
 const packages: any = {
