@@ -48,6 +48,13 @@ namespace PFS.Server.Core.DbContexts
             base.OnModelCreating(builder);
         }
 
+#if AnyOS
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Filename=./PfsServer.db");
+        }
+#endif
+
         void IPfsDbContext.SaveChanges()
         {
             SaveChanges();
