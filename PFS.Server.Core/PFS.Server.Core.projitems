@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsODataCollections.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DbContexts\PfsServerDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\File.cs" />

@@ -4,7 +4,6 @@ using PFS.Server.Admin.App_Start;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
 using PFS.Server.Core.Repositories;
-using PFS.Server.Admin.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 using PFS.Server.Admin;
+using PFS.Server.Core.DbContexts;
 
 namespace PFS.Server
 {

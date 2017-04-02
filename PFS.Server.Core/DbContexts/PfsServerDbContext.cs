@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
+using System.Text;
 using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
-using PFS.Server.Core.Repositories;
+using System.Linq;
+#if AnyOS
+using Microsoft.EntityFrameworkCore;
+#endif
+#if WinOnly
+using System.Data.Entity;
+#endif
 
-namespace PFS.Server.Db
+namespace PFS.Server.Core.DbContexts
 {
-    public partial class PfsServerDbContext : DbContext, IPfsDbContext
+    public partial class PfsServerDbContext:DbContext, IPfsDbContext
     {
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
@@ -20,14 +24,22 @@ namespace PFS.Server.Db
         public DbSet<PfsFolder> Folders { get; set; }
         IEnumerable<PfsFolder> IPfsODataCollections.Folders => Folders;
 
-        public PfsServerDbContext():
-            base("name=PfsServerConnectionString")
+#if WinOnly
+        public PfsServerDbContext() :
+         base("name=PfsServerConnectionString")
         {
             Database.SetInitializer
                 (new CreateDatabaseIfNotExists<PfsServerDbContext>());
         }
-        
-        protected override void OnModelCreating(DbModelBuilder builder)
+#endif
+        protected override void OnModelCreating(
+#if WinOnly
+            DbModelBuilder builder
+#endif
+#if AnyOS
+            ModelBuilder builder
+#endif
+            )
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
             builder.Entity<PfsFile>().HasKey(m => m.Path);
@@ -42,19 +54,28 @@ namespace PFS.Server.Db
         }
     }
 
-    public partial class PfsServerDbContext 
+    public partial class PfsServerDbContext
     {
 
+#if WinOnly
         public Tag AddEntity(Tag entity)
         {
             return Tags.Add(entity);
         }
-
+#endif
+#if AnyOS
+        public Tag AddEntity(Tag entity)
+        {
+            var changes = Tags.Add(entity);
+            return changes.Entity;
+        }
+#endif
         public void RemoveEntity(Tag entity)
         {
             Tags.Remove(entity);
         }
 
+#if WinOnly
         public Tag UpdateEntity(Tag entity)
         {
             var existedEntity = Tags.First(f => f.Id == entity.Id);
@@ -63,5 +84,14 @@ namespace PFS.Server.Db
 
             return existedEntity;
         }
+#endif
+#if AnyOS
+        public Tag UpdateEntity(Tag entity)
+        {
+            var changes = Tags.Update(entity);
+            return changes.Entity;
+        }
+#endif
+
     }
 }

@@ -189,7 +189,6 @@
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\FoldersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Db\PfsServerDbContext.cs" />
     <Compile Include="Extensions\ODataHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

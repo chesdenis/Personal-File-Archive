@@ -193,7 +193,6 @@
     <Compile Include="Controllers\FoldersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
-    <Compile Include="Db\PfsServerDbContext.cs" />
     <Compile Include="Extensions\ODataHandler.cs" />
     <Compile Include="Extensions\StaticFoldersExtensions.cs" />
     <Compile Include="Global.asax.cs">
