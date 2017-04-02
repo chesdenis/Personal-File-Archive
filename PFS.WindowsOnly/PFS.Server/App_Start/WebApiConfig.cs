@@ -1,4 +1,5 @@
-﻿using PFS.Server.Core.Entities;
+﻿using PFS.Server.Core;
+using PFS.Server.Core.Entities;
 using PFS.Server.Extensions;
 using System;
 using System.Collections.Generic;
@@ -37,36 +38,6 @@ namespace PFS.Server
                 .Expand()
                 .Select()
                 .MaxTop(null);
-
-           
         }
-
-        public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
-        {
-            builder.EntitySet<Tag>("Tags");
-
-            return builder;
-        }
-
-        public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
-        {
-            builder.EntitySet<PfsFile>("Files").EntityType.HasKey(k=>k.Path);
-
-            return builder;
-        }
-
-        public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
-        {
-            var entitySet = builder.EntitySet<PfsFolder>("Folders");
-
-            var entityType = entitySet.EntityType;
-            entityType.HasKey(k=>k.Path);
-            entityType.Function("GetChildFolders").Returns<IQueryable<PfsFolder>>();
-            entityType.Function("GetChildFiles").Returns<IQueryable<PfsFile>>();
-
-            return builder;
-        }
-
-
     }
 }
