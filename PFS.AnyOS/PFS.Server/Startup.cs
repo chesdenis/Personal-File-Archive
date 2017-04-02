@@ -50,13 +50,6 @@ namespace PFS.Server
             app.UseStaticFiles();
             app.UseStaticFolders();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-
             IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
             var odataBuilder = new ODataConventionModelBuilder(provider)
                 .BuildTagsModel()
@@ -64,6 +57,14 @@ namespace PFS.Server
                 .BuildFoldersModel();
 
             app.UseMvc(_ => _.MapODataRoute("odata", odataBuilder.GetEdmModel()));
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
         }
 
 
