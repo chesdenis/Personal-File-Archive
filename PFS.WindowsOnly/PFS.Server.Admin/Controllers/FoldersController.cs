@@ -13,7 +13,7 @@ using System.Web.OData;
 using System.Web.OData.Query;
 using System.Web.OData.Routing;
 
-namespace PFS.Server.Controllers
+namespace PFS.Server.Admin.Controllers
 {
     [EnableQuery]
     public class FoldersController : ODataController

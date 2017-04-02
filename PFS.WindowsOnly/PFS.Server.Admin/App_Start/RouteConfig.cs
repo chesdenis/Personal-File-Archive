@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace PFS.Server.App_Start
+namespace PFS.Server.Admin.App_Start
 {
     public class RouteConfig
     {

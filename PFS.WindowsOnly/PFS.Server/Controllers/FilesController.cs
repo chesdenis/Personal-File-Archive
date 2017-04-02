@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.OData;
 
-namespace PFS.Server.DbProvider.Ef.MsSqlOData.Controllers
+namespace PFS.Server.Controllers
 {
     [EnableQuery]
     public class FilesController : ODataController

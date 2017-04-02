@@ -6,11 +6,11 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using System.IO;
 using System.Configuration;
-using PFS.Server.Extensions;
-using PFS.Server.Middlewares;
+using PFS.Server.Admin.Extensions;
+using PFS.Server.Admin.Middlewares;
 
-[assembly: OwinStartup(typeof(PFS.Server.Startup))]
-namespace PFS.Server
+[assembly: OwinStartup(typeof(PFS.Server.Admin.Startup))]
+namespace PFS.Server.Admin
 {
     public class Startup
     {
@@ -33,8 +33,7 @@ namespace PFS.Server
             app.Use(typeof(DisablePfsCaching));
 
             app.UseFileServer(options);
-            app.UsePfsStaticFolders();
-
+             
           //  app.UseConfiguration
         }
     }

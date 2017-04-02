@@ -10,37 +10,30 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.OData;
-using System.Web.OData.Query;
-using System.Web.OData.Routing;
 
-namespace PFS.Server.Controllers
+namespace PFS.Server.Admin.Controllers
 {
     [EnableQuery]
-    public class FoldersController : ODataController
+    public class FilesController : ODataController
     {
-        private readonly FoldersRepository Rep;
+        private readonly FilesRepository Rep;
 
-        public FoldersController(FoldersRepository rep)
+        public FilesController(FilesRepository rep)
         {
             Rep = rep;
         }
 
         [HttpGet]
-        public IQueryable<PfsFolder> Get()
+        public IQueryable<PfsFile> Get()
         {
             return Rep.Get().AsQueryable();
         }
 
         [HttpGet]
-        public PfsFolder Get([FromODataUri]string key)
+        public PfsFile Get([FromODataUri]string key)
         {
             return Rep.Get(key);
         }
-
-        [HttpGet]
-        public IQueryable<PfsFolder> GetChildFolders([FromODataUri]string key)
-        {
-            return Rep.GetChildFolders(key).AsQueryable();
-        }
+         
     }
 }
