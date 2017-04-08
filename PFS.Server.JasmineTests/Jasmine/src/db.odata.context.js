@@ -26,58 +26,46 @@ types["PFS.Server.Core.Entities.Tag"] = $data("$data.Entity").extend("PFS.Server
     }
 });
 
-types["PFS.Server.Core.Entities.PfsFile"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.PfsFile", {
-    Path: {
-        "type": "Edm.String",
-        "nullable": false,
-        "required": true,
-        "key": true
-    },
-    Name: {
-        "type": "Edm.String"
-    }
-});
+//types["PFS.Server.Core.Entities.PfsFile"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.PfsFile", {
+//    Path: {
+//        "type": "Edm.String",
+//        "nullable": false,
+//        "required": true,
+//        "key": true
+//    },
+//    Name: {
+//        "type": "Edm.String"
+//    }
+//});
 
-types["PFS.Server.Core.Entities.PfsFolder"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.PfsFolder", {
-    Path: {
-        "type": "Edm.String",
-        "nullable": false,
-        "required": true,
-        "key": true
-    },
-    Name: {
-        "type": "Edm.String"
-    },
-    GetChildFolders: {
-        "type": "$data.ServiceFunction",
-        "namespace": "Default",
-        "returnType": "System.Linq.IQueryable_1OfPfsFolder",
-        "params": []
-    },
-    GetChildFiles: {
-        "type": "$data.ServiceFunction",
-        "namespace": "Default",
-        "returnType": "System.Linq.IQueryable_1OfPfsFile",
-        "params": []
-    }
-});
-
-types["System.Linq.IQueryable_1OfPfsFolder"] = $data("$data.Entity").extend("System.Linq.IQueryable_1OfPfsFolder", null);
-
-types["System.Linq.IQueryable_1OfPfsFile"] = $data("$data.Entity").extend("System.Linq.IQueryable_1OfPfsFile", null);
+//types["PFS.Server.Core.Entities.PfsFolder"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.PfsFolder", {
+//    Path: {
+//        "type": "Edm.String",
+//        "nullable": false,
+//        "required": true,
+//        "key": true
+//    },
+//    Name: {
+//        "type": "Edm.String"
+//    },
+//    //GetChildFolders: {
+//    //    "type": "$data.ServiceFunction",
+//    //    "namespace": "Default",
+//    //    "returnType": "System.Linq.IQueryable_1OfPfsFolder",
+//    //    "params": []
+//    //},
+//    //GetChildFiles: {
+//    //    "type": "$data.ServiceFunction",
+//    //    "namespace": "Default",
+//    //    "returnType": "System.Linq.IQueryable_1OfPfsFile",
+//    //    "params": []
+//    //}
+//});
 
 exports.type = types["Default.Container"] = $data("$data.EntityContext").extend("Default.Container", {
     Tags: {
         "type": "$data.EntitySet",
         "elementType": "PFS.Server.Core.Entities.Tag"
-    },
-    Files: {
-        "type": "$data.EntitySet",
-        "elementType": "PFS.Server.Core.Entities.PfsFile"
-    },
-    Folders: {
-        "type": "$data.EntitySet",
-        "elementType": "PFS.Server.Core.Entities.PfsFolder"
     }
 });
 
@@ -86,19 +74,17 @@ exports.PFS = {
         "Core": {
             "Entities": {
                 "Tag": types["PFS.Server.Core.Entities.Tag"],
-                "PfsFile": types["PFS.Server.Core.Entities.PfsFile"],
-                "PfsFolder": types["PFS.Server.Core.Entities.PfsFolder"]
             }
         }
     }
 };
 
-exports.System = {
-    "Linq": {
-        "IQueryable_1OfPfsFolder": types["System.Linq.IQueryable_1OfPfsFolder"],
-        "IQueryable_1OfPfsFile": types["System.Linq.IQueryable_1OfPfsFile"]
-    }
-};
+//exports.System = {
+//    "Linq": {
+//        "IQueryable_1OfPfsFolder": types["System.Linq.IQueryable_1OfPfsFolder"],
+//        "IQueryable_1OfPfsFile": types["System.Linq.IQueryable_1OfPfsFile"]
+//    }
+//};
 
 exports.Default = {
     "Container": types["Default.Container"]
