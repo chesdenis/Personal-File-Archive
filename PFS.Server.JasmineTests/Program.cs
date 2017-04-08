@@ -12,6 +12,8 @@ namespace PFS.Server.JasmineTests
     {
         public static void Main(string[] args)
         {
+            throw new Exception("Please read information for developers and use Task Runner Explorer.");
+
             var host = new WebHostBuilder()
                .UseKestrel()
                .UseContentRoot(Directory.GetCurrentDirectory())

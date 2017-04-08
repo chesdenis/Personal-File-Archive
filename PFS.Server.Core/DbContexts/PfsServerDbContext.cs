@@ -18,11 +18,6 @@ namespace PFS.Server.Core.DbContexts
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
-        public DbSet<PfsFile> Files { get; set; }
-        IEnumerable<PfsFile> IPfsODataCollections.Files => Files;
-
-        public DbSet<PfsFolder> Folders { get; set; }
-        IEnumerable<PfsFolder> IPfsODataCollections.Folders => Folders;
 
 #if WinOnly
         public PfsServerDbContext() :
@@ -42,8 +37,6 @@ namespace PFS.Server.Core.DbContexts
             )
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
-            builder.Entity<PfsFile>().HasKey(m => m.Path);
-            builder.Entity<PfsFolder>().HasKey(m => m.Path);
 
             base.OnModelCreating(builder);
         }

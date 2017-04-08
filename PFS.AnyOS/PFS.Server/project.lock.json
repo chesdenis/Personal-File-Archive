@@ -2462,6 +2462,23 @@
           "ref/netstandard1.3/System.IO.FileSystem.dll": {}
         }
       },
+      "System.IO.FileSystem.DriveInfo/4.0.0-beta-23123": {
+        "type": "package",
+        "dependencies": {
+          "System.IO.FileSystem": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet/System.IO.FileSystem.DriveInfo.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.IO.FileSystem.DriveInfo.dll": {}
+        }
+      },
       "System.IO.FileSystem.Primitives/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -6779,6 +6796,37 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "System.IO.FileSystem.DriveInfo/4.0.0-beta-23123": {
+      "sha512": "z1S28qGucrXjfTlzD0SSyh4MgxxfdUHNMd8zTHsZsLM9Xwh1U3xcoi6PzwCkpA3jL36RmLVFziLaZRQBkDWLxg==",
+      "type": "package",
+      "path": "System.IO.FileSystem.DriveInfo/4.0.0-beta-23123",
+      "files": [
+        "System.IO.FileSystem.DriveInfo.4.0.0-beta-23123.nupkg.sha512",
+        "System.IO.FileSystem.DriveInfo.nuspec",
+        "lib/DNXCore50/System.IO.FileSystem.DriveInfo.dll",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.IO.FileSystem.DriveInfo.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/dotnet/System.IO.FileSystem.DriveInfo.dll",
+        "ref/dotnet/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/de/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/es/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/fr/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/it/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/ja/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/ko/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/ru/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/zh-hans/System.IO.FileSystem.DriveInfo.xml",
+        "ref/dotnet/zh-hant/System.IO.FileSystem.DriveInfo.xml",
+        "ref/net46/System.IO.FileSystem.DriveInfo.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._"
+      ]
+    },
     "System.IO.FileSystem.Primitives/4.0.1": {
       "sha512": "kWkKD203JJKxJeE74p8aF8y4Qc9r9WQx4C0cHzHPrY3fv/L/IhWnyCHaFJ3H1QPOH6A93whlQ2vG5nHlBDvzWQ==",
       "type": "package",
@@ -9906,7 +9954,9 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
       "Microsoft.OData.Core >= 7.0.0",
       "Microsoft.OData.Edm >= 7.0.0",
-      "Microsoft.Spatial >= 7.0.0"
+      "Microsoft.Spatial >= 7.0.0",
+      "System.IO.FileSystem >= 4.0.1",
+      "System.IO.FileSystem.DriveInfo >= 4.0.0-beta-23123"
     ],
     ".NETCoreApp,Version=v1.0": [
       "Microsoft.NETCore.App >= 1.0.0"

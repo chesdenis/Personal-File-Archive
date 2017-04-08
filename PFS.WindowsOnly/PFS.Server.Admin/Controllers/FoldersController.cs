@@ -15,32 +15,32 @@ using System.Web.OData.Routing;
 
 namespace PFS.Server.Admin.Controllers
 {
-    [EnableQuery]
-    public class FoldersController : ODataController
-    {
-        private readonly FoldersRepository Rep;
+    //[EnableQuery]
+    //public class FoldersController : ODataController
+    //{
+    //    private readonly FoldersRepository Rep;
 
-        public FoldersController(FoldersRepository rep)
-        {
-            Rep = rep;
-        }
+    //    public FoldersController(FoldersRepository rep)
+    //    {
+    //        Rep = rep;
+    //    }
 
-        [HttpGet]
-        public IQueryable<PfsFolder> Get()
-        {
-            return Rep.Get().AsQueryable();
-        }
+    //    [HttpGet]
+    //    public IQueryable<PfsFolder> Get()
+    //    {
+    //        return Rep.Get().AsQueryable();
+    //    }
 
-        [HttpGet]
-        public PfsFolder Get([FromODataUri]string key)
-        {
-            return Rep.Get(key);
-        }
+    //    [HttpGet]
+    //    public PfsFolder Get([FromODataUri]string key)
+    //    {
+    //        return Rep.Get(key);
+    //    }
 
-        [HttpGet]
-        public IQueryable<PfsFolder> GetChildFolders([FromODataUri]string key)
-        {
-            return Rep.GetChildFolders(key).AsQueryable();
-        }
-    }
+    //    [HttpGet]
+    //    public IQueryable<PfsFolder> GetChildFolders([FromODataUri]string key)
+    //    {
+    //        return Rep.GetChildFolders(key).AsQueryable();
+    //    }
+    //}
 }

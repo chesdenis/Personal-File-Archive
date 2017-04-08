@@ -16,26 +16,43 @@ namespace PFS.Server.Core
     {
         public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<Tag>("Tags");
-
+            builder.EntitySet<Tag>("Tags").EntityType.HasKey(k=>k.Id);
             return builder;
         }
 
-        public static ODataConventionModelBuilder BuildFilesModel(this ODataConventionModelBuilder builder)
+        public static ODataConventionModelBuilder BuildIOEntitiesModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<PfsFile>("Files").EntityType.HasKey(k => k.Path);
-
-            return builder;
-        }
-
-        public static ODataConventionModelBuilder BuildFoldersModel(this ODataConventionModelBuilder builder)
-        {
-            var entitySet = builder.EntitySet<PfsFolder>("Folders");
-
-            var entityType = entitySet.EntityType;
+            var entityType = builder.EntitySet<IOPfsEntity>("IOEntities").EntityType;
             entityType.HasKey(k => k.Path);
-            entityType.Function("GetChildFolders").Returns<IQueryable<PfsFolder>>();
-            entityType.Function("GetChildFiles").Returns<IQueryable<PfsFile>>();
+
+            var entityTypeCollection = builder.EntityType<IOPfsEntity>().Collection;
+
+            var getDriveFunc = entityTypeCollection.Function("GetDrive");
+            getDriveFunc.Parameter<string>("DriveName");
+            getDriveFunc.Returns<PfsDrive>();
+
+            var getDrivesFunc = entityTypeCollection.Function("GetDrives");
+            getDrivesFunc.Returns<IEnumerable<PfsDrive>>();
+
+            var getFolderFunc = entityTypeCollection.Function("GetFolder");
+            getFolderFunc.Parameter<string>("DriveName");
+            getFolderFunc.Parameter<string>("FolderRelativePath");
+            getFolderFunc.Returns<PfsFolder>();
+
+            var getFoldersFunc = entityTypeCollection.Function("GetFolders");
+            getFoldersFunc.Parameter<string>("DriveName");
+            getFoldersFunc.Parameter<string>("FolderRelativePath");
+            getFoldersFunc.Returns<IEnumerable<PfsFolder>>();
+
+            var getFileFunc = entityTypeCollection.Function("GetFile");
+            getFileFunc.Parameter<string>("DriveName");
+            getFileFunc.Parameter<string>("FileRelativePath");
+            getFileFunc.Returns<PfsFile>();
+
+            var getFilesFunc = entityTypeCollection.Function("GetFiles");
+            getFilesFunc.Parameter<string>("DriveName");
+            getFilesFunc.Parameter<string>("FolderRelativePath");
+            getFilesFunc.Returns<IEnumerable<PfsFile>>();
 
             return builder;
         }

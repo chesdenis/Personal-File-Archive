@@ -17,16 +17,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)DbContexts\PfsServerDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Document.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\File.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Entities\Folder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\IOEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Music.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Photo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Video.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataModelBuilderExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\FilesRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\FoldersRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\IOEntitiesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TagsRepository.cs" />
   </ItemGroup>
 </Project>

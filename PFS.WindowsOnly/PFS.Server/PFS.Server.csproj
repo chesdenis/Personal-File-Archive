@@ -190,9 +190,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\FilesController.cs" />
-    <Compile Include="Controllers\FoldersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IOEntitiesController.cs" />
     <Compile Include="Controllers\JasmineTestsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Extensions\ODataHandler.cs" />

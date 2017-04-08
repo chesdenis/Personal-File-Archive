@@ -28,9 +28,10 @@ namespace PFS.Server
 
             // Register repositories
             builder.RegisterType<TagsRepository>().SingleInstance();
+            builder.RegisterType<DrivesRepository>().SingleInstance();
             builder.RegisterType<FilesRepository>().SingleInstance();
             builder.RegisterType<FoldersRepository>().SingleInstance();
-
+            
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 

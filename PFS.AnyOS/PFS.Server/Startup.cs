@@ -33,8 +33,7 @@ namespace PFS.Server
             services.AddDbContext<PfsServerDbContext>();
             services.AddLogging();
             services.AddScoped<TagsRepository>();
-            services.AddScoped<FilesRepository>();
-            services.AddScoped<FoldersRepository>();
+            services.AddScoped<IOEntitiesRepository>();
 
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
         }
@@ -53,8 +52,7 @@ namespace PFS.Server
             IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
             var odataBuilder = new ODataConventionModelBuilder(provider)
                 .BuildTagsModel()
-                .BuildFilesModel()
-                .BuildFoldersModel();
+                .BuildIOEntitiesModel();
 
             app.UseMvc(_ => _.MapODataRoute("odata", odataBuilder.GetEdmModel()));
 

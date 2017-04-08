@@ -12,7 +12,6 @@ using System.Web.OData;
 
 namespace PFS.Server.Controllers
 {
-    [EnableQuery]
     public class TagsController : ODataController
     {
         private readonly TagsRepository Rep;
@@ -22,13 +21,12 @@ namespace PFS.Server.Controllers
             Rep = rep;
         }
 
-        [HttpGet]
+        [EnableQuery]
         public IQueryable<Tag> Get()
         {
             return Rep.Get().AsQueryable();
         }
 
-        [HttpGet]
         public Tag Get([FromODataUri]int key)
         {
             return Rep.Get(key);

@@ -1,5 +1,6 @@
 ﻿var gulp = require('gulp');
 var merge = require('merge2');
+var exec = require('child_process').exec;
 
 var wwwrootpaths = [
     '../PFS.AnyOS/PFS.Server/wwwroot',
@@ -9,21 +10,34 @@ var wwwrootpaths = [
     'wwwroot'
 ];
 
-gulp.task("jasmine-install", function () {
-    var jasminePackages = gulp.src('./Jasmine/lib/**');
-  
+gulp.task("packages-install", function () {
+    var jasmineSrc = gulp.src('./node_modules/jasmine-core/lib/jasmine-core/*');
+    var jaydataSrc = gulp.src('./node_modules/jaydata/public/**');
+    var datajsSrc = gulp.src('./node_modules/datajs/lib/**');
+
     return merge([
-      jasminePackages.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/lib")),
-      jasminePackages.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/lib")),
-      jasminePackages.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/lib")),
-      jasminePackages.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/lib"))
+      jasmineSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/libs/jasmine-core")),
+
+      jaydataSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/libs/jaydata")),
+      jaydataSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/libs/jaydata")),
+      jaydataSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/libs/jaydata")),
+      jaydataSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/libs/jaydata")),
+
+      datajsSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/libs/datajs")),
+      datajsSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/libs/datajs")),
+      datajsSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/libs/datajs")),
+      datajsSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/libs/datajs")),
     ]);
 });
 
-gulp.task("jasmine-tests-apply", function () {
+gulp.task("tests-apply", function () {
   
     var jasmineSpec = gulp.src('./Jasmine/spec/**');
     var jasmineSrc = gulp.src('./Jasmine/src/**');
+    var jasmineCustomizations = gulp.src('./Jasmine/custom/jasmine-html.js');
 
     return merge([
       jasmineSpec.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/spec")),
@@ -34,6 +48,12 @@ gulp.task("jasmine-tests-apply", function () {
       jasmineSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/src")),
       jasmineSrc.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/src")),
       jasmineSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/src")),
-      jasmineSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/src"))
+      jasmineSrc.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/src")),
+
+      jasmineCustomizations.pipe(gulp.dest("../PFS.AnyOS/PFS.Server/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineCustomizations.pipe(gulp.dest("../PFS.AnyOS/PFS.Server.Admin/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineCustomizations.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server/wwwroot/jasmine/libs/jasmine-core")),
+      jasmineCustomizations.pipe(gulp.dest("../PFS.WindowsOnly/PFS.Server.Admin/wwwroot/jasmine/libs/jasmine-core")),
+
     ]);
 });

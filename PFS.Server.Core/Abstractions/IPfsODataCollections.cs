@@ -9,7 +9,5 @@ namespace PFS.Server.Core.Abstractions
     public interface IPfsODataCollections
     {
         IEnumerable<Tag> Tags { get; }     
-        IEnumerable<PfsFile> Files { get; }
-        IEnumerable<PfsFolder> Folders { get; }    
     }
 }

@@ -17,57 +17,76 @@
     };
 
     this.readAllTags = function () {
-        var apiUrl = this.apiUrl;
+         
 
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
-                resolve(ctx.Tags.toArray());
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+                resolve(dbCtx.Tags.toArray());
             });
         });
     };
     this.createTag = function () {
-        var apiUrl = this.apiUrl;
-
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
+            var dbCtx = exports.dbCtx;
 
-                var seed = + new Date();
+            dbCtx.onReady(function () {
+                var seed = +new Date();
                 var testEntityName = 'Tag from jasmine' + seed;
 
-                ctx.Tags.add(new ctx.Tags.Tag({ Name: testEntityName }));
+                dbCtx.Tags.add(new dbCtx.Tags.Tag({ Name: testEntityName }));
 
-                ctx.saveChanges().then(function () {
-                    return ctx.Tags.filter(function (tag) {
+                dbCtx.saveChanges().then(function () {
+                    return dbCtx.Tags.filter(function (tag) {
                         return tag.Name == this.NameFilter;
-                    }, { NameFilter : testEntityName}).toArray();
+                    }, { NameFilter: testEntityName }).toArray();
                 }).then(function (tags) {
                     if (tags.length != 1) reject();
-
                     if (tags[0].Name != testEntityName) reject();
 
                     resolve();
-
                 }).catch(function (err) {
                     reject(err);
-                });
-
+                });;
             });
         });
     };
 
     this.readFoldersOnServer = function () {
-        var apiUrl = this.apiUrl;
-        var startFolderPath = "c://";
+        var startFolderPath = "dc-angular";
 
         return new Promise(function (resolve, reject) {
-            OData.defaultHttpClient.enableJsonpCallback = true;
-            OData.request(
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+
+                dbCtx.Folders.find(startFolderPath).then(function (folder) {
+                    return folder.GetChildFolders();
+                }).then(function (subFolders) {
+                    if (subFolders.length == 0) reject();
+                    console.log(subFolders);
+                    resolve();
+                }).catch(function (err)
                 {
-                    requestUri: "odata/Folders('$c//')/Default.GetChildFolders" 
-                },
-                function (data, request) {
-                    console.log(data);
+                    reject(err);
                 });
+
+                //dbCtx.Folders.find(startFolderPath, function (startFolder) {
+                //    console.log(startFolder);
+                //});
+
+                //dbCtx.Folders.find(startFolderPath).toArray().then(function (startFolder) {
+                //    console.log(startFolder);
+                //    return startFolder.GetChildFolders();
+                //}).then(function (childFolders) {
+                //    resolve(childFolders);
+                //}).catch(function (err)
+                //{
+                //    reject(err);
+                //});;
+
+            });
+        });
             //$data.initService(apiUrl).then(function (ctx) {
             //    return ctx;
             //}).then(function (ctx) {
@@ -89,7 +108,7 @@
             // .then(function(childFolders){
             //     console.log(childFolders);
             // });
-        });
+        //});
     }
 
     this.readFoldersWithAOnServer = function(){

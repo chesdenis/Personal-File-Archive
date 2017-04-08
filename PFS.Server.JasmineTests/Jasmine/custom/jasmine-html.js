@@ -127,7 +127,7 @@ jasmineRequire.HtmlReporter = function(j$) {
         var failure =
           createDom('div', {className: 'jasmine-spec-detail jasmine-failed'},
             createDom('div', {className: 'jasmine-description'},
-              createDom('a', {title: result.fullName, href: specHref(result)}, result.fullName)
+              createDom('a', {title: result.fullName, href: '/JasmineTests' + specHref(result)}, result.fullName)
             ),
             createDom('div', {className: 'jasmine-messages'})
           );
@@ -212,7 +212,7 @@ jasmineRequire.HtmlReporter = function(j$) {
         var skippedLink = order && order.random ? '?random=true' : '?';
         alert.appendChild(
           createDom('span', {className: 'jasmine-bar jasmine-skipped'},
-            createDom('a', {href: skippedLink, title: 'Run all specs'}, skippedMessage)
+            createDom('a', { href: '/JasmineTests' + skippedLink, title: 'Run all specs' }, skippedMessage)
           )
         );
       }
@@ -232,7 +232,7 @@ jasmineRequire.HtmlReporter = function(j$) {
       if (order && order.random) {
         seedBar = createDom('span', {className: 'jasmine-seed-bar'},
           ', randomized with seed ',
-          createDom('a', {title: 'randomized with seed ' + order.seed, href: seedHref(order.seed)}, order.seed)
+          createDom('a', { title: 'randomized with seed ' + order.seed, href: '/JasmineTests' + seedHref(order.seed) }, order.seed)
         );
       }
 
@@ -266,7 +266,7 @@ jasmineRequire.HtmlReporter = function(j$) {
           if (resultNode.type == 'suite') {
             var suiteListNode = createDom('ul', {className: 'jasmine-suite', id: 'suite-' + resultNode.result.id},
               createDom('li', {className: 'jasmine-suite-detail'},
-                createDom('a', {href: specHref(resultNode.result)}, resultNode.result.description)
+                createDom('a', { href: '/JasmineTests' + specHref(resultNode.result) }, resultNode.result.description)
               )
             );
 
@@ -290,7 +290,7 @@ jasmineRequire.HtmlReporter = function(j$) {
                   className: 'jasmine-' + resultNode.result.status,
                   id: 'spec-' + resultNode.result.id
                 },
-                createDom('a', {href: specHref(resultNode.result)}, specDescription)
+                createDom('a', { href: '/JasmineTests' + specHref(resultNode.result) }, specDescription)
               )
             );
           }
@@ -301,10 +301,10 @@ jasmineRequire.HtmlReporter = function(j$) {
         alert.appendChild(
           createDom('span', {className: 'jasmine-menu jasmine-bar jasmine-spec-list'},
             createDom('span', {}, 'Spec List | '),
-            createDom('a', {className: 'jasmine-failures-menu', href: '#'}, 'Failures')));
+            createDom('a', { className: 'jasmine-failures-menu', href: '/JasmineTests' + '#' }, 'Failures')));
         alert.appendChild(
           createDom('span', {className: 'jasmine-menu jasmine-bar jasmine-failure-list'},
-            createDom('a', {className: 'jasmine-spec-list-menu', href: '#'}, 'Spec List'),
+            createDom('a', { className: 'jasmine-spec-list-menu', href:  '/JasmineTests' +'#' }, 'Spec List'),
             createDom('span', {}, ' | Failures ')));
 
         find('.jasmine-failures-menu').onclick = function() {
