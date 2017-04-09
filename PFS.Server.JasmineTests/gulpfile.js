@@ -12,7 +12,7 @@ var wwwrootpaths = [
 
 gulp.task("packages-install", function () {
     var jasmineSrc = gulp.src('./node_modules/jasmine-core/lib/jasmine-core/*');
-    var jaydataSrc = gulp.src('./node_modules/jaydata/public/**');
+    var jaydataSrc = gulp.src(['./node_modules/jaydata/public/**',  ]);
     var datajsSrc = gulp.src('./node_modules/datajs/lib/**');
 
     return merge([

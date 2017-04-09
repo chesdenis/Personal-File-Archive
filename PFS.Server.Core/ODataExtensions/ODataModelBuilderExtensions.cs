@@ -32,7 +32,7 @@ namespace PFS.Server.Core
             getDriveFunc.Returns<PfsDrive>();
 
             var getDrivesFunc = entityTypeCollection.Function("GetDrives");
-            getDrivesFunc.Returns<IEnumerable<PfsDrive>>();
+            getDrivesFunc.Returns<IQueryable<PfsDrive>>();
 
             var getFolderFunc = entityTypeCollection.Function("GetFolder");
             getFolderFunc.Parameter<string>("DriveName");
@@ -42,7 +42,7 @@ namespace PFS.Server.Core
             var getFoldersFunc = entityTypeCollection.Function("GetFolders");
             getFoldersFunc.Parameter<string>("DriveName");
             getFoldersFunc.Parameter<string>("FolderRelativePath");
-            getFoldersFunc.Returns<IEnumerable<PfsFolder>>();
+            getFoldersFunc.Returns<IQueryable<PfsFolder>>();
 
             var getFileFunc = entityTypeCollection.Function("GetFile");
             getFileFunc.Parameter<string>("DriveName");
@@ -52,7 +52,7 @@ namespace PFS.Server.Core
             var getFilesFunc = entityTypeCollection.Function("GetFiles");
             getFilesFunc.Parameter<string>("DriveName");
             getFilesFunc.Parameter<string>("FolderRelativePath");
-            getFilesFunc.Returns<IEnumerable<PfsFile>>();
+            getFilesFunc.Returns<IQueryable<PfsFile>>();
 
             return builder;
         }

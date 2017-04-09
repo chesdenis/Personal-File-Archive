@@ -53,111 +53,162 @@
         });
     };
 
-    this.readFoldersOnServer = function () {
-        var startFolderPath = "dc-angular";
-
+    this.readDriveC = function () {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-
-                dbCtx.Folders.find(startFolderPath).then(function (folder) {
-                    return folder.GetChildFolders();
-                }).then(function (subFolders) {
-                    if (subFolders.length == 0) reject();
-                    console.log(subFolders);
-                    resolve();
-                }).catch(function (err)
-                {
-                    reject(err);
-                });
-
-                //dbCtx.Folders.find(startFolderPath, function (startFolder) {
-                //    console.log(startFolder);
-                //});
-
-                //dbCtx.Folders.find(startFolderPath).toArray().then(function (startFolder) {
-                //    console.log(startFolder);
-                //    return startFolder.GetChildFolders();
-                //}).then(function (childFolders) {
-                //    resolve(childFolders);
-                //}).catch(function (err)
-                //{
-                //    reject(err);
-                //});;
-
+                dbCtx.IOEntities.GetDrive('C')
+                    .then(function (drive) {
+                        console.log(drive);
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        reject();
+                    });
             });
         });
-            //$data.initService(apiUrl).then(function (ctx) {
-            //    return ctx;
-            //}).then(function (ctx) {
-            //    return ctx.Folders.find(startFolderPath);
-            //}).then(function (startFolder) {
-            //    console.log(startFolder);
-            //    startFolder.GetChildFolders(function(childFolders){
-            //        console.log(childFolders);
-            //    });
-            //});
-            //    return startFolder.GetChildFolders().then(function(startFolderChildren){
-            //         resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
-            //     }).catch(function(err){ reject(err); });
-
-            // }).then(function(startFolder, childrenFolders){
-            //     console.log(startFolder);
-            //     console.log(childrenFolders);
-            // });
-            // .then(function(childFolders){
-            //     console.log(childFolders);
-            // });
-        //});
     }
 
-    this.readFoldersWithAOnServer = function(){
-        var apiUrl = this.apiUrl;
-        var startFolderPath = "c://";
-
+    this.readDrives = function () {
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetDrives().toArray()
+                    .then(function (drives) {
+                        console.log(drives);
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        reject();
+                    });
+            });
+        });
+    };
+
+    this.readFoldersOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C','/').toArray()
+                    .then(function (folders) {
+                        console.log(folders);
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        reject();
+                    });
+            });
+        });
+    };
+
+    //this.readFoldersOnServer = function () {
+    //    var startFolderPath = "dc-angular";
+
+    //    return new Promise(function (resolve, reject) {
+    //        var dbCtx = exports.dbCtx;
+    //        dbCtx.onReady(function () {
+
+    //            dbCtx.Folders.find(startFolderPath).then(function (folder) {
+    //                return folder.GetChildFolders();
+    //            }).then(function (subFolders) {
+    //                if (subFolders.length == 0) reject();
+    //                console.log(subFolders);
+    //                resolve();
+    //            }).catch(function (err)
+    //            {
+    //                reject(err);
+    //            });
+
+    //            //dbCtx.Folders.find(startFolderPath, function (startFolder) {
+    //            //    console.log(startFolder);
+    //            //});
+
+    //            //dbCtx.Folders.find(startFolderPath).toArray().then(function (startFolder) {
+    //            //    console.log(startFolder);
+    //            //    return startFolder.GetChildFolders();
+    //            //}).then(function (childFolders) {
+    //            //    resolve(childFolders);
+    //            //}).catch(function (err)
+    //            //{
+    //            //    reject(err);
+    //            //});;
+
+    //        });
+    //    });
+    //        //$data.initService(apiUrl).then(function (ctx) {
+    //        //    return ctx;
+    //        //}).then(function (ctx) {
+    //        //    return ctx.Folders.find(startFolderPath);
+    //        //}).then(function (startFolder) {
+    //        //    console.log(startFolder);
+    //        //    startFolder.GetChildFolders(function(childFolders){
+    //        //        console.log(childFolders);
+    //        //    });
+    //        //});
+    //        //    return startFolder.GetChildFolders().then(function(startFolderChildren){
+    //        //         resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
+    //        //     }).catch(function(err){ reject(err); });
+
+    //        // }).then(function(startFolder, childrenFolders){
+    //        //     console.log(startFolder);
+    //        //     console.log(childrenFolders);
+    //        // });
+    //        // .then(function(childFolders){
+    //        //     console.log(childFolders);
+    //        // });
+    //    //});
+    //}
+
+    //this.readFoldersWithAOnServer = function(){
+    //    var apiUrl = this.apiUrl;
+    //    var startFolderPath = "c://";
+
+    //    return new Promise(function (resolve, reject) {
+    //        $data.initService(apiUrl).then(function (ctx) {
                 
-                ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-                .filter(function(folder){return folder.Name.contains('a');})
-                .toArray()
-                .then(
-                    function(folders){
-                        if(folders.length){
-                            resolve();
-                        }
-                        else{
-                            reject();
-                        } 
-                    })
-                    .catch(function(err){
-                        reject(err);
-                    });
-            });
-        });
-    };
+    //            ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
+    //            .filter(function(folder){return folder.Name.contains('a');})
+    //            .toArray()
+    //            .then(
+    //                function(folders){
+    //                    if(folders.length){
+    //                        resolve();
+    //                    }
+    //                    else{
+    //                        reject();
+    //                    } 
+    //                })
+    //                .catch(function(err){
+    //                    reject(err);
+    //                });
+    //        });
+    //    });
+    //};
 
-    this.readFirstFolderWithAOnServer = function(){
-         var apiUrl = this.apiUrl;
-         var startFolderPath = "c://";
+    //this.readFirstFolderWithAOnServer = function(){
+    //     var apiUrl = this.apiUrl;
+    //     var startFolderPath = "c://";
 
-         return new Promise(function (resolve, reject) {
-            $data.service(apiUrl, function (contextFactory, contextType) {
-                var ctx = contextFactory(); 
+    //     return new Promise(function (resolve, reject) {
+    //        $data.service(apiUrl, function (contextFactory, contextType) {
+    //            var ctx = contextFactory(); 
 
-                ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-                .filter(function(folder){return folder.Name == 'a'})
-                .top(1)
-                .then(
-                    function(folder){
-                        resolve(); 
-                    })
-                    .catch(function(err){
-                        reject(err);
-                    });
-            });
-        });
-    };
+    //            ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
+    //            .filter(function(folder){return folder.Name == 'a'})
+    //            .top(1)
+    //            .then(
+    //                function(folder){
+    //                    resolve(); 
+    //                })
+    //                .catch(function(err){
+    //                    reject(err);
+    //                });
+    //        });
+    //    });
+    //};
 
 
 };
