@@ -26,7 +26,8 @@ namespace PFS.Server.Controllers
         }
 
         // GET odata/IOEntities/Default.GetDrive(DriveName='C')/
-        [EnableQuery] [HttpGet]
+        [EnableQuery]
+        [HttpGet]
         public IQueryable<PfsDrive> GetDrives()
         {
             return Rep.GetDrives().AsQueryable();
@@ -42,6 +43,7 @@ namespace PFS.Server.Controllers
 
         // GET odata/IOEntities/Default.GetFolders(DriveName='C',FolderRelativePath='dc-angular')/
         // GET odata/IOEntities/Default.GetFolders(DriveName='C',FolderRelativePath='dc-angular/tools')/
+        [EnableQuery]
         [HttpGet]
         public IQueryable<PfsFolder> GetFolders([FromODataUri]string DriveName, [FromODataUri] string FolderRelativePath)
         {
@@ -56,6 +58,7 @@ namespace PFS.Server.Controllers
         }
 
         // GET odata/IOEntities/Default.GetFiles(DriveName='C',FolderRelativePath='dc-angular')/
+        [EnableQuery]
         [HttpGet]
         public IQueryable<PfsFile> GetFiles([FromODataUri]string DriveName, [FromODataUri] string FolderRelativePath)
         {

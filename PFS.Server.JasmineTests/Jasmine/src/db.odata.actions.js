@@ -59,11 +59,14 @@
             dbCtx.onReady(function () {
                 dbCtx.IOEntities.GetDrive('C')
                     .then(function (drive) {
-                        console.log(drive);
-                        resolve();
+                        if (drive.Path.length > 0) {
+                            resolve();
+                        }
+                        else {
+                            reject();
+                        }
                     })
                     .catch(function (err) {
-                        console.log(err);
                         reject();
                     });
             });
@@ -76,11 +79,9 @@
             dbCtx.onReady(function () {
                 dbCtx.IOEntities.GetDrives().toArray()
                     .then(function (drives) {
-                        console.log(drives);
-                        resolve();
+                        drives.length > 0 ? resolve() : reject();
                     })
                     .catch(function (err) {
-                        console.log(err);
                         reject();
                     });
             });
@@ -93,122 +94,52 @@
             dbCtx.onReady(function () {
                 dbCtx.IOEntities.GetFolders('C','/').toArray()
                     .then(function (folders) {
-                        console.log(folders);
-                        resolve();
+                        folders.length > 0 ? resolve() : reject();
                     })
                     .catch(function (err) {
-                        console.log(err);
                         reject();
                     });
             });
         });
     };
 
-    //this.readFoldersOnServer = function () {
-    //    var startFolderPath = "dc-angular";
+    this.readFoldersWithAOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C', '/')
+                    .filter(function (folder) { return folder.Name.contains('a'); })
+                    .toArray()
+                    .then(function (folders) {
 
-    //    return new Promise(function (resolve, reject) {
-    //        var dbCtx = exports.dbCtx;
-    //        dbCtx.onReady(function () {
+                        if(folders.length == 0) reject();
 
-    //            dbCtx.Folders.find(startFolderPath).then(function (folder) {
-    //                return folder.GetChildFolders();
-    //            }).then(function (subFolders) {
-    //                if (subFolders.length == 0) reject();
-    //                console.log(subFolders);
-    //                resolve();
-    //            }).catch(function (err)
-    //            {
-    //                reject(err);
-    //            });
+                        for (var i = 0; i < folders.length; i++) {
+                            if (folders[i].Name.indexOf('a') == -1) reject();
+                        }
 
-    //            //dbCtx.Folders.find(startFolderPath, function (startFolder) {
-    //            //    console.log(startFolder);
-    //            //});
+                        resolve();
+                       
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    };
 
-    //            //dbCtx.Folders.find(startFolderPath).toArray().then(function (startFolder) {
-    //            //    console.log(startFolder);
-    //            //    return startFolder.GetChildFolders();
-    //            //}).then(function (childFolders) {
-    //            //    resolve(childFolders);
-    //            //}).catch(function (err)
-    //            //{
-    //            //    reject(err);
-    //            //});;
-
-    //        });
-    //    });
-    //        //$data.initService(apiUrl).then(function (ctx) {
-    //        //    return ctx;
-    //        //}).then(function (ctx) {
-    //        //    return ctx.Folders.find(startFolderPath);
-    //        //}).then(function (startFolder) {
-    //        //    console.log(startFolder);
-    //        //    startFolder.GetChildFolders(function(childFolders){
-    //        //        console.log(childFolders);
-    //        //    });
-    //        //});
-    //        //    return startFolder.GetChildFolders().then(function(startFolderChildren){
-    //        //         resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
-    //        //     }).catch(function(err){ reject(err); });
-
-    //        // }).then(function(startFolder, childrenFolders){
-    //        //     console.log(startFolder);
-    //        //     console.log(childrenFolders);
-    //        // });
-    //        // .then(function(childFolders){
-    //        //     console.log(childFolders);
-    //        // });
-    //    //});
-    //}
-
-    //this.readFoldersWithAOnServer = function(){
-    //    var apiUrl = this.apiUrl;
-    //    var startFolderPath = "c://";
-
-    //    return new Promise(function (resolve, reject) {
-    //        $data.initService(apiUrl).then(function (ctx) {
-                
-    //            ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-    //            .filter(function(folder){return folder.Name.contains('a');})
-    //            .toArray()
-    //            .then(
-    //                function(folders){
-    //                    if(folders.length){
-    //                        resolve();
-    //                    }
-    //                    else{
-    //                        reject();
-    //                    } 
-    //                })
-    //                .catch(function(err){
-    //                    reject(err);
-    //                });
-    //        });
-    //    });
-    //};
-
-    //this.readFirstFolderWithAOnServer = function(){
-    //     var apiUrl = this.apiUrl;
-    //     var startFolderPath = "c://";
-
-    //     return new Promise(function (resolve, reject) {
-    //        $data.service(apiUrl, function (contextFactory, contextType) {
-    //            var ctx = contextFactory(); 
-
-    //            ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-    //            .filter(function(folder){return folder.Name == 'a'})
-    //            .top(1)
-    //            .then(
-    //                function(folder){
-    //                    resolve(); 
-    //                })
-    //                .catch(function(err){
-    //                    reject(err);
-    //                });
-    //        });
-    //    });
-    //};
-
-
+    this.readFirstFolderWithAOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C', '/')
+                    .filter(function (folder) { return folder.Name.contains('a'); })
+                    .take(1)
+                    .forEach(function (folder) { 
+                        if (folder.Name.indexOf('a') == -1) reject();
+                        resolve();
+                    });
+            });
+        });
+    };
 };

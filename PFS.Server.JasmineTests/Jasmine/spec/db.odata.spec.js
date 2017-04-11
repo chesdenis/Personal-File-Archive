@@ -35,13 +35,12 @@
     describe("should be able to read folders on drive C", function () {
         should(actionsToTest, "readFoldersOnC");
     });
-    //describe("should read folder on server in drive C:\\", function(){
-    //    should(actionsToTest, "readFoldersOnServer");
-    //});
-    // describe("should read folders with 'a' symbol on server in drive C:\\", function(){
-    //     should(actionsToTest, "readFoldersWithAOnServer");
-    // });
-    // describe("should read first folder with 'a' symbol on server in drive C:\\", function(){
-    //     should(actionsToTest, "readFirstFolderWithAOnServer");
-    // });
+
+    describe("should be able to read folders with 'a' symbol on server on drive C", function () {
+        should(actionsToTest, "readFoldersWithAOnC");
+    });
+
+    describe("should be able to read first folder with 'a' symbol on server on drive C", function () {
+        should(actionsToTest, "readFirstFolderWithAOnC");
+    });
 });
