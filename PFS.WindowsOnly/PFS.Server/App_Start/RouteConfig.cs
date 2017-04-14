@@ -16,9 +16,12 @@ namespace PFS.Server.App_Start
 
             object homeController = new { controller = "Home", action = "Index", id = UrlParameter.Optional };
 
+
+            //routes.MapRoute("home", "{}", homeController);
+            routes.MapRoute(name: "Video", url: "video", defaults: homeController);
+            routes.MapRoute(name: "Audio", url: "audio", defaults: homeController);
+
             routes.MapRoute("Default", "{controller}/{action}/{id}", homeController);
-            routes.MapRoute("video", "video", homeController);
-            routes.MapRoute("audio", "audio", homeController);
         }
     }
 }

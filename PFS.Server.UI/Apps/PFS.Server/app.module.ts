@@ -8,9 +8,12 @@ import { ControlsModule } from '../../Controls/controls.module';
 import { AppComponent } from './Components/app.component';
 import { AppRoutes } from './app.routes';
 
-import { VideoViewComponent } from './Components/Video/video-view.component';
-import { AudioViewComponent } from './Components/Audio/audio-view.component';
- 
+import { NotFoundComponent } from './Components/not-found.component';
+import { HomeComponent } from './Components/Home/home.component';
+import { VideosHomeComponent } from './Components/Videos/videos-home.component';
+import { AudiosHomeComponent } from './Components/Audios/audios-home.component';
+import { PhotosHomeComponent } from './Components/Photos/photos-home.component'; 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -19,7 +22,9 @@ import { AudioViewComponent } from './Components/Audio/audio-view.component';
     ],
     declarations:
     [
-        AppComponent, VideoViewComponent, AudioViewComponent
+        AppComponent, 
+        VideosHomeComponent, AudiosHomeComponent, PhotosHomeComponent,
+        HomeComponent, NotFoundComponent
     ],
     bootstrap: [AppComponent]
 })
