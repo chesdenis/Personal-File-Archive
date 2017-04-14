@@ -6,10 +6,14 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
     "removeComments": false,
     "noImplicitAny": false,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "outDir": "wwwroot/"
+    "outDir": "wwwroot/",
+    "typeRoots": [
+      "../node_modules/@types/"
+    ]
   } 
 }
