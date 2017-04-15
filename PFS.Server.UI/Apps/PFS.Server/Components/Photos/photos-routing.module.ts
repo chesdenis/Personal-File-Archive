@@ -21,7 +21,8 @@ const photoRoutes: Routes = [
   { path: 'photo/names', component: PhotosByNamesComponent },
   { path: 'photo/names/:viewId', component: PhotosByNamesComponent },
   
-  { path: 'photo/:entityId', component: PhotoDetailComponent }
+  { path: 'photo/:entityId', component: PhotoDetailComponent },
+  { path: 'photo/tag/:tagId', component: PhotosByTagsComponent }
 ];
 @NgModule({
   imports: [

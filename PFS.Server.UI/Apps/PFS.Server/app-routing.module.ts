@@ -4,14 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Components/not-found.component';
 
 import { HomeComponent } from './Components/Home/home.component';
-import { AudiosHomeComponent } from './Components/Audios/audios-home.component';
-
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'audio', component: AudiosHomeComponent },
-   
+    { path: 'home', component: HomeComponent },   
     { path: '**', component: NotFoundComponent }
 ];
 

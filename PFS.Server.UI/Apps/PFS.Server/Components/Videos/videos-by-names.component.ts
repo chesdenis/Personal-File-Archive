@@ -6,13 +6,13 @@ import { Router, ActivatedRoute } from '@angular/router';
     template: `<p>Videos By Names</p>
     <p>Switch view Mode:</p>
      <ul>
-    <li><a routerLink="/video/names/grid">Grid</a></li>
-    <li><a routerLink="/video/names/tiled">Tiled</a></li>
+    <li><a routerLink="/video/names" [queryParams]="{viewMode:1}">Grid</a></li>
+    <li><a routerLink="/video/names" [queryParams]="{viewMode:2}">Tiled</a></li>
 </ul>
  <p>Goto Item:</p>
   <ul>
-    <li><a routerLink="/video/USDDDJJF">Item USDDDJJF</a></li>
-    <li><a routerLink="/video/ASDHVNKX">Item ASDHVNKX</a></li>
+    <li><a routerLink="./USDDDJJF">Item USDDDJJF</a></li>
+    <li><a routerLink="./ASDHVNKX">Item ASDHVNKX</a></li>
 </ul>
 `
 })

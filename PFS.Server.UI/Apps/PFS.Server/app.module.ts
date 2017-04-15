@@ -11,9 +11,6 @@ import { AppComponent } from './Components/app.component';
 import { NotFoundComponent } from './Components/not-found.component';
 import { HomeComponent } from './Components/Home/home.component';
 
-import { AudiosHomeComponent } from './Components/Audios/audios-home.component';
-
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -25,7 +22,6 @@ import { AudiosHomeComponent } from './Components/Audios/audios-home.component';
     declarations:
     [
         AppComponent, 
-        AudiosHomeComponent,
         HomeComponent, NotFoundComponent
     ],
     bootstrap: [AppComponent]
