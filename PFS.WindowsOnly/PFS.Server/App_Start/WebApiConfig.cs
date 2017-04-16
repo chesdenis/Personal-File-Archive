@@ -18,6 +18,7 @@ namespace PFS.Server
             //Web API configuration and services
             var odataBuilder = new ODataConventionModelBuilder()
             .BuildTagsModel()
+            .BuildJobsModel()
             .BuildIOEntitiesModel();
 
             config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel(),

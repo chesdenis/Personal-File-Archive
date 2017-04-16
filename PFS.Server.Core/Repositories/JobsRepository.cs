@@ -6,12 +6,13 @@ using System;
 
 namespace PFS.Server.Core.Repositories
 {
-    public class TagsRepository : PfsCRUDRepository<Tag>
+    
+    public class JobsRepository : PfsCRUDRepository<Job>
     {
-        public TagsRepository(IPfsDbContext dbCtx) : base(dbCtx)
+        public JobsRepository(IPfsDbContext dbCtx) : base(dbCtx)
         {
         }
-
-        protected override IEnumerable<Tag> Entities => DbCtx.Tags;
+        protected override IEnumerable<Job> Entities => DbCtx.Jobs;
     }
+
 }

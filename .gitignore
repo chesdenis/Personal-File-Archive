@@ -13,6 +13,9 @@
 /PFS.WindowsOnly/PFS.Server/obj
 /PFS.WindowsOnly/PFS.Server/wwwroot
 
+/PFS.WindowsOnly/PFS.Server.JobsManager/bin
+/PFS.WindowsOnly/PFS.Server.JobsManager/obj
+
 /PFS.WindowsOnly/PFS.Server.Admin/bin
 /PFS.WindowsOnly/PFS.Server.Admin/obj
 /PFS.WindowsOnly/PFS.Server.Admin/wwwroot

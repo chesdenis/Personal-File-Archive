@@ -20,6 +20,13 @@ namespace PFS.Server.Core
             return builder;
         }
 
+        public static ODataConventionModelBuilder BuildJobsModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Job>("Jobs").EntityType.HasKey(k => k.Id);
+            builder.AddEnumType(typeof(JobStatus));
+            return builder;
+        }
+
         public static ODataConventionModelBuilder BuildIOEntitiesModel(this ODataConventionModelBuilder builder)
         {
             var entityType = builder.EntitySet<IOPfsEntity>("IOEntities").EntityType;

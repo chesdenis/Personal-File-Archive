@@ -18,6 +18,8 @@ namespace PFS.Server.Core.DbContexts
         public DbSet<Tag> Tags { get; set; }
         IEnumerable<Tag> IPfsODataCollections.Tags => Tags;
 
+        public DbSet<Job> Jobs { get; set; }
+        IEnumerable<Job> IPfsODataCollections.Jobs => Jobs;
 
 #if WinOnly
         public PfsServerDbContext() :
@@ -25,6 +27,7 @@ namespace PFS.Server.Core.DbContexts
         {
             Database.SetInitializer
                 (new CreateDatabaseIfNotExists<PfsServerDbContext>());
+
         }
 #endif
         protected override void OnModelCreating(
@@ -37,6 +40,7 @@ namespace PFS.Server.Core.DbContexts
             )
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
+            builder.Entity<Job>().HasKey(m => m.Id);
 
             base.OnModelCreating(builder);
         }
@@ -52,46 +56,45 @@ namespace PFS.Server.Core.DbContexts
         {
             SaveChanges();
         }
-    }
 
-    public partial class PfsServerDbContext
-    {
+
+        public object AddEntity<T>(T entity)
+        {
+
 
 #if WinOnly
-        public Tag AddEntity(Tag entity)
-        {
-            return Tags.Add(entity);
-        }
+            var dbSet = Set(entity.GetType());
+            return dbSet.Add(entity);
 #endif
 #if AnyOS
-        public Tag AddEntity(Tag entity)
-        {
-            var changes = Tags.Add(entity);
-            return changes.Entity;
-        }
+            throw new NotImplementedException();
 #endif
-        public void RemoveEntity(Tag entity)
-        {
-            Tags.Remove(entity);
         }
+
+
+        public void RemoveEntity<T>(T entity)
+        {
+#if WinOnly
+            var dbSet = Set(entity.GetType());
+            dbSet.Remove(entity);
+#endif
+#if AnyOS
+            throw new NotImplementedException();
+#endif
+
+        }
+
+
+        public object UpdateEntity<T>(T entity)
+        {
 
 #if WinOnly
-        public Tag UpdateEntity(Tag entity)
-        {
-            var existedEntity = Tags.First(f => f.Id == entity.Id);
-
-            existedEntity.Name = entity.Name;
-
-            return existedEntity;
-        }
+            var dbSet = Set(entity.GetType());
+            return dbSet.Attach(entity);
 #endif
 #if AnyOS
-        public Tag UpdateEntity(Tag entity)
-        {
-            var changes = Tags.Update(entity);
-            return changes.Entity;
-        }
+            throw new NotImplementedException();
 #endif
-
+        }
     }
 }

@@ -13,9 +13,11 @@ using System.Web.OData;
 
 namespace PFS.Server.Controllers
 {
-    public class TagsController : BaseCRUDController<TagsRepository, Tag>
+
+    public class JobsController : BaseCRUDController<JobsRepository, Job>
     {
-        public TagsController(TagsRepository rep) : base(rep)
+        public JobsController(JobsRepository rep) : 
+            base(rep)
         {
         }
     }

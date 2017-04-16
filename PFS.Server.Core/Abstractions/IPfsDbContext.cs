@@ -10,8 +10,8 @@ namespace PFS.Server.Core.Abstractions
     {
         void SaveChanges();
 
-        Tag AddEntity(Tag entity);
-        Tag UpdateEntity(Tag entity);
-        void RemoveEntity(Tag entity);
+        object AddEntity<T>(T entity);
+        object UpdateEntity<T>(T entity);
+        void RemoveEntity<T>(T entity);
     }
 }

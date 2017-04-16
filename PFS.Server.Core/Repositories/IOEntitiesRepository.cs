@@ -50,7 +50,7 @@ namespace PFS.Server.Core.Repositories
                 {
                     pfsDrive.Path = drive.RootDirectory.FullName;
                 }
-                catch (Exception ex)
+                catch
                 {
                     continue;
                 }

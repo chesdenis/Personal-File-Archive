@@ -27,6 +27,7 @@ namespace PFS.Server
 
             // Register repositories
             builder.RegisterType<TagsRepository>().SingleInstance();
+            builder.RegisterType<JobsRepository>().SingleInstance();
             builder.RegisterType<IOEntitiesRepository>().SingleInstance();
 
             // Register your Web API controllers.
@@ -38,6 +39,7 @@ namespace PFS.Server
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
     }
 }
