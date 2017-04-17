@@ -44,7 +44,9 @@ namespace PFS.Server.Core.Abstractions
 
         public void Delete(int id)
         {
-            DbCtx.RemoveEntity(id);
+            var existedEntity = Entities.First(f => f.Id == id);
+
+            DbCtx.RemoveEntity(existedEntity);
             DbCtx.SaveChanges();
         }
 

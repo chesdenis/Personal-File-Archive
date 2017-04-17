@@ -40,6 +40,22 @@ namespace PFS.Server
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            TestCallToDb();
+        }
+
+        protected void TestCallToDb()
+        {
+            try
+            {
+                using (var dbCtx = new PfsServerDbContext())
+                {
+                    var allJobs = dbCtx.Jobs.Take(1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

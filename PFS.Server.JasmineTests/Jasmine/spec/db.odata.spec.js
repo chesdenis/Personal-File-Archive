@@ -54,20 +54,28 @@ describe("IO tests", function () {
 });
 
 
-describe('Jobs tests', function(){
+describe('Jobs tests', function () {
     var actions = new jobTests();
     actions.init(apiUrl);
 
-    describe('should be able to read jobs', function(){
+    describe('should be able to read jobs', function () {
         should(actions, 'readJobs');
     });
 
-    describe('should be able to add a new job with name only', function(){
+    describe('should be able to add a new job with name only', function () {
         should(actions, 'addJobWithNameOnly');
     });
 
-    //  describe('should be able to add a new job with name and status', function(){
-    //     should(actions, 'addJobWithNameAndStatus');
-    // });
+    describe('should be able to add a new job with name and status', function () {
+        should(actions, 'addJobWithNameAndStatus');
+    });
+
+    describe('should be able to remove job', function () {
+        should(actions, 'removeJobById');
+    });
+
+    describe('should create ReadItemsPropsInFolderJob', function(){
+        should(actions, 'createReadItemsPropsInFolderJob');
+    });
 
 });

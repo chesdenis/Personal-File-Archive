@@ -52,10 +52,11 @@ types["PFS.Server.Core.Entities.Tag"] = $data("$data.Entity").extend("PFS.Server
 });
 
 
-types["PFS.Server.Core.Entities.JobStatus"] = $data.createEnum("PFS.Server.Core.Entities.JobStatus", [
+var JobStatus = types["PFS.Server.Core.Entities.JobStatus"] = $data.createEnum("PFS.Server.Core.Entities.JobStatus", [
     { name: 'NotStarted', value: 0 },
     { name: 'InProgress', value: 1 },
-    { name: 'Done', value: 2 }
+    { name: 'Error', value: 2 },
+    { name: 'Done', value: 3 }
 ]);
 
 types["PFS.Server.Core.Entities.Job"] = $data("$data.Entity").extend('PFS.Server.Core.Entities.Job', {
@@ -68,11 +69,15 @@ types["PFS.Server.Core.Entities.Job"] = $data("$data.Entity").extend('PFS.Server
     Name: {
         "type": "Edm.String"
     },
-    Status: { type: 'PFS.Server.Core.Entities.JobStatus', nullable: false },
-    Started: {"type":"Edm.DateTime", "nullable": true},
-    Finished: {"type":"Edm.DateTime", "nullable": true},
-    PlannedActionsCount: {"type": "Edm.Int32", "nullable": true},
-    CompletedActionsCount: {"type": "Edm.Int32", "nullable": true}
+    Args: {
+        "type": "Edm.String",
+        "nullable": false,
+    },
+    Status: { "type": 'PFS.Server.Core.Entities.JobStatus', nullable: false },
+    Started: { "type": "Edm.DateTime", "nullable": true },
+    Finished: { "type": "Edm.DateTime", "nullable": true },
+    PlannedActionsCount: { "type": "Edm.Int32", "nullable": true },
+    CompletedActionsCount: { "type": "Edm.Int32", "nullable": true }
 });
 
 

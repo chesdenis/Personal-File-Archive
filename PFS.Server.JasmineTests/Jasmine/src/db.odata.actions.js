@@ -161,15 +161,12 @@ function jobTests() {
         });
     }
 
-    this.addJob = function (jobToAdd) {
+    this.addJob = function (job) {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
 
             dbCtx.onReady(function () {
-                // var testJob = new dbCtx.Jobs.Job({ Name: 'Job from Jasmine' });
-                // testJob.Status = JobStatus.InProgress;
-                dbCtx.Jobs.add(jobToAdd);
-
+                dbCtx.Jobs.add(job);
                 dbCtx.saveChanges().then(function () {
                     resolve();
                 }).catch(function (err) {
@@ -179,6 +176,7 @@ function jobTests() {
 
         });
     };
+
     this.addJobWithNameOnly = function () {
         var dbCtx = exports.dbCtx;
 
@@ -189,6 +187,60 @@ function jobTests() {
 
     };
     this.addJobWithNameAndStatus = function () {
+        var dbCtx = exports.dbCtx;
+        var testJob = new dbCtx.Jobs.Job();
 
+        testJob.Name = "Job from Jasmine";
+        testJob.Status = JobStatus.InProgress;
+
+        return this.addJob(testJob);
+    };
+
+    this.removeJobById = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+                var testJob = new dbCtx.Jobs.Job();
+                testJob.Name = "Job from Jasmine to Delete";
+                dbCtx.Jobs.add(testJob);
+                dbCtx.saveChanges().then(function () {
+                    return dbCtx.Jobs.single(function (job) {
+                        return job.Id == filterId;
+                    }, { filterId: testJob.Id });
+                }).then(function (job) {
+                    dbCtx.Jobs.remove(job);
+                    return dbCtx.saveChanges();
+                }).then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+
+    this.createReadItemsPropsInFolderJob = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                var testJob = new dbCtx.Jobs.Job();
+                testJob.Name = "PFS.Server.Core.Jobs.ReadItemsPropsInFolderJob, PFS.Server, Version=1.0.0.0";
+                testJob.Args = JSON.stringify({
+                    TestVar1: "One",
+                    TestVar2: "Two"
+                });
+                testJob.Status = JobStatus.NotStarted;
+
+                dbCtx.Jobs.add(testJob);
+                dbCtx.saveChanges().then(function () {
+                     resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
     };
 };

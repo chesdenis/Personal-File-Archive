@@ -24,6 +24,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Photo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Video.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Serializers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Jobs\BaseJob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Jobs\ReadItemsPropsInFolderJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataModelBuilderExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\IOEntitiesRepository.cs" />
