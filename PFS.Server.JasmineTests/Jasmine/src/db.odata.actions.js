@@ -249,7 +249,7 @@ function contentSourcesTests() {
         this.apiUrl = apiUrl;
     };
 
-     this.readContentSources = function () {
+    this.readContentSources = function () {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
@@ -262,5 +262,69 @@ function contentSourcesTests() {
                     });
             });
         });
-    }
+    };
+
+    this.addNewContentSource = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+
+                var entity = new dbCtx.ContentSources.ContentSource();
+                entity.Name = "Test Content Source";
+                entity.DriveName = "C:\\";
+                entity.Path = "\\Users";
+
+                dbCtx.ContentSources.add(entity);
+                dbCtx.saveChanges().then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+
+    this.ensureNewContentSource = function () {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+
+                dbCtx.ContentSources.filter(function (w) {
+                    return w.Name == "Test Content Source";
+                }).toArray().then(function (results) {
+                    if (results.length == 1) {
+                        resolve();
+                    }
+                    else {
+                        self.addNewContentSource().then(function () { resolve(); }).catch(function () { reject(); })
+                    }
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+
+    this.createJobForScanContentSource = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                var job = new dbCtx.Jobs.Job();
+                job.Name = "PFS.Server.Core.Jobs.ScanPhotosInContentSourcesJob, PFS.Server, Version=1.0.0.0";
+                job.Args = JSON.stringify({});
+
+                job.Status = JobStatus.NotStarted;
+
+                dbCtx.Jobs.add(job);
+                dbCtx.saveChanges().then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
 }

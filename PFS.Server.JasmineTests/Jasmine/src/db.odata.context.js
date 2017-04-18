@@ -90,7 +90,9 @@ types["PFS.Server.Core.Entities.ContentSource"] = $data("$data.Entity").extend("
     },
     Name: {
         "type": "Edm.String"
-    }
+    },
+    DriveName: { "type": "Edm.String" },
+    Path: { "type":"Edm.String" }
 });
 
 types["PFS.Server.Core.Entities.IOPfsEntity"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.IOPfsEntity", {

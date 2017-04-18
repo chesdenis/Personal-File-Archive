@@ -11,5 +11,7 @@ namespace PFS.Server.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public string DriveName { get; set; }
+        public string Path { get; set; }
     }
 }

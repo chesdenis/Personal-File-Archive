@@ -87,12 +87,12 @@ describe('Content sources tests', function(){
     describe('should be able to read content sources', function(){
         should(actions, 'readContentSources');
     });
-
-    describe('should add new content source', function(){
-        should(actions, 'addNewContentSource');
-    });
-
+    
     describe('should ensure new content source', function(){
         should(actions, 'ensureNewContentSource');
+    });
+
+    describe('should create job for scan content source', function () {
+        should(actions, 'createJobForScanContentSource');
     });
 });
