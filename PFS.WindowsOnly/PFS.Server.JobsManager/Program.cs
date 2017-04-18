@@ -1,5 +1,6 @@
 ﻿
 using PFS.Server.Core.DbContexts;
+using PFS.Server.Core.Entities;
 using PFS.Server.Core.Jobs;
 using System;
 using System.Collections.Generic;
@@ -21,49 +22,31 @@ namespace PFS.Server.JobsManager
             Console.WriteLine("PFS.Server.JobsManager started...");
             Console.WriteLine("Press any key to close.");
 
-            JobTimer = new Timer(jobTimerFired,null,0, 
+            JobTimer = new Timer(managerTimerFired,null,0, 
                 (int)TimeSpan.FromSeconds(10).TotalMilliseconds);
 
             Console.ReadLine();
         }
 
-        private static void jobTimerFired(object state)
+        private static void managerTimerFired(object state)
         {
             //lock (thisLock)
             {
-                Console.WriteLine("Start looking not started jobs...");
+                Console.WriteLine("Start looking jobs to run...");
                 try
                 {
                     using (var dbCtx = new PfsServerDbContext())
                     {
-                        var notStartedJobs = dbCtx.Jobs
-                            .Where(w => w.Status == Core.Entities.JobStatus.NotStarted).ToList();
-
                         var jobTasks = new List<Task>();
 
-                        foreach (var jobEntity in notStartedJobs)
-                        {
-                            var jobName = jobEntity.Name;
-                            var jobArgs = jobEntity.Args;
+                        var notStartedJobs = dbCtx.Jobs
+                            .Where(w => w.Status == JobStatus.NotStarted).ToList();
 
-                            //jobFullName = "PFS.Server.Core.Jobs.ReadItemsPropsInFolderJob, PFS.Server, Version=1.0.0.0";
-                            var jobType = Type.GetType(jobName);
-                            if (jobType == null) continue;
+                        var errJobs = dbCtx.Jobs
+                            .Where(w => w.Status == JobStatus.Error).ToList();
 
-                            var jobToRun = Activator.CreateInstance(jobType) as BaseJob;
-                            if (jobToRun == null) continue;
-
-                            jobTasks.Add(new Task(() =>
-                            {
-                                jobToRun.Execute(
-                                args: jobToRun.DeserializeArgs(jobArgs));
-                            }));
-
-                            var jobInDb = dbCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
-                            jobInDb.Status = Core.Entities.JobStatus.InProgress;
-                            jobInDb.Started = DateTime.Now;
-                            dbCtx.SaveChanges();
-                        }
+                        PopulateJobTasks(dbCtx, notStartedJobs, jobTasks);
+                        PopulateJobTasks(dbCtx, errJobs, jobTasks);
 
                         if (jobTasks.Count > 0)
                         {
@@ -78,6 +61,32 @@ namespace PFS.Server.JobsManager
             }
            
         }
-         
+
+        private static void PopulateJobTasks(PfsServerDbContext dbCtx, List<Job> notStartedJobs, List<Task> jobTasks)
+        {
+            foreach (var jobEntity in notStartedJobs)
+            {
+                var jobName = jobEntity.Name;
+                var jobArgs = jobEntity.Args;
+
+                var jobType = Type.GetType(jobName);
+                if (jobType == null) continue;
+
+                var jobToRun = Activator.CreateInstance(jobType) as BaseJob;
+                if (jobToRun == null) continue;
+
+                jobTasks.Add(new Task(() =>
+                {
+                    using (var dbJobCtx = new PfsServerDbContext())
+                    {
+
+                        var jobInDb = dbJobCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
+                        if (jobInDb == null) return;
+
+                        jobToRun.Execute(jobInDb, dbJobCtx);
+                    }
+                }));
+            }
+        }
     }
 }

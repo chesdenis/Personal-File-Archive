@@ -74,12 +74,24 @@ types["PFS.Server.Core.Entities.Job"] = $data("$data.Entity").extend('PFS.Server
         "nullable": false,
     },
     Status: { "type": 'PFS.Server.Core.Entities.JobStatus', nullable: false },
+    Comments: { "type": 'Edm.String' },
     Started: { "type": "Edm.DateTime", "nullable": true },
     Finished: { "type": "Edm.DateTime", "nullable": true },
     PlannedActionsCount: { "type": "Edm.Int32", "nullable": true },
     CompletedActionsCount: { "type": "Edm.Int32", "nullable": true }
 });
 
+types["PFS.Server.Core.Entities.ContentSource"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.ContentSource", {
+    Id: {
+        "type": "Edm.Int32",
+        "nullable": false,
+        "required": true,
+        "key": true
+    },
+    Name: {
+        "type": "Edm.String"
+    }
+});
 
 types["PFS.Server.Core.Entities.IOPfsEntity"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.IOPfsEntity", {
     Path: {
@@ -173,6 +185,10 @@ exports.type = types["Default.Container"] = $data("$data.EntityContext").extend(
     Jobs: {
         "type": "$data.EntitySet",
         "elementType": "PFS.Server.Core.Entities.Job"
+    },
+    ContentSources:{
+        "type": "$data.EntitySet",
+        "elementType": "PFS.Server.Core.Entities.ContentSource"
     }
 });
 

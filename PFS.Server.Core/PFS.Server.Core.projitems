@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\PfsCRUDRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbContexts\PfsServerDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\ContentSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\IOEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Job.cs" />
@@ -27,8 +28,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Serializers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\BaseJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ReadItemsPropsInFolderJob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanPhotosInStaticFoldersJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataModelBuilderExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\ContentSourcersRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\IOEntitiesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\JobsRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TagsRepository.cs" />

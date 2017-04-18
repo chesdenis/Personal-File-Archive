@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 
 namespace PFS.Server.Core.Repositories
-{
+{   
     public class TagsRepository : PfsCRUDRepository<Tag>
     {
         public TagsRepository(IPfsDbContext dbCtx) : base(dbCtx)

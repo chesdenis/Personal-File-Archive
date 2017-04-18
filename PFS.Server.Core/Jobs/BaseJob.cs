@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PFS.Server.Core.DbContexts;
+using PFS.Server.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -13,7 +15,30 @@ namespace PFS.Server.Core.Jobs
 
     public abstract class BaseJob
     {         
-        public abstract void Execute(BaseArgs args);
         public abstract BaseArgs DeserializeArgs(string argsAsJson);
+
+        //TODO: need discussions about using event in job.
+        /*public delegate void JobActionHandler();
+
+        public event JobActionHandler ReportProgress = delegate { };
+        public event JobActionHandler OnStarted = delegate { };
+        public event JobActionHandler OnFinished = delegate { };
+
+        public void InvokeReportProgress()
+        {
+            ReportProgress();
+        }
+
+        public void InvokeOnStarted()
+        {
+            OnStarted();
+        }
+
+        public void InvokeOnFinished()
+        {
+            OnFinished();
+        }*/
+
+        public abstract void Execute(Job jobInDb, PfsServerDbContext dbCtx);
     }
 }

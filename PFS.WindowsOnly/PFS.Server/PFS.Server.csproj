@@ -204,6 +204,7 @@
     <Compile Include="Abstractions\BaseCRUDController.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ContentSourcesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IOEntitiesController.cs" />
     <Compile Include="Controllers\JasmineTestsController.cs" />

@@ -20,6 +20,12 @@ namespace PFS.Server.Core
             return builder;
         }
 
+        public static ODataConventionModelBuilder BuildContentSourcesPathsModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<ContentSource>("ContentSources").EntityType.HasKey(k => k.Id);
+            return builder;
+        }
+
         public static ODataConventionModelBuilder BuildJobsModel(this ODataConventionModelBuilder builder)
         {
             builder.EntitySet<Job>("Jobs").EntityType.HasKey(k => k.Id);

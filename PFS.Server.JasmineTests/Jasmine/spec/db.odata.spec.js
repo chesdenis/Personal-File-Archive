@@ -79,3 +79,20 @@ describe('Jobs tests', function () {
     });
 
 });
+
+describe('Content sources tests', function(){
+    var actions = new contentSourcesTests();
+    actions.init(apiUrl);
+
+    describe('should be able to read content sources', function(){
+        should(actions, 'readContentSources');
+    });
+
+    describe('should add new content source', function(){
+        should(actions, 'addNewContentSource');
+    });
+
+    describe('should ensure new content source', function(){
+        should(actions, 'ensureNewContentSource');
+    });
+});

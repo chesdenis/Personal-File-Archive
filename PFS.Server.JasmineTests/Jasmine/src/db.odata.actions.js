@@ -151,7 +151,6 @@ function jobTests() {
             dbCtx.onReady(function () {
                 dbCtx.Jobs.toArray()
                     .then(function (jobs) {
-                        console.log(jobs);
                         resolve();
                     })
                     .catch(function (err) {
@@ -236,7 +235,7 @@ function jobTests() {
 
                 dbCtx.Jobs.add(testJob);
                 dbCtx.saveChanges().then(function () {
-                     resolve();
+                    resolve();
                 }).catch(function (err) {
                     reject(err);
                 });
@@ -244,3 +243,24 @@ function jobTests() {
         });
     };
 };
+
+function contentSourcesTests() {
+    this.init = function (apiUrl) {
+        this.apiUrl = apiUrl;
+    };
+
+     this.readContentSources = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.ContentSources.toArray()
+                    .then(function (jobs) {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    }
+}
