@@ -219,17 +219,16 @@ function jobTests() {
         });
     };
 
-    this.createReadItemsPropsInFolderJob = function () {
+    this.createScanVideosJob = function () {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
 
             dbCtx.onReady(function () {
 
                 var testJob = new dbCtx.Jobs.Job();
-                testJob.Name = "PFS.Server.Core.Jobs.ReadItemsPropsInFolderJob, PFS.Server, Version=1.0.0.0";
+                testJob.Name = "PFS.Server.Core.Jobs.ScanVideosJob, PFS.Server, Version=1.0.0.0";
                 testJob.Args = JSON.stringify({
-                    TestVar1: "One",
-                    TestVar2: "Two"
+                    ContentSourceName: "Test Content Source",
                 });
                 testJob.Status = JobStatus.NotStarted;
 
@@ -271,8 +270,8 @@ function contentSourcesTests() {
 
                 var entity = new dbCtx.ContentSources.ContentSource();
                 entity.Name = "Test Content Source";
-                entity.DriveName = "C:\\";
-                entity.Path = "\\Users";
+                entity.DriveName = "D:\\";
+                entity.Path = "";
 
                 dbCtx.ContentSources.add(entity);
                 dbCtx.saveChanges().then(function () {
@@ -299,28 +298,6 @@ function contentSourcesTests() {
                     else {
                         self.addNewContentSource().then(function () { resolve(); }).catch(function () { reject(); })
                     }
-                }).catch(function (err) {
-                    reject(err);
-                });
-            });
-        });
-    };
-
-    this.createJobForScanContentSource = function () {
-        return new Promise(function (resolve, reject) {
-            var dbCtx = exports.dbCtx;
-
-            dbCtx.onReady(function () {
-
-                var job = new dbCtx.Jobs.Job();
-                job.Name = "PFS.Server.Core.Jobs.ScanPhotosInContentSourcesJob, PFS.Server, Version=1.0.0.0";
-                job.Args = JSON.stringify({});
-
-                job.Status = JobStatus.NotStarted;
-
-                dbCtx.Jobs.add(job);
-                dbCtx.saveChanges().then(function () {
-                    resolve();
                 }).catch(function (err) {
                     reject(err);
                 });

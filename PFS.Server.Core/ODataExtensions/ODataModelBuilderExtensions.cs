@@ -33,6 +33,12 @@ namespace PFS.Server.Core
             return builder;
         }
 
+        public static ODataConventionModelBuilder BuildVideosModel(this ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Video>("Videos").EntityType.HasKey(k => k.Id);
+            return builder;
+        }
+
         public static ODataConventionModelBuilder BuildIOEntitiesModel(this ODataConventionModelBuilder builder)
         {
             var entityType = builder.EntitySet<IOPfsEntity>("IOEntities").EntityType;

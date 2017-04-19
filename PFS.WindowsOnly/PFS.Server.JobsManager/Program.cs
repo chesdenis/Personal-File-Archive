@@ -22,14 +22,11 @@ namespace PFS.Server.JobsManager
             Console.WriteLine("PFS.Server.JobsManager started...");
             Console.WriteLine("Press any key to close.");
 
-            JobTimer = new Timer(managerTimerFired,null,0, 
-                (int)TimeSpan.FromSeconds(10).TotalMilliseconds);
-
             Console.ReadLine();
-        }
 
-        private static void managerTimerFired(object state)
-        {
+            //JobTimer = new Timer(ManagerTimerFired,null,0, 
+            //    (int)TimeSpan.FromSeconds(10).TotalMilliseconds);
+
             //lock (thisLock)
             {
                 Console.WriteLine("Start looking jobs to run...");
@@ -59,7 +56,8 @@ namespace PFS.Server.JobsManager
                     Console.WriteLine(ex);
                 }
             }
-           
+
+            Console.ReadLine();
         }
 
         private static void PopulateJobTasks(PfsServerDbContext dbCtx, List<Job> notStartedJobs, List<Task> jobTasks)

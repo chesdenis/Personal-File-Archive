@@ -20,5 +20,16 @@ namespace PFS.Server.Core.Extensions
 
             return retVal;
         }
+
+        public static string Serialize<T>(this T dataToJson)
+        {
+            var serializer = new DataContractJsonSerializer(typeof(T));
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                serializer.WriteObject(ms, dataToJson);
+                return Encoding.UTF8.GetString(ms.ToArray());
+            }
+        }
     }
 }

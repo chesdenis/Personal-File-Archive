@@ -74,8 +74,8 @@ describe('Jobs tests', function () {
         should(actions, 'removeJobById');
     });
 
-    describe('should create ReadItemsPropsInFolderJob', function(){
-        should(actions, 'createReadItemsPropsInFolderJob');
+    describe('should create ScanVideosJob', function(){
+        should(actions, 'createScanVideosJob');
     });
 
 });
@@ -92,7 +92,4 @@ describe('Content sources tests', function(){
         should(actions, 'ensureNewContentSource');
     });
 
-    describe('should create job for scan content source', function () {
-        should(actions, 'createJobForScanContentSource');
-    });
 });
