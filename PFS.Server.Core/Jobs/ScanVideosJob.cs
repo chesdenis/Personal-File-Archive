@@ -56,7 +56,7 @@ namespace PFS.Server.Core.Jobs
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //TODO: Log here 
             }
 
             return retVal;
@@ -84,7 +84,7 @@ namespace PFS.Server.Core.Jobs
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                //TODO: Log here 
 
                 return new List<Video>();
             }

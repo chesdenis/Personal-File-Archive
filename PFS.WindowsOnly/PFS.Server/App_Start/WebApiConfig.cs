@@ -18,6 +18,7 @@ namespace PFS.Server
             //Web API configuration and services
             var odataBuilder = new ODataConventionModelBuilder()
             .BuildTagsModel()
+            .BuildVideosModel()
             .BuildContentSourcesPathsModel()
             .BuildJobsModel()
             .BuildIOEntitiesModel();

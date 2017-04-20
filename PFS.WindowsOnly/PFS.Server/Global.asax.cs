@@ -27,6 +27,7 @@ namespace PFS.Server
 
             // Register repositories
             builder.RegisterType<TagsRepository>().SingleInstance();
+            builder.RegisterType<VideosRepository>().SingleInstance();
             builder.RegisterType<ContentSourcersRepository>().SingleInstance();
             builder.RegisterType<JobsRepository>().SingleInstance();
             builder.RegisterType<IOEntitiesRepository>().SingleInstance();

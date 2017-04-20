@@ -269,7 +269,7 @@ function contentSourcesTests() {
             dbCtx.onReady(function () {
 
                 var entity = new dbCtx.ContentSources.ContentSource();
-                entity.Name = "Test Content Source";
+                entity.Name = "/DiskD";
                 entity.DriveName = "D:\\";
                 entity.Path = "";
 
