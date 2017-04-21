@@ -7,6 +7,7 @@ import { VideosByDatesComponent } from './videos-by-dates.component';
 import { VideosByNamesComponent } from './videos-by-names.component';
 import { VideoDetailComponent } from './video-detail.component';
 import { VideosRoutingModule } from './videos-routing.module';
+import { VideoService } from './video.service';
 
 @NgModule({
     imports:[
@@ -19,6 +20,8 @@ import { VideosRoutingModule } from './videos-routing.module';
         VideosByTagsComponent, VideosByDatesComponent, VideosByNamesComponent,
         VideoDetailComponent
     ],
-    providers:[]
+    providers: [
+        VideoService
+    ]
 })
 export class VideosModule {}

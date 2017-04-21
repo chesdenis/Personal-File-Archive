@@ -5,6 +5,8 @@ using System.Text;
 using PFS.Server.Core.DbContexts;
 using PFS.Server.Core.Entities;
 using PFS.Server.Core.Extensions;
+using System.Linq;
+using System.IO;
 
 namespace PFS.Server.Core.Jobs
 {
@@ -20,12 +22,15 @@ namespace PFS.Server.Core.Jobs
         protected Job JobInDb { get; set; }
         protected Args JobArgs { get; set; }
         protected PfsServerDbContext DbCtx { get; set; }
+        protected ContentSource ContentSource { get; set; }
         
         public override void Execute(Job jobInDb, PfsServerDbContext dbCtx)
         {
             JobInDb = jobInDb;
             DbCtx = dbCtx;
             JobArgs = JobInDb.Args.Deserialize<Args>();
+            ContentSource = DbCtx.ContentSources.FirstOrDefault(f => f.Name == JobArgs.ContentSourceName);
+            if (ContentSource == null) throw new ArgumentNullException($"Content source with name {JobArgs.ContentSourceName} not found.");
 
             JobInDb.Status = JobStatus.InProgress;
             JobInDb.Started = DateTime.Now;
@@ -54,6 +59,16 @@ namespace PFS.Server.Core.Jobs
                 JobInDb.Finished = DateTime.Now;
                 DbCtx.SaveChanges();
             }
+        }
+
+        protected string GetUri(string ioPath)
+        {
+            var csIOPath = Path.Combine(ContentSource.DriveName, ContentSource.Path);
+            var ioRelativePath = ioPath.Replace(csIOPath, string.Empty);
+
+            ioRelativePath = ioRelativePath.Replace("\\", "/");
+
+            return Path.Combine(ContentSource.Name, ioRelativePath);
         }
 
         public abstract void DoScan();

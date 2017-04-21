@@ -8,7 +8,7 @@ const map: any = {
     'rxjs': 'npmLibs/rxjs',
     'jaydata/core': 'npmLibs/jaydata/jaydata.js',
     'jaydata/odata': 'npmLibs/jaydata/jaydataproviders/oDataProvider.js',
-    './db.odata.context':'contexts/db.odata.context.js'
+    './JayDataContext':'contexts/JayDataContext.js'
 }
 
 const packages: any = {
@@ -54,7 +54,7 @@ var config = {
             format: 'cjs',
             deps: ['jaydata/core']
         },
-        './db.odata.context': {
+        './JayDataContext': {
             deps: ['jaydata/core', 'jaydata/odata']
         }
     }

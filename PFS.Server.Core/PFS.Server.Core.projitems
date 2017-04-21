@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsODataCollections.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\PfsCRUDRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Abstractions\ViewOn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbContexts\PfsServerDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dto\VideoInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
@@ -27,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Photo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Tag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Video.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ViewOn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Serializers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\BaseJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\JobsCollection.cs" />

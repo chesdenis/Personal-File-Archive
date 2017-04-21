@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.IO;
 using PFS.Server.Core.Dto;
 using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Enums;
 
 namespace PFS.Server.Core.Jobs
 {
@@ -15,10 +16,7 @@ namespace PFS.Server.Core.Jobs
     {
         public override void DoScan()
         {
-            var contentSource = DbCtx.ContentSources.FirstOrDefault(f => f.Name == JobArgs.ContentSourceName);
-            if (contentSource == null) throw new ArgumentNullException($"Content source with name {JobArgs.ContentSourceName} not found.");
-            
-            string startPath = Path.Combine(contentSource.DriveName, contentSource.Path);
+            string startPath = Path.Combine(ContentSource.DriveName, ContentSource.Path);
             var startDir = new DirectoryInfo(startPath);
 
             if (!startDir.Exists) throw new ArgumentException($"Directory {startPath} not found.");
@@ -71,11 +69,17 @@ namespace PFS.Server.Core.Jobs
                     Name = s.Name,
                     Data = new VideoInfo()
                     {
-                        Instances = new VideoInfo.VideoInstance[]
+                        LocationInfo = new VideoInfo.Location()
                         {
-                            new VideoInfo.VideoInstance()
+                            IOPath = s.DirectoryName,
+                            RelativePath = GetUri(s.DirectoryName)
+                        },
+                        InstancesInfo = new VideoInfo.Instance[] 
+                        {
+                            new VideoInfo.Instance()
                             {
-                                Path = s.FullName,
+                                FileName = s.Name,
+                                Order = 0,
                                 TargetDevice = ViewOn.PC
                             }
                         }

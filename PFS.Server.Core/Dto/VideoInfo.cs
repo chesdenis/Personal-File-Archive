@@ -1,4 +1,5 @@
 ﻿using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.Enums;
 using PFS.Server.Core.Extensions;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,30 @@ namespace PFS.Server.Core.Dto
     public class VideoInfo
     {
         [DataContract]
-        public class VideoInstance
+        public class Instance
         {
             [DataMember]
-            public string Path { get; set; }
+            public string FileName { get; set; }
+
+            [DataMember]
+            public int Order { get; set; }
 
             [DataMember]
             public ViewOn TargetDevice { get; set; }
         }
 
+        [DataContract]
+        public class Location
+        {
+            public string IOPath { get; set; }
+            public string RelativePath { get; set; }
+        }
+
         [DataMember]
-        public VideoInstance[] Instances { get; set; }
+        public Instance[] InstancesInfo { get; set; }
+
+        [DataMember]
+        public Location LocationInfo { get; set; }
 
         public string AsJson() { return this.Serialize(); }
     }

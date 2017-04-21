@@ -11,6 +11,8 @@ import { AppComponent } from './Components/app.component';
 import { NotFoundComponent } from './Components/not-found.component';
 import { HomeComponent } from './Components/Home/home.component';
 
+import { AppService } from './app.service';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -23,6 +25,10 @@ import { HomeComponent } from './Components/Home/home.component';
     [
         AppComponent, 
         HomeComponent, NotFoundComponent
+    ],
+    providers:
+    [
+        AppService
     ],
     bootstrap: [AppComponent]
 })

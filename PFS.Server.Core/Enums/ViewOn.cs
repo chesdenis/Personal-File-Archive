@@ -1,4 +1,4 @@
-﻿namespace PFS.Server.Core.Abstractions
+﻿namespace PFS.Server.Core.Enums
 {
     public enum ViewOn
     {
