@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Video.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Serializers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\BaseJob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Jobs\JobsCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanContentSourceJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanVideosJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
