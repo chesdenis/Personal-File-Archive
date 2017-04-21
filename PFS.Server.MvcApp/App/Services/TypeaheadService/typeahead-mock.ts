@@ -1,1 +1,0 @@
-export const DataFromServer: string[] = ["member", "TypeScript", "Finished", "watch", "ts", "multi", "after"];

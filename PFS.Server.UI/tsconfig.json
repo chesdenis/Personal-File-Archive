@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
+    "removeComments": false,
+    "noImplicitAny": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "outDir": "wwwroot/",
+    "typeRoots": [
+      "../node_modules/@types/"
+    ]
+  } 
+}

@@ -3,18 +3,33 @@
 This document describes how to set up your development environment to build and test PFS.
 It also explains the basic mechanics of using `git`, `node`, and `npm`.
 
+* [Solution structure](#solution-structure)
 * [Prerequisite Software](#prerequisite-software)
 * [Getting the Sources](#getting-the-sources)
-* [Installing NPM Modules](#installing-npm-modules)
+* [How to build backend](#how-to-build-backend)
+* [How to build frontend](#how-to-build-frontend)
 * [Building](#building)
 * [Continious integration](#continious-integration)
 
 See the [contribution guidelines](/CONTRIBUTING.md)
 if you'd like to contribute to PFS.
 
+## Solution Structure
+Our solution consists of two parts: Backend, Frontend:
+* PFS.WindowsOnly - backend. This part should be used in windows-based operation systems. It contains all server operations which could be called from UI. Consists of the PFS.Server, and PFS.Server.Admin projects.
+
+* PFS.AnyOS - backend. This part is intended for any major OS (i.e. Windows, Linux, Mac).  It contains all server operations which could be called from UI. It also consists of the PFS.Server, and PFS.Server.Admin projects. But for now we work more aggressive on the WinOnly part, because we have several runtime errors in the AnyOS. We hope, that this situation will be changed as soon as possible.
+
+* PFS.Server.UI - frontend. This solution contains only UI components, which use Angular2 as template engine.
+
+* PFS.Server.JasmineTests - BDD tests, which help us to check and test our solution for correct working. 
+
+* PFS.Server.Core - shared project, which contains bussines logic of our solution. It is used in both WinOnly and AnyOS parts, so it contains conditional compilation operators. 
+
+
 ## Prerequisite Software
 
-Before you can build PFS, you must install and configure the
+Before you start building PFS, you must install and configure the
 following products on your development machine:
 
 * [Git](http://git-scm.com) and/or the **GitHub app** (for [Mac](http://mac.github.com) or
@@ -26,6 +41,9 @@ following products on your development machine:
   source or as a pre-packaged bundle.
 
 * [Asp.Net Core](https://www.asp.net/core) which is used to run PFS server.
+
+* [SQLite](https://www.sqlite.org/) which is used as database engine for AnyOS modification.
+* [MS SQL](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express) which is used as database server for WinOnly modification.
 
 ## Getting the Sources
 
@@ -47,53 +65,73 @@ cd Personal-File-Storage
 # Add the main PFS repository as an upstream remote to your repository:
 git remote add upstream https://github.com/chesdenis/Personal-File-Storage
 ```
-## Installing NPM Modules
 
-Next, install the JavaScript modules needed to build PFS:
+## How to build backend
+Choose part, which you want to run: WinOnly or AnyOS:
+### WinOnly:
+We advice you to use Visual Studio Community 2015. This is a faster option to start WinOnly backend:
+* PFS.WinOnly uses MS SQL server as database engine. So you need to install and configure it.
+* Open Visual Studio.
+* Navigate to .\PFS.WindowsOnly folder.
+* Click PFS.WindowsOnly.sln, so Visual Studio loads backend solution.
+* Open Package Manager Console and restore NuGet packages for PFS.Server and PFS.Server.Admin.
+* Configure startup mode, select 'Multiple startup projects' option and switch Action to 'Start without debugging' or 'Start' for PFS.Server/PFS.Server.Admin.
+* Click run in Visual Studio.
+* Build PFS.Server.UI. See [How to build frontend](#how-to-build-frontend)
+* Navigate to http://localhost:5000 - you will see startup page of your PFS Server. OR navigate to http://localhost:5030 - you will see startup page of your PFS.Server.Admin
 
+### AnyOS:
+We advice you to use Visual Studio Community 2015. This is a faster option to start AnyOS backend:
+* PFS.AnyOS uses SQLite as database engine. So you need to install SQLite and create database also. This shell helps you to create database:
 ```shell
-# Install PFS project dependencies (package.json)
-cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-npm install
-```
-
-Next, install gulp package as follows (you might need to prefix this command with `sudo`):
-
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-npm install -g gulp 
-```
-
-## Building
-
-To build PFS you should:
-* Build frontend part. For this you can open new shell and run:
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-gulp
-```
-This command will prepare/transpile necessary packets and files, copy these files to web root folder and start watching for *.less, *.html files change inside <.\Personal-File-Storage\PFS.Server.MvcApp\App> folder. 
-* In case of changing any *.ts file you should open another shell to rebuild all typescript files:
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-gulp build-all-debug
-```
-* Build backend, open new shell and run:
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.MvcApp>
-dotnet restore
-dotnet run
-```
-* PFS uses database server to store some important information about user files, so you need to run database server also. This shell runs database server which is based on SqLite:
-```shell
-cd <path to .\Personal-File-Storage\PFS.Server.DbProvider.EfCore.SqLiteOData>
+cd <path to .\PFS.AnyOS\PFS.Server>
 dotnet restore
 dotnet ef database drop -f
 dotnet ef migrations remove -f
 dotnet ef migrations add "PfsDbMigration"
 dotnet ef database update
-dotnet run
 ```
+* Navigate to .\PFS.AnyOS folder.
+* Click PFS.AnyOS.sln, so Visual Studio loads backend solution.
+* Wait until Visual Studio restores all dependencies.
+* Configure startup mode, select 'Multiple startup projects' option and switch Action to 'Start without debugging' or 'Start' for PFS.Server/PFS.Server.Admin.
+* Click run in Visual Studio.
+* Build PFS.Server.UI. See [How to build frontend](#how-to-build-frontend)
+* Navigate to http://localhost:5000 - you will see startup page of your PFS Server. OR navigate to http://localhost:5030 - you will see startup page of your PFS.Server.Admin
+
+
+If you want to use Visual Studio code, then you should:
+
+* Navigate to .\PFS.AnyOS folder.
+* Open PFS.Server or PFS.Server.Admin folder in VS Code and choose View->Integrated Terminal.
+* Inside integrated terminal:
+* Type 'dotnet restore' and press Enter.
+* Type 'dotnet run' and press Enter.
+* Build PFS.Server.UI. See [How to build frontend](#how-to-build-frontend)
+* Navigate to http://localhost:5000 - you will see startup page of your PFS Server. OR navigate to http://localhost:5030 - you will see startup page of your PFS.Server.Admin
+
+## How to build frontend
+
+To build frontend you can choose any editor, but it would be better if you choose VS Code or Visual Studio:
+
+If you want to use Visual Studio code, then you should:
+* Open ./PFS.Server.UI folder in VSCode and choose View->Integrated Terminal.
+* Inside integrated terminal:
+* Type 'npm install' and press Enter.
+* Type 'gulp clean-wwwroot' and press Enter. You should see that wwwroot was cleared.
+* Type 'gulp packages-apply' and press Enter. This action copies packages to the wwwroot of PFS.Server and PFS.Server.Admin projects.
+* Type 'gulp ui-apply' and press Enter. This action applies UI to the PFS.Server and PFS.Server.Admin.
+* Also you can investigate tasks for fast UI building. Type 'gulp --tasks' and you will see all available tasks. Consider to use watch tasks for incremental components compilation.
+
+If you prefer to use Visual Studio - you need:
+* Open Visual Studio.
+* Click on PFS.Shared.sln. It loads all PFS.Server.UI project in Visual Studio.
+* Wait until Visual Studio restores all dependencies and node packages.
+* Open Task Runner Explorer:
+* Double click on 'clean-wwwroot'. You should see that wwwroot was cleared.
+* Double click on 'gulp packages-apply'. This action copies packages to the wwwroot of PFS.Server and PFS.Server.Admin projects.
+* Double click on 'gulp ui-apply'. This action applies UI to the PFS.Server and PFS.Server.Admin.
+* Also you can investigate tasks for fast UI building. Consider to use watch tasks for incremental components compilation.
 
 ## Continious integration
 

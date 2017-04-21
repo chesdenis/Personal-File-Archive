@@ -1,145 +1,307 @@
-﻿function dbOdataActions() {
+﻿function tagsTests() {
     this.init = function (apiUrl) {
         this.apiUrl = apiUrl;
     };
-    this.should = function (funcToCheck) {
-        var isDone = false;
-
-        beforeEach(function (done) {
-            funcToCheck().then(function () {
-                isDone = true; done();
-            }).catch(function () {
-                isDone = false; done();
-            });
-        });
-
-        it("Ok?", () => { expect(isDone).toEqual(true); });
-    };
 
     this.readAllTags = function () {
-        var apiUrl = this.apiUrl;
-
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
-                resolve(ctx.Tags.toArray());
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+                resolve(dbCtx.Tags.toArray());
             });
         });
     };
+
     this.createTag = function () {
-        var apiUrl = this.apiUrl;
-
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
+            var dbCtx = exports.dbCtx;
 
-                var seed = + new Date();
+            dbCtx.onReady(function () {
+                var seed = +new Date();
                 var testEntityName = 'Tag from jasmine' + seed;
 
-                ctx.Tags.add(new ctx.Tags.Tag({ Name: testEntityName }));
+                dbCtx.Tags.add(new dbCtx.Tags.Tag({ Name: testEntityName }));
 
-                ctx.saveChanges().then(function () {
-                    return ctx.Tags.filter(function (tag) {
+                dbCtx.saveChanges().then(function () {
+                    return dbCtx.Tags.filter(function (tag) {
                         return tag.Name == this.NameFilter;
-                    }, { NameFilter : testEntityName}).toArray();
+                    }, { NameFilter: testEntityName }).toArray();
                 }).then(function (tags) {
                     if (tags.length != 1) reject();
-
                     if (tags[0].Name != testEntityName) reject();
 
                     resolve();
-
                 }).catch(function (err) {
                     reject(err);
                 });
-
             });
         });
     };
+}
 
-    this.readFoldersOnServer = function () {
-        var apiUrl = this.apiUrl;
-        var startFolderPath = "c://";
 
+function ioTests() {
+
+    this.init = function (apiUrl) {
+        this.apiUrl = apiUrl;
+    };
+
+
+
+    this.readDriveC = function () {
         return new Promise(function (resolve, reject) {
-            OData.defaultHttpClient.enableJsonpCallback = true;
-            OData.request(
-                {
-                    requestUri: "http://localhost:64245/odata/Folders('c:/')/Default.GetChildFolders",
-                    enableJsonpCallback: true
-                },
-                function (data, request) {
-                    console.log(data);
-                });
-            //$data.initService(apiUrl).then(function (ctx) {
-            //    return ctx;
-            //}).then(function (ctx) {
-            //    return ctx.Folders.find(startFolderPath);
-            //}).then(function (startFolder) {
-            //    console.log(startFolder);
-            //    startFolder.GetChildFolders(function(childFolders){
-            //        console.log(childFolders);
-            //    });
-            //});
-            //    return startFolder.GetChildFolders().then(function(startFolderChildren){
-            //         resolve({"startFolder":startFolder, "startFolderChildren":startFolderChildren});
-            //     }).catch(function(err){ reject(err); });
-
-            // }).then(function(startFolder, childrenFolders){
-            //     console.log(startFolder);
-            //     console.log(childrenFolders);
-            // });
-            // .then(function(childFolders){
-            //     console.log(childFolders);
-            // });
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetDrive('C')
+                    .then(function (drive) {
+                        if (drive.Path.length > 0) {
+                            resolve();
+                        }
+                        else {
+                            reject();
+                        }
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
         });
     }
 
-    this.readFoldersWithAOnServer = function(){
-        var apiUrl = this.apiUrl;
-        var startFolderPath = "c://";
-
+    this.readDrives = function () {
         return new Promise(function (resolve, reject) {
-            $data.initService(apiUrl).then(function (ctx) {
-                
-                ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-                .filter(function(folder){return folder.Name.contains('a');})
-                .toArray()
-                .then(
-                    function(folders){
-                        if(folders.length){
-                            resolve();
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetDrives().toArray()
+                    .then(function (drives) {
+                        drives.length > 0 ? resolve() : reject();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    };
+
+    this.readFoldersOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C', '/').toArray()
+                    .then(function (folders) {
+                        folders.length > 0 ? resolve() : reject();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    };
+
+    this.readFoldersWithAOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C', '/')
+                    .filter(function (folder) { return folder.Name.contains('a'); })
+                    .toArray()
+                    .then(function (folders) {
+
+                        if (folders.length == 0) reject();
+
+                        for (var i = 0; i < folders.length; i++) {
+                            if (folders[i].Name.indexOf('a') == -1) reject();
                         }
-                        else{
-                            reject();
-                        } 
+
+                        resolve();
+
                     })
-                    .catch(function(err){
-                        reject(err);
+                    .catch(function (err) {
+                        reject();
                     });
             });
         });
     };
 
-    this.readFirstFolderWithAOnServer = function(){
-         var apiUrl = this.apiUrl;
-         var startFolderPath = "c://";
-
-         return new Promise(function (resolve, reject) {
-            $data.service(apiUrl, function (contextFactory, contextType) {
-                var ctx = contextFactory(); 
-
-                ctx.Folders.GetFolders(encodeURIComponent(startFolderPath))
-                .filter(function(folder){return folder.Name == 'a'})
-                .top(1)
-                .then(
-                    function(folder){
-                        resolve(); 
-                    })
-                    .catch(function(err){
-                        reject(err);
+    this.readFirstFolderWithAOnC = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.IOEntities.GetFolders('C', '/')
+                    .filter(function (folder) { return folder.Name.contains('a'); })
+                    .take(1)
+                    .forEach(function (folder) {
+                        if (folder.Name.indexOf('a') == -1) reject();
+                        resolve();
                     });
             });
         });
     };
-
-
 };
+
+function jobTests() {
+    this.init = function (apiUrl) {
+        this.apiUrl = apiUrl;
+    };
+
+    this.readJobs = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.Jobs.toArray()
+                    .then(function (jobs) {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    }
+
+    this.addJob = function (job) {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+                dbCtx.Jobs.add(job);
+                dbCtx.saveChanges().then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+
+        });
+    };
+
+    this.addJobWithNameOnly = function () {
+        var dbCtx = exports.dbCtx;
+
+        var testJob = new dbCtx.Jobs.Job();
+        testJob.Name = "Job from Jasmine";
+
+        return this.addJob(testJob);
+
+    };
+    this.addJobWithNameAndStatus = function () {
+        var dbCtx = exports.dbCtx;
+        var testJob = new dbCtx.Jobs.Job();
+
+        testJob.Name = "Job from Jasmine";
+        testJob.Status = JobStatus.InProgress;
+
+        return this.addJob(testJob);
+    };
+
+    this.removeJobById = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+                var testJob = new dbCtx.Jobs.Job();
+                testJob.Name = "Job from Jasmine to Delete";
+                dbCtx.Jobs.add(testJob);
+                dbCtx.saveChanges().then(function () {
+                    return dbCtx.Jobs.single(function (job) {
+                        return job.Id == filterId;
+                    }, { filterId: testJob.Id });
+                }).then(function (job) {
+                    dbCtx.Jobs.remove(job);
+                    return dbCtx.saveChanges();
+                }).then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+
+    this.createScanVideosJob = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                var testJob = new dbCtx.Jobs.Job();
+                testJob.Name = "PFS.Server.Core.Jobs.ScanVideosJob, PFS.Server, Version=1.0.0.0";
+                testJob.Args = JSON.stringify({
+                    ContentSourceName: "Test Content Source",
+                });
+                testJob.Status = JobStatus.NotStarted;
+
+                dbCtx.Jobs.add(testJob);
+                dbCtx.saveChanges().then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+};
+
+function contentSourcesTests() {
+    this.init = function (apiUrl) {
+        this.apiUrl = apiUrl;
+    };
+
+    this.readContentSources = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+                dbCtx.ContentSources.toArray()
+                    .then(function (jobs) {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    };
+
+    this.addNewContentSource = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+
+                var entity = new dbCtx.ContentSources.ContentSource();
+                entity.Name = "/DiskD";
+                entity.DriveName = "D:\\";
+                entity.Path = "";
+
+                dbCtx.ContentSources.add(entity);
+                dbCtx.saveChanges().then(function () {
+                    resolve();
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+
+    this.ensureNewContentSource = function () {
+        var self = this;
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+            dbCtx.onReady(function () {
+
+                dbCtx.ContentSources.filter(function (w) {
+                    return w.Name == "Test Content Source";
+                }).toArray().then(function (results) {
+                    if (results.length == 1) {
+                        resolve();
+                    }
+                    else {
+                        self.addNewContentSource().then(function () { resolve(); }).catch(function () { reject(); })
+                    }
+                }).catch(function (err) {
+                    reject(err);
+                });
+            });
+        });
+    };
+}

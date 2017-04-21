@@ -10,22 +10,16 @@ namespace PFS.Server.JasmineTests
 {
     public class Program
     {
-        static public IConfigurationRoot Configuration { get; set; }
-
         public static void Main(string[] args)
         {
-            var configBuilder = new ConfigurationBuilder()
-              .AddJsonFile("hosting.json", optional: true);
+            throw new Exception("Please read information for developers and use Task Runner Explorer.");
 
-            Configuration = configBuilder.Build();
-            
             var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseConfiguration(Configuration)
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+               .UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseIISIntegration()
+               .UseStartup<Startup>()
+               .Build();
 
             host.Run();
         }
