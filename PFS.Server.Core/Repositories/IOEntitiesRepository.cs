@@ -23,6 +23,12 @@ namespace PFS.Server.Core.Repositories
                     .FirstOrDefault(f => f.VolumeLabel.ToLowerInvariant() == $"{driveName.ToLowerInvariant()}");
             }
 
+            if (drive == null)
+            {
+                drive = allDrives
+                   .FirstOrDefault(f => f.Name.ToLowerInvariant().StartsWith($"{driveName.ToLowerInvariant()}"));
+            }
+
             if (drive == null) throw new Exception($"Drive {driveName} is not found on the server");
 
             return new PfsDrive() { Name = drive.VolumeLabel, Path = drive.RootDirectory.FullName };

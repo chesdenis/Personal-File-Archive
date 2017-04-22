@@ -15,8 +15,7 @@ namespace PFS.Server
         public static void Main(string[] args)
         {
             var configBuilder = new ConfigurationBuilder()
-                .AddJsonFile("hosting.json", optional: true)
-                .AddJsonFile("staticfolders.json", optional: true);
+                .AddJsonFile("hosting.json", optional: true);
 
             Configuration = configBuilder.Build();
 

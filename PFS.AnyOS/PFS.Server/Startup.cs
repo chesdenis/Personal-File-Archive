@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.OData;
 using Microsoft.AspNetCore.OData.Builder;
 using PFS.Server.Core.Entities;
 using PFS.Server.Core;
+using Microsoft.AspNetCore.OData.Routing;
 
 namespace PFS.Server
 {
@@ -30,39 +31,68 @@ namespace PFS.Server
             services.AddMvc();
             services.AddOData();
 
-            services.AddDbContext<PfsServerDbContext>();
-            services.AddLogging();
-            services.AddScoped<TagsRepository>();
+            services.AddSingleton<PfsServerDbContext>();
+
+            services.AddSingleton<IODataPathHandler, ODataSlashHandler>();
+
+            //services.AddDbContext<PfsServerDbContext>();
+            //services.AddLogging();
+            //services.AddScoped<TagsRepository>();
+            //services.AddScoped<VideosRepository>();
+            //services.AddScoped<ContentSourcersRepository>();
+            //services.AddScoped<JobsRepository>();
             services.AddScoped<IOEntitiesRepository>();
 
-            services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
+            //services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
+
+            TestCallToDb();
+        }
+
+        protected void TestCallToDb()
+        {
+            try
+            {
+                using (var dbCtx = new PfsServerDbContext())
+                {
+                    var allJobs = dbCtx.Jobs.Take(1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole();
+            loggerFactory.AddConsole(LogLevel.Debug);
             loggerFactory.AddDebug();
 
             app.UseMiddleware<DisablePfsCaching>();
+            
+            IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
+            var odataBuilder = new ODataConventionModelBuilder(provider)
+                //.BuildTagsModel()
+                //.BuildVideosModel()
+                //.BuildContentSourcesPathsModel()
+                //.BuildJobsModel()
+                .BuildIOEntitiesModel();
+
+
+            app.UseMvc(routes =>
+            {
+                routes.MapODataRoute("odata", odataBuilder.GetEdmModel());
+            });
+
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseStaticFiles();
             app.UseStaticFolders();
-
-            IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
-            var odataBuilder = new ODataConventionModelBuilder(provider)
-                .BuildTagsModel()
-                .BuildIOEntitiesModel();
-
-            app.UseMvc(_ => _.MapODataRoute("odata", odataBuilder.GetEdmModel()));
-
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
-
         }
 
 

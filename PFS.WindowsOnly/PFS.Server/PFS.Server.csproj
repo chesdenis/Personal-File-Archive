@@ -211,7 +211,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\VideosController.cs" />
-    <Compile Include="Extensions\ODataHandler.cs" />
+    <Compile Include="Extensions\ODataSlashHandler.cs" />
     <Compile Include="Extensions\StaticFoldersExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
