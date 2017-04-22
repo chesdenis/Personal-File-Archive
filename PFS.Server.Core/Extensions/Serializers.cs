@@ -15,7 +15,12 @@ namespace PFS.Server.Core.Extensions
             {
                 var ser = new DataContractJsonSerializer(typeof(T));
                 retVal = (T)ser.ReadObject(ms);
+#if WinOnly
                 ms.Close();
+#endif
+#if AnyOS
+                ms.Dispose();
+#endif
             }
 
             return retVal;
