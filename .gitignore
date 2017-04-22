@@ -32,8 +32,15 @@
 /PFS.AnyOS/PFS.Server.Admin/node_modules
 /PFS.AnyOS/PFS.Server.Admin/Migrations
 
+/PFS.AnyOS/PFS.Server.JobsManager/bin
+/PFS.AnyOS/PFS.Server.JobsManager/obj
+/PFS.AnyOS/PFS.Server.JobsManager/wwwroot
+/PFS.AnyOS/PFS.Server.JobsManager/node_modules
+/PFS.AnyOS/PFS.Server.JobsManager/Migrations
+
 
 /PFS.Server.UI/node_modules
 /PFS.Server.UI/wwwroot
+/PFS.Server.UI/obj
 
 /PFS.Server.JasmineTests/node_modules
