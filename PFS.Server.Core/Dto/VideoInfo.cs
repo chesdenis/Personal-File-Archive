@@ -21,21 +21,14 @@ namespace PFS.Server.Core.Dto
             public int Order { get; set; }
 
             [DataMember]
-            public ViewOn TargetDevice { get; set; }
-        }
+            public int Version { get; set; }
 
-        [DataContract]
-        public class Location
-        {
-            public string IOPath { get; set; }
-            public string RelativePath { get; set; }
+            [DataMember]
+            public ViewOn TargetDevice { get; set; }
         }
 
         [DataMember]
         public Instance[] InstancesInfo { get; set; }
-
-        [DataMember]
-        public Location LocationInfo { get; set; }
 
         public string AsJson() { return this.Serialize(); }
     }

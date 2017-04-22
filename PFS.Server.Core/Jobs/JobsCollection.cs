@@ -31,7 +31,10 @@ namespace PFS.Server.Core.Jobs
 
                     if (jobTasks.Count > 0)
                     {
+                       
                         Parallel.ForEach(jobTasks, task => task.Start());
+
+                        Task.WaitAll(jobTasks.ToArray());
                     }
                 }
             }

@@ -46,7 +46,10 @@ namespace PFS.Server.Core.DbContexts
             )
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
-            builder.Entity<Video>().HasKey(m => m.Id);
+            builder.Entity<Video>().HasKey(m => m.Id)
+                .HasRequired<ContentSource>(s=>s.ContentSource)
+                .WithMany(s=>s.Videos)
+                .HasForeignKey(s=>s.ContentSourceId);
             builder.Entity<ContentSource>().HasKey(m => m.Id);
             builder.Entity<Job>().HasKey(m => m.Id);
 

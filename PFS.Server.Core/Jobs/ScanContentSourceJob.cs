@@ -68,7 +68,7 @@ namespace PFS.Server.Core.Jobs
 
             ioRelativePath = ioRelativePath.Replace("\\", "/");
 
-            return Path.Combine(ContentSource.Name, ioRelativePath);
+            return ioRelativePath;
         }
 
         public abstract void DoScan();

@@ -13,5 +13,7 @@ namespace PFS.Server.Core.Entities
         public string Name { get; set; }
         public string DriveName { get; set; }
         public string Path { get; set; }
+
+        public virtual ICollection<Video> Videos { get; private set; }
     }
 }

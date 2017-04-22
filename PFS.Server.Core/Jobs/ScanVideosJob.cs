@@ -69,11 +69,6 @@ namespace PFS.Server.Core.Jobs
                     Name = s.Name,
                     Data = new VideoInfo()
                     {
-                        LocationInfo = new VideoInfo.Location()
-                        {
-                            IOPath = s.DirectoryName,
-                            RelativePath = GetUri(s.DirectoryName)
-                        },
                         InstancesInfo = new VideoInfo.Instance[] 
                         {
                             new VideoInfo.Instance()
@@ -83,7 +78,10 @@ namespace PFS.Server.Core.Jobs
                                 TargetDevice = ViewOn.PC
                             }
                         }
-                    }.AsJson()
+                    }.AsJson(),
+                    IODirPath = s.DirectoryName,
+                    RelDirPath = GetUri(s.DirectoryName),
+                    ContentSourceId = ContentSource.Id
                 }).ToList();
             }
             catch (Exception ex)

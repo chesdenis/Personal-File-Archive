@@ -228,7 +228,7 @@ function jobTests() {
                 var testJob = new dbCtx.Jobs.Job();
                 testJob.Name = "PFS.Server.Core.Jobs.ScanVideosJob, PFS.Server, Version=1.0.0.0";
                 testJob.Args = JSON.stringify({
-                    ContentSourceName: "Test Content Source",
+                    ContentSourceName: "/DiskD",
                 });
                 testJob.Status = JobStatus.NotStarted;
 
