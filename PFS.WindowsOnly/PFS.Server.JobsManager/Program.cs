@@ -1,7 +1,9 @@
 ﻿
+using Autofac;
+using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.DbContexts;
 using PFS.Server.Core.Entities;
-using PFS.Server.Core.Jobs;
+using PFS.Server.Core.Jobs; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,16 @@ namespace PFS.Server.JobsManager
     {
         static void Main(string[] args)
         {
-            JobsCollection.Execute();
+            var builder = new ContainerBuilder();
+
+            //builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>();
+            builder.RegisterType<SqLiteDbContext>().As<IPfsDbContext>().SingleInstance();
+
+            builder.RegisterType<JobsCollection>().SingleInstance();
+
+            var container = builder.Build();
+
+            container.Resolve<JobsCollection>().Execute();
         }
     }
 }

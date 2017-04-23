@@ -1,4 +1,6 @@
-﻿using PFS.Server.Core.DbContexts;
+﻿using Autofac;
+using PFS.Server.Core.Abstractions;
+using PFS.Server.Core.DbContexts;
 using PFS.Server.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,16 +10,25 @@ using System.Threading.Tasks;
 
 namespace PFS.Server.Core.Jobs
 {
-    public static class JobsCollection 
+    public class JobsCollection 
     {
-        public static void Execute()
+        ILifetimeScope Scope { get; set; }
+
+        public JobsCollection(ILifetimeScope scope)
+        {
+            Scope = scope;
+        }
+
+        public void Execute()
         {
             Console.WriteLine("Collecting jobs...");
-            
+
             try
             {
-                using (var dbCtx = new PfsServerDbContext())
+                using (var scope = Scope.BeginLifetimeScope())
                 {
+                    var dbCtx = scope.Resolve<IPfsDbContext>();
+
                     var jobTasks = new List<Task>();
 
                     var notStartedJobs = dbCtx.Jobs
@@ -26,17 +37,17 @@ namespace PFS.Server.Core.Jobs
                     var errJobs = dbCtx.Jobs
                         .Where(w => w.Status == JobStatus.Error).ToList();
 
-                    PopulateJobTasks(dbCtx, notStartedJobs, jobTasks);
-                    PopulateJobTasks(dbCtx, errJobs, jobTasks);
+                    PopulateJobTasks(notStartedJobs, jobTasks);
+                    PopulateJobTasks(errJobs, jobTasks);
 
                     if (jobTasks.Count > 0)
                     {
-                       
                         Parallel.ForEach(jobTasks, task => task.Start());
 
                         Task.WaitAll(jobTasks.ToArray());
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -46,7 +57,7 @@ namespace PFS.Server.Core.Jobs
             Console.WriteLine("Finishing...");
         }
 
-        private static void PopulateJobTasks(PfsServerDbContext dbCtx, List<Job> notStartedJobs, List<Task> jobTasks)
+        private void PopulateJobTasks(List<Job> notStartedJobs, List<Task> jobTasks)
         {
             foreach (var jobEntity in notStartedJobs)
             {
@@ -61,14 +72,16 @@ namespace PFS.Server.Core.Jobs
 
                 jobTasks.Add(new Task(() =>
                 {
-                    using (var dbJobCtx = new PfsServerDbContext())
+                    using (var scope = Scope.BeginLifetimeScope())
                     {
+                        var dbCtx = scope.Resolve<IPfsDbContext>();
 
-                        var jobInDb = dbJobCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
+                        var jobInDb = dbCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
                         if (jobInDb == null) return;
 
-                        jobToRun.Execute(jobInDb, dbJobCtx);
+                        jobToRun.Execute(jobInDb, dbCtx);
                     }
+                  
                 }));
             }
         }

@@ -27,7 +27,7 @@ namespace PFS.Server.Core.Jobs
 
             foreach (var video in videos)
             {
-                DbCtx.Videos.Add(video);
+                DbCtx.AddEntity(video);
                 DbCtx.SaveChanges();
             }   
         }

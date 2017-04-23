@@ -1,7 +1,9 @@
-﻿using Microsoft.Owin.FileSystems;
+﻿using Autofac;
+using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Newtonsoft.Json.Linq;
 using Owin;
+using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.DbContexts;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,11 @@ namespace PFS.Server.Extensions
         public static IAppBuilder UsePfsStaticFolders(this IAppBuilder app)
         {
             string root = AppDomain.CurrentDomain.BaseDirectory;
-
-            using (var dbCtx = new PfsServerDbContext())
+            
+            using (var scope = Startup.Container.BeginLifetimeScope())
             {
+                var dbCtx = scope.Resolve<IPfsDbContext>();
+
                 var contentSources = dbCtx.ContentSources.ToList();
 
                 foreach (var cs in contentSources)

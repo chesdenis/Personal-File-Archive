@@ -7,6 +7,7 @@ using PFS.Server.Core.Entities;
 using PFS.Server.Core.Extensions;
 using System.Linq;
 using System.IO;
+using PFS.Server.Core.Abstractions;
 
 namespace PFS.Server.Core.Jobs
 {
@@ -21,10 +22,10 @@ namespace PFS.Server.Core.Jobs
 
         protected Job JobInDb { get; set; }
         protected Args JobArgs { get; set; }
-        protected PfsServerDbContext DbCtx { get; set; }
+        protected IPfsDbContext DbCtx { get; set; }
         protected ContentSource ContentSource { get; set; }
         
-        public override void Execute(Job jobInDb, PfsServerDbContext dbCtx)
+        public override void Execute(Job jobInDb, IPfsDbContext dbCtx)
         {
             JobInDb = jobInDb;
             DbCtx = dbCtx;
@@ -34,8 +35,7 @@ namespace PFS.Server.Core.Jobs
 
             JobInDb.Status = JobStatus.InProgress;
             JobInDb.Started = DateTime.Now;
-
-
+            
             DbCtx.SaveChanges();
 
             Console.WriteLine($"Start executing job {JobInDb.Id} ({JobInDb.Name})");
