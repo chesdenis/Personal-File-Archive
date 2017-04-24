@@ -17,7 +17,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\PfsCRUDRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbContexts\EfContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DbContexts\EfCoreContext.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DbProviders\SqLiteDbContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dto\VideoInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ContentSource.cs" />

@@ -20,8 +20,12 @@ namespace PFS.Server.JobsManager
         {
             var builder = new ContainerBuilder();
 
-            //builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>();
+#if MsSql
+            builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>().SingleInstance();;
+#endif
+#if SqLite
             builder.RegisterType<SqLiteDbContext>().As<IPfsDbContext>().SingleInstance();
+#endif
 
             builder.RegisterType<JobsCollection>().SingleInstance();
 
