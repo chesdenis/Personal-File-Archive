@@ -103,4 +103,15 @@ namespace PFS.Server.Core.Repositories
             return folder.GetFiles().Select(s => new PfsFile() { Name = s.Name, Path = s.FullName });
         }
     }
+
+    public class FsEntitiesRepository 
+    {
+        public IQueryable<FsEntity> Get()
+        {
+            var fsQueryProvider = new FsQueryProvider();
+
+            return new Query<FsEntity>(fsQueryProvider);
+
+        }
+    }
 }

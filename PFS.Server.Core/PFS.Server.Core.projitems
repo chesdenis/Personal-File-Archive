@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ContentSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Document.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\FsEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\IOEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Job.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Music.cs" />

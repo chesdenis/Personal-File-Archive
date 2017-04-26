@@ -51,7 +51,6 @@ types["PFS.Server.Core.Entities.Tag"] = $data("$data.Entity").extend("PFS.Server
     }
 });
 
-
 var JobStatus = types["PFS.Server.Core.Entities.JobStatus"] = $data.createEnum("PFS.Server.Core.Entities.JobStatus", [
     { name: 'NotStarted', value: 0 },
     { name: 'InProgress', value: 1 },
@@ -92,7 +91,7 @@ types["PFS.Server.Core.Entities.ContentSource"] = $data("$data.Entity").extend("
         "type": "Edm.String"
     },
     DriveName: { "type": "Edm.String" },
-    Path: { "type":"Edm.String" }
+    Path: { "type": "Edm.String" }
 });
 
 types["PFS.Server.Core.Entities.IOPfsEntity"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.IOPfsEntity", {
@@ -101,6 +100,36 @@ types["PFS.Server.Core.Entities.IOPfsEntity"] = $data("$data.Entity").extend("PF
         "nullable": false,
         "required": true,
         "key": true
+    },
+    Name: {
+        "type": "Edm.String"
+    }
+});
+
+
+
+var FsEntityType = types["PFS.Server.Core.Entities.FsEntityType"] = $data.createEnum("PFS.Server.Core.Entities.FsEntityType", [
+    { name: 'Disk', value: 0 },
+    { name: 'Folder', value: 1 },
+    { name: 'File', value: 2 }
+]);
+
+types["PFS.Server.Core.Entities.FsEntity"] = $data("$data.Entity").extend("PFS.Server.Core.Entities.FsEntity", {
+    Id: {
+        "type": "Edm.Int32",
+        "nullable": false,
+        "required": true,
+        "key": true
+    },
+    DriveName: {
+        "type": "Edm.String"
+    },
+    ParentDirPath: {
+        "type": "Edm.String"
+    },
+    Type: { "type": 'PFS.Server.Core.Entities.FsEntityType', nullable: false },
+    Path: {
+        "type": "Edm.String"
     },
     Name: {
         "type": "Edm.String"
@@ -198,9 +227,13 @@ exports.type = types["Default.Container"] = $data("$data.EntityContext").extend(
             },
         }
     },
-    ContentSources:{
+    ContentSources: {
         "type": "$data.EntitySet",
         "elementType": "PFS.Server.Core.Entities.ContentSource"
+    },
+    FsEntities: {
+        "type": "$data.EntitySet",
+        "elementType": "PFS.Server.Core.Entities.FsEntity"
     }
 });
 

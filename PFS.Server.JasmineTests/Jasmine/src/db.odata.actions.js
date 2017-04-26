@@ -313,3 +313,34 @@ function contentSourcesTests() {
         });
     };
 }
+
+function fsApiTests() {
+
+    this.init = function (apiUrl) {
+        this.apiUrl = apiUrl;
+    };
+
+    this.readFirstElementInFileSystem = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                dbCtx.FsEntities
+                .filter(function (value) { return value.DriveName=='C'; })
+                .take(1)
+                .toArray()
+                    .then(function (results) {
+                        console.log(results[0].Path);
+                        resolve();
+                    })
+                    .then(function () {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    }
+}

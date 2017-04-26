@@ -24,7 +24,7 @@ namespace PFS.Server.Controllers
         [HttpPost]
         public void ExecuteJob([FromBody]Job job)
         {
-            Rep.ExecuteJob(job.Id);
+            //Rep.ExecuteJob(job.Id);
         }
     }
 }

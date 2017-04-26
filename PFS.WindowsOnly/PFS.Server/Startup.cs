@@ -44,6 +44,7 @@ namespace PFS.Server
             builder.RegisterType<VideosRepository>().SingleInstance();
             builder.RegisterType<ContentSourcersRepository>().SingleInstance();
             builder.RegisterType<JobsRepository>().SingleInstance();
+            builder.RegisterType<FsEntitiesRepository>().SingleInstance();
             builder.RegisterType<IOEntitiesRepository>().SingleInstance();
 
             // Register your Web API controllers.
