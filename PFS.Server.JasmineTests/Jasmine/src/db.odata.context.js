@@ -186,7 +186,17 @@ exports.type = types["Default.Container"] = $data("$data.EntityContext").extend(
     },
     Jobs: {
         "type": "$data.EntitySet",
-        "elementType": "PFS.Server.Core.Entities.Job"
+        "elementType": "PFS.Server.Core.Entities.Job",
+        "actions": {
+            "ExecuteJob": {
+                "type": "$data.ServiceAction",
+                "namespace": "Default",
+                "params": [{
+                    "name": "Id",
+                    "type": "Edm.Int32"
+                }]
+            },
+        }
     },
     ContentSources:{
         "type": "$data.EntitySet",

@@ -10,6 +10,6 @@ namespace PFS.Server.Core.Jobs
 {
     public abstract class BaseJob
     {         
-        public abstract void Execute(Job jobInDb, IPfsDbContext dbCtx);
+        public abstract void Execute(Job jobEntity, IPfsDbContext dbCtx);
     }
 }

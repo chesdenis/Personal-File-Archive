@@ -1,9 +1,5 @@
 ﻿
 using Autofac;
-using PFS.Server.Core.Abstractions;
-using PFS.Server.Core.DbContexts;
-using PFS.Server.Core.Entities;
-using PFS.Server.Core.Jobs; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Simple.OData.Client;
 
 namespace PFS.Server.JobsManager
 {
@@ -18,6 +15,19 @@ namespace PFS.Server.JobsManager
     {
         static void Main(string[] args)
         {
+            var taskToRun = Task.Run(async () =>
+             {
+                 var client = new ODataClient("http://localhost:5000/odata");
+                 var tags = await client.FindEntriesAsync("Tags?$top=10");
+
+                 foreach (var tag in tags)
+                 {
+                     Console.WriteLine(tag["Title"]);
+                 }
+             });
+            taskToRun.Wait();
+           
+
 //            var builder = new ContainerBuilder();
 
 //#if MsSql

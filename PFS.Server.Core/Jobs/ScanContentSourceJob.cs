@@ -20,43 +20,43 @@ namespace PFS.Server.Core.Jobs
             public string ContentSourceName { get; set; }
         }
 
-        protected Job JobInDb { get; set; }
+        protected Job JobEntity { get; set; }
         protected Args JobArgs { get; set; }
         protected IPfsDbContext DbCtx { get; set; }
         protected ContentSource ContentSource { get; set; }
         
-        public override void Execute(Job jobInDb, IPfsDbContext dbCtx)
+        public override void Execute(Job jobEntity, IPfsDbContext dbCtx)
         {
-            JobInDb = jobInDb;
+            JobEntity = jobEntity;
             DbCtx = dbCtx;
-            JobArgs = JobInDb.Args.Deserialize<Args>();
+            JobArgs = JobEntity.Args.Deserialize<Args>();
             ContentSource = DbCtx.ContentSources.FirstOrDefault(f => f.Name == JobArgs.ContentSourceName);
             if (ContentSource == null) throw new ArgumentNullException($"Content source with name {JobArgs.ContentSourceName} not found.");
 
-            JobInDb.Status = JobStatus.InProgress;
-            JobInDb.Started = DateTime.Now;
+            JobEntity.Status = JobStatus.InProgress;
+            JobEntity.Started = DateTime.Now;
             
             DbCtx.SaveChanges();
 
-            Console.WriteLine($"Start executing job {JobInDb.Id} ({JobInDb.Name})");
+            Console.WriteLine($"Start executing job {JobEntity.Id} ({JobEntity.Name})");
 
             try
             {
                 DoScan();
 
-                Console.WriteLine($"Job {JobInDb.Id} ({JobInDb.Name}) finished.");
+                Console.WriteLine($"Job {JobEntity.Id} ({JobEntity.Name}) finished.");
 
-                JobInDb.Status = JobStatus.Done;
-                JobInDb.Finished = DateTime.Now;
+                JobEntity.Status = JobStatus.Done;
+                JobEntity.Finished = DateTime.Now;
                 DbCtx.SaveChanges();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error occured in Job {JobInDb.Id} ({JobInDb.Name}).");
+                Console.WriteLine($"Error occured in Job {JobEntity.Id} ({JobEntity.Name}).");
 
-                JobInDb.Status = JobStatus.Error;
-                JobInDb.Comments = ex.Message + ex.StackTrace;
-                JobInDb.Finished = DateTime.Now;
+                JobEntity.Status = JobStatus.Error;
+                JobEntity.Comments = ex.Message + ex.StackTrace;
+                JobEntity.Finished = DateTime.Now;
                 DbCtx.SaveChanges();
             }
         }

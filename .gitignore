@@ -44,3 +44,4 @@
 /PFS.Server.UI/obj
 
 /PFS.Server.JasmineTests/node_modules
+/PFS.WindowsOnly/PFS.Server/App_Data/PfsServer.sqlite

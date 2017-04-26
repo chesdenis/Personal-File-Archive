@@ -30,6 +30,12 @@ namespace PFS.Server.Core
         {
             builder.EntitySet<Job>("Jobs").EntityType.HasKey(k => k.Id);
             builder.AddEnumType(typeof(JobStatus));
+
+            var entityTypeCollection = builder.EntityType<Job>().Collection;
+
+            var executeJob = entityTypeCollection.Action("ExecuteJob");
+            executeJob.Parameter<int>("JobId");
+
             return builder;
         }
 

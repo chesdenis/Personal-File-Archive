@@ -19,5 +19,12 @@ namespace PFS.Server.Controllers
             base(rep)
         {
         }
+
+        // POST odata/Jobs/Default.ExecuteJob
+        [HttpPost]
+        public void ExecuteJob([FromBody]Job job)
+        {
+            Rep.ExecuteJob(job.Id);
+        }
     }
 }
