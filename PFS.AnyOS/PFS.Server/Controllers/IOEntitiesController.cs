@@ -8,6 +8,23 @@ using System.Linq;
 
 namespace PFS.Server.Controllers
 {
+    [Route("odata/FsEntities")]
+    public class FsEntitiesController : Controller
+    {
+        private readonly FsEntitiesRepository Rep;
+        public FsEntitiesController(FsEntitiesRepository rep)
+        {
+            Rep = rep;
+        }
+
+        [HttpGet]
+        [EnableQuery]
+        public virtual IQueryable<FsEntity> Get()
+        {
+            return Rep.Get().AsQueryable();
+        }
+    }
+
     [Route("odata/IOEntities")]
     public class IOEntitiesController : Controller
     {

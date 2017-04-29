@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 using PFS.Server.Core.DbContexts;
 using System.IO;
+using PFS.Server.Core.Abstractions;
 
 namespace PFS.Server.Extensions
 {
     public static class StaticFoldersExtensions
     {
-        public static IApplicationBuilder UseStaticFolders(this IApplicationBuilder app)
+        public static IApplicationBuilder UsePfsStaticFolders(this IApplicationBuilder app)
         {
-            using (var dbCtx = new PfsServerDbContext())
+            using (var dbCtx = new SqLiteDbContext())
             {
                 var contentSources = dbCtx.ContentSources.ToList();
 

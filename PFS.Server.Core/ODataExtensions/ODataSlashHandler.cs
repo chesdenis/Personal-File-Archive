@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.OData.Routing;
+﻿#if AnyOS
+using Microsoft.AspNetCore.OData.Routing;
+#endif
+#if WinOnly
+using System.Web.OData.Routing;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +17,14 @@ namespace PFS.Server.Extensions
     {
         private const string EscapedQuote = "'";
 
+        public const string Slash = "__2F";
+        public const string BackSlash = "__5C";
+
+#if AnyOS
         public ODataSlashHandler(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
-
-        //public override string Link(ODataPath path)
-        //{
-        //    throw new NotImplementedException();
-
-        //    //return path.ToString();
-        //}
-
+        
         public override ODataPath Parse(IEdmModel model, string serviceRoot, string path)
         {
             if (!path.Contains(EscapedQuote))
@@ -44,13 +46,33 @@ namespace PFS.Server.Extensions
 
             return base.Parse(model, serviceRoot, pathBuilder.ToString());
         }
+#endif
+#if WinOnly
+        public override ODataPath Parse(string serviceRoot, string odataPath, IServiceProvider requestContainer)
+        {
+            if (!odataPath.Contains(EscapedQuote))
+            {
+                return base.Parse(serviceRoot, odataPath, requestContainer);
+            }
 
+            var pathBuilder = new StringBuilder();
+            var queryStringIndex = odataPath.IndexOf('?');
+            if (queryStringIndex == -1)
+            {
+                EscapeSlashBackslash(odataPath, pathBuilder);
+            }
+            else
+            {
+                EscapeSlashBackslash(odataPath.Substring(0, queryStringIndex), pathBuilder);
+                pathBuilder.Append(odataPath.Substring(queryStringIndex));
+            }
+
+            return base.Parse(serviceRoot, pathBuilder.ToString(), requestContainer);
+        }
+#endif
 
         private void EscapeSlashBackslash(string uri, StringBuilder pathBuilder)
         {
-            const string slash = "%2F";
-            const string backSlash = "%5C";
-
             var startIndex = uri.IndexOf(EscapedQuote, StringComparison.OrdinalIgnoreCase);
             var endIndex = uri.IndexOf(EscapedQuote, startIndex + EscapedQuote.Length, StringComparison.OrdinalIgnoreCase);
             if (startIndex == -1 || endIndex == -1)
@@ -66,10 +88,10 @@ namespace PFS.Server.Extensions
                 switch (uri[i])
                 {
                     case '/':
-                        pathBuilder.Append(slash);
+                        pathBuilder.Append(Slash);
                         break;
                     case '\\':
-                        pathBuilder.Append(backSlash);
+                        pathBuilder.Append(BackSlash);
                         break;
                     default:
                         pathBuilder.Append(uri[i]);

@@ -89,11 +89,11 @@ describe('Content sources tests', function(){
 
 });
 
-describe('Fs api tests', function(){
-    var actions = new fsApiTests();
-    actions.init(apiUrl);
+// describe('Fs api tests', function(){
+//     var actions = new fsApiTests();
+//     actions.init(apiUrl);
 
-    describe('should read first element in file system', function(){
-        should(actions, 'readFirstElementInFileSystem');
-    });
-});
+//     describe('should read first element in file system', function(){
+//         should(actions, 'readFirstElementInFileSystem');
+//     });
+// });

@@ -18,6 +18,11 @@ using Microsoft.AspNetCore.OData.Builder;
 using PFS.Server.Core.Entities;
 using PFS.Server.Core;
 using Microsoft.AspNetCore.OData.Routing;
+using Microsoft.AspNetCore.Mvc.Formatters.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace PFS.Server
 {
@@ -28,10 +33,14 @@ namespace PFS.Server
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
-            services.AddOData();
+            services
+                .AddMvc().AddJsonOptions((options) =>
+                {
+                    options.SerializerSettings.ContractResolver = null;
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                });
 
-            services.AddSingleton<PfsServerDbContext>();
+            services.AddOData();
 
             services.AddSingleton<IODataPathHandler, ODataSlashHandler>();
 
@@ -42,27 +51,11 @@ namespace PFS.Server
             //services.AddScoped<ContentSourcersRepository>();
             //services.AddScoped<JobsRepository>();
             services.AddScoped<IOEntitiesRepository>();
+            services.AddScoped<FsEntitiesRepository>();
+            services.AddScoped<IPfsDbContext>(provider => provider.GetService<SqLiteDbContext>());
 
-            //services.AddScoped<IPfsDbContext>(provider => provider.GetService<PfsServerDbContext>());
-
-            TestCallToDb();
         }
-
-        protected void TestCallToDb()
-        {
-            try
-            {
-                using (var dbCtx = new PfsServerDbContext())
-                {
-                    var allJobs = dbCtx.Jobs.Take(1).ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -77,7 +70,8 @@ namespace PFS.Server
                 //.BuildVideosModel()
                 //.BuildContentSourcesPathsModel()
                 //.BuildJobsModel()
-                .BuildIOEntitiesModel();
+                .BuildIOEntitiesModel()
+                .BuildFsEntitiesModel();
 
 
             app.UseMvc(routes =>
@@ -92,7 +86,7 @@ namespace PFS.Server
             });
 
             app.UseStaticFiles();
-            app.UseStaticFolders();
+            app.UsePfsStaticFolders();
         }
 
 

@@ -1,4 +1,5 @@
-﻿using PFS.Server.Core.Abstractions;
+﻿#if WinOnly
+using PFS.Server.Core.Abstractions;
 using PFS.Server.Core.Entities;
 using SQLite.CodeFirst;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace PFS.Server.Core.DbContexts
 {
-#if WinOnly
+
     public abstract class EfContext : DbContext, IPfsDbContext
     {
 
@@ -95,5 +96,6 @@ namespace PFS.Server.Core.DbContexts
                          (new SqliteCreateDatabaseIfNotExists<SqLiteDbContext>(builder));
         }
     }
-#endif
+
 }
+#endif

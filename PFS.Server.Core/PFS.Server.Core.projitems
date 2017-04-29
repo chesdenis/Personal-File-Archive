@@ -35,7 +35,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanContentSourceJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanVideosJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataArgsExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataModelBuilderExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataSlashHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\ContentSourcersRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\IOEntitiesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\JobsRepository.cs" />

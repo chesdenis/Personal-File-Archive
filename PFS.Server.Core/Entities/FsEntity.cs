@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -45,7 +46,12 @@ namespace PFS.Server.Core.Entities
             if (seqType.IsArray)
                 return typeof(IEnumerable<>).MakeGenericType(seqType.GetElementType());
 
+#if WinOnly
             if (seqType.IsGenericType)
+#endif
+#if AnyOS
+            if(seqType.IsConstructedGenericType)
+#endif
             {
                 foreach (Type arg in seqType.GetGenericArguments())
                 {
@@ -68,10 +74,12 @@ namespace PFS.Server.Core.Entities
                 }
             }
 
+#if WinOnly
             if (seqType.BaseType != null && seqType.BaseType != typeof(object))
             {
                 return FindIEnumerable(seqType.BaseType);
             }
+#endif
 
             return null;
         }
@@ -176,105 +184,373 @@ namespace PFS.Server.Core.Entities
         }
     }
 
+    public class FsQuery
+    {
+        public  class TakePart
+        {
+            public bool IsDefined { get; set; }
+            public int TakeValue { get; set; }
+        }
+
+        public class OrderPart
+        {
+            public enum OrderDirection
+            {
+                Asc, Desc
+            }
+            public string PropertyName { get; set; }
+            public OrderDirection Direction { get; set; }
+        }
+
+        public class WherePart
+        {
+            public string PropertyName { get; set; }
+            public ExpressionType Comparator { get; set; }
+            public string Value { get; set; }
+        }
+
+        public TakePart Take { get; set; }
+        public List<OrderPart> Orders { get; set; }
+        public List<WherePart> Filters { get; set; }
+
+        public FsQuery()
+        {
+            Take = new TakePart();
+            Orders = new List<OrderPart>();
+            Filters = new List<WherePart>();
+        }
+         
+        public IEnumerable<FsEntity> GetResults()
+        {
+            var results = ApplyFilters();
+            results = ApplyOrders(results);
+            results = ApplyTakes(results);
+
+            return results;
+        }
+
+        private IEnumerable<FsEntity> ApplyTakes(IEnumerable<FsEntity> queryResults)
+        {
+            if (!Take.IsDefined) return queryResults;
+
+            return queryResults;
+        }
+
+        private IEnumerable<FsEntity> ApplyOrders(IEnumerable<FsEntity> queryResults)
+        {
+            foreach (var orderPart in Orders)
+            {
+                if (orderPart.Direction == OrderPart.OrderDirection.Asc)
+                {
+                    switch (orderPart.PropertyName)
+                    {
+                        case "DriveName": return queryResults.OrderBy(o => o.DriveName); 
+                        case "ParentDirPath": return queryResults.OrderBy(o => o.ParentDirPath); 
+                        case "Name": return queryResults.OrderBy(o => o.Name); 
+                        case "Type": return queryResults.OrderBy(o => o.Type); 
+                        case "Path": return queryResults.OrderBy(o => o.Path); 
+                        default:
+                            throw new NotImplementedException();
+                    }
+                   
+                }
+                else if (orderPart.Direction == OrderPart.OrderDirection.Desc)
+                {
+                    switch (orderPart.PropertyName)
+                    {
+                        case "DriveName": return queryResults.OrderByDescending(o => o.DriveName);
+                        case "ParentDirPath": return queryResults.OrderByDescending(o => o.ParentDirPath);
+                        case "Name": return queryResults.OrderByDescending(o => o.Name);
+                        case "Type": return queryResults.OrderByDescending(o => o.Type);
+                        case "Path": return queryResults.OrderByDescending(o => o.Path);
+                        default:
+                            throw new NotImplementedException();
+                    }
+                }
+            }
+
+            return queryResults;
+        }
+
+        private IEnumerable<FsEntity> ApplyFilters()
+        {
+            WherePart driveFilter = Filters.FirstOrDefault(f=>f.PropertyName == "DriveName");
+            WherePart parentFolderFilter = Filters.FirstOrDefault(f => f.PropertyName == "ParentDirName");
+
+
+            if (driveFilter == null & parentFolderFilter == null)
+                return GetDrives();
+
+
+            return new FsEntity[] { };
+        }
+
+        private IEnumerable<FsEntity> GetDrives()
+        {
+            var retVal = new List<FsEntity>();
+            var drives = DriveInfo.GetDrives();
+
+            foreach (var drive in drives)
+            {
+                var pfsDrive = new FsEntity();
+
+                try
+                {
+                    pfsDrive.Name = drive.VolumeLabel;
+                }
+                catch (Exception ex)
+                {
+                    pfsDrive.Name = ex.Message;
+                }
+
+                try
+                {
+                    pfsDrive.Path = drive.RootDirectory.FullName;
+                }
+                catch
+                {
+                    continue;
+                }
+
+                retVal.Add(pfsDrive);
+            }
+
+            return retVal;
+        }
+    }
+
     public class FsQueryProvider : QueryProvider
     {
         internal class FsQueryTranslator : ExpressionVisitor
         {
-            private List<FsEntity> QueryResults { get; set; }
 
-            internal FsQueryTranslator()
+            private FsQuery Query { get; set; }
+
+            public FsQueryTranslator()
             {
-                QueryResults = new List<FsEntity>();
+                Query = new FsQuery();
             }
+
+            bool isTakeScope = false;
+            bool isOrderByScope = false;
+            bool isOrderByDescendingScope = false;
+            bool isWhereScope = false;
 
             internal List<FsEntity> Translate(Expression expression)
             {
                 this.Visit(expression);
 
-                return QueryResults;
+                return Query.GetResults().ToList();
+            }
+
+            private static Expression StripQuotes(Expression e)
+            {
+                while (e.NodeType == ExpressionType.Quote)
+                {
+                    e = ((UnaryExpression)e).Operand;
+                }
+
+                return e;
             }
 
             protected override Expression VisitMethodCall(MethodCallExpression m)
             {
-                Console.WriteLine(m.Method.Name);
+                if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "Take")
+                {
+                    isTakeScope = true;
 
-                return base.VisitMethodCall(m);
+                    this.Visit(m.Arguments[0]);
+                    
+                    this.Visit(m.Arguments[1]);
+
+                    isTakeScope = false;
+
+                    return m;
+
+                }
+
+                if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "OrderBy")
+                {
+                    isOrderByScope = true;
+
+                    this.Visit(m.Arguments[0]);
+
+                    LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
+
+                    this.Visit(lambda.Body);
+
+                    isOrderByScope = false;
+
+                    return m;
+
+                }
+
+                if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "OrderByDescending")
+                {
+                    isOrderByDescendingScope = true;
+
+                    this.Visit(m.Arguments[0]);
+
+                    LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
+
+                    this.Visit(lambda.Body);
+
+                    isOrderByDescendingScope = false;
+
+                    return m;
+
+                }
+
+                if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "Where")
+                {
+                    isWhereScope = true;
+                    //sb.Append("SELECT * FROM(");
+
+                    this.Visit(m.Arguments[0]);
+
+                    //sb.Append(") AS T WHERE ");
+
+                    LambdaExpression lambda = (LambdaExpression)StripQuotes(m.Arguments[1]);
+
+                    this.Visit(lambda.Body);
+
+                    isWhereScope = false;
+                    return m;
+                }
+
+             
+
+                throw new NotSupportedException($"The method { m.Method.Name } is not supported");
             }
 
-            protected override Expression VisitUnary(UnaryExpression u)
-            {
-                return base.VisitUnary(u);
-            }
+            //protected override Expression VisitUnary(UnaryExpression u)
+            //{
+
+            //    switch (u.NodeType)
+            //    {
+
+            //        case ExpressionType.Not:
+
+            //            //sb.Append(" NOT ");
+
+            //            this.Visit(u.Operand);
+
+            //            break;
+
+            //        default:
+
+            //            throw new NotSupportedException($"The unary operator ‘{u.NodeType}’ is not supported");
+
+            //    }
+
+            //    return u;
+
+            //}
 
             protected override Expression VisitBinary(BinaryExpression b)
             {
-                return base.VisitBinary(b);
+                
+
+
+                //sb.Append("(");
+                this.Visit(b.Left);
+                switch (b.NodeType)
+                {
+                    case ExpressionType.And:
+                       // sb.Append(" AND ");
+                        break;
+
+                    case ExpressionType.Or:
+                        //sb.Append(" OR");
+                        break;
+
+                    case ExpressionType.Equal:
+                       // sb.Append(" = ");
+                        break;
+
+                    case ExpressionType.NotEqual:
+                       // sb.Append(" <> ");
+                        break;
+
+                    case ExpressionType.LessThan:
+                      //  sb.Append(" < ");
+                        break;
+
+                    case ExpressionType.LessThanOrEqual:
+                       // sb.Append(" <= ");
+                        break;
+
+                    case ExpressionType.GreaterThan:
+                      //  sb.Append(" > ");
+                        break;
+
+                    case ExpressionType.GreaterThanOrEqual:
+                       // sb.Append(" >= ");
+                        break;
+
+                }
+
+                this.Visit(b.Right);
+                //sb.Append(")");
+                return b;
+
             }
 
             protected override Expression VisitConstant(ConstantExpression c)
             {
-                return base.VisitConstant(c);
+
+                IQueryable q = c.Value as IQueryable;
+
+                if (q != null)
+                { 
+
+                }
+                else if (c.Value == null)
+                {  
+                }
+                else
+                {
+
+                    object container = c.Value;
+                    var genericArgs = container.GetType().GetGenericArguments();
+
+                    var props = container.GetType().GetProperties();
+
+                    var value = props[0].GetValue(c.Value);
+                }
+                return c;
             }
 
+            protected override Expression VisitMember(MemberExpression m)
+            {
+                if (m.Expression != null && m.Expression.NodeType == ExpressionType.Parameter)
+                {
+                    if (isOrderByScope) Query.Orders.Add(new FsQuery.OrderPart() { Direction = FsQuery.OrderPart.OrderDirection.Asc, PropertyName = m.Member.Name });
+                    if (isOrderByDescendingScope) Query.Orders.Add(new FsQuery.OrderPart() { Direction = FsQuery.OrderPart.OrderDirection.Desc, PropertyName = m.Member.Name });
+
+                    return m;
+                }
+
+                if (m.Expression != null && m.Expression.NodeType == ExpressionType.Constant)
+                {
+                    this.Visit(m.Expression);
+                }
+
+                return m;
+                 
+            }
         }
 
 
         public override object Execute(Expression expression)
         {
-            return Translate(expression);
+            return new FsQueryTranslator().Translate(expression);
         }
 
         public override string GetQueryText(Expression expression)
         {
             throw new NotImplementedException();
         }
-
-        private object Translate(Expression expression)
-        {
-            return new FsQueryTranslator().Translate(expression);
-        }
     }
-
-    //public class FsEntitiesQueryProvider : IQueryProvider
-    //{
-    //    public IQueryable CreateQuery(Expression expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public object Execute(Expression expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    public TResult Execute<TResult>(Expression expression)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
-
-    //public class QueryableFsEntities : IQueryable<FsEntity>
-    //{
-
-    //    public Expression Expression { get; set; }
-
-    //    public Type ElementType { get; set; }
-
-    //    public IQueryProvider Provider { get; set; }
-
-    //    public IEnumerator<FsEntity> GetEnumerator()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-
-    //    IEnumerator IEnumerable.GetEnumerator()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+    
 }

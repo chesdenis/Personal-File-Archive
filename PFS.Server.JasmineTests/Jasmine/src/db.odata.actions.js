@@ -88,7 +88,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '/').toArray()
+                dbCtx.IOEntities.GetFolders('C', '_2f').toArray()
                     .then(function (folders) {
                         folders.length > 0 ? resolve() : reject();
                     })
@@ -103,7 +103,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '/')
+                dbCtx.IOEntities.GetFolders('C', '_2f')
                     .filter(function (folder) { return folder.Name.contains('a'); })
                     .toArray()
                     .then(function (folders) {
@@ -128,7 +128,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '/')
+                dbCtx.IOEntities.GetFolders('C', '_2f')
                     .filter(function (folder) { return folder.Name.contains('a'); })
                     .take(1)
                     .forEach(function (folder) {
