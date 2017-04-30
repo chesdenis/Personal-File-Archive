@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFS.Server", "PFS.Server\PFS.Server.csproj", "{792C24FA-DCC2-4150-A7DD-8567673E3C73}"
 EndProject
@@ -19,21 +19,35 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		MsSql,Debug|Any CPU = MsSql,Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		SqLite,Debug|Any CPU = SqLite,Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.MsSql,Debug|Any CPU.ActiveCfg = MsSql,Debug|Any CPU
+		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.MsSql,Debug|Any CPU.Build.0 = MsSql,Debug|Any CPU
 		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.SqLite,Debug|Any CPU.ActiveCfg = SqLite,Debug|Any CPU
+		{792C24FA-DCC2-4150-A7DD-8567673E3C73}.SqLite,Debug|Any CPU.Build.0 = SqLite,Debug|Any CPU
 		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.MsSql,Debug|Any CPU.ActiveCfg = MsSql,Debug|Any CPU
+		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.MsSql,Debug|Any CPU.Build.0 = MsSql,Debug|Any CPU
 		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.SqLite,Debug|Any CPU.ActiveCfg = SqLite,Debug|Any CPU
+		{74CC1E24-B36E-4E92-AAF3-3F4347FCA1F9}.SqLite,Debug|Any CPU.Build.0 = SqLite,Debug|Any CPU
 		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.MsSql,Debug|Any CPU.ActiveCfg = MsSql,Debug|Any CPU
+		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.MsSql,Debug|Any CPU.Build.0 = MsSql,Debug|Any CPU
 		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.SqLite,Debug|Any CPU.ActiveCfg = SqLite,Debug|Any CPU
+		{F05D37C3-5651-4ABB-B859-E9265E8991B4}.SqLite,Debug|Any CPU.Build.0 = SqLite,Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

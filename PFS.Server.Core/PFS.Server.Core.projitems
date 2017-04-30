@@ -15,11 +15,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsODataCollections.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\IPfsRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstractions\PfsCRUDRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DbContexts\PfsServerDbContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DbContexts\EfContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DbContexts\EfCoreContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dto\VideoInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Book.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\ContentSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Document.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\FsEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\IOEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Job.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entities\Music.cs" />
@@ -33,7 +35,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanContentSourceJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Jobs\ScanVideosJob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Middlewares\DisablePfsCaching.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataArgsExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataModelBuilderExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ODataExtensions\ODataSlashHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\ContentSourcersRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\IOEntitiesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\JobsRepository.cs" />

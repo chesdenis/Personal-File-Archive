@@ -62,14 +62,6 @@ describe('Jobs tests', function () {
         should(actions, 'readJobs');
     });
 
-    describe('should be able to add a new job with name only', function () {
-        should(actions, 'addJobWithNameOnly');
-    });
-
-    describe('should be able to add a new job with name and status', function () {
-        should(actions, 'addJobWithNameAndStatus');
-    });
-
     describe('should be able to remove job', function () {
         should(actions, 'removeJobById');
     });
@@ -78,6 +70,9 @@ describe('Jobs tests', function () {
         should(actions, 'createScanVideosJob');
     });
 
+    describe('should execute first job', function(){
+        should(actions, 'executeFirstJob');
+    });
 });
 
 describe('Content sources tests', function(){

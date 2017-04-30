@@ -24,7 +24,8 @@ namespace PFS.Server
             var config = GlobalConfiguration.Configuration;
 
             // Register DbContext
-            builder.RegisterType<PfsServerDbContext>().As<IPfsDbContext>().SingleInstance();
+            //builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>().SingleInstance();
+            builder.RegisterType<SqLiteDbContext>().As<IPfsDbContext>().SingleInstance();
 
             // Register repositories
             builder.RegisterType<TagsRepository>().SingleInstance();

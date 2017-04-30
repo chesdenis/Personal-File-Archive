@@ -16,7 +16,7 @@ namespace PFS.Server.Core
     {
         public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<Tag>("Tags").EntityType.HasKey(k=>k.Id);
+            builder.EntitySet<Tag>("Tags").EntityType.HasKey(k => k.Id);
             return builder;
         }
 
@@ -30,6 +30,12 @@ namespace PFS.Server.Core
         {
             builder.EntitySet<Job>("Jobs").EntityType.HasKey(k => k.Id);
             builder.AddEnumType(typeof(JobStatus));
+
+            var entityTypeCollection = builder.EntityType<Job>().Collection;
+
+            var executeJob = entityTypeCollection.Action("ExecuteJob");
+            executeJob.Parameter<int>("JobId");
+
             return builder;
         }
 

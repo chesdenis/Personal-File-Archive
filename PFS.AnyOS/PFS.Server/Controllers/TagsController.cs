@@ -12,11 +12,11 @@ using System.Net.Http;
 
 namespace PFS.Server.Controllers
 {
-    //[Route("odata/Tags")]
-    //public class TagsController : BaseCRUDController<TagsRepository, Tag>
-    //{
-    //    public TagsController(TagsRepository rep) : base(rep)
-    //    {
-    //    }
-    //}
+    [Route("odata/Tags")]
+    public class TagsController : BaseCRUDController<TagsRepository, Tag>
+    {
+        public TagsController(TagsRepository rep) : base(rep)
+        {
+        }
+    }
 }

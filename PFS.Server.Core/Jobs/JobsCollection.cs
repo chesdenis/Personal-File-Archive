@@ -1,76 +1,89 @@
-﻿using PFS.Server.Core.DbContexts;
-using PFS.Server.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Autofac;
+//using PFS.Server.Core.Abstractions;
+//using PFS.Server.Core.DbContexts;
+//using PFS.Server.Core.Entities;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 namespace PFS.Server.Core.Jobs
 {
-    public static class JobsCollection 
-    {
-        public static void Execute()
-        {
-            Console.WriteLine("Collecting jobs...");
-            
-            try
-            {
-                using (var dbCtx = new PfsServerDbContext())
-                {
-                    var jobTasks = new List<Task>();
+    //public class JobsCollection 
+    //{
+    //    ILifetimeScope Scope { get; set; }
 
-                    var notStartedJobs = dbCtx.Jobs
-                        .Where(w => w.Status == JobStatus.NotStarted).ToList();
+    //    public JobsCollection(ILifetimeScope scope)
+    //    {
+    //        Scope = scope;
+    //    }
 
-                    var errJobs = dbCtx.Jobs
-                        .Where(w => w.Status == JobStatus.Error).ToList();
+    //    public void Execute()
+    //    {
+    //        Console.WriteLine("Collecting jobs...");
 
-                    PopulateJobTasks(dbCtx, notStartedJobs, jobTasks);
-                    PopulateJobTasks(dbCtx, errJobs, jobTasks);
+    //        try
+    //        {
+    //            using (var scope = Scope.BeginLifetimeScope())
+    //            {
+    //                var dbCtx = scope.Resolve<IPfsDbContext>();
 
-                    if (jobTasks.Count > 0)
-                    {
-                       
-                        Parallel.ForEach(jobTasks, task => task.Start());
+    //                var jobTasks = new List<Task>();
 
-                        Task.WaitAll(jobTasks.ToArray());
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+    //                var notStartedJobs = dbCtx.Jobs
+    //                    .Where(w => w.Status == JobStatus.NotStarted).ToList();
 
-            Console.WriteLine("Finishing...");
-        }
+    //                var errJobs = dbCtx.Jobs
+    //                    .Where(w => w.Status == JobStatus.Error).ToList();
 
-        private static void PopulateJobTasks(PfsServerDbContext dbCtx, List<Job> notStartedJobs, List<Task> jobTasks)
-        {
-            foreach (var jobEntity in notStartedJobs)
-            {
-                var jobName = jobEntity.Name;
-                var jobArgs = jobEntity.Args;
+    //                PopulateJobTasks(notStartedJobs, jobTasks);
+    //                PopulateJobTasks(errJobs, jobTasks);
 
-                var jobType = Type.GetType(jobName);
-                if (jobType == null) continue;
+    //                if (jobTasks.Count > 0)
+    //                {
+    //                    Parallel.ForEach(jobTasks, task => task.Start());
 
-                var jobToRun = Activator.CreateInstance(jobType) as BaseJob;
-                if (jobToRun == null) continue;
+    //                    Task.WaitAll(jobTasks.ToArray());
+    //                }
+    //            }
 
-                jobTasks.Add(new Task(() =>
-                {
-                    using (var dbJobCtx = new PfsServerDbContext())
-                    {
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            Console.WriteLine(ex);
+    //        }
 
-                        var jobInDb = dbJobCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
-                        if (jobInDb == null) return;
+    //        Console.WriteLine("Finishing...");
+    //    }
 
-                        jobToRun.Execute(jobInDb, dbJobCtx);
-                    }
-                }));
-            }
-        }
-    }
+    //    private void PopulateJobTasks(List<Job> notStartedJobs, List<Task> jobTasks)
+    //    {
+    //        foreach (var jobEntity in notStartedJobs)
+    //        {
+    //            var jobName = jobEntity.Name;
+    //            var jobArgs = jobEntity.Args;
+
+    //            var jobType = Type.GetType(jobName);
+    //            if (jobType == null) continue;
+
+    //            var jobToRun = Activator.CreateInstance(jobType) as BaseJob;
+    //            if (jobToRun == null) continue;
+
+    //            jobTasks.Add(new Task(() =>
+    //            {
+    //                using (var scope = Scope.BeginLifetimeScope())
+    //                {
+    //                    var dbCtx = scope.Resolve<IPfsDbContext>();
+
+    //                    var jobInDb = dbCtx.Jobs.FirstOrDefault(w => w.Id == jobEntity.Id);
+    //                    if (jobInDb == null) return;
+
+    //                    jobToRun.Execute(jobInDb, dbCtx);
+    //                }
+                  
+    //            }));
+    //        }
+    //    }
+    //}
 }

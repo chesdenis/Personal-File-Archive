@@ -176,24 +176,6 @@ function jobTests() {
         });
     };
 
-    this.addJobWithNameOnly = function () {
-        var dbCtx = exports.dbCtx;
-
-        var testJob = new dbCtx.Jobs.Job();
-        testJob.Name = "Job from Jasmine";
-
-        return this.addJob(testJob);
-
-    };
-    this.addJobWithNameAndStatus = function () {
-        var dbCtx = exports.dbCtx;
-        var testJob = new dbCtx.Jobs.Job();
-
-        testJob.Name = "Job from Jasmine";
-        testJob.Status = JobStatus.InProgress;
-
-        return this.addJob(testJob);
-    };
 
     this.removeJobById = function () {
         return new Promise(function (resolve, reject) {
@@ -238,6 +220,32 @@ function jobTests() {
                 }).catch(function (err) {
                     reject(err);
                 });
+            });
+        });
+    };
+
+    this.executeFirstJob = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                dbCtx.Jobs.take(1).toArray()
+                    .then(function (jobs) {
+
+                        var jobId = jobs[0].Id;
+
+                        return dbCtx.Jobs.ExecuteJob(
+                            {
+                                Id: 0
+                            });
+                    })
+                    .then(function () {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
             });
         });
     };

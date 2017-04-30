@@ -26,11 +26,11 @@ namespace PFS.Server.Abstractions
             return Rep.Get().AsQueryable();
         }
 
-        [HttpGet]
-        public virtual EntType Get(int key)
-        {
-            return Rep.Get(key);
-        }
+        //[HttpGet]
+        //public virtual EntType Get(int key)
+        //{
+        //    return Rep.Get(key);
+        //}
 
         [HttpPost]
         public virtual IActionResult Post(EntType entity)
