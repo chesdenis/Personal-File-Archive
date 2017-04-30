@@ -17,8 +17,8 @@ namespace PFS.Server.Extensions
     {
         private const string EscapedQuote = "'";
 
-        public const string Slash = "__2F";
-        public const string BackSlash = "__5C";
+        public const string Slash = "%2F";
+        public const string BackSlash = "%5C";
 
 #if AnyOS
         public ODataSlashHandler(IServiceProvider serviceProvider) : base(serviceProvider)

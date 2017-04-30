@@ -8,13 +8,13 @@ using System.Linq;
 
 namespace PFS.Server.Controllers
 {
-    //[Route("odata/ContentSources")]
-    //public class ContentSourcesController : BaseCRUDController<ContentSourcersRepository, ContentSource>
-    //{
-    //    public ContentSourcesController(ContentSourcersRepository rep) :
-    //        base(rep)
-    //    {
-    //    }
-    //}
+    [Route("odata/ContentSources")]
+    public class ContentSourcesController : BaseCRUDController<ContentSourcersRepository, ContentSource>
+    {
+        public ContentSourcesController(ContentSourcersRepository rep) :
+            base(rep)
+        {
+        }
+    }
 
 }

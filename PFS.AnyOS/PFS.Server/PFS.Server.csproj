@@ -19,9 +19,9 @@
     <PackageReference Include="System.IO.FileSystem.DriveInfo" Version="4.3.0" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
-    <PackageReference Include="Microsoft.OData.Core" Version="7.0.0" />
-    <PackageReference Include="Microsoft.OData.Edm" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Spatial" Version="7.0.0" />
+    <PackageReference Include="Microsoft.OData.Core" Version="7.1.1" />
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.1.1" />
+    <PackageReference Include="Microsoft.Spatial" Version="7.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1">
       <PrivateAssets>All</PrivateAssets>
@@ -42,13 +42,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.OData">
-      <HintPath>..\Microsoft.AspNetCore.OData\Microsoft.AspNetCore.OData.dll</HintPath>
-    </Reference>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Reference Include="Microsoft.AspNetCore.OData">
+      <HintPath>..\Microsoft.AspNetCore.OData\Microsoft.AspNetCore.OData.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -20,15 +20,15 @@ namespace PFS.Server.Core.ODataExtensions
             return retVal;
         }
 
-        public static string Replace_2fToSlash(this string inputString)
-        {
-            var retVal = inputString;
-            if (retVal.Contains("_2f"))
-            {
-                retVal = retVal.Replace("_2f", "\\");
-            }
+        //public static string Replace_2fToSlash(this string inputString)
+        //{
+        //    var retVal = inputString;
+        //    if (retVal.Contains("_2f"))
+        //    {
+        //        retVal = retVal.Replace("_2f", "\\");
+        //    }
 
-            return retVal;
-        }
+        //    return retVal;
+        //}
     }
 }

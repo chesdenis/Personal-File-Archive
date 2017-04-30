@@ -10,11 +10,11 @@ using System.Linq;
 namespace PFS.Server.Controllers
 {
 
-    //[Route("odata/Videos")]
-    //public class VideosController : BaseCRUDController<VideosRepository, Video>
-    //{
-    //    public VideosController(VideosRepository rep) : base(rep)
-    //    {
-    //    }
-    //}
+    [Route("odata/Videos")]
+    public class VideosController : BaseCRUDController<VideosRepository, Video>
+    {
+        public VideosController(VideosRepository rep) : base(rep)
+        {
+        }
+    }
 }

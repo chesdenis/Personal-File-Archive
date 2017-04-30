@@ -24,6 +24,13 @@ namespace PFS.Server.Core.DbContexts
         public DbSet<Job> Jobs { get; set; }
         IEnumerable<Job> IPfsODataCollections.Jobs => Jobs;
 
+        //public Dictionary<string, DbSet<object>> DbSetDict { get; set; }
+
+        //public EfCoreContext()
+        //{
+        //    DbSetDict.Add()
+        //}
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Tag>().HasKey(m => m.Id);
@@ -42,16 +49,31 @@ namespace PFS.Server.Core.DbContexts
 
         public object AddEntity<T>(T entity)
         {
+            if (entity is Tag) {
+                var tag = entity as Tag;
+                return Tags.Add(tag);
+            }
+
             throw new NotImplementedException();
         }
 
         public void RemoveEntity<T>(T entity)
         {
-            throw new NotImplementedException();
+            if (entity is Tag)
+            {
+                var tag = entity as Tag;
+                Tags.Remove(tag);
+            }
         }
 
         public object UpdateEntity<T>(T entity)
         {
+            if (entity is Tag)
+            {
+                var tag = entity as Tag;
+                return Tags.Attach(tag);
+            }
+
             throw new NotImplementedException();
         }
     }

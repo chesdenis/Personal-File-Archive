@@ -21,8 +21,7 @@ namespace PFS.Server
             .BuildVideosModel()
             .BuildContentSourcesPathsModel()
             .BuildJobsModel()
-            .BuildIOEntitiesModel()
-            .BuildFsEntitiesModel();
+            .BuildIOEntitiesModel();
 
             config.MapODataServiceRoute("ODataWebApi", "odata", odataBuilder.GetEdmModel(),
                 pathHandler: new ODataSlashHandler(), routingConventions: ODataRoutingConventions.CreateDefault());

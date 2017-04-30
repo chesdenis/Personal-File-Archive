@@ -88,7 +88,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '_2f').toArray()
+                dbCtx.IOEntities.GetFolders('C', '/').toArray()
                     .then(function (folders) {
                         folders.length > 0 ? resolve() : reject();
                     })
@@ -103,7 +103,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '_2f')
+                dbCtx.IOEntities.GetFolders('C', '/')
                     .filter(function (folder) { return folder.Name.contains('a'); })
                     .toArray()
                     .then(function (folders) {
@@ -128,7 +128,7 @@ function ioTests() {
         return new Promise(function (resolve, reject) {
             var dbCtx = exports.dbCtx;
             dbCtx.onReady(function () {
-                dbCtx.IOEntities.GetFolders('C', '_2f')
+                dbCtx.IOEntities.GetFolders('C', '/')
                     .filter(function (folder) { return folder.Name.contains('a'); })
                     .take(1)
                     .forEach(function (folder) {
@@ -312,35 +312,4 @@ function contentSourcesTests() {
             });
         });
     };
-}
-
-function fsApiTests() {
-
-    this.init = function (apiUrl) {
-        this.apiUrl = apiUrl;
-    };
-
-    this.readFirstElementInFileSystem = function () {
-        return new Promise(function (resolve, reject) {
-            var dbCtx = exports.dbCtx;
-
-            dbCtx.onReady(function () {
-
-                dbCtx.FsEntities
-                .filter(function (value) { return value.DriveName=='C'; })
-                .take(1)
-                .toArray()
-                    .then(function (results) {
-                        console.log(results[0].Path);
-                        resolve();
-                    })
-                    .then(function () {
-                        resolve();
-                    })
-                    .catch(function (err) {
-                        reject();
-                    });
-            });
-        });
-    }
 }

@@ -40,7 +40,7 @@ namespace PFS.Server.Core.Repositories
         public IEnumerable<PfsDrive> GetDrives()
         {
             var retVal = new List<PfsDrive>();
-            var drives =  DriveInfo.GetDrives();
+            var drives = DriveInfo.GetDrives();
 
             foreach (var drive in drives)
             {
@@ -69,11 +69,11 @@ namespace PFS.Server.Core.Repositories
 
             return retVal;
         }
-        
+
         public PfsFolder GetFolder(string driveName, string folderRelativePath)
         {
             driveName = driveName.ToStringNoQuotes();
-            folderRelativePath = folderRelativePath.ToStringNoQuotes().Replace_2fToSlash();
+            folderRelativePath = folderRelativePath.ToStringNoQuotes();
 
             var drive = GetDrive(driveName);
             var fullFolderPath = Path.Combine(drive.Path, folderRelativePath);
@@ -85,19 +85,19 @@ namespace PFS.Server.Core.Repositories
         public IEnumerable<PfsFolder> GetFolders(string driveName, string folderRelativePath)
         {
             driveName = driveName.ToStringNoQuotes();
-            folderRelativePath = folderRelativePath.ToStringNoQuotes().Replace_2fToSlash();
+            folderRelativePath = folderRelativePath.ToStringNoQuotes();
 
             var drive = GetDrive(driveName);
             var fullFolderPath = Path.Combine(drive.Path, folderRelativePath);
             var folder = new DirectoryInfo(fullFolderPath);
 
-            return folder.GetDirectories().Select(s=>new PfsFolder() { Name = s.Name, Path = s.FullName });
+            return folder.GetDirectories().Select(s => new PfsFolder() { Name = s.Name, Path = s.FullName });
         }
 
         public PfsFile GetFile(string driveName, string fileRelativePath)
         {
             driveName = driveName.ToStringNoQuotes();
-            fileRelativePath = fileRelativePath.ToStringNoQuotes().Replace_2fToSlash();
+            fileRelativePath = fileRelativePath.ToStringNoQuotes();
 
             var drive = GetDrive(driveName);
             var fullFilePath = Path.Combine(drive.Path, fileRelativePath);
@@ -109,7 +109,7 @@ namespace PFS.Server.Core.Repositories
         public IEnumerable<PfsFile> GetFiles(string driveName, string folderRelativePath)
         {
             driveName = driveName.ToStringNoQuotes();
-            folderRelativePath = folderRelativePath.ToStringNoQuotes().Replace_2fToSlash();
+            folderRelativePath = folderRelativePath.ToStringNoQuotes();
 
             var drive = GetDrive(driveName);
             var fullFolderPath = Path.Combine(drive.Path, folderRelativePath);
@@ -118,15 +118,5 @@ namespace PFS.Server.Core.Repositories
             return folder.GetFiles().Select(s => new PfsFile() { Name = s.Name, Path = s.FullName });
         }
     }
-
-    public class FsEntitiesRepository 
-    {
-        public IQueryable<FsEntity> Get()
-        {
-            var fsQueryProvider = new FsQueryProvider();
-
-            return new Query<FsEntity>(fsQueryProvider);
-
-        }
-    }
+    
 }

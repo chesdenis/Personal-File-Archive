@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using PFS.Server.Extensions;
 using PFS.Server.Core.Middlewares;
-using Microsoft.AspNetCore.OData.Extensions;
 using PFS.Server.Core.DbContexts;
 using PFS.Server.Core.Repositories;
 using PFS.Server.Core.Abstractions;
+using PFS.Server.Core;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.OData.Extensions;
+using Microsoft.AspNetCore.OData.Routing;
 using Microsoft.AspNetCore.OData;
 using Microsoft.AspNetCore.OData.Builder;
-using PFS.Server.Core.Entities;
-using PFS.Server.Core;
-using Microsoft.AspNetCore.OData.Routing;
-using Microsoft.AspNetCore.Mvc.Formatters.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
 
 namespace PFS.Server
 {
@@ -40,18 +30,22 @@ namespace PFS.Server
                     options.SerializerSettings.Formatting = Formatting.Indented;
                 });
 
+            //services.AddOData(options =>
+            //       options.RoutingConventions = new List<IODataRoutingConvention>());
             services.AddOData();
 
             services.AddSingleton<IODataPathHandler, ODataSlashHandler>();
 
-            //services.AddDbContext<PfsServerDbContext>();
+            services.AddDbContext<SqLiteDbContext>();
+
             //services.AddLogging();
-            //services.AddScoped<TagsRepository>();
-            //services.AddScoped<VideosRepository>();
-            //services.AddScoped<ContentSourcersRepository>();
-            //services.AddScoped<JobsRepository>();
+
+            services.AddScoped<TagsRepository>();
+            services.AddScoped<VideosRepository>();
+            services.AddScoped<ContentSourcersRepository>();
+            services.AddScoped<JobsRepository>();
             services.AddScoped<IOEntitiesRepository>();
-            services.AddScoped<FsEntitiesRepository>();
+            
             services.AddScoped<IPfsDbContext>(provider => provider.GetService<SqLiteDbContext>());
 
         }
@@ -66,20 +60,21 @@ namespace PFS.Server
             
             IAssemblyProvider provider = app.ApplicationServices.GetRequiredService<IAssemblyProvider>();
             var odataBuilder = new ODataConventionModelBuilder(provider)
-                //.BuildTagsModel()
-                //.BuildVideosModel()
-                //.BuildContentSourcesPathsModel()
-                //.BuildJobsModel()
-                .BuildIOEntitiesModel()
-                .BuildFsEntitiesModel();
+                .BuildTagsModel()
+                .BuildVideosModel()
+                .BuildContentSourcesPathsModel()
+                .BuildJobsModel()
+                .BuildIOEntitiesModel();
 
+            var model = odataBuilder.GetEdmModel();
 
             app.UseMvc(routes =>
             {
-                routes.MapODataRoute("odata", odataBuilder.GetEdmModel());
+                routes.MapODataRoute("odata", model);
             });
 
-            app.UseMvc(routes => {
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
                    name: "default",
                    template: "{controller=Home}/{action=Index}/{id?}");

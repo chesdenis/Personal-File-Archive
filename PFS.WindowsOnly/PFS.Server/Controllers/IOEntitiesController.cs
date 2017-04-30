@@ -9,21 +9,6 @@ using System.Web.OData;
 
 namespace PFS.Server.Controllers
 {
-    public class FsEntitiesController : ODataController
-    {
-        private readonly FsEntitiesRepository Rep;
-        public FsEntitiesController(FsEntitiesRepository rep)
-        {
-            Rep = rep;
-        }
-
-        [EnableQuery]
-        public virtual IQueryable<FsEntity> Get()
-        {
-            return Rep.Get();
-        }
-    }
-
     public class IOEntitiesController : ODataController
     {
         private readonly IOEntitiesRepository Rep;

@@ -16,7 +16,7 @@ namespace PFS.Server.Core
     {
         public static ODataConventionModelBuilder BuildTagsModel(this ODataConventionModelBuilder builder)
         {
-            builder.EntitySet<Tag>("Tags").EntityType.HasKey(k=>k.Id);
+            builder.EntitySet<Tag>("Tags").EntityType.HasKey(k => k.Id);
             return builder;
         }
 
@@ -42,12 +42,6 @@ namespace PFS.Server.Core
         public static ODataConventionModelBuilder BuildVideosModel(this ODataConventionModelBuilder builder)
         {
             builder.EntitySet<Video>("Videos").EntityType.HasKey(k => k.Id);
-            return builder;
-        }
-
-        public static ODataConventionModelBuilder BuildFsEntitiesModel(this ODataConventionModelBuilder builder)
-        {
-            builder.EntitySet<FsEntity>("FsEntities").EntityType.HasKey(k=>k.Id);
             return builder;
         }
 
