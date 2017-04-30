@@ -73,6 +73,10 @@ describe('Jobs tests', function () {
     describe('should execute first job', function(){
         should(actions, 'executeFirstJob');
     });
+    describe('should execute first not started job', function () {
+        should(actions, 'executeFirstNotStartedJob');
+    });
+    
 });
 
 describe('Content sources tests', function(){

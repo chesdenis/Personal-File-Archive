@@ -249,6 +249,33 @@ function jobTests() {
             });
         });
     };
+    this.executeFirstNotStartedJob = function () {
+        return new Promise(function (resolve, reject) {
+            var dbCtx = exports.dbCtx;
+
+            dbCtx.onReady(function () {
+
+                dbCtx.Jobs
+                    .filter(function (job) { return job.Status == JobStatus.NotStarted; })
+                    .take(1).toArray()
+                    .then(function (jobs) {
+
+                        var jobId = jobs[0].Id;
+
+                        return dbCtx.Jobs.ExecuteJob(
+                            {
+                                Id: 0
+                            });
+                    })
+                    .then(function () {
+                        resolve();
+                    })
+                    .catch(function (err) {
+                        reject();
+                    });
+            });
+        });
+    };
 };
 
 function contentSourcesTests() {

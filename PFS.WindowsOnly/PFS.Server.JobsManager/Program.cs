@@ -18,11 +18,11 @@ namespace PFS.Server.JobsManager
             var taskToRun = Task.Run(async () =>
              {
                  var client = new ODataClient("http://localhost:5000/odata");
-                 var tags = await client.FindEntriesAsync("Tags?$top=10");
+                 var jobs = await client.FindEntriesAsync("Jobs?$filter=Status eq 'NotStarted'");
 
-                 foreach (var tag in tags)
+                 foreach (var job in jobs)
                  {
-                     Console.WriteLine(tag["Title"]);
+                     Console.WriteLine(job["Id"]);
                  }
              });
             taskToRun.Wait();

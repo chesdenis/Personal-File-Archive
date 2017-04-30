@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿
+#if AnyOS
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+#endif
 using PFS.Server.Core.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -29,10 +32,18 @@ namespace PFS.Server.Core.Abstractions
 
         public T Post(T entity)
         {
+#if AnyOS
             EntityEntry createdEntity = (EntityEntry)DbCtx.AddEntity(entity);
             DbCtx.SaveChanges();
 
             return (T)createdEntity.Entity;
+#endif
+#if WinOnly
+            var createdEntity = DbCtx.AddEntity(entity);
+            DbCtx.SaveChanges();
+
+            return (T)createdEntity;
+#endif
         }
 
         public T Put(int id, T entity)
