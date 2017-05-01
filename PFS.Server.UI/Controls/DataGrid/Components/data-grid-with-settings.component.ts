@@ -18,18 +18,31 @@ import { DataGridSettingsConfig } from "../Configs/data-grid-settings.config";
         </ul>
 </div>
 <div *ngIf="!settings.isConfigMode" data-grid>
-<ng-content></ng-content>
+
+<table data-grid-table>
+    <thead data-grid-header [settings]="settings"></thead>
+    <tbody data-grid-body [settings]="settings"></tbody>
+</table>
+
 </div>`,
     host: {
-        "[class]":"hostCssClass"
+        "[class]": "hostCssClass"
     }
 })
 export class DataGridWithSettingsComponent implements OnInit {
     hostCssClass: string = "panel panel-default";
 
-    @Input() settings: DataGridSettingsConfig;
+    private _settings: DataGridSettingsConfig;
 
-    ngOnInit():void {
+    @Input() get settings(): DataGridSettingsConfig {
+        if(this._settings == null) this._settings = new DataGridSettingsConfig();
+        return this._settings;
+    }
+    set settings(newSettings:DataGridSettingsConfig){
+        this._settings = newSettings;
+    }
+
+    ngOnInit(): void {
         console.log("DataGridSettingsComponent init...");
     }
 }
