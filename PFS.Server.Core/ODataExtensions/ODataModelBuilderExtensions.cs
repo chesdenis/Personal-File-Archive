@@ -34,7 +34,7 @@ namespace PFS.Server.Core
             var entityTypeCollection = builder.EntityType<Job>().Collection;
 
             var executeJob = entityTypeCollection.Action("ExecuteJob");
-            executeJob.Parameter<int>("JobId");
+            executeJob.Parameter<int>("Id");
 
             return builder;
         }

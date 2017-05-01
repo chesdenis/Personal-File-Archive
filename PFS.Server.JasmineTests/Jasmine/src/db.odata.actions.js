@@ -264,7 +264,7 @@ function jobTests() {
 
                         return dbCtx.Jobs.ExecuteJob(
                             {
-                                Id: 0
+                                Id: jobId
                             });
                     })
                     .then(function () {

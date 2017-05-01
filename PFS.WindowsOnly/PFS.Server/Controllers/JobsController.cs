@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.OData;
+using PFS.Server.Core.Extensions;
 
 namespace PFS.Server.Controllers
 {
@@ -22,9 +23,12 @@ namespace PFS.Server.Controllers
 
         // POST odata/Jobs/Default.ExecuteJob
         [HttpPost]
-        public void ExecuteJob([FromBody]Job job)
+        public void ExecuteJob(HttpRequestMessage request)
         {
-            //Rep.ExecuteJob(job.Id);
+            var rv = request.Content.ReadAsStringAsync().Result;
+            var ro = rv.Deserialize<Job>();
+
+            Rep.ExecuteJob(ro.Id);
         }
     }
 }
