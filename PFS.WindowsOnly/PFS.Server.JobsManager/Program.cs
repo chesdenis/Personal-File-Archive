@@ -17,7 +17,12 @@ namespace PFS.Server.JobsManager
         {
             var taskToRun = Task.Run(async () =>
              {
-                 var client = new ODataClient("http://localhost:5000/odata");
+                 var baseOdataUrl = "http://localhost:5000/odata";
+
+                 var client = new ODataClient(new ODataClientSettings(baseOdataUrl)
+                 {
+                     OnTrace = (x, y) => Console.WriteLine(string.Format(x, y)),
+                 });
                  var jobs = await client.FindEntriesAsync("Jobs?$filter=(Status eq PFS.Server.Core.Entities.JobStatus'NotStarted')");
 
                  foreach (var job in jobs)
@@ -26,7 +31,20 @@ namespace PFS.Server.JobsManager
                      {
                          var jobId = (int)job["Id"];
 
-                         await client.ExecuteActionAsync("ExecuteJob", job);
+                         var dictParam = new Dictionary<string, object>
+                         {
+                             ["Id"] = jobId
+                         };
+
+                         try
+                         {
+                             await client.For("Jobs").Action("Default.ExecuteJob").Set(dictParam).ExecuteAsync();
+                         }
+                         catch(Exception ex)
+                         {
+                             Console.WriteLine(ex.Message);
+                         }
+                         
                      }
                    
                  }
