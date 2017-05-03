@@ -38,7 +38,9 @@ import { SwitchModeToDataButton } from "./Buttons/switch-mode-to-data.button";
         SwitchModeToConfigButton,
         SwitchModeToDataButton,
      ], 
-      exports:[]
+      exports:[
+          DataGridWithSettingsComponent
+          ]
 })
 export class DataGridModule {
 

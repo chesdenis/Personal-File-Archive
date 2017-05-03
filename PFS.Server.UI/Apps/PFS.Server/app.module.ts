@@ -12,6 +12,7 @@ import { NotFoundComponent } from './Components/not-found.component';
 import { HomeComponent } from './Components/Home/home.component';
 
 import { AppService } from './app.service';
+import { HomeService } from "./Components/Home/home.service";
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { AppService } from './app.service';
     ],
     providers:
     [
-        AppService
+        AppService,
+        HomeService,
     ],
     bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { DataGridSettingsConfig } from 'Controls/DataGrid/Configs/data-grid-settings.config';
 import { TextColumnTemplate } from "Controls/DataGrid/Templates/columns.templates";
+import {HomeService} from './home.service';
 
 @Component({
     moduleId: module.id,
@@ -9,6 +10,10 @@ import { TextColumnTemplate } from "Controls/DataGrid/Templates/columns.template
 })
 export class HomeComponent implements OnInit {
     a: DataGridSettingsConfig;
+
+    constructor(protected homeService: HomeService){
+     
+    };
 
     ngOnInit(): void {
         this.a = new DataGridSettingsConfig();
@@ -33,5 +38,7 @@ export class HomeComponent implements OnInit {
         this.a.buildRenderedColumns();       
         //this.a.columns.push();
         console.log('Home component on init..');
+
+        console.log(this.homeService.getContentSources());
     }
 }

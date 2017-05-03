@@ -14,8 +14,7 @@ import { DataGridModule } from "./DataGrid/data-grid.module";
         DataGridModule
     ],
     declarations: [
-        NavBarComponent,
-             
+        NavBarComponent
     ],
     exports: [
         NavBarComponent,
