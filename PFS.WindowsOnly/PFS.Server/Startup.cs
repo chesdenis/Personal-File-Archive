@@ -33,18 +33,18 @@ namespace PFS.Server
 
             // Register DbContext
 #if MsSql
-            builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>().SingleInstance();
+            builder.RegisterType<MsSqlDbContext>().As<IPfsDbContext>().InstancePerLifetimeScope();
 #endif
 #if SqLite
-            builder.RegisterType<SqLiteDbContext>().As<IPfsDbContext>().SingleInstance();
+            builder.RegisterType<SqLiteDbContext>().As<IPfsDbContext>().InstancePerLifetimeScope();
 #endif
 
             // Register repositories
-            builder.RegisterType<TagsRepository>().SingleInstance();
-            builder.RegisterType<VideosRepository>().SingleInstance();
-            builder.RegisterType<ContentSourcersRepository>().SingleInstance();
-            builder.RegisterType<JobsRepository>().SingleInstance();
-            builder.RegisterType<IOEntitiesRepository>().SingleInstance();
+            builder.RegisterType<TagsRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<VideosRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<ContentSourcersRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<JobsRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<IOEntitiesRepository>().InstancePerLifetimeScope();
 
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());

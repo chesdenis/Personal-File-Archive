@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from "./app-routing.module";
+import { HttpModule }    from '@angular/http';
 
 import { ControlsModule } from '../../Controls/controls.module';
 import { PhotosModule } from './Components/Photos/photos.module';
@@ -21,6 +22,7 @@ import { HomeService } from "./Components/Home/home.service";
         PhotosModule,
         VideosModule,
         AppRoutingModule,
+        HttpModule
     ],
     declarations:
     [
