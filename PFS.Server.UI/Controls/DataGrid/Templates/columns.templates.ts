@@ -51,3 +51,20 @@ export class DropdownColumnTemplate extends BaseColumnTemplate implements OnInit
         console.log("DropdownColumn init...");
     }
 }
+
+export enum columnTypes {
+    text,
+    dropdown
+}
+
+export class ColumnBuilder {
+    buildColumn(columnType: columnTypes): BaseColumnTemplate {
+        
+        switch (columnType) {
+            case columnTypes.text: return new TextColumnTemplate();
+            case columnTypes.dropdown: return new DropdownColumnTemplate();
+            default: return null;
+        }
+
+    }
+}

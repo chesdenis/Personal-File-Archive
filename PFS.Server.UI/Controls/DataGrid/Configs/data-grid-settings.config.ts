@@ -1,4 +1,4 @@
-﻿import { BaseColumnTemplate } from '../Templates/columns.templates';
+﻿import { BaseColumnTemplate, columnTypes } from '../Templates/columns.templates';
 import { BaseCellTemplate } from '../Templates/cells.templates';
 
 export class DataGridSettingsConfig {
@@ -34,3 +34,28 @@ export class DataGridSettingsConfig {
         });
     }
 }
+
+
+export class DataGridColumnsOptions{
+   addColumn(internalName: string, headerText = internalName, isVisible = true, columnType =columnTypes.text){
+       console.log("internalName is "+ internalName);
+       console.log('headerText is '+ headerText);
+       console.log('isVisible is ' + isVisible);
+       console.log('columnType is ' + columnType);
+
+   };
+   addColumn2(internalName: string, headerText?: string, isVisible?:boolean, columnType?:columnTypes){
+       console.log(internalName);
+       console.log(headerText);
+       console.log(isVisible);
+       console.log(columnType);
+   };
+};
+
+
+export class DataGridRowsOptions{
+    setData(data: any[]){
+        console.log(data);
+    };
+};
+ 
